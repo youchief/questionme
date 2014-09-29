@@ -5,7 +5,10 @@
                                                         <th><?php echo $this->Paginator->sort('id'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('username'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('password'); ?></th>
+                                                        <th><?php echo $this->Paginator->sort('birthday'); ?></th>
+                                                        <th><?php echo $this->Paginator->sort('email'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('group_id'); ?></th>
+                                                        <th><?php echo $this->Paginator->sort('region_id'); ?></th>
                                                 <th class="actions"><?php echo __('Actions'); ?></th>
                 </tr>
                 <?php foreach ($users as $user): ?>
@@ -13,8 +16,13 @@
 		<td><?php echo h($user['User']['id']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['username']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['birthday']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['email']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
+		</td>
+		<td>
+			<?php echo $this->Html->link($user['Region']['name'], array('controller' => 'regions', 'action' => 'view', $user['Region']['id'])); ?>
 		</td>
 		<td class="actions">
 		<div class="btn-group">

@@ -22,3 +22,10 @@ dd {
 	margin-top: 0em;
 	vertical-align: middle;
 }
+
+.datetime label,
+.time label,
+.date label { display: block; }
+.datetime select.form-control,
+.time select.form-control,
+.date select.form-control { width:auto; display:inline-block;}

@@ -1,11 +1,11 @@
 <?php
-App::uses('UsersController', 'Controller');
+App::uses('RegionsController', 'Controller');
 
 /**
- * UsersController Test Case
+ * RegionsController Test Case
  *
  */
-class UsersControllerTest extends ControllerTestCase {
+class RegionsControllerTest extends ControllerTestCase {
 
 /**
  * Fixtures
@@ -13,22 +13,13 @@ class UsersControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.user',
-		'app.group',
-		'app.action',
-		'app.groups_action',
 		'app.region',
 		'app.banner',
 		'app.profile',
 		'app.qday',
 		'app.qweek',
 		'app.question',
-		'app.questions_region',
-		'app.user_voucher',
-		'app.choice',
-		'app.users_choice',
-		'app.gift',
-		'app.users_gift'
+		'app.questions_region'
 	);
 
 /**

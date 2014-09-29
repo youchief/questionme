@@ -7,11 +7,10 @@ App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
  * User Model
  *
  * @property Group $Group
- * @property Region $Region
  * @property Profile $Profile
- * @property UserVoucher $UserVoucher
  * @property Choice $Choice
  * @property Gift $Gift
+ * @property Voucher $Voucher
  */
 class User extends AppModel {
 
@@ -63,16 +62,6 @@ class User extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
                 ),
             ),
-            'region_id' => array(
-                'numeric' => array(
-                    'rule' => array('numeric'),
-                //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
-                ),
-            ),
         );
 
         //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -89,13 +78,6 @@ class User extends AppModel {
                 'conditions' => '',
                 'fields' => '',
                 'order' => ''
-            ),
-            'Region' => array(
-                'className' => 'Region',
-                'foreignKey' => 'region_id',
-                'conditions' => '',
-                'fields' => '',
-                'order' => ''
             )
         );
 
@@ -107,22 +89,6 @@ class User extends AppModel {
         public $hasOne = array(
             'Profile' => array(
                 'className' => 'Profile',
-                'foreignKey' => 'user_id',
-                'dependent' => false,
-                'conditions' => '',
-                'fields' => '',
-                'order' => '',
-                'limit' => '',
-                'offset' => '',
-                'exclusive' => '',
-                'finderQuery' => '',
-                'counterQuery' => ''
-            ),
-        );
-        public $hasMany = array(
-            
-            'UserVoucher' => array(
-                'className' => 'UserVoucher',
                 'foreignKey' => 'user_id',
                 'dependent' => false,
                 'conditions' => '',
@@ -167,10 +133,22 @@ class User extends AppModel {
                 'limit' => '',
                 'offset' => '',
                 'finderQuery' => '',
+            ),
+            'Voucher' => array(
+                'className' => 'Voucher',
+                'joinTable' => 'users_vouchers',
+                'foreignKey' => 'user_id',
+                'associationForeignKey' => 'voucher_id',
+                'unique' => 'keepExisting',
+                'conditions' => '',
+                'fields' => '',
+                'order' => '',
+                'limit' => '',
+                'offset' => '',
+                'finderQuery' => '',
             )
         );
-        
-        
+
         public function beforeSave($options = array()) {
                 if (isset($this->data[$this->alias]['password'])) {
                         $passwordHasher = new BlowfishPasswordHasher();
@@ -180,4 +158,5 @@ class User extends AppModel {
                 }
                 return true;
         }
+
 }

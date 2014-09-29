@@ -22,8 +22,12 @@
                                                 <li><a href="#">List</a></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Regions</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'regions', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'regions', 'action' => 'index', 'admin' => true)); ?></li>
+                                                <li class="divider"></li>
+                                                <li class="dropdown-header">Banners</li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'banners', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'banners', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Contacts</li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'contacts', 'action' => 'index', 'admin' => true)); ?></li>
