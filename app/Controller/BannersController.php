@@ -15,6 +15,12 @@ class BannersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'Session');
+        
+        
+        public function gethome() {
+                return $this->Banner->find('all');
+	}
+        
 
 /**
  * admin_index method

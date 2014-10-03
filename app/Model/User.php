@@ -52,6 +52,10 @@ class User extends AppModel {
                 //'last' => false, // Stop validation after this rule
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
                 ),
+                'between' => array(
+                    'rule' => array('between', 5, 15),
+                    'message' => 'Entre 5 et 15 caractères'
+                )
             ),
             'group_id' => array(
                 'numeric' => array(
@@ -73,6 +77,11 @@ class User extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
                 ),
             ),
+            'email' => 'email',
+            'birthday' => array(
+                'rule' => 'date',
+                'message' => 'Entrez une date valide',
+            )
         );
 
         //The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -104,7 +113,21 @@ class User extends AppModel {
          *
          * @var array
          */
-        public $hasOne = array(
+        
+        public $hasMany = array(
+            'UserVoucher' => array(
+                'className' => 'UserVoucher',
+                'foreignKey' => 'user_id',
+                'dependent' => false,
+                'conditions' => '',
+                'fields' => '',
+                'order' => '',
+                'limit' => '',
+                'offset' => '',
+                'exclusive' => '',
+                'finderQuery' => '',
+                'counterQuery' => ''
+            ),
             'Profile' => array(
                 'className' => 'Profile',
                 'foreignKey' => 'user_id',
@@ -118,22 +141,6 @@ class User extends AppModel {
                 'finderQuery' => '',
                 'counterQuery' => ''
             ),
-        );
-        public $hasMany = array(
-            
-            'UserVoucher' => array(
-                'className' => 'UserVoucher',
-                'foreignKey' => 'user_id',
-                'dependent' => false,
-                'conditions' => '',
-                'fields' => '',
-                'order' => '',
-                'limit' => '',
-                'offset' => '',
-                'exclusive' => '',
-                'finderQuery' => '',
-                'counterQuery' => ''
-            )
         );
 
         /**
@@ -169,8 +176,7 @@ class User extends AppModel {
                 'finderQuery' => '',
             )
         );
-        
-        
+
         public function beforeSave($options = array()) {
                 if (isset($this->data[$this->alias]['password'])) {
                         $passwordHasher = new BlowfishPasswordHasher();
@@ -180,4 +186,5 @@ class User extends AppModel {
                 }
                 return true;
         }
+
 }

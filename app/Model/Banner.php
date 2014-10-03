@@ -27,10 +27,10 @@ class Banner extends AppModel {
             'Uploader.FileValidation' => array(
                 'background' => array(
                     'maxWidth' => 4000,
-                    'minHeight' => 1000,
+                    'minHeight' => 500,
                     'extension' => array('gif', 'jpg', 'png', 'jpeg'),
                     'type' => 'image',
-                    'mimeType' => array('image/gif', 'image/png'),
+                    'mimeType' => array('image/gif', 'image/png', 'image/jpeg'),
                     'filesize' => 5242880,
                     'required' => true
                 )

@@ -14,8 +14,8 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">App <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                                 <li class="dropdown-header">Q-days</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'qdays', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'qdays', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Q-weeks</li>
                                                 <li><a href="#">Add</a></li>
@@ -38,12 +38,12 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Questions <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                                 <li class="dropdown-header">Questions</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'questions', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'questions', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Question Types</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'questionTypes', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'questionTypes', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Question Queries</li>
                                                 <li><a href="#">Add</a></li>
@@ -54,12 +54,12 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Choices <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                                 <li class="dropdown-header">Question Choices</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'choices', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'choices', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Question Choice Types</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'choiceTypes', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'choiceTypes', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Question Queries</li>
                                                 <li><a href="#">Add</a></li>
@@ -83,12 +83,12 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Orders <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                                 <li class="dropdown-header">Orders</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'orders', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'orders', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Order Types</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'orderTypes', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'orderTypes', 'action' => 'index', 'admin' => true)); ?></li>
 
                                         </ul>
                                 </li>

@@ -13,6 +13,8 @@ class Action extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+        
+        public $virtualFields = array('app_action' => 'CONCAT(Action.controller, "/", Action.action)');
 
 /**
  * Validation rules
