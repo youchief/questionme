@@ -1,7 +1,6 @@
-<div class="navbar-wrapper">
-        <div class="container">
-
-                <div class="navbar navbar-default navbar-static-top" role="navigation">
+<header>
+        <nav>
+                <div class="navbar navbar-default navbar-fixed-top" role="navigation">
                         <div class="container">
                                 <div class="navbar-header">
                                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -10,21 +9,21 @@
                                                 <span class="icon-bar"></span>
                                                 <span class="icon-bar"></span>
                                         </button>
-                                        <?php echo $this->Html->link('Question Me', array('controller' => 'pages', 'action' => 'display', 'home'), array('class'=>'navbar-brand')); ?>
-                                </div>
-                                <div class="navbar-collapse collapse">
-                                        <ul class="nav navbar-nav">
-                                                <li><a href="#about">Concept</a></li>
-                                                <li><a href="#contact">Contact</a></li>
-                                                
-                                        </ul>
-                                        <ul class="nav navbar-nav navbar-right">
-                                                <li><?php echo $this->Html->link('Register', array('controller' => 'users', 'action' => 'register', 'admin' => false)); ?></li>
-                                                <li><?php echo $this->Html->link('Login', array('controller' => 'users', 'action' => 'login', 'admin' => false)); ?></li>
-                                        </ul>    
-                                </div>
-                        </div>
-                </div>
 
-        </div>
-</div>
+                                        <?php echo $this->Html->link($this->Html->image('logo.png', array('class' => 'img-responsive', 'id' => 'logo')), array('controller' => 'pages', 'action' => 'display', 'home'), array('class' => 'navbar-brand', 'escape' => false)); ?>
+                                </div>
+                                <nav>
+                                        <div class="navbar-collapse collapse">
+                                                <ul class="nav navbar-nav navbar-right">
+
+                                                        <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'register', 'admin' => false)) ?>"><i class='fa fa-pencil'> Register</i></a></li>
+                                                        <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'login', 'admin' => false)) ?>"><i class='fa fa-lock'> Login</i></a></li>
+                                                </ul>    
+                                        </div>
+                                </nav>
+                        </div>
+
+                </div>
+        </nav>
+
+</header>

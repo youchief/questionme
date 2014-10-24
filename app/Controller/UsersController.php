@@ -18,11 +18,11 @@ class UsersController extends AppController {
          * @var array
          */
         public $components = array('Paginator', 'Session');
+        //public $helpers = array('Facebook.Facebook');
 
         public function register() {
                 if ($this->request->is('post')) {
                         $this->User->create();
-
                         //group gamer
                         $this->request->data['User']['group_id'] = 2;
 
@@ -38,7 +38,8 @@ class UsersController extends AppController {
         }
 
         public function login() {
-             
+
+
                 if ($this->request->is('post')) {
                         if ($this->Auth->login()) {
                                 $user = $this->Auth->user();
@@ -47,12 +48,10 @@ class UsersController extends AppController {
                                     'conditions' => array('Group.id' => $user['group_id']),
                                         )
                                 );
-                                
+
                                 $actions = array();
                                 foreach ($group_actions['Action'] as $action) {
-                                        
-                                        
-                                        
+
                                         $actions[] = $action['app_action'];
                                 }
 
@@ -70,10 +69,47 @@ class UsersController extends AppController {
                 return $this->redirect($this->Auth->logout());
         }
 
+        public function my_profile() {
+                $user = $this->User->findById($this->Auth->user('id'));
+                $this->set('user', $user);
+        }
+
+        public function edit_my_profile() {
+
+                if ($this->request->is('post') || $this->request->is('put')) {
+                        //debug($this->request->data);
+
+                        if ($this->User->save($this->request->data)) {
+                                $this->Session->setFlash(__('The user has been saved'), 'default', array('class' => 'alert alert-success'));
+                                return $this->redirect(array('action' => 'index'));
+                        } else {
+                                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+                        }
+                } else {
+                        $options = array('conditions' => array('User.' . $this->User->primaryKey => $this->Auth->user('id')));
+                        $this->request->data = $this->User->find('first', $options);
+                }
+                $regions = $this->User->Region->find('list');
+                $this->set(compact('regions'));
+        }
+
+        public function change_password() {
+                if ($this->request->is('post')) {
+                        if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
+                                $this->User->id = $this->Auth->user('id');
+                                $this->User->saveField('password', $this->request->data['User']['new_password'], array('validate' => true));
+                                $this->Session->setFlash(__('The password has been changed'), 'default', array('class' => 'alert alert-success'));
+                                return $this->redirect(array('action' => 'my_profile'));
+                        } else {
+                                $this->Session->setFlash(__('Password are not the same :-('), 'default', array('class' => 'alert alert-danger'));
+                        }
+                }
+        }
+
         public function admin_login() {
                 if ($this->request->is('post')) {
                         if ($this->Auth->login()) {
-                                return $this->redirect($this->Auth->redirect());
+                                return $this->redirect(array('controller' => 'users', 'action' => 'welcome'));
                         }
                         $this->Session->setFlash(__('Invalid username or password, try again'), 'default', array('class' => 'alert alert-danger'));
                 }
@@ -193,7 +229,7 @@ class UsersController extends AppController {
                                 $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
                                 $Email->to($user['User']['email']);
                                 $Email->subject('Password recovery');
-                                $Email->viewVars(array('user' => $user['User']['username'], 'password'=>$this->_generatePassword()));
+                                $Email->viewVars(array('user' => $user['User']['username'], 'password' => $this->_generatePassword()));
                                 $Email->emailFormat('html');
                                 $Email->template('recover');
                                 $Email->send();

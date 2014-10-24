@@ -48,7 +48,7 @@
         <div class="related">
                 <h3><?php echo __('Related Users'); ?></h3>
                 <?php if (!empty($choice['User'])): ?>
-                <table cellpadding = "0" cellspacing = "0">
+                <table cellpadding = "0" cellspacing = "0" class='table'>
                         <tr>
                                 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Username'); ?></th>

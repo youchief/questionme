@@ -3,10 +3,9 @@
 	<fieldset>
 		<legend><?php echo __('Admin Add Profile'); ?></legend>
 	<?php
-		echo $this->Form->input('email', array('class'=>'form-control'));
-		echo $this->Form->input('birthday', array('class'=>'form-control'));
+		echo $this->Form->input('key', array('class'=>'form-control'));
+		echo $this->Form->input('value', array('class'=>'form-control'));
 		echo $this->Form->input('user_id', array('class'=>'form-control'));
-		echo $this->Form->input('region_id', array('class'=>'form-control'));
 	?>
 	</fieldset>
         <hr>

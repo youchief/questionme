@@ -1,32 +1,114 @@
-<?php echo $this->Form->create('Question', array('id' => 'myForm', 'class' => 'fs-form fs-form-full', 'autocomplete' => 'off')) ?>
-
-<ol class="fs-fields">
-        <?php $i = 1 ?>
-        <?php foreach ($questions as $question): ?>
-                <li data-input-trigger>
-                        <label class="fs-field-label fs-anim-upper" for="<?php echo $question['Question']['id'] ?>"><?php echo $question['Question']['question'] ?></label>
+<?php echo $this->Html->css('game') ?>
+<div class="container">
+        <div class="row">
+                <div class="col-sm-12">
+                        <h1><?php echo $question['Question']['question'] ?></h1>
                         <?php if (!empty($question['Question']['media'])): ?>
-                                <br>
-                                <div class='fs-anim-lower'>
-                                        <?php echo $this->Html->image($question['Question']['media'], array('width' => '100%')) ?>
+
+                                <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                                <?php echo $this->Html->image($question['Question']['media'], array('width' => '100%')) ?>
+
+                                        </div>
+                                </div>
+                        <?php endif; ?>
+                </div>
+        </div>
+        <hr>
+        <div class="row">
+                <div class="col-sm-12 ">
+                        <?php
+                        echo $this->Form->create('Question', array('autocomplete' => 'off', 'class' => 'form-inline'));
+                        echo $this->Form->input('question', array('type' => 'hidden', 'value' => $question['Question']['id']));
+                        echo $this->Form->input('type', array('type' => 'hidden', 'value' => $question['Question']['question_type_id']));
+                        echo $this->Form->input('response_type', array('type' => 'hidden', 'value' => $question['Question']['response_type']));
+                        echo $this->Form->input('question_value', array('type' => 'hidden', 'value' => $question['Question']['question']));
+                        ?>
+                        
+                        <?php if ($question['Question']['response_type'] == 'RADIO'): ?>
+                                <div class='row'>
+                                        <?php foreach ($question['Choice'] as $choice): ?>
+                                                <div class='col-sm-3'>
+                                                        <?php if (!empty($choice['media'])): ?>
+                                                                <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive')); ?>
+                                                        <?php endif; ?>
+                                                        <div class="radio">
+                                                                <input type="radio" name="data[Question][response]" id="<?php echo "QuestionResponse" . $choice['id'] ?>" class="" required="required" value="<?php echo $choice['id'] ?>">
+                                                                <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><?php echo $choice['response'] ?></label>
+                                                        </div>
+                                                </div>
+                                        <?php endforeach; ?>
+                                </div>
+
+                        <?php endif; ?>
+                        
+                        <?php if ($question['Question']['response_type'] == 'CHECKBOX'): ?>
+                                <div class='row'>
+                                        <?php foreach ($question['Choice'] as $choice): ?>
+
+                                                <div class='col-sm-3'>
+                                                        <?php if (!empty($choice['media'])): ?>
+                                                                <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive')); ?>
+                                                        <?php endif; ?>
+                                                        <div class="checkbox">
+                                                                <input type="checkbox" name="data[Question][response][]" value="<?php echo $choice['id'] ?>" id="<?php echo "QuestionResponse" . $choice['id'] ?>">
+                                                                <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><?php echo $choice['response'] ?></label>
+                                                        </div>
+                                                </div>
+                                        <?php endforeach; ?>
                                 </div>
                         <?php endif; ?>
 
-                        <div class="fs-radio-group fs-radio-custom clearfix fs-anim-lower">
-                                <?php $y = 1; ?>
-                                <?php foreach ($question['Choice'] as $choice): ?>
-                                        <span>
-                                                <input id="<?php echo 'q' . $y . $i ?>" name="<?php echo $question['Question']['id'] ?>" type="radio" value="<?php echo $choice['id'] ?>"/>
-                                                <label for="<?php echo 'q' . $y . $i ?>" class="radio-conversion"><?php echo $choice['response'] ?></label>
-                                        </span>
-                                        <?php $y++ ?>
-                                <?php endforeach; ?>
-                        </div>
-                </li>
-                <?php $i++ ?>
-        <?php endforeach; ?>
 
 
-</ol><!-- /fs-fields -->
-<?php echo $this->Form->submit('Envoyer mes réponses', array('class'=>'fs-submit'))?>
-<?php echo $this->Form->end()?>
+
+                        <?php if ($question['Question']['response_type'] == 'FREE'): ?>
+                                <?php echo $this->Form->input('response', array('type' => 'hidden', 'value' => $question['Choice'][0]['id'])); ?>
+                                <?php echo $this->Form->input('free', array('class' => 'form-control', 'required' => 'required', 'label' => false)); ?>
+                        <?php endif; ?>
+
+                        <?php if ($question['Question']['response_type'] == 'SCALE'): ?>
+                                <?php echo $this->Form->input('response', array('type' => '', 'required' => 'required', 'label' => false)); ?>
+                        <?php endif; ?>
+
+                        <br>
+                        <?php
+                        echo $this->Form->submit('Suivant', array('class' => 'btn btn-success'));
+                        echo $this->Form->end()
+                        ?>
+
+
+                </div>
+
+        </div>
+        <hr>
+        <div class="row">
+                <div class="col-sm-12 info-question">
+                        Aujourd'hui j'ai répondu à <?php echo $rest ?> sur <?php echo $qday_total ?>
+                </div>
+        </div>
+</div>
+
+
+<?php
+/*
+  foreach ($form['Field'] as $field) {
+  echo "<div class='input_form'>";
+  if ($field['type'] == 'legend') {
+  echo "<div class='alert alert-error'>" . $field['label'] . "</div>";
+  } else {
+  echo $this->Form->input($field['label'], array('type' => $field['type'],
+  'label' => $field['label'],
+  'multiple' => $field['multiple'],
+  'options' => $this->requestAction(array('controller' => 'options', 'action' => 'getOptions', $field['id'])),
+  'required' => $field['require'],
+  'dateFormat' => 'DMY',
+  'minYear' => date('Y') - 100,
+  'div' => $field['class'],
+  'after' => $field['help_text']));
+  echo "</div>";
+  }
+  }
+ * 
+ */
+?>

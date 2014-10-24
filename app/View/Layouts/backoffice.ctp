@@ -60,9 +60,7 @@
                 echo $this->element('sql_dump');
                 ?>
             </div>
-            
-            <?php echo $this->element('footer'); ?>
-            
+                        
         </div>
         
         <?php

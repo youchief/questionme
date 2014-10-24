@@ -17,13 +17,16 @@
                 <?php endfor; ?>
 
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-inner">                
                 <div class="item active fill">
                         <?php echo $this->Html->image($banners[0]['Banner']['background'], array('class' => 'img-responsive')) ?>
                         <div class="container">
-                                <div class="carousel-caption">
+                                <div class="carousel-caption-new">
                                         <h1><?php echo $banners[0]['Banner']['title'] ?></h1>
-                                        <p><?php echo $banners[0]['Banner']['subtitle'] ?></p>
+
+                                        <p>
+                                                <a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>" class="cmn-t-pulse" ><i class='fa fa-play-circle fa-4x'></i></a>
+                                        </p>
                                 </div>
                         </div>
                 </div>
@@ -32,15 +35,19 @@
                         <div class="item fill">
                                 <?php echo $this->Html->image($banners[$index]['Banner']['background'], array('class' => 'img-responsive')) ?>
                                 <div class="container">
-                                        <div class="carousel-caption">
+                                        <div class="carousel-caption-new">
                                                 <h1><?php echo $banners[$index]['Banner']['title'] ?></h1>
-                                                <p><?php echo $banners[$index]['Banner']['subtitle'] ?></p>
+                                                <p>
+                                                <a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>" class="cmn-t-pulse" ><i class='fa fa-play-circle fa-4x'></i></a>
+                                                </p>
                                         </div>
                                 </div>
                         </div>
                 <?php endfor; ?>
 
         </div>
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+
+
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"></a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"></a>
 </div><!-- /.carousel -->

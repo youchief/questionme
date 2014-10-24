@@ -1,14 +1,31 @@
-<div class="menu-wrap">
-        <nav class="menu-top">
-                <?php echo $this->Html->image('logo_2x.png', array('width' => '200px', 'id' => 'logo')) ?>
-                <?php echo $this->Html->link('Accueil', array('controller' => 'pages', 'action' => 'display', 'home'), array('class' => '')); ?>
-                <a href="#about">Concept</a>
-                <a href="#contact">Contact</a>
+<header>
+        <nav>
+                <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                        <div class="container">
+                                <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                                                <span class="sr-only">Toggle navigation</span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                        </button>
+
+                                        <?php echo $this->Html->link($this->Html->image('logo.png', array('class' => 'img-responsive', 'id' => 'logo')), array('controller' => 'pages', 'action' => 'display', 'home'), array('class' => 'navbar-brand', 'escape' => false)); ?>
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                        <ul class="nav navbar-nav navbar-right">
+
+                                                <li><a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>"><i class='fa fa-play-circle'> Play</i></a></li>
+                                                <li><a href="<?php echo $this->Html->url(array('controller' => 'vouchers', 'action' => 'my_vouchers', 'admin' => false)) ?>"><i class='fa fa-trophy'> My Vouchers</i></a></li>
+                                                <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'my_profile', 'admin' => false)) ?>"><i class='fa fa-user'> My Profile</i></a></li>
+                                                <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'logout', 'admin' => false)) ?>"><i class='fa fa-unlock'> Logout</i></a></li>
+
+
+                                        </ul>    
+                                </div>
+                        </div>
+
+                </div>
+
         </nav>
-        <nav class="menu-side">
-                <?php echo $this->Html->link('Register', array('controller' => 'users', 'action' => 'register', 'admin' => false)); ?>
-                <?php echo $this->Html->link('Logout', array('controller' => 'users', 'action' => 'logout', 'admin' => false)); ?>
-                <?php echo $this->Html->link('Play', array('controller' => 'questions', 'action' => 'play', 'admin' => false)); ?>
-        </nav>
-</div>
-<button class="menu-button" id="open-button">Open Menu</button>
+</header>

@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14 oct. 2014, 09:59:15
+    Author     : cyril
+*/
+@media (min-width: 768px){
+        header {
+                width: 100%;
+                overflow: hidden;
+                position: fixed;
+                height: 100px;
+                top: 0;
+                left: 0;
+                z-index: 999;
+                -webkit-transition: height 0.3s;
+                -moz-transition: height 0.3s;
+                -ms-transition: height 0.3s;
+                -o-transition: height 0.3s;
+                transition: height 0.3s;
+        }
+        img#logo {
+                height: 72px;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                -ms-transition: all 0.3s;
+                -o-transition: all 0.3s;
+                transition: all 0.3s;
+        }
+
+        header nav a {
+
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                -ms-transition: all 0.3s;
+                -o-transition: all 0.3s;
+                transition: all 0.3s;
+        }
+
+        header.smaller {
+                height: 75px;
+        }
+        header.smaller img#logo {
+                height: 50px;
+        }
+
+        header .navbar-default .navbar-nav>li>a {
+                padding-top: 35px;
+                padding-bottom: 35px;
+        }
+
+        header.smaller .navbar-default .navbar-nav>li>a {
+                padding-top: 25px;
+                padding-bottom: 25px;
+        }
+}

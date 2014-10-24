@@ -6,24 +6,19 @@
 			<?php echo h($profile['Profile']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Email'); ?></dt>
+		<dt><?php echo __('Key'); ?></dt>
 		<dd>
-			<?php echo h($profile['Profile']['email']); ?>
+			<?php echo h($profile['Profile']['key']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Birthday'); ?></dt>
+		<dt><?php echo __('Value'); ?></dt>
 		<dd>
-			<?php echo h($profile['Profile']['birthday']); ?>
+			<?php echo h($profile['Profile']['value']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($profile['User']['username'], array('controller' => 'users', 'action' => 'view', $profile['User']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Region'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($profile['Region']['name'], array('controller' => 'regions', 'action' => 'view', $profile['Region']['id'])); ?>
 			&nbsp;
 		</dd>
         </dl>

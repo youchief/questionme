@@ -26,6 +26,11 @@
 			<?php echo h($qday['Qday']['nb_qfixe']); ?>
 			&nbsp;
 		</dd>
+                <dt><?php echo __('Nb Qprofile'); ?></dt>
+		<dd>
+			<?php echo h($qday['Qday']['nb_qprofile']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Region'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($qday['Region']['name'], array('controller' => 'regions', 'action' => 'view', $qday['Region']['id'])); ?>

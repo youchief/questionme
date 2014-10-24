@@ -19,7 +19,7 @@ class ContactsController extends AppController {
 	public $components = array('Paginator', 'Session');
         
         
-        public function sendmail() {
+        public function contact() {
                 if ($this->request->is('post')) {
                         $this->Contact->create();
                         if ($this->Contact->save($this->request->data)) {
@@ -29,10 +29,10 @@ class ContactsController extends AppController {
                                 $Email->subject('Contact depuis le site questionme.ch');
                                 $Email->send($this->request->data['Contact']['message']);
                                 $this->Session->setFlash(__('Merci et à très vite!'), 'default', array('class' => 'alert alert-success'));
-                                $this->render('/Pages/home');
+                                
                         } else {
                                 $this->Session->setFlash(__('Petit problème :-/, merci de vérifier votre formulaire.'), 'default', array('class' => 'alert alert-danger'));
-                                $this->render('/Pages/home');
+                               
                                 
                         }
                 }

@@ -6,7 +6,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">QME <small>v.0.1</small></a>
+                        <a class="navbar-brand" href="<?php  echo $this->Html->url(array('controller' => 'users', 'action' => 'welcome')); ?>">QME <small>v.0.1</small></a>
                 </div>
                 <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -38,6 +38,7 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Questions <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                                 <li class="dropdown-header">Questions</li>
+                                                <li><?php echo $this->Html->link('Wizard', array('controller' => 'questions', 'action' => 'wizard', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'questions', 'action' => 'add', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'questions', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
@@ -46,8 +47,8 @@
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'questionTypes', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Question Queries</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'queries', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'queries', 'action' => 'index', 'admin' => true)); ?></li>
                                         </ul>
                                 </li>
                                 <li class="dropdown">
@@ -101,8 +102,8 @@
                                                 <li><a href="#">List</a></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Vouchers</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'vouchers', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'vouchers', 'action' => 'index', 'admin' => true)); ?></li>
 
                                         </ul>
                                 </li>
@@ -126,8 +127,8 @@
                                 <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profiles <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'profiles', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'profiles', 'action' => 'index', 'admin' => true)); ?></li>
 
                                         </ul>
                                 </li>

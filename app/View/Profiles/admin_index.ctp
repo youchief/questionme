@@ -3,22 +3,18 @@
         <table cellpadding="0" cellspacing="0" class="table">
                 <tr>
                                                         <th><?php echo $this->Paginator->sort('id'); ?></th>
-                                                        <th><?php echo $this->Paginator->sort('email'); ?></th>
-                                                        <th><?php echo $this->Paginator->sort('birthday'); ?></th>
+                                                        <th><?php echo $this->Paginator->sort('key'); ?></th>
+                                                        <th><?php echo $this->Paginator->sort('value'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('user_id'); ?></th>
-                                                        <th><?php echo $this->Paginator->sort('region_id'); ?></th>
                                                 <th class="actions"><?php echo __('Actions'); ?></th>
                 </tr>
                 <?php foreach ($profiles as $profile): ?>
 	<tr>
 		<td><?php echo h($profile['Profile']['id']); ?>&nbsp;</td>
-		<td><?php echo h($profile['Profile']['email']); ?>&nbsp;</td>
-		<td><?php echo h($profile['Profile']['birthday']); ?>&nbsp;</td>
+		<td><?php echo h($profile['Profile']['key']); ?>&nbsp;</td>
+		<td><?php echo h($profile['Profile']['value']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($profile['User']['username'], array('controller' => 'users', 'action' => 'view', $profile['User']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($profile['Region']['name'], array('controller' => 'regions', 'action' => 'view', $profile['Region']['id'])); ?>
 		</td>
 		<td class="actions">
 		<div class="btn-group">

@@ -57,6 +57,16 @@ class User extends AppModel {
                     'message' => 'Entre 5 et 15 caractères'
                 )
             ),
+            'gender' => array(
+                'notEmpty' => array(
+                    'rule' => array('notEmpty'),
+                //'message' => 'Your custom message here',
+                //'allowEmpty' => false,
+                //'required' => false,
+                //'last' => false, // Stop validation after this rule
+                //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                )
+            ),
             'group_id' => array(
                 'numeric' => array(
                     'rule' => array('numeric'),
@@ -77,7 +87,13 @@ class User extends AppModel {
                 //'on' => 'create', // Limit validation to 'create' or 'update' operations
                 ),
             ),
-            'email' => 'email',
+            'email' => array(
+                'email',
+                'isUnique' => array(
+                    'rule' => 'isUnique',
+                    'message' => 'Ce pseudo est déjà pris :-('
+                ),
+            ),
             'birthday' => array(
                 'rule' => 'date',
                 'message' => 'Entrez une date valide',
@@ -113,21 +129,7 @@ class User extends AppModel {
          *
          * @var array
          */
-        
         public $hasMany = array(
-            'UserVoucher' => array(
-                'className' => 'UserVoucher',
-                'foreignKey' => 'user_id',
-                'dependent' => false,
-                'conditions' => '',
-                'fields' => '',
-                'order' => '',
-                'limit' => '',
-                'offset' => '',
-                'exclusive' => '',
-                'finderQuery' => '',
-                'counterQuery' => ''
-            ),
             'Profile' => array(
                 'className' => 'Profile',
                 'foreignKey' => 'user_id',
@@ -171,6 +173,19 @@ class User extends AppModel {
                 'conditions' => '',
                 'fields' => '',
                 'order' => '',
+                'limit' => '',
+                'offset' => '',
+                'finderQuery' => '',
+            ),
+            'Voucher' => array(
+                'className' => 'Voucher',
+                'joinTable' => 'user_vouchers',
+                'foreignKey' => 'user_id',
+                'associationForeignKey' => 'voucher_id',
+                'unique' => 'keepExisting',
+                'conditions' => '',
+                'fields' => '',
+                'order' => 'UserVoucher.id DESC',
                 'limit' => '',
                 'offset' => '',
                 'finderQuery' => '',

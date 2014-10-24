@@ -20,7 +20,14 @@ class Banner extends AppModel {
             'Uploader.Attachment' => array(
                 'background' => array(
                     'tempDir' => TMP,
-                    
+                    'transforms' => array(
+                        'imageSmall' => array(
+                            'class' => 'crop',
+                            'self' => true,
+                            'width' => 1000,
+                            'height'=>400
+                        ),
+                    ),
                     'finalPath' => '/img/banners/'
                 )
             ),
