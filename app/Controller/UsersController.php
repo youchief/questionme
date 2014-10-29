@@ -28,6 +28,16 @@ class UsersController extends AppController {
 
                         if ($this->User->save($this->request->data)) {
                                 $this->Session->setFlash(__('Barvo ! Connectez-vous et commencer à jouer dès maintenant!'), 'default', array('class' => 'alert alert-success'));
+                                
+                                $Email = new CakeEmail();
+                                $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
+                                $Email->to($this->request->data['User']['email']);
+                                $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
+                                $Email->viewVars(array('user' => $this->request->data['User']['username']));
+                                $Email->emailFormat('html');
+                                $Email->template('welcome');
+                                $Email->send();
+                                
                                 return $this->redirect(array('action' => 'login'));
                         } else {
                                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
@@ -276,6 +286,12 @@ class UsersController extends AppController {
 
                 // done!
                 return $password;
+        }
+        
+        
+        public function admin_get_nb_gamer(){
+                $gamers = $this->User->find('count', array('conditions'=>array('User.group_id'=>2)));
+                return $gamers;
         }
 
 }

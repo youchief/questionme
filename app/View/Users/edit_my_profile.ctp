@@ -6,13 +6,13 @@
                                 <legend><?php echo __('Edit My Profile'); ?></legend>
                                 <?php
                                 echo $this->Form->input('id', array('class' => 'form-control'));
-                                echo $this->Form->input('birthday', array('class' => 'form-control'));
+                                echo $this->Form->input('birthday', array('class' => 'form-control', 'label'=>'Date de naissance'));
                                 echo $this->Form->input('email', array('class' => 'form-control'));
-                                echo $this->Form->input('region_id', array('class' => 'form-control'));
+                                echo $this->Form->input('region_id', array('class' => 'form-control', 'label'=> 'Région'));
                                 ?>
                         </fieldset>
                         <hr>
-                        <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-success')); ?>
+                        <?php echo $this->Form->submit(__('OK'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
                 <div class='col-sm-6'>

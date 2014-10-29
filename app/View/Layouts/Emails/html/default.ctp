@@ -108,34 +108,28 @@
                                                         <td class="container-padding" bgcolor="#ffffff" style="background-color: #ffffff; padding-left: 30px; padding-right: 30px; font-size: 14px; line-height: 20px; font-family: Helvetica, sans-serif; color: #333;">
                                                                 <br>
 
-                                                                
+
 
                                                                 <div style="font-weight: bold; font-size: 18px; line-height: 24px; color: #D03C0F;">
-                                                                        Question Me
+                                                                        <?php echo $this->Html->link($this->Html->image('logo.png', array('class' => 'img-responsive', 'width' => '180px', 'fullBase' => true)), array('controller' => 'pages', 'action' => 'display', 'home', 'full_base' => true), array('class' => 'navbar-brand', 'escape' => false)); ?>
+
                                                                 </div>
                                                                 <br>
                                                                 <?php echo $this->fetch('content'); ?>
-                                                                
+
 
                                                         </td>
                                                 </tr>
                                                 <tr>
-                                                        <td class="container-padding" bgcolor="#ffffff" style="background-color: #ffffff; padding-left: 30px; padding-right: 30px; font-size: 13px; line-height: 20px; font-family: Helvetica, sans-serif; color: #333;" align="left">
+                                                        <td class="container-padding" bgcolor="#ffffff" style="background-color: #ffffff; padding-left: 30px; padding-right: 30px; font-size: 13px; line-height: 20px; font-family: Helvetica, sans-serif; color: #333;" align="center">
+                                                                <hr>
+                                                                <?php echo $this->Html->link('A propos', array('controller' => 'pages', 'action' => 'display', 'about', 'full_base' => true)) ?>  
+                                                                - 
+                                                                <?php echo $this->Html->link('Contact', array('controller' => 'contacts', 'action' => 'contact', 'full_base' => true)) ?> 
+                                                                - 
+                                                                <?php echo $this->Html->link('Conditions générales', array('controller' => 'pages', 'action' => 'display', 'terms_and_conditions', 'full_base' => true)) ?> 
                                                                 <br>
-
-                                                                <div style="font-weight: bold; font-size: 18px; line-height: 24px; color: #D03C0F; border-top: 1px solid #ddd;"><br>Demo: Two columns to rows</div>
                                                                 <br>
-
-                                                                <strong>Adjustments to consider</strong><br><br>
-                                                                - Adjust column widths: 175px to 260px<br>
-                                                                - Added new &lt;br&gt; before headline (which makes extra gap on mobile. Consider adding table wrapper to image).<br>
-                                                                - Adjusted class names for consistency.
-
-                                                                <br><br>
-
-                                                                <em>This is a quick demo! (28 Okt)</em>
-
-                                                                <br><br>
 
 
                                                         </td>

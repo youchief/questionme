@@ -88,27 +88,3 @@
                 </div>
         </div>
 </div>
-
-
-<?php
-/*
-  foreach ($form['Field'] as $field) {
-  echo "<div class='input_form'>";
-  if ($field['type'] == 'legend') {
-  echo "<div class='alert alert-error'>" . $field['label'] . "</div>";
-  } else {
-  echo $this->Form->input($field['label'], array('type' => $field['type'],
-  'label' => $field['label'],
-  'multiple' => $field['multiple'],
-  'options' => $this->requestAction(array('controller' => 'options', 'action' => 'getOptions', $field['id'])),
-  'required' => $field['require'],
-  'dateFormat' => 'DMY',
-  'minYear' => date('Y') - 100,
-  'div' => $field['class'],
-  'after' => $field['help_text']));
-  echo "</div>";
-  }
-  }
- * 
- */
-?>

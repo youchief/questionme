@@ -4,7 +4,7 @@
 		<legend><?php echo __('Admin Edit Order'); ?></legend>
 	<?php
 		echo $this->Form->input('id', array('class'=>'form-control'));
-		echo $this->Form->input('active', array('class'=>'form-control'));
+		echo $this->Form->input('active', array('class'=>'checkbox'));
 		echo $this->Form->input('repondants', array('class'=>'form-control'));
 		echo $this->Form->input('nb_questions', array('class'=>'form-control'));
 		echo $this->Form->input('customer_id', array('class'=>'form-control'));

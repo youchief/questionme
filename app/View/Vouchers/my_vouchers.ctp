@@ -16,7 +16,7 @@
                                                         <?php echo $this->Html->link(__('Detail'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
 
                                                 <?php else: ?>
-                                                <h3><span class="label label-danger"><?php echo __('Used') . ": " . $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
+                                                <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
                                                 <?php endif; ?>
                                         </p>
                                 </div>

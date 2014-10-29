@@ -476,8 +476,8 @@ class QuestionsController extends AppController {
                             'fields' => array('DISTINCT UsersChoice.user_id'),
                                 )
                         );
-                        
-                        
+
+
                         $result['user'] = count($user_played);
                         $result['qfixe'] = count($q_fixe);
                         $result['qmobile'] = count($q_mobile);
@@ -487,6 +487,32 @@ class QuestionsController extends AppController {
 
 
                 return $result;
+        }
+
+        public function admin_summary($question_id) {
+                $question = $this->Question->find('first', array(
+                    'conditions' => array('Question.id' => $question_id),
+                    'contain' => array('Choice' => array(
+                            'User'
+                        ),
+                    ),
+                        )
+                );
+
+                $this->set('question', $question);
+        }
+
+        public function admin_get_nb_user_per_question($question_id) {
+                $user_played = $this->UsersChoice->find('count', array(
+                    'conditions' => array(
+                        'UsersChoice.question_id' => $question_id,
+                       
+                    ),
+                    'fields' => array('DISTINCT UsersChoice.user_id'),
+                        )
+                );
+                
+                return $user_played;
         }
 
 }

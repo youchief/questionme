@@ -94,8 +94,10 @@ form .error {
         margin-bottom: 1em;
 }
 
-.alert {
+.alert-custom { 
         font-weight: bold;
+        z-index: 1000;
+        position:absolute;
 }
 
 .navbar-default {
@@ -169,7 +171,7 @@ form .error {
 #myCarousel {
 
         margin-bottom: 60px;
-        margin-top: -27px;
+        margin-top: -30px;
 }
 
 .carousel-caption-new {

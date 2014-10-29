@@ -16,8 +16,8 @@
                                         <div class="navbar-collapse collapse">
                                                 <ul class="nav navbar-nav navbar-right">
 
-                                                        <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'register', 'admin' => false)) ?>"><i class='fa fa-pencil'> Register</i></a></li>
-                                                        <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'login', 'admin' => false)) ?>"><i class='fa fa-lock'> Login</i></a></li>
+                                                        <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'register', 'admin' => false)) ?>"><i class='fa fa-pencil'> S'inscrire</i></a></li>
+                                                        <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'login', 'admin' => false)) ?>"><i class='fa fa-lock'> Connexion</i></a></li>
                                                 </ul>    
                                         </div>
                                 </nav>

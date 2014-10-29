@@ -3,15 +3,15 @@
                 <div class="col-sm-6">
                         <?php echo $this->Form->create('User'); ?>
                         <fieldset>
-                                <legend><?php echo __('Change Password'); ?></legend>
+                                <legend><?php echo __('Change ton mot de passe'); ?></legend>
                                 <?php
                                 echo $this->Form->input('id', array('class' => 'form-control'));
-                                echo $this->Form->input('new_password', array('class' => 'form-control', 'type'=>'password'));
-                                echo $this->Form->input('retype_password', array('class' => 'form-control','type'=>'password'));
+                                echo $this->Form->input('new_password', array('class' => 'form-control', 'type'=>'password', 'label'=>'Nouveau mot de passe'));
+                                echo $this->Form->input('retype_password', array('class' => 'form-control','type'=>'password', 'label'=>'Confirmation de mot de passe'));
                                 ?>
                         </fieldset>
                         <hr>
-                        <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-success')); ?>
+                        <?php echo $this->Form->submit(__('OK'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
                 <div class='col-sm-6'>

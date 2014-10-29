@@ -109,4 +109,6 @@ CakeLog::config('error', array(
 ));
 
 CakePlugin::load('DebugKit');
-CakePlugin::load('Facebook');
+//CakePlugin::load('Facebook');
+
+Configure::write('Config.language', 'fra');

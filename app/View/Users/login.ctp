@@ -10,18 +10,18 @@
                         <fieldset>
 
                                 <?php
-                                echo $this->Form->input('username', array('class' => 'form-control'));
-                                echo $this->Form->input('password', array('class' => 'form-control', 'after' => $this->Html->link(__('forgot password'), array('controller' => 'users', 'action' => 'recover'))));
+                                echo $this->Form->input('username', array('class' => 'form-control', 'label'=>'Pseudo'));
+                                echo $this->Form->input('password', array('class' => 'form-control', 'label'=>'Mot de passe', 'after' => $this->Html->link(__('Mot de passe oublié?'), array('controller' => 'users', 'action' => 'recover'))));
                                 ?>
                         </fieldset>
                         <br>
-                        <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-success')); ?>
+                        <?php echo $this->Form->submit(__('GO !'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
                 <div class="col-sm-6">
-                         <?php echo $this->Facebook->login(); ?>
+                         <?php //echo $this->Facebook->login(); ?>
                         
-                        <?php echo $this->Facebook->logout(array('redirect' => array('controller' => 'users', 'action' => 'logout'), 'img' => '/Facebook/img/facebook-logout.png')); ?>
+                       <?php //echo $this->Facebook->logout(array('redirect' => array('controller' => 'users', 'action' => 'logout'), 'img' => '/Facebook/img/facebook-logout.png')); ?>
 
                 </div>
         </div>

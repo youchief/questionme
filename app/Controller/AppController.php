@@ -5,7 +5,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
         public $uses = array('Group');
-        var $helpers = array('Markdown', 'Facebook.Facebook');
+        var $helpers = array('Markdown');
         public $components = array(
             'RequestHandler',
             'DebugKit.Toolbar',
@@ -17,11 +17,11 @@ class AppController extends Controller {
                 'authenticate' => array(
                     'Form' => array(
                         'passwordHasher' => 'Blowfish',
-                        'fields' => array('username' => 'username')
+                       
                     )
                 ),
                 'authorize' => array('Controller'),
-                'Facebook.Connect' => array('model' => 'User')
+               // 'Facebook.Connect' => array('model' => 'User')
             ),
         );
 

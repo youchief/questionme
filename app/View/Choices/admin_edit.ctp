@@ -6,11 +6,11 @@
 		echo $this->Form->input('id', array('class'=>'form-control'));
 		echo $this->Form->input('response', array('class'=>'form-control'));
                 echo $this->Form->input('is_right', array('class'=>'checkbox'));
-		echo $this->Form->input('type', array('class'=>'form-control'));
+		//echo $this->Form->input('type', array('class'=>'form-control'));
 		echo $this->Form->input('media', array('class'=>'form-control', 'type'=>'file'));
-		echo $this->Form->input('media_type', array('class'=>'form-control'));
+		//echo $this->Form->input('media_type', array('class'=>'form-control'));
 		echo $this->Form->input('question_id', array('class'=>'form-control'));
-		echo $this->Form->input('choice_type_id', array('class'=>'form-control'));
+		//echo $this->Form->input('choice_type_id', array('class'=>'form-control'));
 		echo $this->Form->input('User', array('class'=>'form-control'));
 	?>
 	</fieldset>

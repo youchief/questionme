@@ -7,11 +7,11 @@
                 echo $this->Form->input('question', array('class' => 'form-control'));
                 echo $this->Form->input('date', array('class' => 'form-control'));
                 echo $this->Form->input('media', array('class' => 'form-control', 'type' => 'file'));
-                echo $this->Form->input('media_type', array('class' => 'form-control'));
-                echo $this->Form->input('response_type', array('class' => 'form-control', 'type' => 'select', 'options' => array('RADIO' => 'RADIO', 'CHECKBOX' => 'CHECKBOX', 'SCALE' => 'SCALE', 'FREE' => 'FREE')));
+                //echo $this->Form->input('media_type', array('class' => 'form-control'));
+                echo $this->Form->input('response_type', array('class' => 'form-control', 'type' => 'select', 'options' => array('RADIO' => 'RADIO', 'CHECKBOX' => 'CHECKBOX', 'FREE' => 'FREE')));
 
-                echo $this->Form->input('dependance_choice_id', array('class' => 'form-control'));
-                echo $this->Form->input('priority', array('class' => 'form-control'));
+                //echo $this->Form->input('dependance_choice_id', array('class' => 'form-control'));
+                //echo $this->Form->input('priority', array('class' => 'form-control'));
                 echo $this->Form->input('active', array('class' => 'form-control'));
                 echo $this->Form->input('question_type_id', array('class' => 'form-control'));
                 echo $this->Form->input('order_id', array('class' => 'form-control'));

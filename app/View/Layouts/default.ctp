@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php echo $this->Facebook->html(); ?>
+<html>
         <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,5 +59,5 @@
                 <?php echo $this->fetch('script'); ?>
                 <script>$(".alert").alert()</script>
         </body>
-        <?php echo $this->Facebook->init(); ?>
+        
 </html>

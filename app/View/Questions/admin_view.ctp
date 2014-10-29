@@ -1,5 +1,6 @@
 <div class="questions view">
-        <h2><?php echo h($question['Question']['question']); ?></h2>
+        <h2><?php echo h($question['Question']['question']); ?>  <?php echo $this->Html->link('Summary', array('controller'=>'questions', 'action'=>'summary', $question['Question']['id']), array('class'=>'btn btn-success'))?></h2>
+       
         <dl>
                 <dt><?php echo __('Id'); ?></dt>
                 <dd>

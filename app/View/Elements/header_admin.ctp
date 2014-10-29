@@ -6,7 +6,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="<?php  echo $this->Html->url(array('controller' => 'users', 'action' => 'welcome')); ?>">QME <small>v.0.1</small></a>
+                        <a class="navbar-brand" href="<?php  echo $this->Html->url(array('controller' => 'users', 'action' => 'welcome')); ?>">QME <small>v.1.0 beta</small></a>
                 </div>
                 <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">

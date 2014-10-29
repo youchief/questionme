@@ -12,8 +12,8 @@
                 </p>
                
                 <div class='btn-group'>
-                         <?php echo $this->Html->link(__('Edit'), array('controller'=>'users', 'action'=>'edit_my_profile'), array('class'=>'btn btn-default'))?>
-                        <?php echo $this->Html->link(__('Change Passord'), array('controller'=>'users', 'action'=>'change_password'), array('class'=>'btn btn-default'))?>
+                         <?php echo $this->Html->link(__('Editer mon compte'), array('controller'=>'users', 'action'=>'edit_my_profile'), array('class'=>'btn btn-default'))?>
+                        <?php echo $this->Html->link(__('Changer mon mot de passe'), array('controller'=>'users', 'action'=>'change_password'), array('class'=>'btn btn-default'))?>
                 </div>
                        
                 
