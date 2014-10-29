@@ -1,5 +1,5 @@
 /app/Plugin
-
+/app/Config/database.php
 # User specific & automatically generated files #
 #################################################
 /app/tmp
