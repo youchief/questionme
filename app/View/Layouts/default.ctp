@@ -7,7 +7,7 @@
                 <meta name="author" content="3xW - web and mobile solutions">
                 <title>Question Me - GAGNE des CADEAUX et des BONS DE REDUCTION tous les jours !</title>
                 <meta name="author" content="3xW - web and mobile solutions">
-                <?php echo $this->Html->css(array('vendor/twitter/bootstrap.min', 'vendor/3xw/fonts-path-fix', 'vendor/3xw/cake', 'vendor/fontawesome/font-awesome.min', 'menu', 'default')) ?>
+                <?php echo $this->Html->css(array('vendor/twitter/bootstrap.min', 'vendor/3xw/fonts-path-fix', 'vendor/3xw/cake', 'vendor/fontawesome/font-awesome', 'menu', 'default')) ?>
                 <!-- Favicon -->
                 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
                 <link rel="icon" href="favicon.ico" type="image/x-icon">
