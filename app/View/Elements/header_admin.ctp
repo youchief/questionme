@@ -98,8 +98,8 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gifts <b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                                 <li class="dropdown-header">Gifts</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'bigGifts', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'bigGifts', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Vouchers</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'vouchers', 'action' => 'add', 'admin' => true)); ?></li>

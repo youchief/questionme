@@ -1,5 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
+CakePlugin::load('Uploader');
+
 /**
  * BigGift Model
  *
@@ -13,6 +15,34 @@ class BigGift extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+        
+        public $actsAs = array(
+            'Uploader.Attachment' => array(
+                'background' => array(
+                    'tempDir' => TMP,
+                    'transforms' => array(
+                        'imageSmall' => array(
+                            'class' => 'crop',
+                            'self' => true,
+                            'width' => 600,
+                            'height'=>400
+                        ),
+                    ),
+                    'finalPath' => '/img/banners/'
+                )
+            ),
+            'Uploader.FileValidation' => array(
+                'background' => array(
+                    'maxWidth' => 3000,
+                    'minHeight' => 2000,
+                    'extension' => array('gif', 'jpg', 'png', 'jpeg'),
+                    'type' => 'image',
+                    'mimeType' => array('image/gif', 'image/png', 'image/jpeg'),
+                    'filesize' => 5242880,
+                    'required' => true
+                )
+            )
+        );
 
 /**
  * Validation rules
