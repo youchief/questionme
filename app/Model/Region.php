@@ -57,8 +57,8 @@ class Region extends AppModel {
 			'finderQuery' => '',
 			'counterQuery' => ''
 		),
-		'Profile' => array(
-			'className' => 'Profile',
+		'User' => array(
+			'className' => 'User',
 			'foreignKey' => 'region_id',
 			'dependent' => false,
 			'conditions' => '',

@@ -8,7 +8,9 @@ and open the template in the editor.
     Author     : cyril
 */
 
-label {  
+
+
+.radio label , .checkbox label{  
         display: inline-block;  
         cursor: pointer;  
         position: relative;  
@@ -26,7 +28,7 @@ label:before {
         display: inline-block;  
         width: 16px;  
         height: 16px;  
-        margin-right: 10px;  
+        margin-right: 20px;  
         position: absolute;  
         left: 0;  
         bottom: 1px;  

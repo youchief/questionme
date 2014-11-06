@@ -8,7 +8,7 @@
         }
 </style>
 <?php $banners = $this->requestAction(array('controller' => 'banners', 'action' => 'gethome')) ?>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2500">
         <!-- Indicators -->
         <ol class="carousel-indicators">
 

@@ -117,6 +117,13 @@ class Banner extends AppModel {
                 'conditions' => '',
                 'fields' => '',
                 'order' => ''
+            ),
+            'BannerType' => array(
+                'className' => 'BannerType',
+                'foreignKey' => 'banner_type_id',
+                'conditions' => '',
+                'fields' => '',
+                'order' => 'BannerType.order ASC'
             )
         );
 

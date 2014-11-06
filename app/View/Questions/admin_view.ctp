@@ -7,7 +7,11 @@
                         <?php echo h($question['Question']['id']); ?>
                         &nbsp;
                 </dd>
-               
+               <dt><?php echo __('Profile'); ?></dt>
+                <dd>
+                        <?php echo h($question['Question']['profile']); ?>
+                        &nbsp;
+                </dd>
                 <dt><?php echo __('Date'); ?></dt>
                 <dd>
                         <?php echo h($question['Question']['date']); ?>
@@ -45,7 +49,7 @@
                 </dd>
                 <dt><?php echo __('Order'); ?></dt>
                 <dd>
-                        <?php echo $this->Html->link($question['Order']['id'], array('controller' => 'orders', 'action' => 'view', $question['Order']['id'])); ?>
+                        <?php echo $this->Html->link($question['Order']['name'], array('controller' => 'orders', 'action' => 'view', $question['Order']['id'])); ?>
                         &nbsp;
                 </dd>
         </dl>
@@ -80,7 +84,6 @@
                                         <td><?php echo $choice['type']; ?></td>
                                         <td><?php echo $choice['media']; ?></td>
                                         <td><?php echo $choice['media_type']; ?></td>
-                                        <td><?php echo $choice['choice_type_id']; ?></td>
                                         <td class="actions">
                                                 <?php echo $this->Html->link(__('View'), array('controller' => 'choices', 'action' => 'view', $choice['id'])); ?>
                                                 <?php echo $this->Html->link(__('Edit'), array('controller' => 'choices', 'action' => 'edit', $choice['id'])); ?>

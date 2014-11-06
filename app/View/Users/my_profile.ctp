@@ -8,8 +8,12 @@
                         <?php echo h($user['User']['email']); ?>
                 </p>
                 <p>
+                        Newsletter: <?php echo h($user['User']['newsletter']);?>
+                </p>
+                <p>
                         <?php echo h($user['Region']['name']);?>
                 </p>
+                
                
                 <div class='btn-group'>
                          <?php echo $this->Html->link(__('Editer mon compte'), array('controller'=>'users', 'action'=>'edit_my_profile'), array('class'=>'btn btn-default'))?>

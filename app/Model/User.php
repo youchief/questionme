@@ -31,7 +31,7 @@ class User extends AppModel {
             'username' => array(
                 'alphaNumeric' => array(
                     'rule' => 'alphaNumeric',
-                    'required' => true,
+                    'required' => 'create',
                     'message' => 'Chiffres et lettres uniquement !'
                 ),
                 'between' => array(
@@ -46,16 +46,16 @@ class User extends AppModel {
             'password' => array(
                 'notEmpty' => array(
                     'rule' => array('notEmpty'),
-                //'message' => 'Your custom message here',
-                //'allowEmpty' => false,
-                //'required' => false,
-                //'last' => false, // Stop validation after this rule
-                //'on' => 'create', // Limit validation to 'create' or 'update' operations
                 ),
                 'between' => array(
                     'rule' => array('between', 5, 15),
                     'message' => 'Entre 5 et 15 caractères'
-                )
+                ),
+            //'message' => 'Your custom message here',
+            //'allowEmpty' => false,
+            //'required' => false,
+            //'last' => false, // Stop validation after this rule
+            //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
             'gender' => array(
                 'notEmpty' => array(
@@ -88,17 +88,22 @@ class User extends AppModel {
                 ),
             ),
             'email' => array(
-                'email',
-                'isUnique' => array(
-                    'rule' => 'isUnique',
-                    'message' => 'Ce pseudo est déjà pris :-('
+                'Y aurait pas un petit bug avec ton e-mail ?' => array(
+                    'rule' => 'email',
                 ),
+                'Cet e-mail est déjà pris :-(' =>array(
+                    'rule' => 'isUnique',
+                )
+                
             ),
+            
             'birthday' => array(
                 'rule' => 'date',
                 'message' => 'Entrez une date valide',
             )
         );
+
+
 
         //The Associations below have been created with all possible keys, those that are not needed can be removed
 

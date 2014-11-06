@@ -18,8 +18,8 @@
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'qdays', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Q-weeks</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
+                                                <li><?php echo $this->Html->link('Add', array('controller' => 'qweeks', 'action' => 'add', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('List', array('controller' => 'qweeks', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Regions</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'regions', 'action' => 'add', 'admin' => true)); ?></li>
@@ -28,6 +28,7 @@
                                                 <li class="dropdown-header">Banners</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'banners', 'action' => 'add', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'banners', 'action' => 'index', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('Type', array('controller' => 'bannerTypes', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Contacts</li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'contacts', 'action' => 'index', 'admin' => true)); ?></li>
@@ -57,14 +58,6 @@
                                                 <li class="dropdown-header">Question Choices</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'choices', 'action' => 'add', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'choices', 'action' => 'index', 'admin' => true)); ?></li>
-                                                <li class="divider"></li>
-                                                <li class="dropdown-header">Question Choice Types</li>
-                                                <li><?php echo $this->Html->link('Add', array('controller' => 'choiceTypes', 'action' => 'add', 'admin' => true)); ?></li>
-                                                <li><?php echo $this->Html->link('List', array('controller' => 'choiceTypes', 'action' => 'index', 'admin' => true)); ?></li>
-                                                <li class="divider"></li>
-                                                <li class="dropdown-header">Question Queries</li>
-                                                <li><a href="#">Add</a></li>
-                                                <li><a href="#">List</a></li>
                                         </ul>
                                 </li>
                                 <li class="dropdown">

@@ -7,7 +7,6 @@
                 echo $this->Form->input('end', array('class' => 'form-control', 'dateFormat' => 'DMY', 'timeFormat' => '24'));
                 echo $this->Form->input('nb_qmobile', array('class' => 'form-control'));
                 echo $this->Form->input('nb_qfixe', array('class' => 'form-control'));
-                echo $this->Form->input('nb_qprofile', array('class' => 'form-control'));
                 echo $this->Form->input('region_id', array('class' => 'form-control'));
                 ?>
         </fieldset>

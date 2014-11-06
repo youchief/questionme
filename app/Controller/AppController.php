@@ -13,7 +13,8 @@ class AppController extends Controller {
             'Auth' => array(
                 'loginRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
                 'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
-                'authError' => 'You must be logged in to continue.',
+                'authError' => 'Tu dois te connecter pour continuer!',
+                'flashElement'=>'flash_custom',
                 'authenticate' => array(
                     'Form' => array(
                         'passwordHasher' => 'Blowfish',

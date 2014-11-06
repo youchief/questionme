@@ -13,7 +13,11 @@ class Qweek extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'start';
+	public $displayField = 'full_name';
+        
+         public $virtualFields = array(
+            'full_name' => 'CONCAT(Qweek.start, "/", Qweek.end)'
+        );
 
 /**
  * Validation rules

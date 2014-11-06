@@ -39,7 +39,7 @@ class QueriesController extends AppController {
                         )
                     ),
                     'fields' => array('Question.question'),
-                    'conditions' => array('Question.question_type_id' => 1)
+                    'conditions' => array('Question.profile' => 1)
                 ));
 
                 $quest = array();
@@ -109,7 +109,7 @@ class QueriesController extends AppController {
                         )
                     ),
                     'fields' => array('Question.question'),
-                    'conditions' => array('Question.question_type_id' => 1)
+                    'conditions' => array('Question.profile' => 1)
                 ));
 
                 $quest = array();

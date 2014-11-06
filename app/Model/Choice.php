@@ -88,14 +88,8 @@ class Choice extends AppModel {
                 'conditions' => '',
                 'fields' => '',
                 'order' => ''
-            ),
-            'ChoiceType' => array(
-                'className' => 'ChoiceType',
-                'foreignKey' => 'choice_type_id',
-                'conditions' => '',
-                'fields' => '',
-                'order' => ''
             )
+         
         );
 
         /**

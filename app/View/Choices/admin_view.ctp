@@ -31,11 +31,6 @@
 			<?php echo $this->Html->link($choice['Question']['question'], array('controller' => 'questions', 'action' => 'view', $choice['Question']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Choice Type'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($choice['ChoiceType']['name'], array('controller' => 'choice_types', 'action' => 'view', $choice['ChoiceType']['id'])); ?>
-			&nbsp;
-		</dd>
         </dl>
 </div>
 <div class="actions">
