@@ -1,5 +1,5 @@
-<footer>
-        <div class="container">
+<footer class="hidden-sm hidden-xs ">
+        <div class="container footer">
                 <div class="row">
                         <div class="col-sm-2 col-xs-6">
                                 <p>powered by <?php echo $this->Html->link('3xW','http://www.3xw.ch', array('target'=>'_blank'))?></p>

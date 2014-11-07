@@ -13,34 +13,36 @@
         <ol class="carousel-indicators">
 
                 <?php for ($index = 0; $index < count($banners); $index++): ?>
-                        <li data-target="#myCarousel" data-slide-to="<?php echo $index ?>" class=""></li>
+                        <li data-target="#myCarousel" data-slide-to="<?php echo $index ?>" class="<?php if($index == 0){echo 'active';}?>"></li>
                 <?php endfor; ?>
 
         </ol>
         <div class="carousel-inner">                
-                <div class="item active fill">
+                <div class="item active ">
                         <?php echo $this->Html->image($banners[0]['Banner']['background'], array('class' => 'img-responsive')) ?>
                         <div class="container">
                                 <div class="carousel-caption-new">
-                                        <h1><?php echo $banners[0]['Banner']['title'] ?></h1>
+                                        <h3 class="light"><?php echo $banners[0]['Banner']['title'] ?></h3>
 
-                                        <p>
-                                                <a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>" class="cmn-t-pulse" ><i class='fa fa-play-circle fa-4x'></i></a>
-                                        </p>
+                                        
+
                                 </div>
                         </div>
                 </div>
 
                 <?php for ($index = 1; $index < count($banners); $index++): ?>
-                        <div class="item fill">
+                        <div class="item ">
                                 <?php echo $this->Html->image($banners[$index]['Banner']['background'], array('class' => 'img-responsive')) ?>
                                 <div class="container">
                                         <div class="carousel-caption-new">
-                                                <h1><?php echo $banners[$index]['Banner']['title'] ?></h1>
-                                                <p>
-                                                <a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>" class="cmn-t-pulse" ><i class='fa fa-play-circle fa-4x'></i></a>
-                                                </p>
+                                                <h3 class="bottom-20 light"><?php echo $banners[$index]['Banner']['title'] ?></h3>
+                                                
+                                                
+                                                
+                                                
                                         </div>
+                                    
+                                    
                                 </div>
                         </div>
                 <?php endfor; ?>

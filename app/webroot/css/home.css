@@ -1,17 +1,136 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 29 sept. 2014, 17:15:02
-    Author     : cyril
-*/
+html { height: 100%; width:100%;padding:0; margin:0;}
+body{color:#fff; width:100%;height:100%;padding:0; margin:0;}
 
-.navbar-wrapper {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 20;
+body > .content-wrap{
+        padding: 0px  0;
+        width:100%;
+        height:100%;
+}
+
+h1, h2, h3{
+        margin-top: 0;
+        color: #fdfdfd;
+}
+
+a{
+        color: #fdfdfd;
+
+}
+
+.fa{
+        color: #fdfdfd;
+}
+
+footer{position:absolute;z-index:5;width:100%;bottom:0px;left:0px;background:transparent;}
+
+
+.home-layer{position: absolute; top:0; left:0;width:100%;height:100%;overflow:hidden;}
+.home-prince{display: table;position:absolute;z-index:2;top:0px;width:100%;height:100%;}
+
+footer{position:absolute;z-index:5;width:100%;bottom:0px;left:0px;background:transparent;}
+
+.home-prince-block{ display:table-cell;vertical-align:middle;}
+.home-prince-block-title{margin:0 auto;width:400px;}
+
+.home-play{display: table;position:absolute;z-index:3;width:100%;height:100%;background-color:#44494f;-webkit-box-shadow: 0px -2px 9px 0px rgba(50, 50, 50, 0.75);-moz-box-shadow:    0px -2px 9px 0px rgba(50, 50, 50, 0.75);box-shadow:         0px -2px 9px 0px rgba(50, 50, 50, 0.75);}
+
+.home-play-aside{position:relative;float: left; width:20%; height:100%;background:transparent; }
+.home-play-aside-cont{margin-top: 150px;text-align: center;}
+.home-play-aside-cont h1{font-size:28px;}
+.home-play-aside-cont .fa{color:white;}
+.home-play-gallery{position:relative;float:right; width:80%;height:100%}
+
+.item img{height:100%;width:auto;}
+
+
+.home-info{display: table;width:100%;height:100%;}
+.info-mobile{width:100%;height:100%;}
+.info-desktop{display:table-cell!important;vertical-align:middle;}
+
+.go-play-m{position: absolute; z-index:10;bottom:0;left:0;width:100%;text-align: center; cursor:pointer;}
+.go-play-d{ z-index:15; display:table-cell!important; vertical-align:middle; right:0; width:29px;cursor:pointer;}
+.go-play-d img{}
+.go-replay{margin:0 auto;cursor:pointer;text-align: center;}
+.go-info h5{width:100px;margin:0 auto;margin-top: 15px;padding-top: 4px;padding-bottom: 4px;text-align: center; text-transform: uppercase;color:#44494f;background-color:#14e985;cursor:pointer;}
+
+.play-button { width:100px;margin: 0 auto;padding-top: 9px;padding-bottom: 9px; background-color: #fdfdfd;}
+.play-button a{color:#44494f; text-transform: uppercase;}
+.play-button a:hover{text-decoration: none;}
+
+.play-buttonG{width:100px;margin: 0 auto;padding-top: 9px;padding-bottom: 9px; background-color: #fdfdfd;}
+.play-buttonG a{color:#44494f; text-transform: uppercase;}
+.play-buttonG a:hover{text-decoration: none;}
+
+.marketing{margin-top:10px;}
+
+.navbar-default{background:transparent;border:0px;}
+.carousel-control.left, .carousel-control.right {
+background-image:none;
+}
+
+.carousel-indicators-2 {
+    height: 20px;
+    text-align: center;
+    list-style: none;
+}
+
+.carousel-indicators-2 .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: #14e985;
+}
+
+.carousel-indicators-2{
+    padding-left:0px;
+}
+
+.carousel-indicators-2 li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fdfdfd;
+    border-radius: 10px;
+}
+
+.carousel-indicators .active {
+    background-color: #14e985;
+    border:0px;
+}
+
+.carousel-indicators li {
+    
+    background-color: #fdfdfd;
+ 
+}
+
+.navbar-brand img{
+    float: none;
+    display:table;
+}
+
+
+@media (max-width: 767px) { 
+    
+    header{position: absolute; z-index:9; top:0px; left:0px; width:100%;}
+    
+    
+    .home-prince-block-title{margin:0 auto;width:300px;}
+    .home-play-aside{float:none;width:100%;height:50%;}
+    .home-play-aside-cont{margin-top: 0px;text-align: center;}
+    .home-play-aside-cont h1{font-size:14px;}
+    .home-play-gallery{position:relative;float:none; width:100%;height:50%}
+    .navbar{position:relative;background: #44494f;}
+    
+    #info-1, #info-2, #info-3, #info-4{position:absolute;display:table;width:100%; height:100%;background: #44494f;}
+    #info-1{z-index:5;}
+    #info-2{z-index:6;}
+    #info-3{z-index:7;}
+    #info-4{z-index:8;}
+    .feature-box{display:table-cell;width:100%;margin:0 auto;vertical-align:middle;text-align: center;}
+    .box-cont{width:200px;margin:0 auto;}
+    
 }
