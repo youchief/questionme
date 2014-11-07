@@ -6,9 +6,7 @@
                                                         <th><?php echo $this->Paginator->sort('response'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('type'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('media'); ?></th>
-                                                        <th><?php echo $this->Paginator->sort('media_type'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('question_id'); ?></th>
-                                                        <th><?php echo $this->Paginator->sort('choice_type_id'); ?></th>
                                                 <th class="actions"><?php echo __('Actions'); ?></th>
                 </tr>
                 <?php foreach ($choices as $choice): ?>
@@ -17,13 +15,10 @@
 		<td><?php echo h($choice['Choice']['response']); ?>&nbsp;</td>
 		<td><?php echo h($choice['Choice']['type']); ?>&nbsp;</td>
 		<td><?php echo h($choice['Choice']['media']); ?>&nbsp;</td>
-		<td><?php echo h($choice['Choice']['media_type']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($choice['Question']['question'], array('controller' => 'questions', 'action' => 'view', $choice['Question']['id'])); ?>
 		</td>
-		<td>
-			<?php echo $this->Html->link($choice['ChoiceType']['name'], array('controller' => 'choice_types', 'action' => 'view', $choice['ChoiceType']['id'])); ?>
-		</td>
+
 		<td class="actions">
 		<div class="btn-group">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $choice['Choice']['id']), array('class'=>'btn btn-default btn-xs')); ?>

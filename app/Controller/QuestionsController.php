@@ -52,24 +52,41 @@ class QuestionsController extends AppController {
                 $questions = $this->_unset_fixe_not_today($questions);
 
 
+                $questions = $this->_unset_because_user($questions, $user);
 
                 //remove question not good for this user
                 $questions = $this->_unset_questions_because_queries($questions, $user);
 
 
+
                 //get user today responce 
                 $rest_questions = $this->_get_nb_user_questions($qday);
-                //debug($rest_questions);
+
+
                 //question final user
-                $qday_total = $qday['Qday']['nb_qfixe'] + $qday['Qday']['nb_qmobile'] + $qday['Qday']['nb_qprofile'];
-
-                $total_rest = $qday_total - ($rest_questions['fixe'] + $rest_questions['mobile'] + $rest_questions['profile']);
+                $qday_total = $qday['Qday']['nb_qfixe'] + $qday['Qday']['nb_qmobile'];
 
 
+                /*
+                 * adjust mobile and fixe question 
+                 */
+                $nb_q_mobile = 0;
+                foreach ($questions as $question) {
+                        if ($question['Question']['question_type_id'] == 3) {
+                                $nb_q_mobile++;
+                        }
+                }
+                $diff = $qday['Qday']['nb_qmobile'] - $nb_q_mobile;
+                $rest_questions['fixe'] + $diff;
+                $rest_questions['mobile'] - $diff;
+                $total_rest = $qday_total - ($rest_questions['fixe'] + $rest_questions['mobile']);
+
+                /*
+                 * create the final question array
+                 */
                 $user_questions = array();
                 $i = 0;
                 $y = 0;
-                $z = 0;
                 foreach ($questions as $question) {
 
                         if (($question['Question']['question_type_id']) == 2 && ($i < $rest_questions['fixe'])) {
@@ -78,30 +95,32 @@ class QuestionsController extends AppController {
                         } else if (($question['Question']['question_type_id'] == 3) && ($y < $rest_questions['mobile'])) {
                                 $user_questions[] = $question;
                                 $y++;
-                        } else if (($question['Question']['question_type_id'] == 1) && ($z < $rest_questions['profile'])) {
-                                $user_questions[] = $question;
-                                $z++;
                         }
                 }
 
-
+                /*
+                 * if no more question today -> redirect to home 
+                 */
                 if (empty($user_questions)) {
                         $this->Session->setFlash(__('Vous avez répondu à toutes les questions aujourd\'hui!'), 'flash_custom');
                         $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
                 }
 
+
+                /*
+                 * set data to the view
+                 */
                 $this->set('question', $user_questions[0]);
                 $choices = $this->Question->Choice->find('list', array('conditions' => array('Choice.question_id' => $user_questions[0]['Question']['id'])));
                 $this->set('choices', $choices);
-                $this->set('rest', $total_rest);
+                $this->set('rest', $total_rest + 1);
                 $this->set('qday_total', $qday_total);
-
-
-
 
 
                 $data = array();
                 if ($this->request->is('post')) {
+
+
                         if (!empty($this->request->data['Question']['response'])) {
                                 if ($this->request->data['Question']['response_type'] == 'CHECKBOX') {
                                         $i = 0;
@@ -123,17 +142,21 @@ class QuestionsController extends AppController {
                                 }
 
                                 if ($this->UsersChoice->saveAll($data)) {
-                                        if ($this->request->data['Question']['type'] == 1) {
+                                        if ($this->request->data['Question']['profile'] == true) {
                                                 $this->_create_profile_value($this->request->data['Question']['question'], $this->Auth->user('id'));
                                         }
-                                        $rest = $this->_get_nb_user_questions($qday);
+                                        if (count($user_questions) <= 1) {
 
-                                        if (($rest['fixe'] <= 0) && ($rest['mobile'] <= 0) && ($rest['profile'] <= 0)) {
-                                                //debug('hello');
-                                                //$this->Session->setFlash(__('Merci d\'avoir particpé'), 'default', array('class' => 'alert alert-success'));
                                                 $this->_create_voucher();
-                                                //$this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                                         } else {
+                                                if (!empty($this->request->data['Question']['right_choice_id'])) {
+                                                        if ($this->request->data['Question']['right_choice_id'] == $this->request->data['Question']['response']) {
+                                                                $this->Session->setFlash(__('Bravo ! La bonne reponse était') . " " . $this->request->data['Question']['right_choice_value'], 'default', array('class' => 'alert alert-success'));
+                                                        } else {
+                                                                $this->Session->setFlash(__('Zut! La bonne reponse était') . " " . $this->request->data['Question']['right_choice_value'], 'default', array('class' => 'alert alert-danger'));
+                                                        }
+                                                }
+
                                                 $this->redirect(array('action' => 'play'));
                                         }
                                 }
@@ -171,18 +194,6 @@ class QuestionsController extends AppController {
                 );
 
 
-                $q_profile = $this->UsersChoice->find('all', array(
-                    'conditions' => array(
-                        'UsersChoice.created >' => $qday['Qday']['start'],
-                        'UsersChoice.created <' => $qday['Qday']['end'],
-                        'UsersChoice.user_id' => $this->Auth->user('id'),
-                        'UsersChoice.question_type_id' => 1
-                    ),
-                    'fields' => array('DISTINCT UsersChoice.question_id'),
-                        )
-                );
-
-
                 $q_mobile = $this->UsersChoice->find('all', array(
                     'conditions' => array(
                         'UsersChoice.created >' => $qday['Qday']['start'],
@@ -197,52 +208,76 @@ class QuestionsController extends AppController {
 
                 $fix = count($q_fixe);
                 $mob = count($q_mobile);
-                $profile = count($q_profile);
 
                 $question_rest_fix = $qday['Qday']['nb_qfixe'] - $fix;
                 $question_rest_mob = $qday['Qday']['nb_qmobile'] - $mob;
-                $question_rest_profile = $qday['Qday']['nb_qprofile'] - $profile;
 
-                return array('fixe' => $question_rest_fix, 'mobile' => $question_rest_mob, 'profile' => $question_rest_profile);
+                return array('fixe' => $question_rest_fix, 'mobile' => $question_rest_mob);
+        }
+
+        public function _unset_because_user($questions, $user) {
+                $i = 0;
+                foreach ($questions as $question) {
+                        if ($question['Question']['to_gender'] != $user['User']['sex']) {
+
+                                unset($questions[$i]);
+                        }
+                        $i++;
+                }
+                return $questions;
         }
 
         public function _unset_questions_because_queries($questions, $user) {
                 //unset questions for this specific user
-
+                //   debug($user['Profile']);
 
                 $index_q = 0;
+
+                $final_questions = array();
+
                 foreach ($questions as $question) {
+
+                        if (empty($question['Query'])) {
+                                $final_questions[] = $question;
+                        }
+
+
                         foreach ($question['Query'] as $query) {
+
                                 foreach ($user['Profile'] as $profile) {
                                         if ($profile['key'] == $query['key']) {
+
                                                 switch ($query['sign']) {
+
+
                                                         case '=':
-                                                                if (!$query['value'] == $profile['value']) {
-                                                                        unset($questions[$index_q]);
+                                                                if ($query['value'] == $profile['value']) {
+
+                                                                        $final_questions[] = $question;
                                                                 }
                                                                 break;
 
                                                         case '>':
-                                                                if (!$query['value'] > $profile['value']) {
-                                                                        unset($questions[$index_q]);
+                                                                if ($query['value'] > $profile['value']) {
+                                                                        $final_questions[] = $question;
                                                                 }
                                                                 break;
 
                                                         case '<':
-                                                                if (!$query['value'] < $profile['value']) {
-                                                                        unset($questions[$index_q]);
+                                                                if ($query['value'] < $profile['value']) {
+                                                                        $final_questions[] = $question;
                                                                 }
                                                                 break;
 
 
                                                         case '>=':
-                                                                if (!$query['value'] >= $profile['value']) {
-                                                                        unset($questions[$index_q]);
+                                                                if ($query['value'] >= $profile['value']) {
+                                                                        $final_questions[] = $question;
                                                                 }
                                                                 break;
                                                         case '<=':
-                                                                if (!$query['value'] <= $profile['value']) {
-                                                                        unset($questions[$index_q]);
+                                                                if ($query['value'] <= $profile['value']) {
+                                                                        $final_questions[] = $question;
                                                                 }
                                                                 break;
 
@@ -255,7 +290,10 @@ class QuestionsController extends AppController {
                         $index_q++;
                 }
 
-                return $questions;
+
+
+
+                return $final_questions;
         }
 
         public function _create_user_choice($data) {
@@ -277,7 +315,7 @@ class QuestionsController extends AppController {
                     'contain' => array(
                         'Choice' => array(
                             //'conditions' => array("IN" => array("Choice.id" => $choices)),
-                            'User'
+                            'User' => array('conditions' => array('User.id' => $user_id))
                         )
                     )
                         )
@@ -291,6 +329,7 @@ class QuestionsController extends AppController {
                                 $data[$i]['value'] = $choice['response'];
                                 $data[$i]['user_id'] = $user_id;
                         }
+
                         $i++;
                 }
                 $this->Profile->saveAll($data);
@@ -338,7 +377,11 @@ class QuestionsController extends AppController {
          */
         public function admin_index() {
                 $this->Question->recursive = 0;
-                $this->set('questions', $this->Paginator->paginate());
+                if (!empty($this->request->data['Question']['search'])) {
+                        $this->set('questions', $this->Paginator->paginate(array('Question.question LIKE' => "%" . $this->request->data['Question']['search'] . "%")));
+                } else {
+                        $this->set('questions', $this->Paginator->paginate());
+                }
         }
 
         /**
@@ -506,12 +549,11 @@ class QuestionsController extends AppController {
                 $user_played = $this->UsersChoice->find('count', array(
                     'conditions' => array(
                         'UsersChoice.question_id' => $question_id,
-                       
                     ),
                     'fields' => array('DISTINCT UsersChoice.user_id'),
                         )
                 );
-                
+
                 return $user_played;
         }
 

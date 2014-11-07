@@ -22,6 +22,11 @@
                         <?php echo h($user['User']['email']); ?>
                         &nbsp;
                 </dd>
+                <dt><?php echo __('Newsletter'); ?></dt>
+                <dd>
+                        <?php echo h($user['User']['newsletter']); ?>
+                        &nbsp;
+                </dd>
                 <dt><?php echo __('Group'); ?></dt>
                 <dd>
                         <?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
@@ -118,7 +123,6 @@
                                 <th><?php echo __('Media'); ?></th>
                                 <th><?php echo __('Media Type'); ?></th>
                                 <th><?php echo __('Question Id'); ?></th>
-                                <th><?php echo __('Choice Type Id'); ?></th>
                                 <th class="actions"><?php echo __('Actions'); ?></th>
                         </tr>
                         <?php
@@ -132,7 +136,6 @@
                                         <td><?php echo $choice['media']; ?></td>
                                         <td><?php echo $choice['media_type']; ?></td>
                                         <td><?php echo $choice['question_id']; ?></td>
-                                        <td><?php echo $choice['choice_type_id']; ?></td>
                                         <td class="actions">
                                                 <?php echo $this->Html->link(__('View'), array('controller' => 'choices', 'action' => 'view', $choice['id'])); ?>
                                                 <?php echo $this->Html->link(__('Edit'), array('controller' => 'choices', 'action' => 'edit', $choice['id'])); ?>

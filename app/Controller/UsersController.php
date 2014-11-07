@@ -18,29 +18,34 @@ class UsersController extends AppController {
          * @var array
          */
         public $components = array('Paginator', 'Session');
+
         //public $helpers = array('Facebook.Facebook');
 
         public function register() {
                 if ($this->request->is('post')) {
-                        $this->User->create();
-                        //group gamer
-                        $this->request->data['User']['group_id'] = 2;
+                        if ($this->request->data['User']['tandc']) {
+                                $this->User->create();
+                                //group gamer
+                                $this->request->data['User']['group_id'] = 2;
 
-                        if ($this->User->save($this->request->data)) {
-                                $this->Session->setFlash(__('Barvo ! Connectez-vous et commencer à jouer dès maintenant!'), 'default', array('class' => 'alert alert-success'));
-                                
-                                $Email = new CakeEmail();
-                                $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
-                                $Email->to($this->request->data['User']['email']);
-                                $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
-                                $Email->viewVars(array('user' => $this->request->data['User']['username']));
-                                $Email->emailFormat('html');
-                                $Email->template('welcome');
-                                $Email->send();
-                                
-                                return $this->redirect(array('action' => 'login'));
+                                if ($this->User->save($this->request->data)) {
+                                        $this->Session->setFlash(__('Barvo ! Connectez-vous et commencer à jouer dès maintenant!'), 'default', array('class' => 'alert alert-success'));
+
+                                        $Email = new CakeEmail();
+                                        $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
+                                        $Email->to($this->request->data['User']['email']);
+                                        $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
+                                        $Email->viewVars(array('user' => $this->request->data['User']['username']));
+                                        $Email->emailFormat('html');
+                                        $Email->template('welcome');
+                                        $Email->send();
+
+                                        return $this->redirect(array('action' => 'login'));
+                                } else {
+                                        $this->Session->setFlash(__('Petit problème :-/'), 'default', array('class' => 'alert alert-danger'));
+                                }
                         } else {
-                                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Tu dois accépter les conditions générales!'), 'default', array('class' => 'alert alert-danger'));
                         }
                 }
                 $regions = $this->User->Region->find('list');
@@ -87,13 +92,13 @@ class UsersController extends AppController {
         public function edit_my_profile() {
 
                 if ($this->request->is('post') || $this->request->is('put')) {
-                        //debug($this->request->data);
+                        debug($this->request->data);
 
                         if ($this->User->save($this->request->data)) {
-                                $this->Session->setFlash(__('The user has been saved'), 'default', array('class' => 'alert alert-success'));
-                                return $this->redirect(array('action' => 'index'));
+                                $this->Session->setFlash(__('Ton profil a été modifié!'), 'default', array('class' => 'alert alert-success'));
+                                return $this->redirect(array('action' => 'my_profile'));
                         } else {
-                                $this->Session->setFlash(__('The user could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Petit problème :-/'), 'default', array('class' => 'alert alert-danger'));
                         }
                 } else {
                         $options = array('conditions' => array('User.' . $this->User->primaryKey => $this->Auth->user('id')));
@@ -235,11 +240,15 @@ class UsersController extends AppController {
                         $user = $this->User->findByEmail($this->request->data['User']['email']);
                         if (!empty($user)) {
                                 //debug($user);
+                                $new_password = $this->_generatePassword();
+
+                                $this->User->id = $user['User']['id'];
+                                $this->User->saveField('password', $new_password);
                                 $Email = new CakeEmail();
                                 $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
                                 $Email->to($user['User']['email']);
                                 $Email->subject('Password recovery');
-                                $Email->viewVars(array('user' => $user['User']['username'], 'password' => $this->_generatePassword()));
+                                $Email->viewVars(array('user' => $user['User']['username'], 'password' => $new_password));
                                 $Email->emailFormat('html');
                                 $Email->template('recover');
                                 $Email->send();
@@ -287,10 +296,9 @@ class UsersController extends AppController {
                 // done!
                 return $password;
         }
-        
-        
-        public function admin_get_nb_gamer(){
-                $gamers = $this->User->find('count', array('conditions'=>array('User.group_id'=>2)));
+
+        public function admin_get_nb_gamer() {
+                $gamers = $this->User->find('count', array('conditions' => array('User.group_id' => 2)));
                 return $gamers;
         }
 

@@ -64,7 +64,7 @@
 <div class="related">
         <h3><?php echo __('Related Gifts'); ?></h3>
         <?php if (!empty($customer['Gift'])): ?>
-                <table cellpadding = "0" cellspacing = "0">
+                <table cellpadding = "0" cellspacing = "0" class="table">
                         <tr>
                                 <th><?php echo __('Id'); ?></th>
                                 <th><?php echo __('Created'); ?></th>
@@ -101,7 +101,7 @@
 <div class="related">
         <h3><?php echo __('Related Orders'); ?></h3>
 <?php if (!empty($customer['Order'])): ?>
-                <table cellpadding = "0" cellspacing = "0">
+                <table cellpadding = "0" cellspacing = "0" class="table">
                         <tr>
                                 <th><?php echo __('Id'); ?></th>
                                 <th><?php echo __('Created'); ?></th>
@@ -138,7 +138,7 @@
 <div class="related">
         <h3><?php echo __('Related Vouchers'); ?></h3>
 <?php if (!empty($customer['Voucher'])): ?>
-                <table cellpadding = "0" cellspacing = "0">
+                <table cellpadding = "0" cellspacing = "0" class="table">
                         <tr>
                                 <th><?php echo __('Id'); ?></th>
                                 <th><?php echo __('Created'); ?></th>

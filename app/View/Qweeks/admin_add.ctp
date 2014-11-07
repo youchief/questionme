@@ -3,8 +3,8 @@
 	<fieldset>
 		<legend><?php echo __('Admin Add Qweek'); ?></legend>
 	<?php
-		echo $this->Form->input('start', array('class'=>'form-control'));
-		echo $this->Form->input('end', array('class'=>'form-control'));
+		echo $this->Form->input('start', array('class'=>'form-control', 'dateFormat'=>'DMY'));
+		echo $this->Form->input('end', array('class'=>'form-control', 'dateFormat'=>'DMY'));
 		echo $this->Form->input('region_id', array('class'=>'form-control'));
 	?>
 	</fieldset>

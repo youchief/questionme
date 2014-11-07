@@ -1,10 +1,11 @@
-<div class="choiceTypes form">
-<?php echo $this->Form->create('ChoiceType'); ?>
+<div class="customerTypes form">
+<?php echo $this->Form->create('BannerType'); ?>
 	<fieldset>
-		<legend><?php echo __('Admin Add Choice Type'); ?></legend>
+		<legend><?php echo __('Admin Add Banner Type'); ?></legend>
 	<?php
 		echo $this->Form->input('name', array('class'=>'form-control'));
 		echo $this->Form->input('description', array('class'=>'form-control'));
+                echo $this->Form->input('order', array('class'=>'form-control'));
 	?>
 	</fieldset>
         <hr>

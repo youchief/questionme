@@ -6,8 +6,9 @@
                                 <legend><?php echo __('Edit My Profile'); ?></legend>
                                 <?php
                                 echo $this->Form->input('id', array('class' => 'form-control'));
-                                echo $this->Form->input('birthday', array('class' => 'form-control', 'label'=>'Date de naissance'));
+                                echo $this->Form->input('birthday', array('class' => 'form-control', 'label'=>'Date de naissance', 'dateFormat'=>'DMY'));
                                 echo $this->Form->input('email', array('class' => 'form-control'));
+                                echo $this->Form->input('newsletter', array('class' => 'form-control'));
                                 echo $this->Form->input('region_id', array('class' => 'form-control', 'label'=> 'Région'));
                                 ?>
                         </fieldset>

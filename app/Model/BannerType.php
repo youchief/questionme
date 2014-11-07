@@ -1,11 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * ChoiceType Model
+ * CustomerType Model
  *
- * @property Choice $Choice
+ * @property Customer $Customer
  */
-class ChoiceType extends AppModel {
+class BannerType extends AppModel {
 
 /**
  * Display field
@@ -40,9 +40,9 @@ class ChoiceType extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'Choice' => array(
-			'className' => 'Choice',
-			'foreignKey' => 'choice_type_id',
+		'Banner' => array(
+			'className' => 'Banner',
+			'foreignKey' => 'banner_type_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

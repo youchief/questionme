@@ -8,7 +8,6 @@
                 echo $this->Form->input('type', array('class' => 'form-control', 'type' => 'select', 'options' => array('RADIO' => 'RADIO', 'CHECKBOX' => 'CHECKBOX', 'SCALE' => 'SCALE', 'FREE' => 'FREE')));
                 echo $this->Form->input('media', array('class' => 'form-control', 'type' => 'file'));
                 //echo $this->Form->input('media_type', array('class' => 'form-control'));
-                //echo $this->Form->input('choice_type_id', array('class' => 'form-control'));
                 ?>
         </fieldset>
         <hr>

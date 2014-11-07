@@ -8,7 +8,7 @@
 
                         
                         <?php
-                        echo $this->Form->input('code', array('class' => 'form-control'));
+                        echo $this->Form->input('code', array('class' => 'form-control password', 'type'=>'password'));
                         ?>
 
                         <hr>

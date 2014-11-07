@@ -30,9 +30,8 @@ class ChoicesController extends AppController {
                         }
                 }
                 $questions = $this->Choice->Question->find('list');
-                $choiceTypes = $this->Choice->ChoiceType->find('list');
-                $users = $this->Choice->User->find('list');
-                $this->set(compact('questions', 'choiceTypes', 'users'));
+               
+                $this->set(compact('questions'));
         }
 
         /**
@@ -76,9 +75,9 @@ class ChoicesController extends AppController {
                         }
                 }
                 $questions = $this->Choice->Question->find('list');
-                $choiceTypes = $this->Choice->ChoiceType->find('list');
-                $users = $this->Choice->User->find('list');
-                $this->set(compact('questions', 'choiceTypes', 'users'));
+               
+                
+                $this->set(compact('questions'));
         }
 
         /**
@@ -104,9 +103,8 @@ class ChoicesController extends AppController {
                         $this->request->data = $this->Choice->find('first', $options);
                 }
                 $questions = $this->Choice->Question->find('list');
-                $choiceTypes = $this->Choice->ChoiceType->find('list');
-                $users = $this->Choice->User->find('list');
-                $this->set(compact('questions', 'choiceTypes', 'users'));
+            
+                $this->set(compact('questions'));
         }
 
         /**

@@ -1,5 +1,7 @@
 <?php
+
 App::uses('AppController', 'Controller');
+
 /**
  * Orders Controller
  *
@@ -9,103 +11,116 @@ App::uses('AppController', 'Controller');
  */
 class OrdersController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator', 'Session');
+        /**
+         * Components
+         *
+         * @var array
+         */
+        public $components = array('Paginator', 'Session');
 
-/**
- * admin_index method
- *
- * @return void
- */
-	public function admin_index() {
-		$this->Order->recursive = 0;
-		$this->set('orders', $this->Paginator->paginate());
-	}
+        /**
+         * admin_index method
+         *
+         * @return void
+         */
+        public function admin_index() {
+                $this->Order->recursive = 0;
+                $this->set('orders', $this->Paginator->paginate());
+        }
 
-/**
- * admin_view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function admin_view($id = null) {
-		if (!$this->Order->exists($id)) {
-			throw new NotFoundException(__('Invalid order'));
-		}
-		$options = array('conditions' => array('Order.' . $this->Order->primaryKey => $id));
-		$this->set('order', $this->Order->find('first', $options));
-	}
+        /**
+         * admin_view method
+         *
+         * @throws NotFoundException
+         * @param string $id
+         * @return void
+         */
+        public function admin_view($id = null) {
+                if (!$this->Order->exists($id)) {
+                        throw new NotFoundException(__('Invalid order'));
+                }
+                $options = array('conditions' => array('Order.' . $this->Order->primaryKey => $id));
+                $this->set('order', $this->Order->find('first', $options));
+        }
 
-/**
- * admin_add method
- *
- * @return void
- */
-	public function admin_add() {
-		if ($this->request->is('post')) {
-			$this->Order->create();
-			if ($this->Order->save($this->request->data)) {
-				$this->Session->setFlash(__('The order has been saved'), 'default', array('class'=>'alert alert-success'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The order could not be saved. Please, try again.'), 'default', array('class'=>'alert alert-error'));
-			}
-		}
-		$customers = $this->Order->Customer->find('list');
-		$orderTypes = $this->Order->OrderType->find('list');
-		$this->set(compact('customers', 'orderTypes'));
-	}
+        /**
+         * admin_add method
+         *
+         * @return void
+         */
+        public function admin_add() {
+                if ($this->request->is('post')) {
+                        //debug($this->request->data);
+                        $customer = $this->Order->Customer->findById($this->request->data['Order']['customer_id']);
 
-/**
- * admin_edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function admin_edit($id = null) {
-		if (!$this->Order->exists($id)) {
-			throw new NotFoundException(__('Invalid order'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
-			if ($this->Order->save($this->request->data)) {
-				$this->Session->setFlash(__('The order has been saved'), 'default', array('class'=>'alert alert-success'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The order could not be saved. Please, try again.'), 'default', array('class'=>'alert alert-error'));
-			}
-		} else {
-			$options = array('conditions' => array('Order.' . $this->Order->primaryKey => $id));
-			$this->request->data = $this->Order->find('first', $options);
-		}
-		$customers = $this->Order->Customer->find('list');
-		$orderTypes = $this->Order->OrderType->find('list');
-		$this->set(compact('customers', 'orderTypes'));
-	}
+                        $customer_name = $this->request->data['Order']['name'] = $customer['Customer']['name'] . "-" . date('d/m/y');
 
-/**
- * admin_delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function admin_delete($id = null) {
-		$this->Order->id = $id;
-		if (!$this->Order->exists()) {
-			throw new NotFoundException(__('Invalid order'));
-		}
-		$this->request->onlyAllow('post', 'delete');
-		if ($this->Order->delete()) {
-			$this->Session->setFlash(__('Order deleted'), 'default', array('class'=>'alert alert-success'));
-			return $this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Order was not deleted'), 'default', array('class'=>'alert alert-error'));
-		return $this->redirect(array('action' => 'index'));
-	}
+
+
+                        $this->Order->create();
+                        if ($this->Order->save($this->request->data)) {
+                                $this->Session->setFlash(__('The order has been saved'), 'default', array('class' => 'alert alert-success'));
+                                return $this->redirect(array('action' => 'index'));
+                        } else {
+                                $this->Session->setFlash(__('The order could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                        }
+                }
+                $customers = $this->Order->Customer->find('list');
+                $orderTypes = $this->Order->OrderType->find('list');
+                $this->set(compact('customers', 'orderTypes'));
+        }
+
+        /**
+         * admin_edit method
+         *
+         * @throws NotFoundException
+         * @param string $id
+         * @return void
+         */
+        public function admin_edit($id = null) {
+                if (!$this->Order->exists($id)) {
+                        throw new NotFoundException(__('Invalid order'));
+                }
+                if ($this->request->is('post') || $this->request->is('put')) {
+                        if ($this->Order->save($this->request->data)) {
+
+                                $this->Order->Question->updateAll(
+                                        array('Question.active' => $this->request->data['Order']['active']), array('Question.order_id' => $id)
+                                );
+
+                                $this->Session->setFlash(__('The order has been saved'), 'default', array('class' => 'alert alert-success'));
+                                return $this->redirect(array('action' => 'index'));
+                        } else {
+                                $this->Session->setFlash(__('The order could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                        }
+                } else {
+                        $options = array('conditions' => array('Order.' . $this->Order->primaryKey => $id));
+                        $this->request->data = $this->Order->find('first', $options);
+                }
+                $customers = $this->Order->Customer->find('list');
+                $orderTypes = $this->Order->OrderType->find('list');
+                $this->set(compact('customers', 'orderTypes'));
+        }
+
+        /**
+         * admin_delete method
+         *
+         * @throws NotFoundException
+         * @param string $id
+         * @return void
+         */
+        public function admin_delete($id = null) {
+                $this->Order->id = $id;
+                if (!$this->Order->exists()) {
+                        throw new NotFoundException(__('Invalid order'));
+                }
+                $this->request->onlyAllow('post', 'delete');
+                if ($this->Order->delete()) {
+                        $this->Session->setFlash(__('Order deleted'), 'default', array('class' => 'alert alert-success'));
+                        return $this->redirect(array('action' => 'index'));
+                }
+                $this->Session->setFlash(__('Order was not deleted'), 'default', array('class' => 'alert alert-error'));
+                return $this->redirect(array('action' => 'index'));
+        }
+
 }

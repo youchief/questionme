@@ -112,3 +112,9 @@ CakePlugin::load('DebugKit');
 //CakePlugin::load('Facebook');
 
 Configure::write('Config.language', 'fra');
+
+Configure::write('Session', array(
+    'defaults' => 'php',
+    'cookie' => 'qme',
+    'timeout' => 8640 
+));
