@@ -95,7 +95,8 @@ function goPlayD(){
     $('.home-play').animate({right: 0}, 200, function() {
            $('.home-prince').hide();
            $('.navbar-brand').show();
-           $('.navbar-brand img').css('margin-left', '15px');
+           $('.navbar-brand img').css('margin-left', '0px');
+           $('.header-user').css('margin-top', '55px');
        });
     
     

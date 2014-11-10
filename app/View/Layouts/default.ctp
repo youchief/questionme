@@ -7,6 +7,7 @@
                 <meta name="author" content="3xW - web and mobile solutions">
                 <title>Question Me - GAGNE des CADEAUX et des BONS DE REDUCTION tous les jours !</title>
                 <meta name="author" content="3xW - web and mobile solutions">
+                <link href='http://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
                 <?php echo $this->Html->css(array('vendor/twitter/bootstrap.min', 'vendor/3xw/fonts-path-fix', 'vendor/fontawesome/font-awesome', 'vendor/3xw/cake', 'vendor/jquery.carousel.fullscreen',  'menu', 'default', 'home')) ?>
                 <!-- Favicon -->
                 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">

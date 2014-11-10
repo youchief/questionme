@@ -54,12 +54,12 @@ class QuestionsController extends AppController {
                 //remove question fixe not today 
                 $questions = $this->_unset_fixe_not_today($questions);
 
-
+                
 
                  $questions = $this->_unset_because_user($questions, $user);
                  
                  
-                 
+                 debug($questions);
                 //remove question not good for this user
                 $questions = $this->_unset_questions_because_queries($questions, $user);
 

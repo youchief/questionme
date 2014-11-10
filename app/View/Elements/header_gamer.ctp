@@ -15,7 +15,7 @@
                                                 <span class="icon-bar"></span>
                                         </button>
 
-                                        <?php echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive', 'id' => 'logo', 'height' => '50px')), array('controller' => 'pages', 'action' => 'display', 'home'), array('class' => 'navbar-brand ', 'escape' => false)); ?>
+                                        <?php echo $this->Html->link($this->Html->image('qme.svg', array( 'id' => 'logo', 'height' => '50px')), array('controller' => 'pages', 'action' => 'display', 'home'), array('class' => 'navbar-brand ', 'escape' => false)); ?>
                                 </div>
 
                                         <div class="navbar-collapse collapse">
