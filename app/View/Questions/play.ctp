@@ -1,12 +1,12 @@
 <?php echo $this->Html->css('game') ?>
 <div class="container">
         <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-8 col-sm-offset-2">
                         <h1><?php echo $question['Question']['question'] ?></h1>
                         <?php if (!empty($question['Question']['media'])): ?>
 
                                 <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
+                                        <div class="col-sm-12 ">
                                                 <?php echo $this->Html->image($question['Question']['media'], array('width' => '100%')) ?>
 
                                         </div>
@@ -14,9 +14,11 @@
                         <?php endif; ?>
                 </div>
         </div>
-        <hr>
+        <br/>
         <div class="row">
                 <div class="col-sm-12 ">
+                    <h2>Réponse</h2>
+                    <br/>
                         <?php
                         echo $this->Form->create('Question', array('autocomplete' => 'off', 'class' => 'form-inline'));
                         echo $this->Form->input('question', array('type' => 'hidden', 'value' => $question['Question']['id']));
@@ -38,12 +40,16 @@
                                 <div class='row'>
                                         <?php foreach ($question['Choice'] as $choice): ?>
                                                 <div class='col-sm-3'>
-                                                        <?php if (!empty($choice['media'])): ?>
-                                                                <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive', 'for' => "QuestionResponse" . $choice['id'])); ?>
-                                                        <?php endif; ?>
-                                                        <div class="radio">
+                                                     
+                                                        <div class="radio <?php if (!empty($choice['media'])): ?>limg<?php endif; ?>">
+                                                     
                                                                 <input type="radio" name="data[Question][response]" id="<?php echo "QuestionResponse" . $choice['id'] ?>" class="" required="required" value="<?php echo $choice['id'] ?>">
-                                                                <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><?php echo $choice['response'] ?></label>
+                                                                <label for="<?php echo "QuestionResponse" . $choice['id'] ?>">
+                                                                    <?php if (!empty($choice['media'])): ?>
+                                                                        <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive', 'for' => "QuestionResponse" . $choice['id'])); ?><br/>
+                                                                    <?php endif; ?>
+                                                                    <span class="center-text"><?php echo $choice['response'] ?></span>
+                                                                </label>
                                                         </div>
                                                 </div>
                                         <?php endforeach; ?>
@@ -59,8 +65,10 @@
                                                         <?php if (!empty($choice['media'])): ?>
                                                                 <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive')); ?>
                                                         <?php endif; ?>
-                                                        <input type="checkbox" name="data[Question][response][]" value="<?php echo $choice['id'] ?>" id="<?php echo "QuestionResponse" . $choice['id'] ?>">
-                                                        <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><?php echo $choice['response'] ?></label>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="data[Question][response][]" value="<?php echo $choice['id'] ?>" id="<?php echo "QuestionResponse" . $choice['id'] ?>">
+                                                            <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><span class="center-text"><?php echo $choice['response'] ?></span></label>
+                                                        </div>
                                                 </div>
 
                                         <?php endforeach; ?>
@@ -80,24 +88,32 @@
                         <?php endif; ?>
 
                         <br>
-                        <?php
-                        echo $this->Form->submit('Suivant', array('class' => 'btn btn-success'));
-                        echo $this->Form->end()
-                        ?>
+                        
 
 
                 </div>
 
         </div>
-        <hr>
+        <br/>
         <div class="row">
-                <div class="col-sm-12 info-question">
-                        <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $rest * 100 / $qday_total ?>%;">
-                                        <?php echo $rest ?> sur <?php echo $qday_total ?>
-                                </div>
-                        </div>
-                </div>
+            <div class="col-sm-4  col-sm-offset-4 info-question">
+                    <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $rest * 100 / $qday_total ?>%;">
+                                   <?php echo $rest * 100 / $qday_total ?>%
+                            </div>
+
+                    </div>
+            </div>
+            <div class="col-sm-1">
+                <p class="white"><?php echo $rest ?>/<?php echo $qday_total ?></p>
+            </div>
+            <div class="clear"></div>
+            <div class="col-sm-12">            
+                        <?php
+                        echo $this->Form->submit('Suivant', array('class' => 'btn btn-success'));
+                        echo $this->Form->end()
+                        ?>
+            </div>          
         </div>
 </div>
 

@@ -14,7 +14,7 @@
                             
                         </div>
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 align-center">
-                            <p class="light green">Répond aux question <br/>et gagne des cadeaux</p>
+                            <p class="light green">Réponds aux question<br/>et gagne des cadeaux</p>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
            
         <div class="home-play-aside hidden-sm hidden-xs">
             <div class="pad-box">
-                <?php //echo $this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')); ?>
+                <?php echo $this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')); ?>
                 <div class="home-play-aside-cont bottom-30">
              
                 </div>

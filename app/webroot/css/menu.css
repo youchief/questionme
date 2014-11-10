@@ -10,8 +10,6 @@ and open the template in the editor.
 @media (min-width: 768px){
         header {
                 width: 100%;
-                overflow: hidden;
-                position: fixed;
                 height: 100px;
                 top: 0;
                 left: 0;
