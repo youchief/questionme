@@ -71,12 +71,10 @@ class QuestionsController extends AppController {
                 $rest_questions = $this->_get_nb_user_questions($qday);
 
 
-
                 //question final user
                 $qday_total = $qday['Qday']['nb_qfixe'] + $qday['Qday']['nb_qmobile'];
                 
                
-
                 /*
                  * adjust mobile and fixe question 
                  */
@@ -92,7 +90,7 @@ class QuestionsController extends AppController {
                 $rest_questions['fixe'] + $diff;
                 $rest_questions['mobile'] - $diff;
                 $total_rest = $qday_total - ($rest_questions['fixe'] + $rest_questions['mobile']);
-
+                
                 
                 /*
                  * create the final question array
@@ -102,12 +100,10 @@ class QuestionsController extends AppController {
                 $y = 0;
                 foreach ($questions as $question) {
 
-                        if (($question['Question']['question_type_id']) == 2 && ($i <= $rest_questions['fixe'])) {
-
-
+                        if (($question['Question']['question_type_id']) == 2 && ($i < $rest_questions['fixe'])) {
                                 $user_questions[] = $question;
                                 $i++;
-                        } else if (($question['Question']['question_type_id'] == 3) && ($y <= $rest_questions['mobile'])) {
+                        } else if (($question['Question']['question_type_id'] == 3) && ($y < $rest_questions['mobile'])) {
                                 $user_questions[] = $question;
                                 $y++;
                         }
@@ -115,7 +111,9 @@ class QuestionsController extends AppController {
 
 
 
-
+                
+                
+                
                 /*
                  * if no more question today -> redirect to home 
                  */
