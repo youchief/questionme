@@ -1,6 +1,5 @@
 <div class="questions view">
-        <h2><?php echo h($question['Question']['question']); ?>  <?php echo $this->Html->link('Summary', array('controller'=>'questions', 'action'=>'summary', $question['Question']['id']), array('class'=>'btn btn-success'))?></h2>
-       
+        <h2><?php echo h($question['Question']['question']); ?>  <?php echo $this->Html->link('Summary', array('controller'=>'questions', 'action'=>'summary', $question['Question']['id']), array('class'=>'btn btn-success'))?></h2>      
         <dl>
                 <dt><?php echo __('Id'); ?></dt>
                 <dd>
@@ -57,11 +56,27 @@
                         <?php echo $this->Html->link($question['Order']['name'], array('controller' => 'orders', 'action' => 'view', $question['Order']['id'])); ?>
                         &nbsp;
                 </dd>
+                <dt><?php echo __('To Age Start'); ?></dt>
+                <dd>
+                        <?php echo h($question['Question']['to_age_start']); ?>
+                        &nbsp;
+                </dd>
+                <dt><?php echo __('To Age End'); ?></dt>
+                <dd>
+                        <?php echo h($question['Question']['to_age_end']); ?>
+                        &nbsp;
+                </dd>
+                <dt><?php echo __('To Gender'); ?></dt>
+                <dd>
+                        <?php echo h($question['Question']['to_gender']); ?>
+                        &nbsp;
+                </dd>
         </dl>
 </div>
 <div class="actions">
 
         <div class="btn-group">
+                <?php echo $this->Html->link(__('Preview'), array('action' => 'preview', $question['Question']['id']), array('class' => 'btn btn-sm btn-default')); ?>
                 <?php echo $this->Html->link(__('Edit Question'), array('action' => 'edit', $question['Question']['id']), array('class' => 'btn btn-sm btn-default')); ?>
                 <?php echo $this->Form->postLink(__('Delete Question'), array('action' => 'delete', $question['Question']['id']), array('class' => 'btn btn-sm btn-danger'), __('Are you sure you want to delete # %s?', $question['Question']['id'])); ?> 
         </div>

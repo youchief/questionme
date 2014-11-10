@@ -50,16 +50,16 @@ class QuestionsController extends AppController {
                         )
                 );
 
-
+                
+                
+                
                 //remove question fixe not today 
                 $questions = $this->_unset_fixe_not_today($questions);
-
                 
+                
+                $questions = $this->_unset_because_user($questions, $user);
+                 
 
-                 $questions = $this->_unset_because_user($questions, $user);
-                 
-                 
-                 debug($questions);
                 //remove question not good for this user
                 $questions = $this->_unset_questions_because_queries($questions, $user);
 
@@ -244,7 +244,7 @@ class QuestionsController extends AppController {
         public function _unset_because_user($questions, $user) {
                 $i = 0;
                 foreach ($questions as $question) {
-                        if (isset($question['Question']['to_gender'])) {
+                        if (!empty($question['Question']['to_gender'])) {
                                 if ($question['Question']['to_gender'] <> $user['User']['sex']) {
                                         unset($questions[$i]);
                                 }
@@ -256,7 +256,7 @@ class QuestionsController extends AppController {
 
                 $i = 0;
                 foreach ($questions as $question) {
-                        if (isset($question['Question']['to_age_start']) && isset($question['Question']['to_age_start'])) {
+                        if (!empty($question['Question']['to_age_start']) && !empty($question['Question']['to_age_start'])) {
                                 $user_birthday = strtotime($user['User']['birthday']);
                                 if ($user_birthday <= strtotime($question['Question']['to_age_start']) && $user_birthday >= strtotime($question['Question']['to_age_end'])) {
                                         unset($questions[$i]);
@@ -464,6 +464,15 @@ class QuestionsController extends AppController {
                 $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
                 $this->set('question', $this->Question->find('first', $options));
         }
+        
+        
+        public function admin_preview($id =null) {
+                if (!$this->Question->exists($id)) {
+                        throw new NotFoundException(__('Invalid question'));
+                }
+                $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
+                $this->set('question', $this->Question->find('first', $options));
+	}
 
         /**
          * admin_add method

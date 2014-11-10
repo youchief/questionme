@@ -24,8 +24,8 @@ class Banner extends AppModel {
                         'imageSmall' => array(
                             'class' => 'crop',
                             'self' => true,
-                            'width' => 1000,
-                            'height'=>400
+                            'width' => 1280,
+                            'height'=>720
                         ),
                     ),
                     'finalPath' => '/img/banners/'
@@ -33,8 +33,8 @@ class Banner extends AppModel {
             ),
             'Uploader.FileValidation' => array(
                 'background' => array(
-                    'maxWidth' => 4000,
-                    'minHeight' => 500,
+                    'maxWidth' => 3000,
+                    'minHeight' => 720,
                     'extension' => array('gif', 'jpg', 'png', 'jpeg'),
                     'type' => 'image',
                     'mimeType' => array('image/gif', 'image/png', 'image/jpeg'),

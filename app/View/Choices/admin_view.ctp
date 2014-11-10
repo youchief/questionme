@@ -18,8 +18,10 @@
 		</dd>
 		<dt><?php echo __('Media'); ?></dt>
 		<dd>
-			<?php echo h($choice['Choice']['media']); ?>
-			&nbsp;
+                        <?php if (!empty($choice['Choice']['media'])):?>
+                                <?php echo $this->Html->image($choice['Choice']['media'])?>
+                        <?php endif; ?>
+                        			&nbsp;
 		</dd>
 		<dt><?php echo __('Media Type'); ?></dt>
 		<dd>

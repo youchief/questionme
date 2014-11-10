@@ -77,6 +77,10 @@ class UsersController extends AppController {
                                 $this->Session->setFlash(__("Invalid username and/or password"), 'default', array('class' => 'alert alert-danger'));
                         }
                 }
+                 $regions = $this->User->Region->find('list');
+                $this->set(compact('regions'));
+                $this->render('connexion');
+                
         }
 
         public function logout() {
