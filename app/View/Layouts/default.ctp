@@ -7,7 +7,7 @@
                 <meta name="author" content="3xW - web and mobile solutions">
                 <title>Question Me - GAGNE des CADEAUX et des BONS DE REDUCTION tous les jours !</title>
                 <meta name="author" content="3xW - web and mobile solutions">
-                <?php echo $this->Html->css(array('vendor/twitter/bootstrap.min', 'vendor/3xw/fonts-path-fix', 'vendor/3xw/cake', 'vendor/fontawesome/font-awesome', 'menu', 'default')) ?>
+                <?php echo $this->Html->css(array('vendor/twitter/bootstrap.min', 'vendor/3xw/fonts-path-fix', 'vendor/fontawesome/font-awesome', 'vendor/3xw/cake', 'vendor/jquery.carousel.fullscreen',  'menu', 'default', 'home')) ?>
                 <!-- Favicon -->
                 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
                 <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -23,7 +23,7 @@
 
         <body>
                 <!-- NAVBAR -->
-
+                
                 <?php echo $this->element($header) ?>
                 <div class="content-wrap">
                         <div class="container">
@@ -41,7 +41,9 @@
                 echo $this->Html->script(array(
                     'vendor/jquery/jquery.min',
                     'vendor/twitter/bootstrap.min',
-                    'classie',
+                    'vendor/jquery/jquery.carousel.fullscreen',
+                    'vendor/jquery/jquery.touchSwipe.min',
+                    'classie',                  
                     'app'
                 ));
                 ?>

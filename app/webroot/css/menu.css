@@ -56,4 +56,11 @@ and open the template in the editor.
                 padding-top: 25px;
                 padding-bottom: 25px;
         }
+        
+       .nav>li{
+            background-color:#14e985 ;
+        }
+        .nav>li a{
+            color:#fdfdfd ;
+        }
 }
