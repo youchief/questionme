@@ -466,6 +466,15 @@ class QuestionsController extends AppController {
                 $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
                 $this->set('question', $this->Question->find('first', $options));
         }
+        
+        
+        public function admin_preview($id =null) {
+                if (!$this->Question->exists($id)) {
+                        throw new NotFoundException(__('Invalid question'));
+                }
+                $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
+                $this->set('question', $this->Question->find('first', $options));
+	}
 
         /**
          * admin_add method
