@@ -1,5 +1,7 @@
 <?php
 App::uses('AppModel', 'Model');
+CakePlugin::load('Uploader');
+
 /**
  * Gift Model
  *
@@ -15,6 +17,34 @@ class Gift extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+        
+         public $actsAs = array(
+            'Uploader.Attachment' => array(
+                'media' => array(
+                    'tempDir' => TMP,
+                    'transforms' => array(
+                        'imageSmall' => array(
+                            'class' => 'crop',
+                            'self' => true,
+                            'width' => 600,
+                            'height' => 400
+                        ),
+                    ),
+                    'finalPath' => '/img/gifts/'
+                )
+            ),
+            'Uploader.FileValidation' => array(
+                'media' => array(
+                    'maxWidth' => 4000,
+                    'minHeight' => 400,
+                    'extension' => array('gif', 'jpg', 'png', 'jpeg'),
+                    'type' => 'image',
+                    'mimeType' => array('image/gif', 'image/png', 'image/jpeg'),
+                    'filesize' => 5242880,
+                    'required' => true
+                )
+            )
+        );
 
 /**
  * Validation rules
@@ -83,20 +113,5 @@ class Gift extends AppModel {
  *
  * @var array
  */
-	public $hasAndBelongsToMany = array(
-		'User' => array(
-			'className' => 'User',
-			'joinTable' => 'users_gifts',
-			'foreignKey' => 'gift_id',
-			'associationForeignKey' => 'user_id',
-			'unique' => 'keepExisting',
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'finderQuery' => '',
-		)
-	);
 
 }

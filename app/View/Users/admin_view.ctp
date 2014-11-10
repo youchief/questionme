@@ -87,7 +87,7 @@
                                 <th><?php echo __('Name'); ?></th>
                                 <th><?php echo __('Created'); ?></th>
                                 <th><?php echo __('Used'); ?></th>
-                               
+
                                 <th class="actions"><?php echo __('Actions'); ?></th>
                         </tr>
                         <?php
@@ -95,12 +95,12 @@
                         foreach ($user['Voucher'] as $voucher):
                                 ?>
                                 <tr>
-                                        <td><?php echo $this->Html->image($voucher['image'], array('width'=>'80px')); ?></td>
+                                        <td><?php echo $this->Html->image($voucher['image'], array('width' => '80px')); ?></td>
                                         <td><?php echo $voucher['name']; ?></td>
                                         <td><?php echo $voucher['UserVoucher']['created']; ?></td>
                                         <td><?php echo $voucher['UserVoucher']['used']; ?></td>
-                                        
-                                        
+
+
                                         <td class="actions">
                                                 <?php echo $this->Html->link(__('View'), array('controller' => 'user_vouchers', 'action' => 'view', $voucher['id'])); ?>
                                                 <?php echo $this->Html->link(__('Edit'), array('controller' => 'user_vouchers', 'action' => 'edit', $voucher['id'])); ?>
@@ -118,11 +118,10 @@
                 <table cellpadding = "0" cellspacing = "0"  class='table'>
                         <tr>
                                 <th><?php echo __('Id'); ?></th>
+                                <th><?php echo __('Question Id'); ?></th>
                                 <th><?php echo __('Response'); ?></th>
                                 <th><?php echo __('Type'); ?></th>
-                                <th><?php echo __('Media'); ?></th>
-                                <th><?php echo __('Media Type'); ?></th>
-                                <th><?php echo __('Question Id'); ?></th>
+
                                 <th class="actions"><?php echo __('Actions'); ?></th>
                         </tr>
                         <?php
@@ -131,11 +130,9 @@
                                 ?>
                                 <tr>
                                         <td><?php echo $choice['id']; ?></td>
+                                        <td><?php echo $choice['Question']['question']; ?></td>
                                         <td><?php echo $choice['response']; ?></td>
                                         <td><?php echo $choice['type']; ?></td>
-                                        <td><?php echo $choice['media']; ?></td>
-                                        <td><?php echo $choice['media_type']; ?></td>
-                                        <td><?php echo $choice['question_id']; ?></td>
                                         <td class="actions">
                                                 <?php echo $this->Html->link(__('View'), array('controller' => 'choices', 'action' => 'view', $choice['id'])); ?>
                                                 <?php echo $this->Html->link(__('Edit'), array('controller' => 'choices', 'action' => 'edit', $choice['id'])); ?>

@@ -148,6 +148,19 @@ class User extends AppModel {
                 'finderQuery' => '',
                 'counterQuery' => ''
             ),
+            'Gift' => array(
+                'className' => 'Gift',
+                'foreignKey' => 'winner_id',
+                'dependent' => false,
+                'conditions' => '',
+                'fields' => '',
+                'order' => '',
+                'limit' => '',
+                'offset' => '',
+                'exclusive' => '',
+                'finderQuery' => '',
+                'counterQuery' => ''
+            ),
         );
 
         /**
@@ -169,19 +182,7 @@ class User extends AppModel {
                 'offset' => '',
                 'finderQuery' => '',
             ),
-            'Gift' => array(
-                'className' => 'Gift',
-                'joinTable' => 'users_gifts',
-                'foreignKey' => 'user_id',
-                'associationForeignKey' => 'gift_id',
-                'unique' => 'keepExisting',
-                'conditions' => '',
-                'fields' => '',
-                'order' => '',
-                'limit' => '',
-                'offset' => '',
-                'finderQuery' => '',
-            ),
+            
             'Voucher' => array(
                 'className' => 'Voucher',
                 'joinTable' => 'user_vouchers',

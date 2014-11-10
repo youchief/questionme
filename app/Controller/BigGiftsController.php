@@ -16,7 +16,7 @@ class BigGiftsController extends AppController {
          *
          * @var array
          */
-        public $uses = array('BigGift', 'UsersChoice');
+        public $uses = array('BigGift', 'UsersChoice', 'User');
         public $components = array('Paginator', 'Session');
 
         /**
@@ -38,10 +38,16 @@ class BigGiftsController extends AppController {
          */
         public function admin_view($id = null) {
                 if (!$this->BigGift->exists($id)) {
-                        throw new NotFoundException(__('Invalid big gift'));
+                        throw new NotFoundException(__('Invalid gift'));
                 }
                 $options = array('conditions' => array('BigGift.' . $this->BigGift->primaryKey => $id));
-                $this->set('bigGift', $this->BigGift->find('first', $options));
+                $gift = $this->BigGift->find('first', $options);
+                $winner = array('User' => array('username' => 'no body'));
+                if (!empty($gift['BigGift']['winner_id'])) {
+                        $winner = $this->User->findById($gift['BigGift']['winner_id']);
+                }
+                $this->set('winner', $winner);
+                $this->set('bigGift', $gift);
         }
 
         /**
@@ -121,14 +127,20 @@ class BigGiftsController extends AppController {
                     'fields' => array('DISTINCT UsersChoice.question_id', 'UsersChoice.user_id'),
                         )
                 );
-                      
+
                 shuffle($user_choices);
 
                 $winner = $this->UsersChoice->User->findById($user_choices[0]['UsersChoice']['user_id']);
-                
-               $this->set('winner', $winner);
-               $this->set('gift_id', $id);
-                
+
+                $this->set('winner', $winner);
+                $this->set('gift_id', $id);
+        }
+
+        public function admin_validate($user_id, $gift_id) {
+                $this->BigGift->id = $gift_id;
+                $this->BigGift->saveField('winner_id', $user_id);
+                $this->Session->setFlash(__('The gift has been given'), 'default', array('class' => 'alert alert-success'));
+                $this->redirect(array('action' => 'index'));
         }
 
 }

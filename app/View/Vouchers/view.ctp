@@ -3,7 +3,7 @@
                 <?php echo $this->Html->image($voucher['Voucher']['image'], array('class' => 'img-responsive')) ?>
                 
                 <div class="btn-group">
-                        <?php echo $this->Html->link(__('Use'), array('action' => 'use_it', $voucher['Voucher']['id']), array('class' => 'btn btn-success')); ?>       
+                        <?php echo $this->Html->link(__('Utiliser'), array('action' => 'use_it', $voucher['Voucher']['id']), array('class' => 'btn btn-success')); ?>       
                 </div>
         </div>
         <div class='col-sm-6'>

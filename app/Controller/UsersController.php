@@ -162,6 +162,7 @@ class UsersController extends AppController {
                         throw new NotFoundException(__('Invalid user'));
                 }
                 $options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+                $this->User->recursive = 2;
                 $this->set('user', $this->User->find('first', $options));
         }
 

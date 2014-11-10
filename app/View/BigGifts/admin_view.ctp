@@ -21,11 +21,12 @@
                                 &nbsp;
                         </dd>
 
-                        <dt><?php echo __('Winner Id'); ?></dt>
+                        <dt><?php echo __('Winner'); ?></dt>
                         <dd>
-                                <?php echo h($bigGift['BigGift']['winner_id']); ?>
+                                <?php echo $this->Html->link($winner['User']['username'], array('controller' => 'users', 'action' => 'view', $winner['User']['id'])); ?>
                                 &nbsp;
                         </dd>
+                        
                         <dt><?php echo __('Qweek'); ?></dt>
                         <dd>
                                 <?php echo $this->Html->link($bigGift['Qweek']['full_name'], array('controller' => 'qweeks', 'action' => 'view', $bigGift['Qweek']['id'])); ?>
