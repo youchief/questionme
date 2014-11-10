@@ -34,7 +34,7 @@
            
         <div class="home-play-aside hidden-sm hidden-xs">
             <div class="pad-box">
-                <?php echo $this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')); ?>
+                <?php //echo $this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')); ?>
                 <div class="home-play-aside-cont bottom-30">
              
                 </div>
@@ -68,7 +68,7 @@
             <div class="container  hidden-xs">
                 <div class="row">
                     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-4 col-xs-offset-4 bottom-30">
-                        <?php echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?>
+                        <?php //echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?>
                     </div>
                         <div class="col-sm-2 col-sm-offset-3 feature-box-container text-center">
                             

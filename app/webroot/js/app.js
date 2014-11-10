@@ -231,6 +231,7 @@ $(window).ready(function(){
     var home = $('.home-layer').width();
     if(home > 0){
       $('.navbar').hide();  
+      $('.content-wrap').css('padding', '0px');
     }
     
     $('.footer').hide();
