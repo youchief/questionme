@@ -92,8 +92,6 @@ class UsersController extends AppController {
         public function edit_my_profile() {
 
                 if ($this->request->is('post') || $this->request->is('put')) {
-                        debug($this->request->data);
-
                         if ($this->User->save($this->request->data)) {
                                 $this->Session->setFlash(__('Ton profil a été modifié!'), 'default', array('class' => 'alert alert-success'));
                                 return $this->redirect(array('action' => 'my_profile'));
@@ -112,11 +110,11 @@ class UsersController extends AppController {
                 if ($this->request->is('post')) {
                         if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
                                 $this->User->id = $this->Auth->user('id');
-                                $this->User->saveField('password', $this->request->data['User']['new_password'], array('validate' => true));
-                                $this->Session->setFlash(__('The password has been changed'), 'default', array('class' => 'alert alert-success'));
+                                $this->User->saveField('password', $this->request->data['User']['new_password']);
+                                $this->Session->setFlash(__('Ton mot de passe et changé!'), 'default', array('class' => 'alert alert-success'));
                                 return $this->redirect(array('action' => 'my_profile'));
                         } else {
-                                $this->Session->setFlash(__('Password are not the same :-('), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'default', array('class' => 'alert alert-danger'));
                         }
                 }
         }

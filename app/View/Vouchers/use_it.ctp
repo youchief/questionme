@@ -15,7 +15,6 @@
                         <?php echo $this->Form->submit(__('Use'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
-
         </div>
 </div>
 

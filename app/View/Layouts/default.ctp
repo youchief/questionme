@@ -25,7 +25,6 @@
                 <!-- NAVBAR -->
 
                 <?php echo $this->element($header) ?>
-
                 <div class="content-wrap">
                         <div class="container">
                                 <?php
@@ -57,7 +56,6 @@
                 <?php echo $this->Html->script('vendor/3xw/ie-lt-8'); ?>
                 <![endif]-->
                 <?php echo $this->fetch('script'); ?>
-                <script>$(".alert").alert()</script>
         </body>
         
 </html>

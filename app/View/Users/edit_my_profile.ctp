@@ -3,13 +3,15 @@
                 <div class="col-sm-6">
                         <?php echo $this->Form->create('User'); ?>
                         <fieldset>
-                                <legend><?php echo __('Edit My Profile'); ?></legend>
+                                <legend><?php echo __('Editer mon profil'); ?></legend>
                                 <?php
                                 echo $this->Form->input('id', array('class' => 'form-control'));
-                                echo $this->Form->input('birthday', array('class' => 'form-control', 'label'=>'Date de naissance', 'dateFormat'=>'DMY'));
+                                echo $this->Form->input('username', array('class' => 'form-control', 'type'=>'hidden', 'label'=>'Pseudo'));
+                                echo $this->Form->input('birthday', array('class' => 'form-control','label'=>'Date de naissance', 'dateFormat' => 'DMY', 'empty' => true, 'minYear' => date('Y') - 80, 'maxYear' => date('Y') - 18));
                                 echo $this->Form->input('email', array('class' => 'form-control'));
-                                echo $this->Form->input('newsletter', array('class' => 'form-control'));
-                                echo $this->Form->input('region_id', array('class' => 'form-control', 'label'=> 'Région'));
+                                echo $this->Form->input('newsletter', array('class' => 'checkbox', 'label'=>'Abonnement à la newsletter'));
+                                echo $this->Form->input('region_id', array('class' => 'form-control'));
+
                                 ?>
                         </fieldset>
                         <hr>

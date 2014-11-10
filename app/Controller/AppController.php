@@ -44,6 +44,7 @@ class AppController extends Controller {
                         $this->layout = 'default';
                         if ($this->Auth->user('group_id') == 2) {
                                 $this->set('header', 'header_gamer');
+                                $this->set('username', $this->Auth->user('username'));
                         } else {
                                 $this->set('header', 'header_anonymous');
                         }

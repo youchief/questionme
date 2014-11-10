@@ -42,6 +42,11 @@
                         <?php echo h($question['Question']['active']); ?>
                         &nbsp;
                 </dd>
+                <dt><?php echo __('Final Order Question'); ?></dt>
+                <dd>
+                        <?php echo h($question['Question']['final_order_question']); ?>
+                        &nbsp;
+                </dd>
                 <dt><?php echo __('Question Type'); ?></dt>
                 <dd>
                         <?php echo $this->Html->link($question['QuestionType']['name'], array('controller' => 'question_types', 'action' => 'view', $question['QuestionType']['id'])); ?>

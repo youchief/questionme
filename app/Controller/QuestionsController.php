@@ -37,23 +37,29 @@ class QuestionsController extends AppController {
                 $questions_id = array();
                 foreach ($user['Choice'] as $choice) {
                         $questions_id[] = $choice['question_id'];
-                }
+                }      
+                
+                
                 //question list whith conditons
                 $questions = $this->Question->find('all', array('conditions' => array(
                         "NOT" => array("Question.id" => $questions_id),
                         'Question.active' => 1,
+                       
                     //'QuestionRegion.region_id' => $user['User']['region_id']
                     )
                         )
                 );
 
-                //debug($questions);
+
                 //remove question fixe not today 
                 $questions = $this->_unset_fixe_not_today($questions);
 
 
-                $questions = $this->_unset_because_user($questions, $user);
 
+                 $questions = $this->_unset_because_user($questions, $user);
+                 
+                 
+                 
                 //remove question not good for this user
                 $questions = $this->_unset_questions_because_queries($questions, $user);
 
@@ -63,13 +69,17 @@ class QuestionsController extends AppController {
                 $rest_questions = $this->_get_nb_user_questions($qday);
 
 
+
                 //question final user
                 $qday_total = $qday['Qday']['nb_qfixe'] + $qday['Qday']['nb_qmobile'];
-
+                
+               
 
                 /*
                  * adjust mobile and fixe question 
                  */
+
+
                 $nb_q_mobile = 0;
                 foreach ($questions as $question) {
                         if ($question['Question']['question_type_id'] == 3) {
@@ -81,6 +91,7 @@ class QuestionsController extends AppController {
                 $rest_questions['mobile'] - $diff;
                 $total_rest = $qday_total - ($rest_questions['fixe'] + $rest_questions['mobile']);
 
+                
                 /*
                  * create the final question array
                  */
@@ -89,14 +100,19 @@ class QuestionsController extends AppController {
                 $y = 0;
                 foreach ($questions as $question) {
 
-                        if (($question['Question']['question_type_id']) == 2 && ($i < $rest_questions['fixe'])) {
+                        if (($question['Question']['question_type_id']) == 2 && ($i <= $rest_questions['fixe'])) {
+
+
                                 $user_questions[] = $question;
                                 $i++;
-                        } else if (($question['Question']['question_type_id'] == 3) && ($y < $rest_questions['mobile'])) {
+                        } else if (($question['Question']['question_type_id'] == 3) && ($y <= $rest_questions['mobile'])) {
                                 $user_questions[] = $question;
                                 $y++;
                         }
                 }
+
+
+
 
                 /*
                  * if no more question today -> redirect to home 
@@ -117,10 +133,9 @@ class QuestionsController extends AppController {
                 $this->set('qday_total', $qday_total);
 
 
-                $data = array();
+
                 if ($this->request->is('post')) {
-
-
+                        $data = array();
                         if (!empty($this->request->data['Question']['response'])) {
                                 if ($this->request->data['Question']['response_type'] == 'CHECKBOX') {
                                         $i = 0;
@@ -142,11 +157,15 @@ class QuestionsController extends AppController {
                                 }
 
                                 if ($this->UsersChoice->saveAll($data)) {
+
+                                        if ($this->request->data['Question']['final_order_question'] == 1) {
+                                                $this->_increment_order($this->request->data['Question']['order_id']);
+                                        }
+
                                         if ($this->request->data['Question']['profile'] == true) {
                                                 $this->_create_profile_value($this->request->data['Question']['question'], $this->Auth->user('id'));
                                         }
                                         if (count($user_questions) <= 1) {
-
                                                 $this->_create_voucher();
                                         } else {
                                                 if (!empty($this->request->data['Question']['right_choice_id'])) {
@@ -168,6 +187,7 @@ class QuestionsController extends AppController {
 
         public function _unset_fixe_not_today($questions) {
                 $i = 0;
+
                 foreach ($questions as $question) {
                         if ($question['Question']['question_type_id'] == 2) {
                                 if ($question['Question']['date'] <> date('Y-m-d')) {
@@ -176,6 +196,8 @@ class QuestionsController extends AppController {
                         }
                         $i++;
                 }
+
+
 
                 return $questions;
         }
@@ -215,15 +237,34 @@ class QuestionsController extends AppController {
                 return array('fixe' => $question_rest_fix, 'mobile' => $question_rest_mob);
         }
 
+        /*
+         * unset question because not good for user gender and age
+         */
+
         public function _unset_because_user($questions, $user) {
                 $i = 0;
                 foreach ($questions as $question) {
-                        if ($question['Question']['to_gender'] != $user['User']['sex']) {
-
-                                unset($questions[$i]);
+                        if (isset($question['Question']['to_gender'])) {
+                                if ($question['Question']['to_gender'] <> $user['User']['sex']) {
+                                        unset($questions[$i]);
+                                }
                         }
                         $i++;
                 }
+
+                
+
+                $i = 0;
+                foreach ($questions as $question) {
+                        if (isset($question['Question']['to_age_start']) && isset($question['Question']['to_age_start'])) {
+                                $user_birthday = strtotime($user['User']['birthday']);
+                                if ($user_birthday <= strtotime($question['Question']['to_age_start']) && $user_birthday >= strtotime($question['Question']['to_age_end'])) {
+                                        unset($questions[$i]);
+                                }
+                        }
+                        $i++;
+                }
+
                 return $questions;
         }
 
@@ -234,7 +275,7 @@ class QuestionsController extends AppController {
                 $index_q = 0;
 
                 $final_questions = array();
-
+                //debug($questions);
                 foreach ($questions as $question) {
 
                         if (empty($question['Query'])) {
@@ -352,6 +393,31 @@ class QuestionsController extends AppController {
                         $this->Session->setFlash(__('Vous avez obtenu: ') . $day_voucher['Voucher']['name'], 'default', array('class' => 'alert alert-warning'));
                         $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                 }
+        }
+
+        public function _increment_order($order_id) {
+                $order = $this->Question->Order->findById($order_id);
+
+                $nb_rep = $order['Order']['repondants'] ++;
+
+                if ($nb_rep >= $order['Order']['repondants']) {
+                        $this->Question->Order->id =$order_id;
+                        $this->Question->Order->set(array(
+                            'repondants' => $nb_rep,
+                            'active' => 0
+                        ));
+                        
+                        $this->Question->updateAll(
+                                array('Question.active' => 0), array('Question.order_id' => $order_id)
+                        );
+                } else {
+                         $this->Question->Order->id =$order_id;
+                        $this->Question->Order->set(array(
+                            'repondants' => $nb_rep,
+                        ));
+                }
+
+                $this->Question->Order->save();
         }
 
         public function admin_wizard() {

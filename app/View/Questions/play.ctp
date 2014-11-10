@@ -24,6 +24,8 @@
                         echo $this->Form->input('profile', array('type' => 'hidden', 'value' => $question['Question']['profile']));
                         echo $this->Form->input('response_type', array('type' => 'hidden', 'value' => $question['Question']['response_type']));
                         echo $this->Form->input('question_value', array('type' => 'hidden', 'value' => $question['Question']['question']));
+                        echo $this->Form->input('final_order_question', array('type' => 'hidden', 'value' => $question['Question']['final_order_question']));
+                        echo $this->Form->input('order_id', array('type' => 'hidden', 'value' => $question['Question']['order_id']));
                         foreach($question['Choice'] as $c){
                                 if($c['is_right']){
                                         echo $this->Form->input('right_choice_value', array('type' => 'hidden', 'value' => $c['response']));
