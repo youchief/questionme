@@ -125,7 +125,7 @@ background-image:none;
     .navbar{position:relative;background: #44494f;}
     
     #info-1, #info-2, #info-3, #info-4{position:absolute;display:table;width:100%; height:100%;background: #44494f;}
-    #info-1{z-index:5;}
+    #info-1{z-index:5;left:0;}
     #info-2{z-index:6;}
     #info-3{z-index:7;}
     #info-4{z-index:8;}

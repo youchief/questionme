@@ -17,6 +17,7 @@
         <br/>
         <div class="row">
                 <div class="col-sm-12 ">
+                    <br/>
                         <?php
                         echo $this->Form->create('Question', array('autocomplete' => 'off', 'class' => 'form-inline'));
                         echo $this->Form->input('question', array('type' => 'hidden', 'value' => $question['Question']['id']));
