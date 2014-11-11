@@ -1,10 +1,11 @@
 <header>
-        <div class="header-user hidden-xs hidden-sm">
-             <p class="navbar-text light white">Hello <?php echo $this->Html->link($username, array('controller' => 'users', 'action' => 'my_profile'))?></p>   
-        </div>
+        
         <nav>
+                    
                     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-
+                        <div class="header-user hidden-xs hidden-sm">
+                            <p class="navbar-text light white">Hello <?php echo $this->Html->link($username, array('controller' => 'users', 'action' => 'my_profile'))?></p>   
+                        </div>
 
                                        
 

@@ -25,12 +25,9 @@
         <body>
                 <!-- NAVBAR -->
                 
+                
                 <div class="content-wrap">
-                        <div class="container">
-                            <div class="row">
-                                <?php echo $this->element($header) ?>
-                            </div>        
-                        </div>
+                    <?php echo $this->element($header) ?>
                         <div class="container">
                                 <?php
                                 echo $this->Session->flash();
@@ -40,11 +37,8 @@
                         <?php
                         echo $this->fetch('content');
                         ?>
-                    <div class="push"></div>
-                     
                 </div>
-               <?php echo $this->element('footer'); ?>
-                
+                <?php //echo $this->element('footer'); ?>
                 <?php
                 echo $this->Html->script(array(
                     'vendor/jquery/jquery.min',

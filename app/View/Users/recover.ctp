@@ -11,6 +11,7 @@
                                
                                 ?>
                         </fieldset>
+                        <br/>
                         <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
