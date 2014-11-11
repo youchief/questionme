@@ -19,6 +19,44 @@ class GiftsController extends AppController {
         public $components = array('Paginator', 'Session');
         public $uses = array('Gift', 'UsersChoice', 'User');
 
+        public function use_it($id = null) {
+                if (!$this->Gift->exists($id)) {
+                        throw new NotFoundException(__('Invalid BigGift'));
+                }
+
+                if ($this->request->is('post')) {
+                        $big = $this->Gift->findById($id);
+
+                        if ($big['Gift']['used'] <> null) {
+                                $this->Session->setFlash(__('Code déjà utilisé!'), 'default', array('class' => 'alert alert-danger'));
+                                $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
+                        }
+
+                        if ($this->request->data['Gift']['code'] == $big['Customer']['code']) {
+                                $this->Gift->id = $id;
+                                $this->Gift->saveField('used', date('Y-m-d H:i:s'));
+                                $this->Session->setFlash(__('Merci d\'offir le cadeau !'), 'default', array('class' => 'alert alert-success'));
+                                $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
+                        } else {
+                                $this->Session->setFlash(__('Code erroné ! Essaie encore !'), 'default', array('class' => 'alert alert-danger'));
+                                $this->redirect($this->referer());
+                        }
+                }
+
+
+                $options = array('conditions' => array('Gift.' . $this->Gift->primaryKey => $id));
+                $this->set('gift', $this->Gift->find('first', $options));
+        }
+
+        public function view($id = null) {
+                if (!$this->Gift->exists($id)) {
+                        throw new NotFoundException(__('Invalid gift'));
+                }
+                $options = array('conditions' => array('Gift.' . $this->Gift->primaryKey => $id));
+                $gift = $this->Gift->find('first', $options);
+                $this->set('gift', $gift);
+        }
+
         /**
          * admin_index method
          *
@@ -41,9 +79,9 @@ class GiftsController extends AppController {
                         throw new NotFoundException(__('Invalid gift'));
                 }
                 $options = array('conditions' => array('Gift.' . $this->Gift->primaryKey => $id));
-                $gift =$this->Gift->find('first', $options);
-                $winner = array('User'=>array('username'=>'no body'));
-                if(!empty($gift['Gift']['winner_id'])){
+                $gift = $this->Gift->find('first', $options);
+                $winner = array('User' => array('username' => 'no body'));
+                if (!empty($gift['Gift']['winner_id'])) {
                         $winner = $this->User->findById($gift['Gift']['winner_id']);
                 }
                 $this->set('winner', $winner);
@@ -139,10 +177,23 @@ class GiftsController extends AppController {
         }
 
         public function admin_validate($user_id, $gift_id) {
+                $gift = $this->Gift->findById($gift_id);
+                $user = $this->User->findById($user_id);
+                
                 $this->Gift->id = $gift_id;
                 $this->Gift->saveField('winner_id', $user_id);
                 $this->Session->setFlash(__('The gift has been given'), 'default', array('class' => 'alert alert-success'));
-                $this->redirect(array('action'=>'index'));
+
+                $Email = new CakeEmail();
+                $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
+                $Email->to($user['User']['email']);
+                $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
+                $Email->viewVars(array('user' => $user['User']['username'], 'gift'=>$gift['Gift']['name'], 'link'=>'http://www.questionme.ch/vouchers/my_vouchers'));
+                $Email->emailFormat('html');
+                $Email->template('winner');
+                $Email->send();
+
+                $this->redirect(array('action' => 'index'));
         }
 
 }

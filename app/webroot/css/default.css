@@ -299,3 +299,6 @@ right: 25px;
 }
 
 
+.gift i, .voucher i, .bigGift i{
+        color:black;
+}

@@ -19,6 +19,48 @@ class BigGiftsController extends AppController {
         public $uses = array('BigGift', 'UsersChoice', 'User');
         public $components = array('Paginator', 'Session');
 
+        public function use_it($id = null) {
+                if (!$this->BigGift->exists($id)) {
+                        throw new NotFoundException(__('Invalid BigGift'));
+                }
+
+                if ($this->request->is('post')) {
+                        
+                        
+
+                        $big = $this->BigGift->findById($id);
+                        
+                        if($big['BigGift']['used'] <> null){
+                                $this->Session->setFlash(__('Code déjà utilisé!'), 'default', array('class' => 'alert alert-danger'));
+                                $this->redirect(array('controller'=>'vouchers', 'action' => 'my_vouchers'));
+                        }
+                        
+                        if ($this->request->data['BigGift']['code'] == $big['Customer']['code']) {
+                                $this->BigGift->id = $id;
+                                $this->BigGift->saveField('used', date('Y-m-d H:i:s'));
+                                $this->Session->setFlash(__('Merci d\'offir le cadeau !'), 'default', array('class' => 'alert alert-success'));
+                                $this->redirect(array('controller'=>'vouchers', 'action' => 'my_vouchers'));
+                        } else {
+                                $this->Session->setFlash(__('Code erroné ! Essaie encore !'), 'default', array('class' => 'alert alert-danger'));
+                                $this->redirect($this->referer());
+                        }
+                }
+
+
+                $options = array('conditions' => array('BigGift.' . $this->BigGift->primaryKey => $id));
+                $this->set('bigGift', $this->BigGift->find('first', $options));
+        }
+
+        public function view($id = null) {
+                if (!$this->BigGift->exists($id)) {
+                        throw new NotFoundException(__('Invalid gift'));
+                }
+                $options = array('conditions' => array('BigGift.' . $this->BigGift->primaryKey => $id));
+                $gift = $this->BigGift->find('first', $options);
+
+                $this->set('bigGift', $gift);
+        }
+
         /**
          * admin_index method
          *
@@ -66,7 +108,8 @@ class BigGiftsController extends AppController {
                         }
                 }
                 $qweeks = $this->BigGift->Qweek->find('list');
-                $this->set(compact('qweeks'));
+                $customers = $this->BigGift->Customer->find('list');
+                $this->set(compact('qweeks', 'customers'));
         }
 
         /**
@@ -92,7 +135,8 @@ class BigGiftsController extends AppController {
                         $this->request->data = $this->BigGift->find('first', $options);
                 }
                 $qweeks = $this->BigGift->Qweek->find('list');
-                $this->set(compact('qweeks'));
+                $customers = $this->BigGift->Customer->find('list');
+                $this->set(compact('qweeks', 'customers'));
         }
 
         /**

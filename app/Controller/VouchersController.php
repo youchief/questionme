@@ -17,16 +17,16 @@ class VouchersController extends AppController {
          * @var array
          */
         public $components = array('Paginator', 'Session');
-        public $uses = array('Voucher', 'User', 'UserVoucher');
+        public $uses = array('Voucher', 'User', 'UserVoucher', 'Gift', 'BigGift');
 
         public function my_vouchers() {
                 $user = $this->User->findById($this->Auth->user('id'));
-                
-                if(empty($user['Voucher'])){
+
+                if (empty($user['Voucher'])) {
                         $this->Session->setFlash(__('Pas de bon de réduction pour le moment, à toi de jouer!'), 'default', array('class' => 'alert alert-danger'));
                 }
-                
-                $this->set('vouchers', $user['Voucher']);
+
+                $this->set('user', $user);
         }
 
         public function use_it($id = null) {
@@ -50,7 +50,7 @@ class VouchersController extends AppController {
                                         $this->UserVoucher->id = $user_voucher['UserVoucher']['id'];
                                         $this->UserVoucher->saveField('used', date('Y-m-d H:i:s'));
                                         $this->Session->setFlash(__('Merci de faire la promotion !'), 'default', array('class' => 'alert alert-success'));
-                                        $this->redirect(array('action'=>'my_vouchers'));
+                                        $this->redirect(array('action' => 'my_vouchers'));
                                 } else {
                                         $this->Session->setFlash(__('Code erroné ! Essaie encore !'), 'default', array('class' => 'alert alert-danger'));
                                         $this->redirect($this->referer());
@@ -58,7 +58,7 @@ class VouchersController extends AppController {
                         }
                 }
 
-                
+
                 $options = array('conditions' => array('Voucher.' . $this->Voucher->primaryKey => $id));
                 $this->set('voucher', $this->Voucher->find('first', $options));
         }

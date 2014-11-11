@@ -8,6 +8,7 @@
 		echo $this->Form->input('media', array('class'=>'form-control', 'type'=>'file'));
 		echo $this->Form->input('winner_id', array('class'=>'form-control'));
 		echo $this->Form->input('qweek_id', array('class'=>'form-control'));
+                echo $this->Form->input('customer_id', array('class'=>'form-control'));
 	?>
 	</fieldset>
         <hr>

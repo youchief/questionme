@@ -5,6 +5,7 @@
                         <th><?php echo $this->Paginator->sort('id'); ?></th>
                         <th><?php echo $this->Paginator->sort('created'); ?></th>
                         <th><?php echo $this->Paginator->sort('name'); ?></th>
+                        <th><?php echo $this->Paginator->sort('customer_id'); ?></th>
                         <th><?php echo $this->Paginator->sort('qweek_id'); ?></th>
                         <th class="actions"><?php echo __('Actions'); ?></th>
                 </tr>
@@ -13,6 +14,7 @@
                                 <td><?php echo h($bigGift['BigGift']['id']); ?>&nbsp;</td>
                                 <td><?php echo h($bigGift['BigGift']['created']); ?>&nbsp;</td>
                                 <td><?php echo h($bigGift['BigGift']['name']); ?>&nbsp;</td>
+                                <td><?php echo h($bigGift['Customer']['name']); ?>&nbsp;</td>
                                 <td>
                                         <?php echo $this->Html->link($bigGift['Qweek']['full_name'], array('controller' => 'qweeks', 'action' => 'view', $bigGift['Qweek']['id'])); ?>
                                 </td>
