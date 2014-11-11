@@ -74,7 +74,6 @@ function goPlayM(){
         
     //Start Slider    
     $('.carousel').carousel({
-    	pause: "false",
     	interval: 4000
     });
     
@@ -119,8 +118,7 @@ function goPlayD(){
         
     //Start Slider    
     $('.carousel').carousel({
-    	pause: "false",
-    	interval: 4000
+        interval: 4000
     });
     
     //Response Full Slider
@@ -133,6 +131,24 @@ function goPlayD(){
             $(this).parent().css({'background': 'url('+imgSrc+') center center no-repeat', '-webkit-background-size': '100% ', '-moz-background-size': '100%', '-o-background-size': '100%', 'background-size': '100%', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'});
             $(this).remove();
     });    
+    
+    $(function(){
+        var lastScrollTop = 0, delta = 5;
+        $(window).scroll(function(){
+           var st = $(this).scrollTop();
+
+           if(Math.abs(lastScrollTop - st) <= delta)
+              return;
+
+           if (st > lastScrollTop){
+               goInfos();
+           } else {
+              // upascroll code
+              console.log('scroll up');
+           }
+           lastScrollTop = st;
+        });
+    });
     
 }
 
@@ -152,6 +168,7 @@ function goInfos(){
     $('#info-2').hide();
     $('#info-3').hide();
     $('#info-4').hide();
+    
     
     
     
@@ -208,7 +225,6 @@ function rePlay(){
             $('.home-info').hide();
         });
     $('.carousel').carousel({
-    	pause: "false",
     	interval: 4000
     });
 
@@ -317,7 +333,9 @@ $(window).ready(function(){
            caption.css('display','none');
         });
     });
-       
+    
+    
+
 });    
 
 $(window).resize(function(){
