@@ -15,7 +15,7 @@
                             
                         </div>
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 align-center">
-                            <p class="light green">Réponds aux question<br/>et gagne des cadeaux</p>
+                            <p class="light green">Réponds aux questions<br/>et gagne des cadeaux</p>
                         </div>
                     </div>
                 </div>

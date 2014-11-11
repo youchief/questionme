@@ -3,7 +3,9 @@
         <div class='col-sm-6'>
                 <h3><?php echo h($user['User']['username']); ?></h3>
                 <p class="light">
-                        <?php echo h($user['User']['birthday']); ?>
+                        <?php echo $this->Time->format('d-m-y', $user['User']['birthday']); ?>
+                        
+                        <?php echo $this->Time->timeAgoInWords($user['User']['birthday']);?>
                 </p>
                 <p class="light">
                         <?php echo h($user['User']['email']); ?>
