@@ -134,7 +134,7 @@ class GiftsController extends AppController {
 
                 $winner = $this->UsersChoice->User->findById($user_choices[0]['UsersChoice']['user_id']);
 
-                $this->set('winner', $winner);
+                $this->set('user', $winner);
                 $this->set('gift_id', $id);
         }
 

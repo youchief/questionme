@@ -161,6 +161,19 @@ class User extends AppModel {
                 'finderQuery' => '',
                 'counterQuery' => ''
             ),
+            'BigGift' => array(
+                'className' => 'BigGift',
+                'foreignKey' => 'winner_id',
+                'dependent' => false,
+                'conditions' => '',
+                'fields' => '',
+                'order' => '',
+                'limit' => '',
+                'offset' => '',
+                'exclusive' => '',
+                'finderQuery' => '',
+                'counterQuery' => ''
+            ),
         );
 
         /**

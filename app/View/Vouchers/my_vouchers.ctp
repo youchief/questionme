@@ -1,5 +1,26 @@
 <div class='container'>
         <div class='row'>
+                <?php foreach ($gifts as $gift): ?>
+                        <div class='col-sm-4'>
+                                <div class='thumbnail'>
+                                        <?php echo $this->Html->image($gift['image'], array('class' => 'img-responsive')) ?>
+                                        <h3><?php echo $gift['name'] ?></h3>
+                                        <p>
+                                                <?php
+                                                echo $this->Text->truncate($gift['description'], 150, array('ellipsis' => '...', 'exact' => false));
+                                                ?>
+                                        </p>
+                                        <?php if ($gift['used'] == null): ?>
+                                                <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
+                                                <?php echo $this->Html->link(__('Voir'), array('controller' => 'gifts', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
+                                        <?php else: ?>
+                                                <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
+                                                <?php endif; ?>    
+                                </div>
+                        </div>
+                <?php endforeach; ?>
+        </div>
+        <div class='row'>
                 <?php foreach ($vouchers as $voucher): ?>
                         <div class='col-sm-4'>
                                 <div class='thumbnail'>
