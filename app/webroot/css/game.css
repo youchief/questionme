@@ -78,3 +78,6 @@ input[type=checkbox]:checked + label {
 .progress{
        border-radius:0px;
 }
+@media (max-width:767px){
+    img.question_media{width:100%;}
+}

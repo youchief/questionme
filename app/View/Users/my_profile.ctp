@@ -1,7 +1,7 @@
 <div class='container'>
     <div class="row">
         <div class='col-sm-6'>
-                <h3><?php echo h($user['User']['username']); ?></h3>
+                <h3><?php echo h($user['User']['username']); ?></h3><br/>
                 <p class="light">
                         <?php echo $this->Time->format('d-m-y', $user['User']['birthday']); ?>
                         
@@ -13,12 +13,12 @@
                 <p class="light">
                         <?php echo h($user['Region']['name']);?>
                 </p>
-                
+                <br/>
                
-                <div class='btn-group'>
-                         <?php echo $this->Html->link(__('Editer mon compte'), array('controller'=>'users', 'action'=>'edit_my_profile'), array('class'=>'btn btn-default'))?>
-                        <?php echo $this->Html->link(__('Changer mon mot de passe'), array('controller'=>'users', 'action'=>'change_password'), array('class'=>'btn btn-default'))?>
-                </div>
+               
+                         <?php echo $this->Html->link(__('Editer mon compte'), array('controller'=>'users', 'action'=>'edit_my_profile'), array('class'=>'btn btn-success'))?><br/><br/>
+                        <?php echo $this->Html->link(__('Changer mon mot de passe'), array('controller'=>'users', 'action'=>'change_password'), array('class'=>'btn btn-success'))?>
+                <br/><br/>
                        
                 
         </div>
