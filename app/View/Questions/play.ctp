@@ -102,16 +102,13 @@
         </div>
         <br/>
         <div class="row">
-                <div class="col-sm-4  col-sm-offset-4 info-question">
+                <div class="col-sm-6  col-sm-offset-3 info-question">
                         <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $rest * 100 / $qday_total ?>%;">
                                         <?php echo $rest * 100 / $qday_total ?>%
                                 </div>
 
                         </div>
-                </div>
-                <div class="col-sm-1">
-                        <p class="white"><?php echo $rest ?>/<?php echo $qday_total ?></p>
                 </div>
                 <div class="clear"></div>
                 <div class="col-sm-12">            
