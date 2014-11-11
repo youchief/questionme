@@ -107,7 +107,6 @@
                                 <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $rest * 100 / $qday_total ?>%;">
                                         <?php echo $rest * 100 / $qday_total ?>%
                                 </div>
-
                         </div>
                 </div>
                 <div class="clear"></div>

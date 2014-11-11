@@ -133,6 +133,15 @@ class QuestionsController extends AppController {
 
 
                 if ($this->request->is('post')) {
+                        
+                        $already = $this->UsersChoice->find('all', array('conditions'=>array('UsersChoice.user_id'=>$this->Auth->user('id'), 'UsersChoice.question_id'=>$this->request->data['Question']['question'])));
+                        
+                        if(!empty($already)){
+                                $this->Session->setFlash(__('Tu ne peux pas modifier ta réponse !'), 'flash_custom');
+                                $this->redirect('play');
+                        }
+                        
+                        
                         $data = array();
                         if (!empty($this->request->data['Question']['response'])) {
                                 if ($this->request->data['Question']['response_type'] == 'CHECKBOX') {
