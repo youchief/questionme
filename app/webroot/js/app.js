@@ -28,12 +28,14 @@ function elementsResize() {
     
     
     //ASIDE
-    if(windowWidth < 767){
-        $('.home-play-aside').height('50%');
-        $('.home-play-gallery').height('50%');
+    if($(window).width() < 767){
+        $('.home-play-aside').height();
+        $('.home-play-aside').css('top', '50%');
+        $('.home-play-gallery').height($(window).height() / 2);
+        $('.home-play-gallery').css('top', '0px');
     } else {
-        $('.home-play-aside').height(windowHeight);
-        $('.home-play-gallery').height(windowHeight);
+        $('.home-play-aside').height($(window).height());
+        $('.home-play-gallery').height($(window).height());
     }
     
     var play = $('.home-play').is(":visible");
@@ -66,7 +68,8 @@ function goPlayM(){
     //Set Aside
     if(homeWidth < 767){
         $('.home-play-aside').height('50%');
-        $('.home-play-gallery').css({ 'height': '50%'});
+        $('.home-play-gallery').height($(window).height() / 2);
+        $('.home-play-gallery').css('top', '0px');
         $('.nav-brand').show();
     } else {
         $('.home-play-aside').height($(window).height());
@@ -147,20 +150,23 @@ function goPlayD(){
 }
 
 function goInfos(){
-    homeHeight = $('.home-layer').height(); 
+    homeHeight = $(window).height(); 
     $('.home-play').animate({top: - homeHeight}, 500, function() {
         $('.home-play').hide();
         $('.navbar-brand').show();
+        $('.home-info')
+        .show()
+        .animate({top: 0}, 500, function() {$('.home-info').css('left', '0');
+        });
     });
+    
+    
     
     $('#info-1').show();
     $('#info-2').hide();
     $('#info-3').hide();
     $('#info-4').hide();
-    $('.home-info')
-        .show()
-        .animate({top: 0}, 500, function() {
-        });
+    
     
     
 }
@@ -267,7 +273,7 @@ $(window).ready(function(){
     $('.go-play-m').click(function(){goPlayM();});
     $('.go-play-d').click(function(){goPlayD();});
     $('.go-info').click(function(){goInfos();});
-    $('.go-replay').click(function(){rePlay();});
+    $('.home-prince-block').click(function(){goPlayD();});
     
     $('.info-1').click(function(){
        var infoH = $(this).closest( ".info-i" );
