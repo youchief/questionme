@@ -26,14 +26,21 @@ class Question extends AppModel {
             'Uploader.Attachment' => array(
                 'media' => array(
                     'tempDir' => TMP,
-                    'finalPath' => '/questions/medias/',
-                    
+                    'transforms' => array(
+                        'imageSmall' => array(
+                            'class' => 'resize',
+                            'self' => true,
+                            
+                            'height'=>400
+                        ),
+                    ),
+                    'finalPath' => '/img/choices/'
                 )
             ),
             'Uploader.FileValidation' => array(
-                'background' => array(
+                'media' => array(
                     'maxWidth' => 4000,
-                    'minHeight' => 500,
+                    'minHeight' => 680,
                     'extension' => array('gif', 'jpg', 'png', 'jpeg'),
                     'type' => 'image',
                     'mimeType' => array('image/gif', 'image/png', 'image/jpeg'),

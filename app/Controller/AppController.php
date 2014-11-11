@@ -13,7 +13,7 @@ class AppController extends Controller {
             'Auth' => array(
                 'loginRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
                 'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
-                'authError' => 'Tu dois te connecter pour continuer!',
+                'authError' => 'Avant de gagner des cadeaux, connecte-toi ici !',
                 'flashElement'=>'flash_custom',
                 'authenticate' => array(
                     'Form' => array(

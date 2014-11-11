@@ -5,9 +5,9 @@
                         <h1><?php echo $question['Question']['question'] ?></h1>
                         <?php if (!empty($question['Question']['media'])): ?>
 
-                                <div class="row">
-                                        <div class="col-sm-12 ">
-                                                <?php echo $this->Html->image($question['Question']['media'], array('width' => '100%')) ?>
+                                <div class="row text-center">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                                <?php echo $this->Html->image($question['Question']['media'], array('class' => 'question_media')) ?>
 
                                         </div>
                                 </div>

@@ -250,15 +250,15 @@ class UsersController extends AppController {
                                 $Email = new CakeEmail();
                                 $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
                                 $Email->to($user['User']['email']);
-                                $Email->subject('Password recovery');
+                                $Email->subject('Changement de mot de passe QuestionMe');
                                 $Email->viewVars(array('user' => $user['User']['username'], 'password' => $new_password));
                                 $Email->emailFormat('html');
                                 $Email->template('recover');
                                 $Email->send();
-                                $this->Session->setFlash(__('We sent you a new password !'), 'default', array('class' => 'alert alert-success'));
+                                $this->Session->setFlash(__('Nous t\'avons envoyé un nouveau mot de passe !'), 'default', array('class' => 'alert alert-success'));
                                 return $this->redirect(array('action' => 'login'));
                         } else {
-                                $this->Session->setFlash(__('User not found!'), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Pas trouvé :-/'), 'default', array('class' => 'alert alert-danger'));
                         }
                 }
         }

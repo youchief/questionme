@@ -484,7 +484,7 @@ class QuestionsController extends AppController {
                                 $this->Session->setFlash(__('The question has been saved'), 'default', array('class' => 'alert alert-success'));
                                 return $this->redirect(array('action' => 'index'));
                         } else {
-                                $this->Session->setFlash(__('The question could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                                $this->Session->setFlash(__('The question could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
                         }
                 }
                 $questionTypes = $this->Question->QuestionType->find('list');
@@ -509,7 +509,7 @@ class QuestionsController extends AppController {
                                 $this->Session->setFlash(__('The question has been saved'), 'default', array('class' => 'alert alert-success'));
                                 return $this->redirect(array('action' => 'index'));
                         } else {
-                                $this->Session->setFlash(__('The question could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                                $this->Session->setFlash(__('The question could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
                         }
                 } else {
                         $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
@@ -538,7 +538,7 @@ class QuestionsController extends AppController {
                         $this->Session->setFlash(__('Question deleted'), 'default', array('class' => 'alert alert-success'));
                         return $this->redirect(array('action' => 'index'));
                 }
-                $this->Session->setFlash(__('Question was not deleted'), 'default', array('class' => 'alert alert-error'));
+                $this->Session->setFlash(__('Question was not deleted'), 'default', array('class' => 'alert alert-danger'));
                 return $this->redirect(array('action' => 'index'));
         }
 

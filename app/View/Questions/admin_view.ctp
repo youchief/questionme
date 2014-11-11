@@ -88,7 +88,6 @@
                         <tr>
                                 <th><?php echo __('Id'); ?></th>
                                 <th><?php echo __('Response'); ?></th>
-                                <th><?php echo __('Type'); ?></th>
                                 <th><?php echo __('Media'); ?></th>
                                 <th><?php echo __('Media Type'); ?></th>
                                 <th><?php echo __('Question Id'); ?></th>
@@ -101,7 +100,6 @@
                                 <tr>
                                         <td><?php echo $choice['id']; ?></td>
                                         <td><?php echo $choice['response']; ?></td>
-                                        <td><?php echo $choice['type']; ?></td>
                                         <td><?php echo $choice['media']; ?></td>
                                         <td><?php echo $choice['media_type']; ?></td>
                                         <td class="actions">

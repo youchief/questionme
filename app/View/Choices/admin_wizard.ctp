@@ -5,7 +5,7 @@
                 <?php
                 echo $this->Form->input('response', array('class' => 'form-control'));
                 echo $this->Form->input('is_right', array('class' => 'checkbox'));
-                echo $this->Form->input('type', array('class' => 'form-control', 'type' => 'select', 'options' => array('RADIO' => 'RADIO', 'CHECKBOX' => 'CHECKBOX', 'SCALE' => 'SCALE', 'FREE' => 'FREE')));
+                //echo $this->Form->input('type', array('class' => 'form-control', 'type' => 'select', 'options' => array('RADIO' => 'RADIO', 'CHECKBOX' => 'CHECKBOX', 'SCALE' => 'SCALE', 'FREE' => 'FREE')));
                 echo $this->Form->input('media', array('class' => 'form-control', 'type' => 'file'));
                 //echo $this->Form->input('media_type', array('class' => 'form-control'));
                 ?>
