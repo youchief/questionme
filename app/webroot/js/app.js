@@ -197,11 +197,11 @@ function rePlay(){
         $('.home-play-aside').css('top', '50%');
         $('.home-play-gallery').height($(window).height() / 2);
         $('.home-play-gallery').css('top', '0px');
-        $('.nav-brand').show();
+        $('.navbar-brand').show();
     } else {
         $('.home-play-aside').height($(window).height());
         $('.home-play-gallery').height($(window).height());
-        $('.nav-brand').hide();
+        $('.navbar-brand').hide();
     }
     $('.home-play').animate({top: 0}, 500, 
         function() {
@@ -317,7 +317,7 @@ $(window).ready(function(){
            caption.css('display','none');
         });
     });
-    
+       
 });    
 
 $(window).resize(function(){
