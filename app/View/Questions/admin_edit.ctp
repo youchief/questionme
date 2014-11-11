@@ -1,5 +1,5 @@
 <div class="questions form">
-        <?php echo $this->Form->create('Question'); ?>
+        <?php echo $this->Form->create('Question',array('type' => 'file'))?>
         <fieldset>
                 <legend><?php echo __('Admin Edit Question'); ?></legend>
                 <?php

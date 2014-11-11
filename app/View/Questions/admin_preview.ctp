@@ -1,20 +1,22 @@
 <?php echo $this->Html->css('game') ?>
-<?php $this->layout = 'default'; ?>
+<?php $this->layout = 'preview'; ?>
+
 <div class="container">
         <div class="row">
                 <div class="col-sm-12 text-right">
-                        <?php echo $this->Html->link('X Close', array('controller'=>'questions', 'action'=>'view', $question['Question']['id']))?>
+                          <?php echo $this->Html->link('X Close', array('controller'=>'questions', 'action'=>'admin_view', $question['Question']['id']))?>
                        
                 </div>
         </div>
         <div class="row">
                 <div class="col-sm-12">
+                      
                         <h1><?php echo $question['Question']['question'] ?></h1>
                         <?php if (!empty($question['Question']['media'])): ?>
 
-                                <div class="row">
+                                <div class="row text-center">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                                <?php echo $this->Html->image($question['Question']['media'], array('width' => '100%')) ?>
+                                                <?php echo $this->Html->image($question['Question']['media'], array('class' => 'question_media')) ?>
 
                                         </div>
                                 </div>
@@ -45,12 +47,16 @@
                                 <div class='row'>
                                         <?php foreach ($question['Choice'] as $choice): ?>
                                                 <div class='col-sm-3'>
-                                                        <?php if (!empty($choice['media'])): ?>
-                                                                <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive', 'for' => "QuestionResponse" . $choice['id'])); ?>
-                                                        <?php endif; ?>
-                                                        <div class="radio">
+                                                     
+                                                        <div class="radio <?php if (!empty($choice['media'])): ?>limg<?php endif; ?>">
+                                                     
                                                                 <input type="radio" name="data[Question][response]" id="<?php echo "QuestionResponse" . $choice['id'] ?>" class="" required="required" value="<?php echo $choice['id'] ?>">
-                                                                <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><?php echo $choice['response'] ?></label>
+                                                                <label for="<?php echo "QuestionResponse" . $choice['id'] ?>">
+                                                                    <?php if (!empty($choice['media'])): ?>
+                                                                        <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive', 'for' => "QuestionResponse" . $choice['id'])); ?><br/>
+                                                                    <?php endif; ?>
+                                                                    <span class="center-text"><?php echo $choice['response'] ?></span>
+                                                                </label>
                                                         </div>
                                                 </div>
                                         <?php endforeach; ?>
@@ -66,16 +72,15 @@
                                                         <?php if (!empty($choice['media'])): ?>
                                                                 <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive')); ?>
                                                         <?php endif; ?>
-                                                        <input type="checkbox" name="data[Question][response][]" value="<?php echo $choice['id'] ?>" id="<?php echo "QuestionResponse" . $choice['id'] ?>">
-                                                        <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><?php echo $choice['response'] ?></label>
+                                                        <div class="checkbox">
+                                                            <input type="checkbox" name="data[Question][response][]" value="<?php echo $choice['id'] ?>" id="<?php echo "QuestionResponse" . $choice['id'] ?>">
+                                                            <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><span class="center-text"><?php echo $choice['response'] ?></span></label>
+                                                        </div>
                                                 </div>
 
                                         <?php endforeach; ?>
                                 </div>
                         <?php endif; ?>
-
-
-
 
                         <?php if ($question['Question']['response_type'] == 'FREE'): ?>
                                 <?php echo $this->Form->input('response', array('type' => 'hidden', 'value' => $question['Choice'][0]['id'])); ?>

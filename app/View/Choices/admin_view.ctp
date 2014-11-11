@@ -11,11 +11,7 @@
 			<?php echo h($choice['Choice']['response']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Type'); ?></dt>
-		<dd>
-			<?php echo h($choice['Choice']['type']); ?>
-			&nbsp;
-		</dd>
+		
 		<dt><?php echo __('Media'); ?></dt>
 		<dd>
                         <?php if (!empty($choice['Choice']['media'])):?>

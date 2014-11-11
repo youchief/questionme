@@ -24,17 +24,17 @@ class Choice extends AppModel {
                     'tempDir' => TMP,
                     'transforms' => array(
                         'imageSmall' => array(
-                            'class' => 'crop',
+                            'class' => 'resize',
                             'self' => true,
-                            'width' => 600,
+                           
                             'height'=>400
                         ),
                     ),
-                    'finalPath' => '/questions/medias/'
+                    'finalPath' => '/img/choices/'
                 )
             ),
             'Uploader.FileValidation' => array(
-                'background' => array(
+                'media' => array(
                     'maxWidth' => 4000,
                     'minHeight' => 500,
                     'extension' => array('gif', 'jpg', 'png', 'jpeg'),

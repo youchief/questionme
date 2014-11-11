@@ -4,7 +4,6 @@
                 <tr>
                                                         <th><?php echo $this->Paginator->sort('id'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('response'); ?></th>
-                                                        <th><?php echo $this->Paginator->sort('type'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('media'); ?></th>
                                                         <th><?php echo $this->Paginator->sort('question_id'); ?></th>
                                                 <th class="actions"><?php echo __('Actions'); ?></th>
@@ -13,7 +12,6 @@
 	<tr>
 		<td><?php echo h($choice['Choice']['id']); ?>&nbsp;</td>
 		<td><?php echo h($choice['Choice']['response']); ?>&nbsp;</td>
-		<td><?php echo h($choice['Choice']['type']); ?>&nbsp;</td>
 		<td><?php echo h($choice['Choice']['media']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($choice['Question']['question'], array('controller' => 'questions', 'action' => 'view', $choice['Question']['id'])); ?>
