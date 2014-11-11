@@ -120,7 +120,6 @@
                                 <th><?php echo __('Id'); ?></th>
                                 <th><?php echo __('Question Id'); ?></th>
                                 <th><?php echo __('Response'); ?></th>
-                                <th><?php echo __('Type'); ?></th>
 
                                 <th class="actions"><?php echo __('Actions'); ?></th>
                         </tr>
@@ -132,7 +131,6 @@
                                         <td><?php echo $choice['id']; ?></td>
                                         <td><?php echo $choice['Question']['question']; ?></td>
                                         <td><?php echo $choice['response']; ?></td>
-                                        <td><?php echo $choice['type']; ?></td>
                                         <td class="actions">
                                                 <?php echo $this->Html->link(__('View'), array('controller' => 'choices', 'action' => 'view', $choice['id'])); ?>
                                                 <?php echo $this->Html->link(__('Edit'), array('controller' => 'choices', 'action' => 'edit', $choice['id'])); ?>

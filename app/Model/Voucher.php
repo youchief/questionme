@@ -22,10 +22,10 @@ class Voucher extends AppModel {
                     'tempDir' => TMP,
                     'transforms' => array(
                         'imageSmall' => array(
-                            'class' => 'crop',
+                            'class' => 'resize',
                             'self' => true,
                             'width' => 670,
-                            'height'=>500
+                         
                         ),
                     ),
                     'finalPath' => '/img/vouchers/'
