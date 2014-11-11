@@ -1,7 +1,7 @@
 <?php echo $this->Html->css('game') ?>
 <div class="container">
         <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
+                <div class="col-sm-12 text-center">
                         <h1><?php echo $question['Question']['question'] ?></h1>
                         <?php if (!empty($question['Question']['media'])): ?>
 
