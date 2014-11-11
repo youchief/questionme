@@ -10,15 +10,12 @@
                                                 echo $this->Text->truncate($voucher['description'], 150, array('ellipsis' => '...', 'exact' => false));
                                                 ?>
                                         </p>
-                                        
-                                                <?php if ($voucher['UserVoucher']['used'] == null): ?>
-                                                        <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
-                                                        <?php echo $this->Html->link(__('Voir'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
-
-                                                <?php else: ?>
+                                        <?php if ($voucher['UserVoucher']['used'] == null): ?>
+                                                <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
+                                                <?php echo $this->Html->link(__('Voir'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
+                                        <?php else: ?>
                                                 <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
-                                                <?php endif; ?>
-                                        
+                                                <?php endif; ?>    
                                 </div>
                         </div>
                 <?php endforeach; ?>

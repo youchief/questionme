@@ -1,11 +1,10 @@
 <?php $gamers = $this->requestAction(array('controller' => 'users', 'action' => 'get_nb_gamer')) ?>
 <?php $user_played = $this->requestAction(array('controller' => 'questions', 'action' => 'get_nb_user_per_question', $question['Question']['id'])) ?>
 
-
 <div class="row">
         <div class='col-sm-12'>
                 <h1><?php echo $question['Question']['question'] ?></h1>
-                <h3><span class="label label-success"><?php echo ($user_played * 100) / $gamers . "%" ?></span> de participation</h3>
+                <h3><span class="label label-success"><?php echo $this->Number->toPercentage(($user_played * 100) / $gamers) ?></span> de participation</h3>
         </div>
 
 </div>

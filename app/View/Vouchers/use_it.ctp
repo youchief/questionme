@@ -8,9 +8,9 @@
 
                         
                         <?php
-                        echo $this->Form->input('code', array('class' => 'form-control password', 'type'=>'password'));
+                        echo $this->Form->input('code', array('class' => 'form-control password', 'type'=>'password', 'pattern'=>"[0-9]*", 'maxlength'=>"4"));
                         ?>
-
+                        
                         <hr>
                         <?php echo $this->Form->submit(__('Utiliser'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>

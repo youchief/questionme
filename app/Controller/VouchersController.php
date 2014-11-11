@@ -58,7 +58,7 @@ class VouchersController extends AppController {
                         }
                 }
 
-
+                $this->Session->setFlash(__('Pour utiliser le bon, présente ton téléphone au partenaire.'), 'default', array('class' => 'alert alert-info'));
                 $options = array('conditions' => array('Voucher.' . $this->Voucher->primaryKey => $id));
                 $this->set('voucher', $this->Voucher->find('first', $options));
         }

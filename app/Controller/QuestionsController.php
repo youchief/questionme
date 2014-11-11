@@ -599,7 +599,8 @@ class QuestionsController extends AppController {
                         $result['qmobile'] = count($q_mobile);
                         $result['qprofile'] = count($q_profile);
                 }
-
+                
+              
 
 
                 return $result;
@@ -622,10 +623,13 @@ class QuestionsController extends AppController {
                 $user_played = $this->UsersChoice->find('count', array(
                     'conditions' => array(
                         'UsersChoice.question_id' => $question_id,
+                        'UsersChoice.user_id <>' => 1,
                     ),
                     'fields' => array('DISTINCT UsersChoice.user_id'),
                         )
                 );
+                
+                
 
                 return $user_played;
         }

@@ -12,7 +12,7 @@
                 <p>
                         <?php echo h($voucher['Voucher']['description']); ?>
                 </p>
-                <h4><?php echo __('Validity'); ?></h4>
+                <h4><?php echo __('Validité'); ?></h4>
                 <p><?php echo h($voucher['Voucher']['validity']); ?></p>
                 <h4><?php echo __('Conditions'); ?></h4>
                 <p>

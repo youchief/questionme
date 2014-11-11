@@ -66,8 +66,7 @@
         <?php
         echo $this->Html->script(array(
             'vendor/jquery/jquery.min',
-            'vendor/twitter/bootstrap.min',
-            'app'
+            'vendor/twitter/bootstrap.min'
         ));
         ?>
          
