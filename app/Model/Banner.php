@@ -22,10 +22,10 @@ class Banner extends AppModel {
                     'tempDir' => TMP,
                     'transforms' => array(
                         'imageSmall' => array(
-                            'class' => 'crop',
+                            'class' => 'resize',
                             'self' => true,
-                            'width' => 1280,
-                            'height'=>720
+                            
+                            'height'=>960
                         ),
                     ),
                     'finalPath' => '/img/banners/'

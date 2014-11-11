@@ -52,7 +52,7 @@ class VouchersController extends AppController {
                                         $this->Session->setFlash(__('Merci de faire la promotion !'), 'default', array('class' => 'alert alert-success'));
                                         $this->redirect(array('action'=>'my_vouchers'));
                                 } else {
-                                        $this->Session->setFlash(__('Invalid Code'), 'default', array('class' => 'alert alert-danger'));
+                                        $this->Session->setFlash(__('Code erroné ! Essaie encore !'), 'default', array('class' => 'alert alert-danger'));
                                         $this->redirect($this->referer());
                                 }
                         }

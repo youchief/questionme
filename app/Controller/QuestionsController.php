@@ -168,9 +168,9 @@ class QuestionsController extends AppController {
                                         } else {
                                                 if (!empty($this->request->data['Question']['right_choice_id'])) {
                                                         if ($this->request->data['Question']['right_choice_id'] == $this->request->data['Question']['response']) {
-                                                                $this->Session->setFlash(__('Bravo ! La bonne reponse était') . " " . $this->request->data['Question']['right_choice_value'], 'default', array('class' => 'alert alert-success'));
+                                                                $this->Session->setFlash(__('Bravo ! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'default', array('class' => 'alert alert-success'));
                                                         } else {
-                                                                $this->Session->setFlash(__('Zut! La bonne reponse était') . " " . $this->request->data['Question']['right_choice_value'], 'default', array('class' => 'alert alert-danger'));
+                                                                $this->Session->setFlash(__('Zut! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'default', array('class' => 'alert alert-danger'));
                                                         }
                                                 }
 
@@ -388,7 +388,7 @@ class QuestionsController extends AppController {
                             'voucher_id' => $day_voucher['Voucher']['id']
                         ));
                         $this->UserVoucher->save();
-                        $this->Session->setFlash(__('Vous avez obtenu: ') . $day_voucher['Voucher']['name'], 'default', array('class' => 'alert alert-warning'));
+                        $this->Session->setFlash('Nickel ! Tu as gagné '.$day_voucher['Voucher']['name']. ". RDV Demain 8h pour savoir si tu as gagné le cadeau d'aujourd'hui !" , 'default', array('class' => 'alert alert-success'));
                         $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                 }
         }

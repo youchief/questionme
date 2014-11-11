@@ -26,7 +26,8 @@ class Question extends AppModel {
             'Uploader.Attachment' => array(
                 'media' => array(
                     'tempDir' => TMP,
-                    'finalPath' => '/questions/medias/'
+                    'finalPath' => '/questions/medias/',
+                    
                 )
             ),
             'Uploader.FileValidation' => array(
