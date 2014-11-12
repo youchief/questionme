@@ -133,7 +133,7 @@ function goPlayD(){
     });    
     
     $(function(){
-        var lastScrollTop = 0, delta = 5;
+        var lastScrollTop = 0, delta = 10;
         $(window).scroll(function(){
            var st = $(this).scrollTop();
 
