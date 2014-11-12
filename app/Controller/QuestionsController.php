@@ -111,8 +111,8 @@ class QuestionsController extends AppController {
                  * if no more question today -> redirect to home 
                  */
                 if (empty($user_questions)) {
-                        $this->Session->setFlash(__('Tu as répondu à toutes les questions aujourd\'hui!'), 'message_info');
-                        $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
+                        $this->Session->setFlash(__('Tu as répondu à toutes les questions! Reviens demain pour voir si tu as gagné et recommencer à jouer :)'), 'message_info');
+                        $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                 }
 
 

@@ -19,7 +19,7 @@
                                 <td><?php echo h($question['Question']['id']); ?>&nbsp;</td>
                                 <td><?php echo h($question['Question']['question']); ?>&nbsp;</td>
                                 <td><?php echo h($question['Question']['profile']); ?>&nbsp;</td>
-                                <td><?php echo h($question['Question']['date']); ?>&nbsp;</td>
+                                <td><?php echo $this->Time->format('d/m/y', $question['Question']['date']); ?>&nbsp;</td>
                                 <td><?php echo h($question['Question']['active']); ?>&nbsp;</td>
                                 <td>
                                         <?php echo $this->Html->link($question['QuestionType']['name'], array('controller' => 'question_types', 'action' => 'view', $question['QuestionType']['id'])); ?>

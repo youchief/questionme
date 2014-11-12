@@ -11,7 +11,7 @@ class AppController extends Controller {
             'DebugKit.Toolbar',
             'Session',
             'Auth' => array(
-                'loginRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
+                'loginRedirect' => array('controller' => 'questions', 'action' => 'play', 'admin' => false),
                 'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
                 'authError' => 'Avant de gagner des cadeaux, connecte-toi ici !',
                 'loginError' => 'Mot de passe ou pseudo incorrect !',
@@ -29,8 +29,6 @@ class AppController extends Controller {
 
         public function beforeFilter() {
                 
-                  $this->Auth->loginError = __('ewrfwerf');
-
                 
                 $this->Auth->allow('login', 'display', 'sendmail', 'register', 'gethome', 'recover', 'contact', 'verify');
 
