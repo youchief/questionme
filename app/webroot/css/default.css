@@ -292,6 +292,7 @@ right: 25px;
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
 border-color: transparent;
 }
+.navbar-brand{background: #44494f;}
 
 @media (max-width: 767px) { 
         .navbar{position:relative;background: #44494f;}
