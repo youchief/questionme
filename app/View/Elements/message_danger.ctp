@@ -5,10 +5,11 @@
                                 <?php echo $this->Html->image('dangerman.png', array('class' => 'img-responsive')) ?>
                         </div>
                         <div class='col-sm-10 custom_message_text'>
-                               
+                            <span class="custom_message_text_c">              
                                 <p>
                                         <?php echo h($message); ?>
                                 </p>
+                            </span>
                         </div>
                 </div>
         </div>

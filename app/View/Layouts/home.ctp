@@ -28,7 +28,7 @@
                 
                 <div class="content-wrap">
                     <?php echo $this->element($header) ?>
-                        <div class="container">
+                        <div class="container alert-container">
                                 <?php
                                 echo $this->Session->flash();
                                 echo $this->Session->flash('auth');

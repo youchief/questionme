@@ -129,6 +129,13 @@ background-image:none;
 }
 
 
+.custom_message{
+        position:absolute;
+        z-index:20;
+        
+}
+
+
 
 @media (max-width: 767px) { 
     

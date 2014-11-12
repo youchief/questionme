@@ -7,9 +7,9 @@
                         </div>
                         <div class='col-sm-10 custom_message_text'>
                                
-                                <p>
-                                        <?php echo h($message); ?>
-                                </p>
+                            <div class="custom_message_text_c">    
+                                <p><?php echo h($message); ?></p>
+                            </div>
                         </div>
                 </div>
         </div>
