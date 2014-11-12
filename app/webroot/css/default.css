@@ -371,3 +371,13 @@ right: 25px;
     /* custom max width */
     max-width:320px;
 }
+
+
+.about h1, .about h2{
+        margin-bottom: 1em;
+        margin-top: 1em;
+}
+
+.people{
+        margin-bottom: 2em;
+}
