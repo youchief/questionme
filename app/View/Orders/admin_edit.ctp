@@ -8,6 +8,7 @@
                 echo $this->Form->input('name', array('class'=>'form-control'));
 		echo $this->Form->input('repondants', array('class'=>'form-control'));
 		echo $this->Form->input('nb_questions', array('class'=>'form-control'));
+                echo $this->Form->input('deadline', array('class'=>'form-control'));
 		echo $this->Form->input('customer_id', array('class'=>'form-control'));
 		echo $this->Form->input('order_type_id', array('class'=>'form-control'));
 	?>

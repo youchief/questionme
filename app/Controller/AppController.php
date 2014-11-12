@@ -14,7 +14,8 @@ class AppController extends Controller {
                 'loginRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
                 'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
                 'authError' => 'Avant de gagner des cadeaux, connecte-toi ici !',
-                'flashElement'=>'flash_custom',
+                'loginError' => 'Mot de passe ou pseudo incorrect !',
+              
                 'authenticate' => array(
                     'Form' => array(
                         'passwordHasher' => 'Blowfish',
@@ -28,7 +29,8 @@ class AppController extends Controller {
 
         public function beforeFilter() {
                 
-                
+                  $this->Auth->loginError = __('ewrfwerf');
+
                 
                 $this->Auth->allow('login', 'display', 'sendmail', 'register', 'gethome', 'recover', 'contact');
 

@@ -1,76 +1,84 @@
-<div class="container">
+<div class="container about text-center">
         <div class="row">
                 <div class="col-sm-12">
                         <h1>A propos</h1>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-12 text-center">
                         <h2>L'équipe QuestionMe</h2>
-                        <div class="row">
-                                <div class="col-sm-3">
-                                        <div class="people">
-                                                <?php echo $this->Html->image('antoine.png', array('class' => 'img-responsive img-circle')) ?>
-                                                <div class="caption">
-                                                        <h3>Antoine</h3>
-                                                        <h4>Co-fondateur</h4>
-                                                        <p>
-                                                                Irresponsable Design & Partenaire
-                                                        </p>
-                                                        <p>
-                                                                1.715M
-                                                        </p>
-                                                        <p>
-                                                                Ne grandit plus depuis ses 12 ans.
-                                                        </p>
-                                                        <p>
-                                                                Essaie chaque année de laisser pousser la moustache.
-                                                        </p>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4 col-sm-offset-2">
+                        <div class="people">
+                                <?php echo $this->Html->image('antoine.png', array('class' => 'img-responsive img-circle')) ?>
+                                <div class="caption">
+                                        <h3>Antoine</h3>
+                                        <h4>Co-fondateur</h4>
+                                        <p>
+                                                Irresponsable Design & Partenaire
+                                        </p>
+                                        <p>
+                                                1.715M
+                                        </p>
+                                        <p>
+                                                Ne grandit plus depuis ses 12 ans.
+                                        </p>
+                                        <p>
+                                                Essaie chaque année de laisser pousser la moustache.
+                                        </p>
 
 
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="col-sm-3">
-                                        <div class="people">
-                                                <?php echo $this->Html->image('ben.png', array('class' => 'img-responsive img-circle')) ?>
-                                                <div class="caption">
-                                                        <h3>Ben</h3>
-                                                        <h4>Co-fondateur</h4>
-                                                        <p>Irresponsable Questions Culture Générales & Partenaires</p>
-
-                                                        <p>Boit 1.7 litres de lait par jour</p>
-
-                                                        <p>Aime les livres et les mots compliqués.</p>
-
-
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="col-sm-3">
-                                        <div class="people">
-                                                <?php echo $this->Html->image('joseph.png', array('class' => 'img-responsive img-circle')) ?>
-                                                <div class="caption">
-                                                        <h3>Joseph</h3>
-                                                        <h4>Co-fondateur</h4>
-                                                        <p>
-                                                                Irresponsable Questions actus, opinion.
-                                                        </p>
-                                                </div>
-                                        </div>
-                                </div>
-                                <div class="col-sm-3">
-                                        <div class="people">
-                                                <?php echo $this->Html->image('vincent.png', array('class' => 'img-responsive img-circle')) ?>
-                                                <div class="caption">
-                                                        <h3>Vincent</h3>
-                                                        <p>
-                                                                Irresponsable questions Humour & Partenaires
-                                                        </p>
-                                                        <p>
-                                                                Rigole. Toujours. Parfois pour rien
-                                                        </p>
-                                                </div>
-                                        </div>
                                 </div>
                         </div>
+                </div>
+                <div class="col-sm-4">
+                        <div class="people">
+                                <?php echo $this->Html->image('ben.png', array('class' => 'img-responsive img-circle')) ?>
+                                <div class="caption">
+                                        <h3>Ben</h3>
+                                        <h4>Co-fondateur</h4>
+                                        <p>Irresponsable Questions Culture Générales & Partenaires</p>
 
+                                        <p>Boit 1.7 litres de lait par jour</p>
+
+                                        <p>Aime les livres et les mots compliqués.</p>
+
+
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class='row'>
+                <div class="col-sm-4 col-sm-offset-2">                                       
+                        <div class="people">
+                                <?php echo $this->Html->image('joseph.png', array('class' => 'img-responsive img-circle')) ?>
+                                <div class="caption">
+                                        <h3>Joseph</h3>
+                                        <h4>Co-fondateur</h4>
+                                        <p>
+                                                Irresponsable Questions actus, opinion.
+                                        </p>
+                                </div>
+                        </div>
+                </div>
+                <div class="col-sm-4">                                        <div class="people">
+                                <?php echo $this->Html->image('vincent.png', array('class' => 'img-responsive img-circle')) ?>
+                                <div class="caption">
+                                        <h3>Vincent</h3>
+                                        <p>
+                                                Irresponsable questions Humour & Partenaires
+                                        </p>
+                                        <p>
+                                                Rigole. Toujours. Parfois pour rien
+                                        </p>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class='row'>
+                <div class='col-sm-8 col-sm-offset-2'>
                         <h2>Notre histoire</h2>
                         <h3>Septembre 2013 – Première idée</h3>
 

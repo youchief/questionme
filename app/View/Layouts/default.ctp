@@ -31,7 +31,7 @@
                         <div class="container">
                                 <?php
                                 echo $this->Session->flash();
-                                echo $this->Session->flash('auth');
+                                echo $this->Session->flash('default', 'auth', array());
                                 ?>
                         </div>
                         <?php

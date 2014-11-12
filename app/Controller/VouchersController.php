@@ -39,7 +39,7 @@ class VouchersController extends AppController {
                         )
                 );
                 
-                if(empty($user['Gift'] && $user['BigGift']&&$user['Voucher'])){
+                if(empty($user[0]['Gift']) && empty($user[0]['BigGift']) && empty($user[0]['Voucher'])){
                         $this->Session->setFlash(__('Tu n\'as encore rien gagné, alors commence à jouer dès maintenant !'), 'message_info');
                 }
 
@@ -66,6 +66,19 @@ class VouchersController extends AppController {
                                 if ($this->request->data['Voucher']['code'] == $customer_voucher['Customer']['code']) {
                                         $this->UserVoucher->id = $user_voucher['UserVoucher']['id'];
                                         $this->UserVoucher->saveField('used', date('Y-m-d H:i:s'));
+                                        
+                                        /*
+                                         * création de valuer de profile lors de l'utilistion du bon 
+                                        $this->User->Profile->create();
+                                        $data = array();
+                                        $data['user_id'] = $this->Auth->user('id');
+                                        $data['key'] = 'Bon machin utilisé';
+                                        $data['value'] = 'Oui';
+                                        $this->User->Profile->save($data);
+                                         * 
+                                         */
+                                        
+                                        
                                         $this->Session->setFlash(__('Merci de faire la promotion !'), 'default', array('class' => 'alert alert-success'));
                                         $this->redirect(array('action' => 'my_vouchers'));
                                 } else {

@@ -11,9 +11,6 @@
                                 echo $this->Form->input('gender', array('class' => 'form-control', 'label' => 'H/F', 'type' => 'select', 'empty' => true, 'options' => array('male' => 'Homme', 'female' => 'Femme')));
                                 echo $this->Form->input('email', array('class' => 'form-control'));
                                 echo $this->Form->input('region_id', array('class' => 'form-control', 'label' => 'Région'));
-                                echo "<br>";
-                                echo $this->Html->link('Conditions générales', array('controller' => 'pages', 'action' => 'display', 'terms_and_conditions'), array('target'=>'_blank'));
-                                echo $this->Form->input('tandc', array('type' => 'checkbox', 'class' => 'checkbox required', 'label' => 'J\'accepte les conditions générales', 'required' => true));
                                 echo $this->Form->input('newsletter', array('type' => 'checkbox', 'class' => 'checkbox', 'label' => 'Je m\'inscris à la Newsletter', 'default' => true));
                                 ?>
                         </fieldset>

@@ -23,29 +23,26 @@ class UsersController extends AppController {
 
         public function register() {
                 if ($this->request->is('post')) {
-                        if ($this->request->data['User']['tandc']) {
-                                $this->User->create();
-                                //group gamer
-                                $this->request->data['User']['group_id'] = 2;
 
-                                if ($this->User->save($this->request->data)) {
-                                        $this->Session->setFlash(__('Barvo ! Connectez-vous et commencer à jouer dès maintenant!'), 'default', array('class' => 'alert alert-success'));
+                        $this->User->create();
+                        //group gamer
+                        $this->request->data['User']['group_id'] = 2;
 
-                                        $Email = new CakeEmail();
-                                        $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
-                                        $Email->to($this->request->data['User']['email']);
-                                        $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
-                                        $Email->viewVars(array('user' => $this->request->data['User']['username']));
-                                        $Email->emailFormat('html');
-                                        $Email->template('welcome');
-                                        $Email->send();
+                        if ($this->User->save($this->request->data)) {
+                                $this->Session->setFlash(__('Barvo ! Connectez-vous et commencer à jouer dès maintenant!'), 'message_success');
 
-                                        return $this->redirect(array('action' => 'login'));
-                                } else {
-                                        $this->Session->setFlash(__('Petit problème :-/'), 'default', array('class' => 'alert alert-danger'));
-                                }
+                                $Email = new CakeEmail();
+                                $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
+                                $Email->to($this->request->data['User']['email']);
+                                $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
+                                $Email->viewVars(array('user' => $this->request->data['User']['username']));
+                                $Email->emailFormat('html');
+                                $Email->template('welcome');
+                                $Email->send();
+
+                                return $this->redirect(array('action' => 'login'));
                         } else {
-                                $this->Session->setFlash(__('Tu dois accépter les conditions générales!'), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Petit problème :-/'), 'message_danger');
                         }
                 }
                 $regions = $this->User->Region->find('list');
@@ -74,13 +71,12 @@ class UsersController extends AppController {
 
                                 return $this->redirect($this->Auth->redirect());
                         } else {
-                                $this->Session->setFlash(__("Invalid username and/or password"), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__("Pseudo ou mot de passe invalide"), 'message_danger');
                         }
                 }
-                 $regions = $this->User->Region->find('list');
+                $regions = $this->User->Region->find('list');
                 $this->set(compact('regions'));
                 $this->render('connexion');
-                
         }
 
         public function logout() {

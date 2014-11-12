@@ -21,6 +21,11 @@
                         <?php echo h($order['Order']['active']); ?>
                         &nbsp;
                 </dd>
+                <dt><?php echo __('Deadline'); ?></dt>
+                <dd>
+                        <?php echo h($order['Order']['deadline']); ?>
+                        &nbsp;
+                </dd>
                 <dt><?php echo __('Repondants'); ?></dt>
                 <dd>
                         <?php echo h($order['Order']['repondants']); ?>

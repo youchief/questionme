@@ -118,7 +118,7 @@ class Question extends AppModel {
                 'foreignKey' => 'order_id',
                 'conditions' => '',
                 'fields' => '',
-                'order' => ''
+                'order' => 'Order.deadline DESC'
             )
         );
 
