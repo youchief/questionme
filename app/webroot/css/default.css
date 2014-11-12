@@ -223,9 +223,11 @@ right: 25px;
 
 
 .customer_voucher{
-        background: #282828;
+        font-family: 'Ubuntu', sans-serif;
+        text-transform: uppercase;
+        background: #14e985;
         padding: 0.6em;
-        color: #fdfdfd;
+        color: #44494f;
         font-size: 18px;
         font-weight: 100;
         letter-spacing: 1px;
