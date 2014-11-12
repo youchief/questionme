@@ -67,12 +67,12 @@ label:before {
 
 input[type=radio]:checked + label {  
        background-color:#14e985;  
-       color:#fdfdfd;
+       color:#44494f;
 }  
 
 input[type=checkbox]:checked + label {  
         background-color:#14e985;  
-       color:#fdfdfd; 
+       color:#44494f; 
 }  
 
 .progress{

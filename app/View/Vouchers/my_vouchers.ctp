@@ -1,6 +1,6 @@
 <div class='container'>
         <div class='row'>
-                <?php foreach ($user['BigGift'] as $bgift): ?>
+                <?php $i = 0; foreach ($user['BigGift'] as $bgift): $i++; ?>
                         <?php if ($bgift['used'] == null): ?>
                                 <div class='col-sm-4'>
                                         <div class='thumbnail bigGift'>
@@ -20,11 +20,14 @@
                                                 <?php endif; ?>    
                                         </div>
                                 </div>
+                                <?php if($i%3 == 0): ?>
+                                    <div class="clear"></div>
+                                <?php endif;?>
                         <?php endif; ?>
                 <?php endforeach; ?>
         </div>
         <div class='row'>
-                <?php foreach ($user['Gift'] as $gift): ?>
+                <?php $i = 0; foreach ($user['Gift'] as $gift): $i++; ?>
                         <?php if ($gift['used'] == null): ?>
                                 <div class='col-sm-4'>
                                         <div class='thumbnail gift'>
@@ -44,11 +47,14 @@
                                                 <?php endif; ?>    
                                         </div>
                                 </div>
+                                <?php if($i%3 == 0): ?>
+                                    <div class="clear"></div>
+                                <?php endif;?>
                         <?php endif; ?>
                 <?php endforeach; ?>
         </div>
         <div class='row'>
-                <?php foreach ($user['Voucher'] as $voucher): ?>
+                <?php $i = 0;foreach ($user['Voucher'] as $voucher):$i++ ?>
                         <?php if ($voucher['UserVoucher']['used'] == null): ?>
                                 <div class='col-sm-4'>
                                         <div class='thumbnail voucher'>
@@ -68,6 +74,9 @@
                                                         <?php endif; ?>    
                                         </div>
                                 </div>
+                                <?php if($i%3 == 0): ?>
+                                    <div class="clear"></div>
+                                <?php endif;?>
                         <?php endif; ?>
                 <?php endforeach; ?>
         </div>

@@ -40,7 +40,9 @@
                     <div class="push"></div>
                      
                 </div>
-                <?php echo $this->element('footer'); ?>
+                <?php if($this->params['action'] != 'play'): ?>
+                    <?php echo $this->element('footer'); ?>
+                <?php endif; ?>
                 
                 <?php
                 echo $this->Html->script(array(
