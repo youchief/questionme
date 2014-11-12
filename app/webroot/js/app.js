@@ -418,6 +418,7 @@ $(window).ready(function () {
     var heightImg = alertCont.find('.col-sm-2').height();
 
     alertText.height(heightImg);
+    
 
 
 
