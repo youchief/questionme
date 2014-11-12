@@ -32,7 +32,7 @@ class AppController extends Controller {
                   $this->Auth->loginError = __('ewrfwerf');
 
                 
-                $this->Auth->allow('login', 'display', 'sendmail', 'register', 'gethome', 'recover', 'contact');
+                $this->Auth->allow('login', 'display', 'sendmail', 'register', 'gethome', 'recover', 'contact', 'verify');
 
                 if (isset($this->request->params['admin']) && $this->request->params['admin'] == true) {
                         $this->layout = 'backoffice';

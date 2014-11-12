@@ -11,8 +11,12 @@
                                                         <br>
                                                         Tu peux dès maintenant répondre aux questions et gagner des cadeaux ou des bons de reduction de folie ! 
                                                         <br>
-
-
+                                                        Pour finaliser ton inscription tu dois cliquer sur le lien suivant : 
+                                                        <br>
+                                                        <br>
+                                                        <?php echo $link?>
+                                                        <br>
+                                                        <br>
                                                         On te souhaite la bienvenue et on espère que tu vas t’éclater ;-) ! 
                                                         <br>
                                                         <br>

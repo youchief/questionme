@@ -27,15 +27,18 @@ class UsersController extends AppController {
                         $this->User->create();
                         //group gamer
                         $this->request->data['User']['group_id'] = 2;
-
+                        $this->request->data['User']['token'] = sha1($this->data['User']['username'] . rand(0, 100));
+                        
                         if ($this->User->save($this->request->data)) {
-                                $this->Session->setFlash(__('Barvo ! Connectez-vous et commencer à jouer dès maintenant!'), 'message_success');
+                                $this->Session->setFlash(__('Bravo ! Nous t\'avons envoyé un e-mail pour finaliser ton inscription. Encore un petit effort !'), 'message_success');
 
                                 $Email = new CakeEmail();
                                 $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
                                 $Email->to($this->request->data['User']['email']);
                                 $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
-                                $Email->viewVars(array('user' => $this->request->data['User']['username']));
+                                $Email->viewVars(array(
+                                    'user' => $this->request->data['User']['username'],
+                                    'link' => FULL_BASE_URL . '/users/verify/t:' . $this->request->data['User']['token'] . '/n:' . $this->data['User']['username']));
                                 $Email->emailFormat('html');
                                 $Email->template('welcome');
                                 $Email->send();
@@ -44,6 +47,7 @@ class UsersController extends AppController {
                         } else {
                                 $this->Session->setFlash(__('Petit problème :-/'), 'message_danger');
                         }
+                         
                 }
                 $regions = $this->User->Region->find('list');
                 $this->set(compact('regions'));
@@ -53,23 +57,30 @@ class UsersController extends AppController {
 
 
                 if ($this->request->is('post')) {
+
                         if ($this->Auth->login()) {
-                                $user = $this->Auth->user();
+                                if ($this->Auth->user('active') == 0) {
+                                        $this->Session->setFlash(__("Profil pas encore activé !"), 'message_danger');
+                                        return $this->redirect($this->Auth->logout());
+                                        
+                                } else if ($this->Auth->user('active') == 1) {
+                                        $user = $this->Auth->user();
 
-                                $group_actions = $this->User->Group->find('first', array(
-                                    'conditions' => array('Group.id' => $user['group_id']),
-                                        )
-                                );
+                                        $group_actions = $this->User->Group->find('first', array(
+                                            'conditions' => array('Group.id' => $user['group_id']),
+                                                )
+                                        );
 
-                                $actions = array();
-                                foreach ($group_actions['Action'] as $action) {
+                                        $actions = array();
+                                        foreach ($group_actions['Action'] as $action) {
 
-                                        $actions[] = $action['app_action'];
+                                                $actions[] = $action['app_action'];
+                                        }
+
+                                        $this->Session->write('actions', $actions);
+
+                                        return $this->redirect($this->Auth->redirect());
                                 }
-
-                                $this->Session->write('actions', $actions);
-
-                                return $this->redirect($this->Auth->redirect());
                         } else {
                                 $this->Session->setFlash(__("Pseudo ou mot de passe invalide"), 'message_danger');
                         }
@@ -77,6 +88,31 @@ class UsersController extends AppController {
                 $regions = $this->User->Region->find('list');
                 $this->set(compact('regions'));
                 $this->render('connexion');
+        }
+
+        public function verify() {
+                //check if the token is valid
+                if (!empty($this->passedArgs['n']) && !empty($this->passedArgs['t'])) {
+                        $name = $this->passedArgs['n'];
+                        $tokenhash = $this->passedArgs['t'];
+                        $results = $this->User->findByUsername($name);
+                        if ($results['User']['active'] == 0) {
+                                //check the token
+                                if ($results['User']['token'] == $tokenhash) {
+                                        $this->User->id = $results['User']['id'];
+                                        //Save the data
+                                        $this->User->saveField('active', 1);
+                                        $this->Session->setFlash('Félicitations tu fais partie des nôtres ! Connecte-toi et commence à jouer !', 'message_success');
+                                        $this->redirect('login');
+                                } else {
+                                        $this->Session->setFlash('Echec de l\'acitivation', 'message_danger');
+                                        $this->redirect('register');
+                                }
+                        } else {
+                                $this->Session->setFlash('Utilisteur déjà actif!', 'message_info');
+                                $this->redirect('login');
+                        }
+                }
         }
 
         public function logout() {
