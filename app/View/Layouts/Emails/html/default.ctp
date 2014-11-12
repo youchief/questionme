@@ -111,7 +111,7 @@
 
 
                                                                 <div style="font-weight: bold; font-size: 18px; line-height: 24px; color: #D03C0F;">
-                                                                        <?php echo $this->Html->link($this->Html->image('logo.png', array('class' => 'img-responsive', 'width' => '180px', 'fullBase' => true)), array('controller' => 'pages', 'action' => 'display', 'home', 'full_base' => true), array('class' => 'navbar-brand', 'escape' => false)); ?>
+                                                                        <?php echo $this->Html->link($this->Html->image('logo-m.png', array('class' => 'img-responsive', 'width' => '180px', 'fullBase' => true)), array('controller' => 'pages', 'action' => 'display', 'home', 'full_base' => true), array('class' => 'navbar-brand', 'escape' => false)); ?>
 
                                                                 </div>
                                                                 <br>
