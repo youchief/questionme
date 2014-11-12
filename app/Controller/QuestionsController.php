@@ -172,9 +172,9 @@ class QuestionsController extends AppController {
                                         } else {
                                                 if (!empty($this->request->data['Question']['right_choice_id'])) {
                                                         if ($this->request->data['Question']['right_choice_id'] == $this->request->data['Question']['response']) {
-                                                                $this->Session->setFlash(__('Bravo ! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'message_success');
+                                                                $this->Session->setFlash(__('Bravo! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'message_success');
                                                         } else {
-                                                                $this->Session->setFlash(__('Zut! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'message_danger');
+                                                                $this->Session->setFlash(__('Flûte! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'message_danger');
                                                         }
                                                 }
 

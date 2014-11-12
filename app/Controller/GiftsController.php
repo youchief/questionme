@@ -37,7 +37,7 @@ class GiftsController extends AppController {
                         if ($this->request->data['Gift']['code'] == $big['Customer']['code']) {
                                 $this->Gift->id = $id;
                                 $this->Gift->saveField('used', date('Y-m-d H:i:s'));
-                                $this->Session->setFlash(__('Merci d\'offir le cadeau !'), 'default', array('class' => 'alert alert-success'));
+                                $this->Session->setFlash(__('Merci d\'offir le cadeau !'), 'message_success');
                                 $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                         } else {
                                 $this->Session->setFlash(__('Code erroné ! Essaie encore !'), 'default', array('class' => 'alert alert-danger'));

@@ -59,7 +59,7 @@ class VouchersController extends AppController {
                         )));
 
                         if (empty($user_voucher)) {
-                                $this->Session->setFlash(__('Invalid Voucher'), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Bon invalide'), 'default', array('class' => 'alert alert-danger'));
                                 $this->redirect($this->referer());
                         } else {
                                 $customer_voucher = $this->Voucher->Customer->findById($user_voucher['Voucher']['customer_id']);
@@ -79,7 +79,7 @@ class VouchersController extends AppController {
                                          */
                                         
                                         
-                                        $this->Session->setFlash(__('Merci de faire la promotion !'), 'default', array('class' => 'alert alert-success'));
+                                        $this->Session->setFlash(__('Merci de faire la promotion !'), 'message_success');
                                         $this->redirect(array('action' => 'my_vouchers'));
                                 } else {
                                         $this->Session->setFlash(__('Code erroné ! Essaie encore !'), 'default', array('class' => 'alert alert-danger'));
