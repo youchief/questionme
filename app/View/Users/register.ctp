@@ -1,8 +1,7 @@
 <div class='container'>
         <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
+                <div class="col-sm-6">
                         <h1>S'inscrire</h1>
-                        <hr>
                         <?php echo $this->Form->create('User'); ?>
                         <fieldset>
                                 <?php
@@ -21,6 +20,9 @@
                         <br>
                         <?php echo $this->Form->submit(__('GO !'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
+                </div>
+                <div class='col-sm-6'>
+                        <?php echo $this->Html->image('pikman.png', array('class'=>'img-responsive'))?>
                 </div>
         </div>
 </div>

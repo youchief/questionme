@@ -1,6 +1,8 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
+
 
 /**
  * Gifts Controller
@@ -187,7 +189,7 @@ class GiftsController extends AppController {
                 $Email = new CakeEmail();
                 $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
                 $Email->to($user['User']['email']);
-                $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
+                $Email->subject('T\'es un winner !');
                 $Email->viewVars(array('user' => $user['User']['username'], 'gift'=>$gift['Gift']['name'], 'link'=>'http://www.questionme.ch/vouchers/my_vouchers'));
                 $Email->emailFormat('html');
                 $Email->template('winner');

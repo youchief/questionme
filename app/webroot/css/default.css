@@ -302,3 +302,18 @@ right: 25px;
 .gift i, .voucher i, .bigGift i{
         color:black;
 }
+
+.custom_message{
+        background-color: #363b40;
+        border-radius: 0;
+}
+
+.custom_message img{
+        
+}
+
+.custom_message_text p{
+        font-size: 2em;
+         display: inline-block;
+         vertical-align:middle;
+}

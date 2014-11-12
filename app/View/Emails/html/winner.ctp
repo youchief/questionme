@@ -9,11 +9,11 @@
                                                 <h1>Salut <?php echo $user ?> ! </h1>
                                                 <p>Bon, on a une bonne nouvelle…</p>
                                                 <p>
-                                                        Tu as GAGNE : 
-                                                        <br>
-                                                        <b><?php echo $gift?></b>
+                                                        <h2>Tu as GAGNE : <?php echo $gift?></h2>
+                                                        
                                                 </p>
-                                                        <br>
+                                                <p>
+                                                        
                                                         Tu peux dès maintenant l’utiliser en cliquant ici ! 
                                                         <br>
                                                          <b><?php echo $link?></b>

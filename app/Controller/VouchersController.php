@@ -20,13 +20,30 @@ class VouchersController extends AppController {
         public $uses = array('Voucher', 'User', 'UserVoucher', 'Gift', 'BigGift');
 
         public function my_vouchers() {
-                $user = $this->User->findById($this->Auth->user('id'));
 
-                if (empty($user['Voucher'])) {
-                        $this->Session->setFlash(__('Pas de bon de réduction pour le moment, à toi de jouer!'), 'default', array('class' => 'alert alert-danger'));
+                $this->User->Behaviors->attach('Containable');
+
+                $user = $this->User->find('all', array(
+                    'conditions' => array('User.id' => $this->Auth->user('id')),
+                    'contain' => array(
+                        'Gift' => array(
+                            'conditions' => array('Gift.used' => null)
+                        ),
+                        'Voucher' => array(
+                            'conditions' => array('UserVoucher.used' => null)
+                        ),
+                        'BigGift' => array(
+                            'conditions' => array('BigGift.used' => null)
+                        )
+                    )
+                        )
+                );
+                
+                if(empty($user['Gift'] && $user['BigGift']&&$user['Voucher'])){
+                        $this->Session->setFlash(__('Tu n\'as encore rien gagné, alors commence à jouer dès maintenant !'), 'message_info');
                 }
 
-                $this->set('user', $user);
+                $this->set('user', $user[0]);
         }
 
         public function use_it($id = null) {

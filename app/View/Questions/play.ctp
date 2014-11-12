@@ -102,6 +102,13 @@
         </div>
         <br/>
         <div class="row">
+                <div class="col-sm-12">            
+                        <?php
+                        echo $this->Form->submit('Suivant', array('class' => 'btn btn-success btn-lg'));
+                        echo $this->Form->end()
+                        ?>
+                </div>      
+                <br><br>
                 <div class="col-sm-6  col-sm-offset-3 info-question">
                         <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $rest * 100 / $qday_total ?>%;">
@@ -110,12 +117,7 @@
                         </div>
                 </div>
                 <div class="clear"></div>
-                <div class="col-sm-12">            
-                        <?php
-                        echo $this->Form->submit('Suivant', array('class' => 'btn btn-success'));
-                        echo $this->Form->end()
-                        ?>
-                </div>          
+                    
         </div>
 </div>
 

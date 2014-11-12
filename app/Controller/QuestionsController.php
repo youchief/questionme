@@ -26,7 +26,7 @@ class QuestionsController extends AppController {
                 $qday = $this->Qday->find('first', array('conditions' => array('Qday.start <' => $now, 'Qday.end >' => $now)));
 
                 if (empty($qday)) {
-                        $this->Session->setFlash(__('Pas de jeux aujourd\'hui :-('), 'default', array('class' => 'alert alert-danger'));
+                        $this->Session->setFlash(__('Pas de jeux aujourd\'hui :-('), 'message_danger');
                         $this->redirect($this->referer());
                 }
 
@@ -107,16 +107,11 @@ class QuestionsController extends AppController {
                         }
                 }
 
-
-
-                
-                
-                
                 /*
                  * if no more question today -> redirect to home 
                  */
                 if (empty($user_questions)) {
-                        $this->Session->setFlash(__('Vous avez répondu à toutes les questions aujourd\'hui!'), 'flash_custom');
+                        $this->Session->setFlash(__('Tu as répondu à toutes les questions aujourd\'hui!'), 'message_info');
                         $this->redirect(array('controller' => 'pages', 'action' => 'display', 'home'));
                 }
 
@@ -137,7 +132,7 @@ class QuestionsController extends AppController {
                         $already = $this->UsersChoice->find('all', array('conditions'=>array('UsersChoice.user_id'=>$this->Auth->user('id'), 'UsersChoice.question_id'=>$this->request->data['Question']['question'])));
                         
                         if(!empty($already)){
-                                $this->Session->setFlash(__('Tu ne peux pas modifier ta réponse !'), 'flash_custom');
+                                $this->Session->setFlash(__('Tu ne peux pas modifier ta réponse !'), 'message_danger');
                                 $this->redirect('play');
                         }
                         
@@ -177,9 +172,9 @@ class QuestionsController extends AppController {
                                         } else {
                                                 if (!empty($this->request->data['Question']['right_choice_id'])) {
                                                         if ($this->request->data['Question']['right_choice_id'] == $this->request->data['Question']['response']) {
-                                                                $this->Session->setFlash(__('Bravo ! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'default', array('class' => 'alert alert-success'));
+                                                                $this->Session->setFlash(__('Bravo ! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'message_success');
                                                         } else {
-                                                                $this->Session->setFlash(__('Zut! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'default', array('class' => 'alert alert-danger'));
+                                                                $this->Session->setFlash(__('Zut! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'message_danger');
                                                         }
                                                 }
 
@@ -187,7 +182,7 @@ class QuestionsController extends AppController {
                                         }
                                 }
                         } else {
-                                $this->Session->setFlash(__('Vous devez choisir quelque chose :-/'), 'flash_custom', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Vous devez choisir quelque chose :-/'), 'message_danger');
                         }
                 }
         }
@@ -397,7 +392,7 @@ class QuestionsController extends AppController {
                             'voucher_id' => $day_voucher['Voucher']['id']
                         ));
                         $this->UserVoucher->save();
-                        $this->Session->setFlash('Nickel ! Tu as gagné '.$day_voucher['Voucher']['name']. ". RDV Demain 8h pour savoir si tu as gagné le cadeau d'aujourd'hui !" , 'default', array('class' => 'alert alert-success'));
+                        $this->Session->setFlash('Nickel ! Tu as gagné '.$day_voucher['Voucher']['name']. ". RDV Demain 8h pour savoir si tu as gagné le cadeau d'aujourd'hui !" , 'message_success');
                         $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                 }
         }

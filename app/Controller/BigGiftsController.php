@@ -1,6 +1,8 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
+
 
 /**
  * BigGifts Controller
@@ -181,8 +183,23 @@ class BigGiftsController extends AppController {
         }
 
         public function admin_validate($user_id, $gift_id) {
+                $gift = $this->BigGift->findById($gift_id);
+                $user = $this->User->findById($user_id);
+                
+                
                 $this->BigGift->id = $gift_id;
                 $this->BigGift->saveField('winner_id', $user_id);
+                
+                $Email = new CakeEmail();
+                $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
+                $Email->to($user['User']['email']);
+                $Email->subject('T\'es un winner !');
+                $Email->viewVars(array('user' => $user['User']['username'], 'gift'=>$gift['BigGift']['name'], 'link'=>'http://www.questionme.ch/vouchers/my_vouchers'));
+                $Email->emailFormat('html');
+                $Email->template('winner');
+                $Email->send();
+                
+                
                 $this->Session->setFlash(__('The gift has been given'), 'default', array('class' => 'alert alert-success'));
                 $this->redirect(array('action' => 'index'));
         }
