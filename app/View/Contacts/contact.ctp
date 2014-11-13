@@ -5,28 +5,26 @@
                         <?php echo $this->Form->create('Contact'); ?>
                         <fieldset>
                                 <?php
-                                echo $this->Form->input('name', array('class' => 'form-control'));
-                                echo $this->Form->input('email', array('class' => 'form-control'));
-                                echo $this->Form->input('message', array('class' => 'form-control'));
+                                echo $this->Form->input('name', array('class' => 'form-control', 'label'=>'Ton nom'));
+                                echo $this->Form->input('email', array('class' => 'form-control', 'label'=>'Ton e-eamil'));
+                                echo $this->Form->input('message', array('class' => 'form-control', 'label'=>'Et enfin ton ptit message'));
                                 ?>
                         </fieldset>
-                        <hr>
-                        <?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-success')); ?>
+                        <br>
+                        <?php echo $this->Form->submit(__('Envoyer'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
                 <div class="col-sm-6 bloquote">
-                        <blockquote>
-                        <p>
+
+                        <p class='lead'>
                                 Tu as une idée, une recommandation, une plainte ?
-                        </p>
-                        <p>
+                        <br><br>
                                 Tu veux nous écrire des mots doux ou peut-être travailler avec nous ? 
-                        </p>
-                        <p>
+                       <br><br>
                                 On te répondra au plus vite ! 
 
                         </p>
-                        </blockquote>
+
 
                 </div>
         </div>

@@ -1,7 +1,7 @@
 <div class='container'>
         <div class="row">
                 <div class='col-sm-6'>
-                        <h3><?php echo h($user['User']['username']); ?></h3><br/>
+                        <h3><?php echo h($user['User']['username']); ?></h3>
                         <p class="light">
                                 <?php echo $this->Time->format('d-m-y', $user['User']['birthday']); ?>
                         </p>

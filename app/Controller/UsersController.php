@@ -30,7 +30,7 @@ class UsersController extends AppController {
                         $this->request->data['User']['token'] = sha1($this->data['User']['username'] . rand(0, 100));
                         
                         if ($this->User->save($this->request->data)) {
-                                $this->Session->setFlash(__('Bravo ! Nous t\'avons envoyé un e-mail pour finaliser ton inscription. Encore un petit effort !'), 'message_success');
+                                $this->Session->setFlash(__('C\'est Top ! On vient de t\'envoyer un e-mail pour activer ton compte !'), 'message_success');
 
                                 $Email = new CakeEmail();
                                 $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
@@ -60,7 +60,7 @@ class UsersController extends AppController {
 
                         if ($this->Auth->login()) {
                                 if ($this->Auth->user('active') == 0) {
-                                        $this->Session->setFlash(__("Profil pas encore activé !"), 'message_danger');
+                                        $this->Session->setFlash(__("Tu n'as pas encore activé ton compte. Check voir ta boîte mail ! "), 'message_danger');
                                         return $this->redirect($this->Auth->logout());
                                         
                                 } else if ($this->Auth->user('active') == 1) {
@@ -147,10 +147,10 @@ class UsersController extends AppController {
                         if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
                                 $this->User->id = $this->Auth->user('id');
                                 $this->User->saveField('password', $this->request->data['User']['new_password']);
-                                $this->Session->setFlash(__('Ton mot de passe et changé!'), 'default', array('class' => 'alert alert-success'));
+                                $this->Session->setFlash(__('Ton mot de passe et changé!'), 'message_success');
                                 return $this->redirect(array('action' => 'my_profile'));
                         } else {
-                                $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'message_danger');
                         }
                 }
         }

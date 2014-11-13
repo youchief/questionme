@@ -59,7 +59,7 @@ class User extends AppModel {
             ),
             'gender' => array(
                 'notEmpty' => array(
-                    'rule' => array('notEmpty'),
+                    'rule' => array('Tu dois choisir quelque chose !'),
                 //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
                 //'required' => false,
@@ -70,7 +70,7 @@ class User extends AppModel {
             'group_id' => array(
                 'numeric' => array(
                     'rule' => array('numeric'),
-                //'message' => 'Your custom message here',
+                        //'message' => 'Your custom message here',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule
@@ -80,7 +80,7 @@ class User extends AppModel {
             'region_id' => array(
                 'numeric' => array(
                     'rule' => array('numeric'),
-                //'message' => 'Your custom message here',
+                'message' => 'Choisi une région !',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule

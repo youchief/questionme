@@ -10,7 +10,7 @@
                                 echo $this->Form->input('birthday', array('class' => 'form-control', 'label' => 'Date de naissance', 'dateFormat' => 'DMY', 'empty' => true, 'minYear' => date('Y') - 80, 'maxYear' => date('Y') - 18));
                                 echo $this->Form->input('gender', array('class' => 'form-control', 'label' => 'H/F', 'type' => 'select', 'empty' => true, 'options' => array('male' => 'Homme', 'female' => 'Femme')));
                                 echo $this->Form->input('email', array('class' => 'form-control'));
-                                echo $this->Form->input('region_id', array('class' => 'form-control', 'label' => 'Région'));
+                                echo $this->Form->input('region_id', array('class' => 'form-control', 'label' => 'Région pour laquelle je veux jouer'));
                                 echo $this->Form->input('newsletter', array('type' => 'checkbox', 'class' => 'checkbox', 'label' => 'Je m\'inscris à la Newsletter', 'default' => true));
                                 ?>
                         </fieldset>

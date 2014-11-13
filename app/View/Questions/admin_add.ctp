@@ -20,6 +20,8 @@
                 echo $this->Form->input('to_age_start', array('class' => 'form-control', 'dateFormat' => 'DMY', 'empty' => true, 'minYear' => date('Y') - 80, 'maxYear' => date('Y') - 18));
                 echo $this->Form->input('to_age_end', array('class' => 'form-control', 'dateFormat' => 'DMY', 'empty' => true, 'minYear' => date('Y') - 80, 'maxYear' => date('Y') - 18));
                 echo $this->Form->input('to_gender', array('class' => 'form-control', 'label' => 'H/F', 'type' => 'select', 'empty' => true, 'options' => array('male' => 'Homme', 'female' => 'Femme')));
+                echo $this->Form->input('to_voucher', array('class' => 'form-control', 'type' => 'select', 'empty' => true, 'options' => $vouchers));
+                echo $this->Form->input('to_voucher_status', array('class' => 'form-control', 'type' => 'select', 'options' => array('used' => 'used', 'not_used' => 'not used')));
                 echo $this->Form->input('Region', array('class' => 'form-control'));
                 ?>
         </fieldset>

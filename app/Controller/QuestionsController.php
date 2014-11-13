@@ -37,42 +37,42 @@ class QuestionsController extends AppController {
                 $questions_id = array();
                 foreach ($user['Choice'] as $choice) {
                         $questions_id[] = $choice['question_id'];
-                }      
-                
-                
+                }
+
+
                 //question list whith conditons
                 $questions = $this->Question->find('all', array('conditions' => array(
                         "NOT" => array("Question.id" => $questions_id),
                         'Question.active' => 1,
-                       
                     //'QuestionRegion.region_id' => $user['User']['region_id']
                     )
                         )
                 );
 
-                
-                
-                
+
+
                 //remove question fixe not today 
                 $questions = $this->_unset_fixe_not_today($questions);
-                
-                
-                $questions = $this->_unset_because_user($questions, $user);
+
                  
+                $questions = $this->_unset_because_user($questions, $user);
+                
 
                 //remove question not good for this user
                 $questions = $this->_unset_questions_because_queries($questions, $user);
-
-
-
+                
+                
+                //remove question not good because voucher
+                $questions = $this->_unset_because_voucher($questions, $user);
+               
                 //get user today responce 
                 $rest_questions = $this->_get_nb_user_questions($qday);
 
 
                 //question final user
                 $qday_total = $qday['Qday']['nb_qfixe'] + $qday['Qday']['nb_qmobile'];
-                
-               
+
+
                 /*
                  * adjust mobile and fixe question 
                  */
@@ -88,8 +88,8 @@ class QuestionsController extends AppController {
                 $rest_questions['fixe'] + $diff;
                 $rest_questions['mobile'] - $diff;
                 $total_rest = $qday_total - ($rest_questions['fixe'] + $rest_questions['mobile']);
-                
-                
+
+
                 /*
                  * create the final question array
                  */
@@ -128,15 +128,15 @@ class QuestionsController extends AppController {
 
 
                 if ($this->request->is('post')) {
-                        
-                        $already = $this->UsersChoice->find('all', array('conditions'=>array('UsersChoice.user_id'=>$this->Auth->user('id'), 'UsersChoice.question_id'=>$this->request->data['Question']['question'])));
-                        
-                        if(!empty($already)){
+
+                        $already = $this->UsersChoice->find('all', array('conditions' => array('UsersChoice.user_id' => $this->Auth->user('id'), 'UsersChoice.question_id' => $this->request->data['Question']['question'])));
+
+                        if (!empty($already)) {
                                 $this->Session->setFlash(__('Tu ne peux pas modifier ta réponse !'), 'message_danger');
                                 $this->redirect('play');
                         }
-                        
-                        
+
+
                         $data = array();
                         if (!empty($this->request->data['Question']['response'])) {
                                 if ($this->request->data['Question']['response_type'] == 'CHECKBOX') {
@@ -172,9 +172,9 @@ class QuestionsController extends AppController {
                                         } else {
                                                 if (!empty($this->request->data['Question']['right_choice_id'])) {
                                                         if ($this->request->data['Question']['right_choice_id'] == $this->request->data['Question']['response']) {
-                                                                $this->Session->setFlash(__('Bravo! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'message_success');
+                                                                $this->Session->setFlash(__('Bravo! La bonne réponse était:') . " " . $this->request->data['Question']['right_choice_value'], 'message_success');
                                                         } else {
-                                                                $this->Session->setFlash(__('Flûte! La bonne réponse était') . " " . $this->request->data['Question']['right_choice_value'], 'message_danger');
+                                                                $this->Session->setFlash(__('Flûte! La bonne réponse était:') . " " . $this->request->data['Question']['right_choice_value'], 'message_danger');
                                                         }
                                                 }
 
@@ -182,7 +182,7 @@ class QuestionsController extends AppController {
                                         }
                                 }
                         } else {
-                                $this->Session->setFlash(__('Vous devez choisir quelque chose :-/'), 'message_danger');
+                                $this->Session->setFlash(__('Tu dois faire un choix :-/'), 'message_danger');
                         }
                 }
         }
@@ -238,11 +238,46 @@ class QuestionsController extends AppController {
 
                 return array('fixe' => $question_rest_fix, 'mobile' => $question_rest_mob);
         }
+        
+        
+        public function _unset_because_voucher($questions, $user){
+                 $i = 0;
+                foreach ($questions as $question) {
+                        if (!empty($question['Question']['to_voucher'])) {     
+                                foreach ($user['Voucher'] as $user_voucher){
+                                        if($user_voucher['UserVoucher']['voucher_id']==$question['Question']['to_voucher']){
+                                                if($question['Question']['to_voucher_status'] == 'used'){
+                                                        if($user_voucher['UserVoucher']['used'] == null){
+                                                                unset($questions[$i]);
+                                                        }
+                                                }else if ($question['Question']['to_voucher_status'] == 'not_used'){
+                                                        if($user_voucher['UserVoucher']['used'] <> null){
+                                                                unset($questions[$i]);
+                                                        }
+                                                }
+                                        }
+                                }
+                                
+                                
+                                //on cherche dans ses bons
+                                $id_vouchers = array();
+                                foreach($user['Voucher'] as $voucher){
+                                        $id_vouchers[] = $voucher['UserVoucher']['voucher_id'];
+                                }
+                                $exist_voucher = array_search($question['Question']['to_voucher'], $id_vouchers);   
+                                if(!is_int($exist_voucher)){
+                                        unset($questions[$i]);
+                                }
+                        }
+                        $i++;
+                }
+                
+                return $questions;
+        }
 
         /*
          * unset question because not good for user gender and age
          */
-
         public function _unset_because_user($questions, $user) {
                 $i = 0;
                 foreach ($questions as $question) {
@@ -254,7 +289,7 @@ class QuestionsController extends AppController {
                         $i++;
                 }
 
-                
+
 
                 $i = 0;
                 foreach ($questions as $question) {
@@ -392,7 +427,7 @@ class QuestionsController extends AppController {
                             'voucher_id' => $day_voucher['Voucher']['id']
                         ));
                         $this->UserVoucher->save();
-                        $this->Session->setFlash('Nickel ! Tu as gagné '.$day_voucher['Voucher']['name']. ". RDV Demain 8h pour savoir si tu as gagné le cadeau d'aujourd'hui !" , 'message_success');
+                        $this->Session->setFlash('Nickel ! Tu as gagné ' . $day_voucher['Voucher']['name'] . ". RDV Demain 8h pour savoir si tu as gagné le cadeau d'aujourd'hui !", 'message_success');
                         $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                 }
         }
@@ -403,17 +438,17 @@ class QuestionsController extends AppController {
                 $nb_rep = $order['Order']['repondants'] ++;
 
                 if ($nb_rep >= $order['Order']['repondants']) {
-                        $this->Question->Order->id =$order_id;
+                        $this->Question->Order->id = $order_id;
                         $this->Question->Order->set(array(
                             'repondants' => $nb_rep,
                             'active' => 0
                         ));
-                        
+
                         $this->Question->updateAll(
                                 array('Question.active' => 0), array('Question.order_id' => $order_id)
                         );
                 } else {
-                         $this->Question->Order->id =$order_id;
+                        $this->Question->Order->id = $order_id;
                         $this->Question->Order->set(array(
                             'repondants' => $nb_rep,
                         ));
@@ -435,7 +470,8 @@ class QuestionsController extends AppController {
                 $questionTypes = $this->Question->QuestionType->find('list');
                 $orders = $this->Question->Order->find('list');
                 $regions = $this->Question->Region->find('list');
-                $this->set(compact('questionTypes', 'orders', 'regions'));
+                $vouchers = $this->Voucher->find('list');
+                $this->set(compact('questionTypes', 'orders', 'regions', 'vouchers'));
         }
 
         /**
@@ -466,15 +502,14 @@ class QuestionsController extends AppController {
                 $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
                 $this->set('question', $this->Question->find('first', $options));
         }
-        
-        
-        public function admin_preview($id =null) {
+
+        public function admin_preview($id = null) {
                 if (!$this->Question->exists($id)) {
                         throw new NotFoundException(__('Invalid question'));
                 }
                 $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
                 $this->set('question', $this->Question->find('first', $options));
-	}
+        }
 
         /**
          * admin_add method
@@ -494,7 +529,8 @@ class QuestionsController extends AppController {
                 $questionTypes = $this->Question->QuestionType->find('list');
                 $orders = $this->Question->Order->find('list');
                 $regions = $this->Question->Region->find('list');
-                $this->set(compact('questionTypes', 'orders', 'regions'));
+                $vouchers = $this->Voucher->find('list');
+                $this->set(compact('questionTypes', 'orders', 'regions', 'vouchers'));
         }
 
         /**
@@ -522,7 +558,8 @@ class QuestionsController extends AppController {
                 $questionTypes = $this->Question->QuestionType->find('list');
                 $orders = $this->Question->Order->find('list');
                 $regions = $this->Question->Region->find('list');
-                $this->set(compact('questionTypes', 'orders', 'regions'));
+                $vouchers = $this->Voucher->find('list');
+                $this->set(compact('questionTypes', 'orders', 'regions', 'vouchers'));
         }
 
         /**
@@ -603,8 +640,8 @@ class QuestionsController extends AppController {
                         $result['qmobile'] = count($q_mobile);
                         $result['qprofile'] = count($q_profile);
                 }
-                
-              
+
+
 
 
                 return $result;
@@ -632,8 +669,8 @@ class QuestionsController extends AppController {
                     'fields' => array('DISTINCT UsersChoice.user_id'),
                         )
                 );
-                
-                
+
+
 
                 return $user_played;
         }
