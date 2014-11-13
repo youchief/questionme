@@ -11,9 +11,9 @@
                                 <?php echo $this->Html->link('Conditions générales', array('controller'=>'pages', 'action'=>'display', 'terms_and_conditions'))?> 
                         </div>
                         <div class="footer-right text-right">
-                                <a href="https://www.facebook.com/QuestionmeQME?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="https://twitter.com/QuestionmeQME" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="http://instagram.com/questionmeqme" target="_blank"><i class="fa fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/QuestionmeQME?fref=ts" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+                                <a href="https://twitter.com/QuestionmeQME" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+                                <a href="http://instagram.com/questionmeqme" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
                         </div>
 
                 
