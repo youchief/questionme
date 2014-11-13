@@ -61,7 +61,7 @@
                         <?php if ($question['Question']['response_type'] == 'CHECKBOX'): ?>
                          <div class="row">
                                         <div class="col-sm-12">
-                                                <p>Plusieurs choix possibles</p>
+                                                <p class="align-center">Plusieurs choix possibles</p>
                                         </div>
                                 </div>
                                 <div class='row row-centered'>
@@ -111,8 +111,8 @@
                 <br><br>
                 <div class="col-sm-6  col-sm-offset-3 info-question">
                         <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $rest * 100 / $qday_total ?>%;">
-                                        <?php echo $rest * 100 / $qday_total ?>%
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo ($rest - 1) * 100 / $qday_total ?>%;">
+                                        <?php echo ($rest - 1) * 100 / $qday_total ?>%
                                 </div>
                         </div>
                 </div>

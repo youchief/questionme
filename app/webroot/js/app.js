@@ -137,24 +137,6 @@ function goPlayD() {
         $(this).parent().css({'background': 'url(' + imgSrc + ') center center no-repeat', '-webkit-background-size': '100% ', '-moz-background-size': '100%', '-o-background-size': '100%', 'background-size': '100%', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'});
         $(this).remove();
     });
-
-    // SCROLL
-    var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
-
-    if (document.attachEvent) //if IE (and Opera depending on user setting)
-        document.attachEvent("on" + mousewheelevt, function( evt ){ mouseWheelEventHandler( evt ); })
-    else if (document.addEventListener) //WC3 browsers
-        document.addEventListener(mousewheelevt, function( evt ){ mouseWheelEventHandler( evt ); }, false)
-
-    var mouseWheelEventHandler = function( evt ){
-        if( evt.hasOwnProperty('wheelDelta') ){
-            if( evt.wheelDelta < 0 ){
-                goInfos();
-            }else{
-                
-            }
-        }
-    }
 }
 
 function goInfos() {
@@ -175,27 +157,6 @@ function goInfos() {
     $('#info-3').hide();
     $('#info-4').hide();
     
-    
-    // SCROLL
-    var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
-
-    if (document.attachEvent) //if IE (and Opera depending on user setting)
-        document.attachEvent("on" + mousewheelevt, function( evt ){ mouseWheelEventHandler( evt ); })
-    else if (document.addEventListener) //WC3 browsers
-        document.addEventListener(mousewheelevt, function( evt ){ mouseWheelEventHandler( evt ); }, false)
-
-    var mouseWheelEventHandler = function( evt ){
-        if( evt.hasOwnProperty('wheelDelta') ){
-            if( evt.wheelDelta < 0 ){
-                
-            }else{
-                rePlay();
-            }
-        }
-    }
-
-
-
 }
 
 function goInfo1R() {
@@ -418,6 +379,99 @@ $(window).ready(function () {
     var heightImg = alertCont.find('.col-sm-2').height();
 
     alertText.height(heightImg);
+    
+    // SCROLL
+    var is_wheeling = false;
+    var mousewheelevt = (/Firefox/i.test(navigator.userAgent)) ? "DOMMouseScroll" : "mousewheel" //FF doesn't recognize mousewheel as of FF3.x
+
+    if (document.attachEvent) //if IE (and Opera depending on user setting)
+        document.attachEvent("on" + mousewheelevt, function( evt ){ mouseWheelEventHandler( evt ); });
+    else if (document.addEventListener) //WC3 browsers
+        document.addEventListener(mousewheelevt, function( evt ){ mouseWheelEventHandler( evt ); }, false);
+
+    var mouseWheelEventHandler = function( evt ){
+        if( evt.hasOwnProperty('wheelDelta') ){
+            
+            if( is_wheeling ){
+                return;
+            }
+            
+            is_wheeling = true;
+            setTimeout(function(){
+                is_wheeling = false;
+            }, 1000);
+            
+            if( $('.home-prince').is(":visible")){
+                if( evt.wheelDelta < 0 ){
+                     goPlayD();
+
+                }else{
+
+                }
+            }else if($('.home-play').is(":visible")){
+                if( evt.wheelDelta < 0 ){
+                     goInfos();
+
+                }else{
+
+                }
+            }else if($('.home-info').is(":visible")){
+                if( evt.wheelDelta > 0 ){
+                    rePlay();
+
+                }else{
+                    
+                }    
+            }else{ 
+                if( evt.wheelDelta < 0 ){
+
+                }else{
+
+                }  
+            }
+        }        
+    }        
+            
+    if(window.location.hash == '#home-play'){
+        $('.nav-brand').hide();
+        $('.home-prince').hide();
+        $('.home-play').show();
+        
+
+
+        //Set Aside
+        if ($(window).width() < 767) {
+            $('.home-play-aside').height($(window).height() / 2);
+            $('.home-play-aside').css('top', '50%');
+            $('.home-play-gallery').height($(window).height() / 2);
+            $('.home-play-gallery').css('top', '0px');
+            $('.navbar-brand').show();
+        } else {
+            $('.home-play-aside').height($(window).height());
+            $('.home-play-gallery').height($(window).height());
+            $('.navbar-brand').hide();
+        }
+
+        //Start Slider    
+        $('.carousel').carousel({
+            interval: 4000
+        });
+
+        //Response Full Slider
+        $('.carousel').css({'margin': 0, 'width': '100%', 'height': '100%'});
+        $('.carousel .item').css({'width': '100%', 'height': '100%'});
+
+        //Full height crop images1
+        $('.carousel-inner div.item img').each(function () {
+            var imgSrc = $(this).attr('src');
+            $(this).parent().css({'background': 'url(' + imgSrc + ') center center no-repeat', '-webkit-background-size': '100% ', '-moz-background-size': '100%', '-o-background-size': '100%', 'background-size': '100%', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'});
+            $(this).remove();
+        });
+    }        
+    
+    //console.log(window.location.hash);    
+    
+    
     
 
 

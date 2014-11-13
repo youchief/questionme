@@ -28,7 +28,7 @@ footer, .push{width: 100%;height: 60px;}
 .align-center{text-align: center;}
 .align-left{text-align: left;}
 .align-right{text-align: right;}
-.pad-box{padding:15px;padding-top:40px;}
+.pad-box{padding:15px;padding-top:45px;}
 
 .menutxt{padding-right: 65px;margin-top: 5px;text-align:right;}
 
@@ -82,7 +82,7 @@ label{color: #fdfdfd;font-weight:200;}
 }
 .btn-group{margin-top: 0.5em;}
 
-.progress-bar {background-color: #14e985;}
+.progress-bar {background-color: #14e985;color:#44494f;}
 
 .thumbnail{padding:15px;border-radius:0px;}
 
@@ -331,7 +331,6 @@ border-color: transparent;
 .custom_message{
         background-color: #363b40;
         border-radius: 0;
-        display:table;
         
 }
 
@@ -364,8 +363,28 @@ border-color: transparent;
 }
 
 .custom_message_text p{
-    font-size: 2em;
+    font-size: 1.5em;
     font-style: italic;
+}
+
+.glyphicon-chevron-left, .glyphicon-chevron-right{
+    font-size:1.5em;
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+    .custom_message_text p{
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 767px) {
+    .custom_message_text p{
+        font-size: 1em;
+        font-style: italic;
+    }
+    .glyphicon-chevron-left, .glyphicon-chevron-right{
+        font-size:1em;
+    }
 }
 
 /* centered columns styles */
