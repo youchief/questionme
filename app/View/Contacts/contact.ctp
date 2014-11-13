@@ -6,7 +6,7 @@
                         <fieldset>
                                 <?php
                                 echo $this->Form->input('name', array('class' => 'form-control', 'label'=>'Ton nom'));
-                                echo $this->Form->input('email', array('class' => 'form-control', 'label'=>'Ton e-eamil'));
+                                echo $this->Form->input('email', array('class' => 'form-control', 'label'=>'Ton e-mail'));
                                 echo $this->Form->input('message', array('class' => 'form-control', 'label'=>'Et enfin ton ptit message'));
                                 ?>
                         </fieldset>

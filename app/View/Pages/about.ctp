@@ -14,6 +14,7 @@
                         <div class="people">
                                 <?php echo $this->Html->image('antoine.png', array('class' => 'img-responsive img-circle')) ?>
                                 <div class="caption">
+                                        <br/><br/>
                                         <h3>Antoine</h3>
                                         <h4>Co-fondateur</h4>
                                         <p>
@@ -37,6 +38,7 @@
                         <div class="people">
                                 <?php echo $this->Html->image('ben.png', array('class' => 'img-responsive img-circle')) ?>
                                 <div class="caption">
+                                        <br/><br/>
                                         <h3>Ben</h3>
                                         <h4>Co-fondateur</h4>
                                         <p>Irresponsable Questions Culture Générales & Partenaires</p>
@@ -55,18 +57,22 @@
                         <div class="people">
                                 <?php echo $this->Html->image('joseph.png', array('class' => 'img-responsive img-circle')) ?>
                                 <div class="caption">
+                                        <br/><br/>
                                         <h3>Joseph</h3>
                                         <h4>Co-fondateur</h4>
                                         <p>
                                                 Irresponsable Questions actus, opinion.
                                         </p>
+                                        <p>Aime la raclette, les lamentins & les chats.</p>
                                 </div>
                         </div>
                 </div>
                 <div class="col-sm-4">                                        <div class="people">
                                 <?php echo $this->Html->image('vincent.png', array('class' => 'img-responsive img-circle')) ?>
                                 <div class="caption">
+                                        <br/><br/>
                                         <h3>Vincent</h3>
+                                        <h4>Co-fondateur</h4>
                                         <p>
                                                 Irresponsable questions Humour & Partenaires
                                         </p>
@@ -79,20 +85,20 @@
         </div>
         <div class='row'>
                 <div class='col-sm-8 col-sm-offset-2'>
-                        <h2>Notre histoire</h2>
-                        <h3>Septembre 2013 – Première idée</h3>
+                        <h2>Notre histoire</h2><br/>
+                        <h3>Septembre 2013 – Première idée</h3><br/>
 
                         <p>C’est pendant un soir de septembre, autour d’un verre, qu’on a eu la première idée de QuestionMe. Quelques réflexions, schémas et études plus tard, le projet était lancé !</p>
-
-                        <h3>Mars 2013 – Test de la version Beta</h3>
+<br/><br/>
+                        <h3>Mars 2014 – Test de la version Beta</h3><br/>
 
                         <p>Pour tester le concept, l’équipe décide de créer une première version de QuestionMe sur le campus de l’université de Lausanne. En 2 semaines et plus de 600 participants, c’est un succès ! </p>
-
-                        <h3>Mai 2014 – Victoire au Concours START 2014</h3>
+<br/><br/>
+                        <h3>Mai 2014 – Victoire au Concours START 2014</h3><br/>
 
                         <p>QuestionMe remporte en Mai le concours START 2014, compétition qui réunissait plus de 20 Startups de la région lausannoise. En plus du prix, QuestionMe a la chance d’être suivi par l’association Genilem pour 3 ans.</p>
-
-                        <h3>Novembre 2014 – Lancement </h3>
+<br/><br/>
+                        <h3>Novembre 2014 – Lancement </h3><br/>
 
                         <p>TO BE CONTINUED…</p>
 

@@ -1,6 +1,6 @@
 <div class="container form">
         <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6 col-xs-8">
                         <?php echo $this->Form->create('User'); ?>
                         <fieldset>
                                 <h2><?php echo __('Editer mon profil'); ?></h2>
@@ -18,7 +18,7 @@
                         <?php echo $this->Form->submit(__('OK'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
-                <div class='col-sm-6'>
+                <div class='col-sm-6 col-xs-4 '>
                         <?php echo $this->Html->image('pikman.png', array('class'=>'img-responsive'))?>
                 </div>
         </div>
