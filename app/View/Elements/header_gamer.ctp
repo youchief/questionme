@@ -17,7 +17,7 @@
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                 </button>
-                             
+                            <p class="align-right menu-txt hidden-xs hidden-sm" >menu</p>
 
                                 <?php echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive', 'id' => 'logo')), '/#home-play', array('class' => 'navbar-brand ', 'escape' => false)); ?>
                         </div>

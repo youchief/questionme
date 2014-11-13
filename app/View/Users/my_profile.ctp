@@ -1,6 +1,6 @@
 <div class='container'>
         <div class="row">
-                <div class='col-sm-6'>
+                <div class='col-sm-6 col-xs-8'>
                         <h3><?php echo h($user['User']['username']); ?></h3>
                         <p class="light">
                                 <?php echo $this->Time->format('d-m-y', $user['User']['birthday']); ?>
@@ -20,7 +20,7 @@
 
 
                 </div>
-                <div class='col-sm-6 light'>
+                <div class='col-sm-6 col-xs-4 light'>
                         <?php echo $this->Html->image('pikman.png', array('class' => 'img-responsive')) ?>
                 </div>
         </div>
