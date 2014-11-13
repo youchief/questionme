@@ -28,7 +28,7 @@ class UsersController extends AppController {
                         //group gamer
                         $this->request->data['User']['group_id'] = 2;
                         $this->request->data['User']['token'] = sha1($this->data['User']['username'] . rand(0, 100));
-                        
+
                         if ($this->User->save($this->request->data)) {
                                 $this->Session->setFlash(__('C\'est Top ! On vient de t\'envoyer un e-mail pour activer ton compte !'), 'message_success');
 
@@ -47,7 +47,6 @@ class UsersController extends AppController {
                         } else {
                                 $this->Session->setFlash(__('Petit problème :-/'), 'message_danger');
                         }
-                         
                 }
                 $regions = $this->User->Region->find('list');
                 $this->set(compact('regions'));
@@ -62,7 +61,6 @@ class UsersController extends AppController {
                                 if ($this->Auth->user('active') == 0) {
                                         $this->Session->setFlash(__("Tu n'as pas encore activé ton compte. Check voir ta boîte mail ! "), 'message_danger');
                                         return $this->redirect($this->Auth->logout());
-                                        
                                 } else if ($this->Auth->user('active') == 1) {
                                         $user = $this->Auth->user();
 
@@ -335,6 +333,48 @@ class UsersController extends AppController {
         public function admin_get_nb_gamer() {
                 $gamers = $this->User->find('count', array('conditions' => array('User.group_id' => 2)));
                 return $gamers;
+        }
+
+        public function admin_export() {
+                //$this->User->recursive = 2;
+                
+                $users = $this->User->find('all', array(
+                    
+                    'contain' => array(
+                        'Choice' => array(
+                            //'conditions' => array("IN" => array("Choice.id" => $choices)),
+                            'Question'
+                            )
+                        )
+                    )
+                        
+                );
+
+                $result = array();
+                
+                $i=0;
+                foreach($users as $user){
+                        foreach($user['Choice'] as $choice){
+                                $result[$i]['User']['reponse_date'] = $choice['UsersChoice']['created'];
+                                $result[$i]['User']['question'] = $choice['Question']['question'];                    
+                                $result[$i]['User']['response'] = $choice['response'];
+                                $result[$i]['User']['username'] = $user['User']['username'];
+                                $result[$i]['User']['user_sex'] = $user['User']['sex'];
+                                $result[$i]['User']['user_birthday'] = $user['User']['birthday'];
+                                $i++;
+                        }
+                }
+                
+                CakePlugin::load('CsvView');
+             
+                $_serialize = 'result';
+                $_header = array('Date de réponce', 'Question', 'Réponse', 'Username', 'Sexe', 'Birthday');
+                $_extract = array('User.reponse_date', 'User.question', 'User.response', 'User.username', 'User.user_sex', 'User.user_birthday');
+                $_delimiter = ";"; //tab
+                $this->response->download('export_result_qme.csv');
+                $this->viewClass = 'CsvView.Csv';
+                $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
+
         }
 
 }

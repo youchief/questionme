@@ -33,6 +33,12 @@ class ChoicesController extends AppController {
                
                 $this->set(compact('questions'));
         }
+        
+        
+        public function admin_export(){
+             
+                
+        }
 
         /**
          * admin_index method

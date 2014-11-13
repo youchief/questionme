@@ -42,6 +42,7 @@
                                                 <li><?php echo $this->Html->link('Wizard', array('controller' => 'questions', 'action' => 'wizard', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'questions', 'action' => 'add', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'questions', 'action' => 'index', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('Export Results', array('controller' => 'users', 'action' => 'export', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Question Types</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'questionTypes', 'action' => 'add', 'admin' => true)); ?></li>
@@ -111,6 +112,7 @@
                                                 <li class="dropdown-header">Users</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'users', 'action' => 'add', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'users', 'action' => 'index', 'admin' => true)); ?></li>
+                                                
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">User Groups</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'groups', 'action' => 'add', 'admin' => true)); ?></li>

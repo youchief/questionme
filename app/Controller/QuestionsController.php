@@ -54,17 +54,17 @@ class QuestionsController extends AppController {
                 //remove question fixe not today 
                 $questions = $this->_unset_fixe_not_today($questions);
 
-                 
+
                 $questions = $this->_unset_because_user($questions, $user);
-                
+
 
                 //remove question not good for this user
                 $questions = $this->_unset_questions_because_queries($questions, $user);
-                
-                
+
+
                 //remove question not good because voucher
                 $questions = $this->_unset_because_voucher($questions, $user);
-               
+
                 //get user today responce 
                 $rest_questions = $this->_get_nb_user_questions($qday);
 
@@ -238,46 +238,46 @@ class QuestionsController extends AppController {
 
                 return array('fixe' => $question_rest_fix, 'mobile' => $question_rest_mob);
         }
-        
-        
-        public function _unset_because_voucher($questions, $user){
-                 $i = 0;
+
+        public function _unset_because_voucher($questions, $user) {
+                $i = 0;
                 foreach ($questions as $question) {
-                        if (!empty($question['Question']['to_voucher'])) {     
-                                foreach ($user['Voucher'] as $user_voucher){
-                                        if($user_voucher['UserVoucher']['voucher_id']==$question['Question']['to_voucher']){
-                                                if($question['Question']['to_voucher_status'] == 'used'){
-                                                        if($user_voucher['UserVoucher']['used'] == null){
+                        if (!empty($question['Question']['to_voucher'])) {
+                                foreach ($user['Voucher'] as $user_voucher) {
+                                        if ($user_voucher['UserVoucher']['voucher_id'] == $question['Question']['to_voucher']) {
+                                                if ($question['Question']['to_voucher_status'] == 'used') {
+                                                        if ($user_voucher['UserVoucher']['used'] == null) {
                                                                 unset($questions[$i]);
                                                         }
-                                                }else if ($question['Question']['to_voucher_status'] == 'not_used'){
-                                                        if($user_voucher['UserVoucher']['used'] <> null){
+                                                } else if ($question['Question']['to_voucher_status'] == 'not_used') {
+                                                        if ($user_voucher['UserVoucher']['used'] <> null) {
                                                                 unset($questions[$i]);
                                                         }
                                                 }
                                         }
                                 }
-                                
-                                
+
+
                                 //on cherche dans ses bons
                                 $id_vouchers = array();
-                                foreach($user['Voucher'] as $voucher){
+                                foreach ($user['Voucher'] as $voucher) {
                                         $id_vouchers[] = $voucher['UserVoucher']['voucher_id'];
                                 }
-                                $exist_voucher = array_search($question['Question']['to_voucher'], $id_vouchers);   
-                                if(!is_int($exist_voucher)){
+                                $exist_voucher = array_search($question['Question']['to_voucher'], $id_vouchers);
+                                if (!is_int($exist_voucher)) {
                                         unset($questions[$i]);
                                 }
                         }
                         $i++;
                 }
-                
+
                 return $questions;
         }
 
         /*
          * unset question because not good for user gender and age
          */
+
         public function _unset_because_user($questions, $user) {
                 $i = 0;
                 foreach ($questions as $question) {
@@ -500,8 +500,17 @@ class QuestionsController extends AppController {
                         throw new NotFoundException(__('Invalid question'));
                 }
                 $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
+                
                 $this->set('question', $this->Question->find('first', $options));
         }
+        
+        
+        public function admin_export($id = null){
+
+        }
+        
+        
+        
 
         public function admin_preview($id = null) {
                 if (!$this->Question->exists($id)) {

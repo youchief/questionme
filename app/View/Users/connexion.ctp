@@ -11,6 +11,9 @@
                                 ?>
                         </fieldset>
                         <br>
+                        <?php echo $this->Html->link(__('Pas encore inscrit ? Clique ici !'), array('controller' => 'users', 'action' => 'register'))?>
+                        <br>
+                        <br>
                         <?php echo $this->Form->submit(__('GO !'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
