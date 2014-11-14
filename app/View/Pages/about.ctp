@@ -18,7 +18,7 @@
                                         <h3>Antoine</h3>
                                         <h4>Co-fondateur</h4>
                                         <p>
-                                                Irresponsable Design & Partenaire
+                                                Irresponsable Design & Partenaires
                                         </p>
                                         <p>
                                                 1.715M
@@ -41,7 +41,7 @@
                                         <br/><br/>
                                         <h3>Ben</h3>
                                         <h4>Co-fondateur</h4>
-                                        <p>Irresponsable Questions Culture Générales & Partenaires</p>
+                                        <p>Irresponsable Questions Culture Générale & Partenaires</p>
 
                                         <p>Boit 1.7 litres de lait par jour</p>
 
@@ -74,7 +74,7 @@
                                         <h3>Vincent</h3>
                                         <h4>Co-fondateur</h4>
                                         <p>
-                                                Irresponsable questions Humour & Partenaires
+                                                Irresponsable Questions Humour & Partenaires
                                         </p>
                                         <p>
                                                 Rigole. Toujours. Parfois pour rien
