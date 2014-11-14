@@ -317,6 +317,17 @@ border-color: transparent;
     margin-left:5px;
 }
 
+.btn{margin-top:4px;}
+
+@media (min-width: 767px) and (max-width: 992px) {
+    .navbar-brand img {
+        margin-top:0px;
+    }
+    .navbar-default .navbar-toggle {
+        margin-top: 0px;
+    }
+}
+
 @media (max-width: 767px) { 
         .navbar{position:relative;background: #44494f;}
         .navbar-nav>li>a {padding-top: 10px;padding-bottom: 10px;}
@@ -418,6 +429,16 @@ border-color: transparent;
     text-align:left;
     /* inline-block space fix */
     margin-right:-4px;
+}
+@media (max-width: 767px){
+    .col-centered {
+    display:block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
 }
 .col-fixed {
     /* custom width */

@@ -467,7 +467,18 @@ $(window).ready(function () {
             $(this).parent().css({'background': 'url(' + imgSrc + ') center center no-repeat', '-webkit-background-size': '100% ', '-moz-background-size': '100%', '-o-background-size': '100%', 'background-size': '100%', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'});
             $(this).remove();
         });
-    }        
+    }
+    
+    if(window.location.hash == '#home-info'){
+        $('.navbar-brand').show();
+        $('.home-prince').hide();
+        $('.home-info').show();
+        
+        $('#info-1').show();
+        $('#info-2').hide();
+        $('#info-3').hide();
+        $('#info-4').hide();
+    }
     
     //console.log(window.location.hash);    
     

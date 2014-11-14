@@ -43,7 +43,7 @@
                     <a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>"><h3 class="play-button align-center">Jouer</h3></a>
                 </div>
                 <div class="go-info bottom-30">        
-                    <h5>Le principe</h5>
+                    <h5>Le concept</h5>
                     <p class="align-center" style="margin-top:20px;">
                         <span class="glyphicon glyphicon-chevron-down"></span>
                     </p>
@@ -62,7 +62,7 @@
                     <a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>"><h3 class="play-button align-center">Jouer</h3></a>
                 </p>
                 <div class="go-info bottom-30">        
-                    <h5>Le principe</h5>
+                    <h5>Le concept</h5>
                 </div>
             </div>
         </div>

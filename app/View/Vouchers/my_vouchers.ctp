@@ -104,5 +104,10 @@
                         <?php endif; ?>
                 <?php endforeach; ?>
         </div>
+        <div class="row">
+            <div class="col-sm-6 align-center col-sm-offset-3">
+                 <?php echo $this->Html->link(__('Comment ça marche ?'), '/#home-info', array('class' => 'btn btn-success btn-lg')) ?>
+            </div>
+        </div>
 </div>
 

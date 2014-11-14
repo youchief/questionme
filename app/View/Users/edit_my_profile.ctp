@@ -15,7 +15,7 @@
                                 ?>
                         </fieldset>
                         <br>
-                        <?php echo $this->Form->submit(__('OK'), array('class' => 'btn btn-success')); ?>
+                        <?php echo $this->Form->submit(__('OK'), array('class' => 'btn btn-success btn-lg')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
                 <div class='col-sm-6 col-xs-4 '>
