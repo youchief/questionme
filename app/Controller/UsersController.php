@@ -33,7 +33,7 @@ class UsersController extends AppController {
                                 $this->Session->setFlash(__('C\'est Top ! On vient de t\'envoyer un email pour activer ton compte !'), 'message_success');
 
                                 $Email = new CakeEmail();
-                                $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
+                                $Email->from(array('no-repy@questionme.ch' => 'Question Me'));
                                 $Email->to($this->request->data['User']['email']);
                                 $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
                                 $Email->viewVars(array(
@@ -342,12 +342,14 @@ class UsersController extends AppController {
                     'contain' => array(
                         'Choice' => array(
                             //'conditions' => array("IN" => array("Choice.id" => $choices)),
-                            'Question'
+                            'Question' => array(
+                                'QuestionType'
+                            )
                         )
                     )
                         )
                 );
-
+                                
                 $result = array();
 
                 $i = 0;
@@ -355,6 +357,7 @@ class UsersController extends AppController {
                         foreach ($user['Choice'] as $choice) {
                                 $result[$i]['User']['reponse_date'] = $choice['UsersChoice']['created'];
                                 $result[$i]['User']['question'] = $choice['Question']['question'];
+                                $result[$i]['User']['question_type'] = $choice['Question']['QuestionType']['name'];
                                 $result[$i]['User']['response'] = $choice['response'];
                                 $result[$i]['User']['username'] = $user['User']['username'];
                                 $result[$i]['User']['user_sex'] = $user['User']['sex'];
@@ -366,12 +369,13 @@ class UsersController extends AppController {
                 CakePlugin::load('CsvView');
 
                 $_serialize = 'result';
-                $_header = array('Date de réponce', 'Question', 'Réponse', 'Username', 'Sexe', 'Birthday');
-                $_extract = array('User.reponse_date', 'User.question', 'User.response', 'User.username', 'User.user_sex', 'User.user_birthday');
+                $_header = array('Date de réponce', 'Question', 'Type de question' , 'Réponse', 'Username', 'Sexe', 'Birthday');
+                $_extract = array('User.reponse_date', 'User.question', 'User.question_type', 'User.response', 'User.username', 'User.user_sex', 'User.user_birthday');
                 $_delimiter = ";"; //tab
                 $this->response->download('export_result_qme.csv');
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
+
         }
 
         public function admin_export_profile() {

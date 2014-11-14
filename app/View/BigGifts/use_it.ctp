@@ -10,7 +10,6 @@
                         echo $this->Form->input('code', array('class' => 'form-control password', 'type'=>'password', 'pattern'=>"[0-9]*", 'maxlength'=>"4", 'after'=>'Pour utiliser le bon, présente ton téléphone au partenaire.'));
                         ?>                      
                         <hr>
-                        
                         <?php echo $this->Form->submit(__('Utiliser'), array('class' => 'btn btn-success')); ?>
                         <?php echo $this->Form->end(); ?>
                 </div>
