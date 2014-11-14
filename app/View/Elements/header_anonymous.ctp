@@ -24,7 +24,7 @@
 
                         <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar-right">
-
+                                                        <li><a href="<?php echo $this->Html->url('/#home-play') ?>"><i class='fa fa-home'> </i> Home</a></li>
                                                         <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'register', 'admin' => false)) ?>"><i class='fa fa-pencil'> </i> S'inscrire</a></li>
                                                         <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'login', 'admin' => false)) ?>"><i class='fa fa-lock'> </i> Connexion</a></li>
                                                    
