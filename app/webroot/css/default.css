@@ -177,11 +177,11 @@ form .error {background-color: #f2dede;-moz-border-radius: 4px;-webkit-border-ra
 
 
 
-.carousel-control .icon-prev, .carousel-control .glyphicon {
+.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-left {
 left: 25px;color:#14e985;
 }
 
-.carousel-control .icon-next, .carousel-control .glyphicon {
+.carousel-control .icon-next, .carousel-control .glyphicon-chevron-right {
 right: 25px;color:#14e985;
 }
 
