@@ -175,15 +175,14 @@ form .error {background-color: #f2dede;-moz-border-radius: 4px;-webkit-border-ra
         transition: 0.6s ease-in-out left;
 }
 
-.carousel-control{text-shadow: 0 0px 0px rgba(0,0,0,0);opacity:1;}
-.carousel-control:hover, .carousel-control:focus{opacity:1;}
 
-.carousel-control .icon-prev, .carousel-control .glyphicon-chevron-left {
-left: 25px;
+
+.carousel-control .icon-prev, .carousel-control .glyphicon {
+left: 25px;color:#14e985;
 }
 
-.carousel-control .icon-next, .carousel-control .glyphicon-chevron-right {
-right: 25px;
+.carousel-control .icon-next, .carousel-control .glyphicon {
+right: 25px;color:#14e985;
 }
 
 
@@ -234,7 +233,13 @@ right: 25px;
         letter-spacing: 1px;
         text-align: center;
 }
-
+.thumbnail .fa{
+    float:left;
+}
+.title-vouch{
+    padding-left:8px; 
+    float:left;
+}
 /* keep full widget on smaller screens */
 @media (max-width: 767px) { 
         body {
@@ -257,10 +262,6 @@ right: 25px;
 
 
 
-
-.glyphicon-chevron-left, .glyphicon-chevron-right{
-    color:#14e985;
-}
 
 
 .navbar-default { border-color: #e7e7e7;}
