@@ -41,7 +41,7 @@ class BigGiftsController extends AppController {
                                 $this->BigGift->id = $id;
                                 $this->BigGift->saveField('used', date('Y-m-d H:i:s'));
                                 $this->Session->setFlash(__('Merci d\'offir le cadeau !'), 'message_success');
-                                $this->redirect(array('controller'=>'vouchers', 'action' => 'my_vouchers'));
+                                $this->redirect(array('action'=>'partner', $id));
                         } else {
                                 $this->Session->setFlash(__('Code erroné ! Essaie encore !'), 'default', array('class' => 'alert alert-danger'));
                                 $this->redirect($this->referer());
@@ -52,6 +52,19 @@ class BigGiftsController extends AppController {
                 $options = array('conditions' => array('BigGift.' . $this->BigGift->primaryKey => $id));
                 $this->set('bigGift', $this->BigGift->find('first', $options));
         }
+        
+        public function partner($gift_id){
+                $gift = $this->BigGift->findById($gift_id);
+                $this->set('voucher', $gift['BigGift']['name']);
+                $this->set('customer', $gift['Customer']['name']);
+                $this->set('img', $gift['BigGift']['media']);
+                $this->set('used', $gift['BigGift']['used']);
+                $this->render('/vouchers/partner');
+                
+                
+        }
+        
+        
 
         public function view($id = null) {
                 if (!$this->BigGift->exists($id)) {
@@ -62,6 +75,15 @@ class BigGiftsController extends AppController {
 
                 $this->set('bigGift', $gift);
         }
+        
+        
+        public function delete($gift_id) {
+                $this->BigGift->id = $gift_id;
+                $this->BigGift->saveField('winner_id', null);
+                $this->redirect(array('controller'=>'vouchers', 'action'=>'my_vouchers'));
+                $this->Session->setFlash(__('Cadeau effacé !'), 'message_danger');
+
+	}
 
         /**
          * admin_index method

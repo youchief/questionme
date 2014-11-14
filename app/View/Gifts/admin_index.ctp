@@ -26,6 +26,7 @@
 		</td>
 		<td class="actions">
 		<div class="btn-group">
+                        <?php echo $this->Html->link(__('Duplicate'), array('action' => 'duplicate', $gift['Gift']['id']), array('class'=>'btn btn-primary btn-xs')); ?>
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $gift['Gift']['id']), array('class'=>'btn btn-default btn-xs')); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $gift['Gift']['id']), array('class'=>'btn btn-default btn-xs')); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $gift['Gift']['id']), array('class'=>'btn btn-danger btn-xs'), __('Are you sure you want to delete # %s?', $gift['Gift']['id'])); ?>

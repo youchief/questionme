@@ -3,7 +3,6 @@
 App::uses('AppController', 'Controller');
 App::uses('CakeEmail', 'Network/Email');
 
-
 /**
  * Gifts Controller
  *
@@ -38,7 +37,7 @@ class GiftsController extends AppController {
                                 $this->Gift->id = $id;
                                 $this->Gift->saveField('used', date('Y-m-d H:i:s'));
                                 $this->Session->setFlash(__('Merci d\'offir le cadeau !'), 'message_success');
-                                $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
+                                $this->redirect(array('action' => 'partner', $id));
                         } else {
                                 $this->Session->setFlash(__('Code erroné ! Essaie encore !'), 'default', array('class' => 'alert alert-danger'));
                                 $this->redirect($this->referer());
@@ -50,6 +49,16 @@ class GiftsController extends AppController {
                 $this->set('gift', $this->Gift->find('first', $options));
         }
 
+        public function partner($gift_id) {
+                $gift = $this->Gift->findById($gift_id);
+                $this->set('voucher', $gift['Gift']['name']);
+                $this->set('customer', $gift['Customer']['name']);
+                $this->set('img', $gift['Gift']['media']);
+                $this->set('used', $gift['Gift']['used']);
+
+                $this->render('/vouchers/partner');
+        }
+
         public function view($id = null) {
                 if (!$this->Gift->exists($id)) {
                         throw new NotFoundException(__('Invalid gift'));
@@ -57,6 +66,13 @@ class GiftsController extends AppController {
                 $options = array('conditions' => array('Gift.' . $this->Gift->primaryKey => $id));
                 $gift = $this->Gift->find('first', $options);
                 $this->set('gift', $gift);
+        }
+
+        public function delete($gift_id) {
+                $this->Gift->id = $gift_id;
+                $this->Gift->saveField('winner_id', null);
+                $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
+                $this->Session->setFlash(__('Cadeau effacé !'), 'message_danger');
         }
 
         /**
@@ -108,6 +124,28 @@ class GiftsController extends AppController {
                 $customers = $this->Gift->Customer->find('list');
                 $qdays = $this->Gift->Qday->find('list');
                 $this->set(compact('customers', 'qdays'));
+        }
+
+        public function admin_duplicate($id) {
+                $gift = $this->Gift->findById($id);
+                $new_gift = array();
+                $new_gift['Gift']['name'] = $gift['Gift']['name'];
+                $new_gift['Gift']['description'] = $gift['Gift']['description'];
+                $new_gift['Gift']['validity'] = $gift['Gift']['validity'];
+                $new_gift['Gift']['conditions'] = $gift['Gift']['conditions'];
+                $new_gift['Gift']['media'] = $gift['Gift']['media'];
+                $new_gift['Gift']['customer_id'] = $gift['Gift']['customer_id'];
+                $new_gift['Gift']['qday_id'] = $gift['Gift']['qday_id'];
+                
+                $this->Gift->Behaviors->unload('Uploader.Attachment');
+                $this->Gift->Behaviors->unload('Uploader.FileValidation');
+                $this->Gift->create();
+                if ($this->Gift->save($new_gift)) {
+                        $this->Session->setFlash(__('The gift has been saved'), 'default', array('class' => 'alert alert-success'));
+                        return $this->redirect(array('action' => 'index'));
+                } else {
+                        $this->Session->setFlash(__('The gift could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-error'));
+                }
         }
 
         /**
@@ -181,7 +219,7 @@ class GiftsController extends AppController {
         public function admin_validate($user_id, $gift_id) {
                 $gift = $this->Gift->findById($gift_id);
                 $user = $this->User->findById($user_id);
-                
+
                 $this->Gift->id = $gift_id;
                 $this->Gift->saveField('winner_id', $user_id);
                 $this->Session->setFlash(__('The gift has been given'), 'default', array('class' => 'alert alert-success'));
@@ -190,7 +228,7 @@ class GiftsController extends AppController {
                 $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
                 $Email->to($user['User']['email']);
                 $Email->subject('T\'es un winner !');
-                $Email->viewVars(array('user' => $user['User']['username'], 'gift'=>$gift['Gift']['name'], 'link'=>'http://www.questionme.ch/vouchers/my_vouchers'));
+                $Email->viewVars(array('user' => $user['User']['username'], 'gift' => $gift['Gift']['name'], 'link' => 'http://www.questionme.ch/vouchers/my_vouchers'));
                 $Email->emailFormat('html');
                 $Email->template('winner');
                 $Email->send();

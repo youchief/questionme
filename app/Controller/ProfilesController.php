@@ -106,4 +106,7 @@ class ProfilesController extends AppController {
 		$this->Session->setFlash(__('Profile was not deleted'), 'default', array('class'=>'alert alert-error'));
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+        
+        
 }

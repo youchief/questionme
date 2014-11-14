@@ -11,6 +11,12 @@
                 <p>
                         <?php echo h($gift['Gift']['description']); ?>
                 </p>
+                <h4><?php echo __('Validité'); ?></h4>
+                <p><?php echo $this->Time->format('d/m/Y',$gift['Gift']['validity']); ?></p>
+                <h4><?php echo __('Conditions'); ?></h4>
+                <p>
+                        <?php echo h($gift['Gift']['conditions']); ?>
+                </p>
         </div>
 </div>
 

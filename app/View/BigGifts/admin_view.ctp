@@ -20,6 +20,16 @@
                                 <?php echo h($bigGift['BigGift']['created']); ?>
                                 &nbsp;
                         </dd>
+                        <dt><?php echo __('Validity'); ?></dt>
+                        <dd>
+                                <?php echo h($bigGift['BigGift']['validity']); ?>
+                                &nbsp;
+                        </dd>
+                        <dt><?php echo __('Conditions'); ?></dt>
+                        <dd>
+                                <?php echo h($bigGift['BigGift']['conditions']); ?>
+                                &nbsp;
+                        </dd>
                         <dt><?php echo __('Winner'); ?></dt>
                         <dd>
                                 <?php echo $this->Html->link($winner['User']['username'], array('controller' => 'users', 'action' => 'view', $winner['User']['id'])); ?>

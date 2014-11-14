@@ -6,6 +6,8 @@
 		echo $this->Form->input('id', array('class'=>'form-control'));
 		echo $this->Form->input('name', array('class'=>'form-control'));
                 echo $this->Form->input('description', array('class'=>'form-control'));
+                echo $this->Form->input('validity', array('class'=>'form-control'));
+                echo $this->Form->input('conditions', array('class'=>'form-control'));
 		echo $this->Form->input('media', array('class'=>'form-control', 'type'=>'file'));
 		echo $this->Form->input('used', array('class'=>'form-control'));
 		echo $this->Form->input('customer_id', array('class'=>'form-control'));

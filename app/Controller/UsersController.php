@@ -127,10 +127,10 @@ class UsersController extends AppController {
 
                 if ($this->request->is('post') || $this->request->is('put')) {
                         if ($this->User->save($this->request->data)) {
-                                $this->Session->setFlash(__('Ton profil a été modifié!'), 'default', array('class' => 'alert alert-success'));
+                                $this->Session->setFlash(__('Ton profil a été modifié!'), 'message_success');
                                 return $this->redirect(array('action' => 'my_profile'));
                         } else {
-                                $this->Session->setFlash(__('Petit problème :-/'), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Petit problème :-/'), 'message_danger');
                         }
                 } else {
                         $options = array('conditions' => array('User.' . $this->User->primaryKey => $this->Auth->user('id')));
@@ -285,7 +285,7 @@ class UsersController extends AppController {
                                 $Email->emailFormat('html');
                                 $Email->template('recover');
                                 $Email->send();
-                                $this->Session->setFlash(__('Nous t\'avons envoyé un nouveau mot de passe !'), 'default', array('class' => 'alert alert-success'));
+                                $this->Session->setFlash(__('On t\'a envoyé un nouveau mot de passe !  '), 'message_success');
                                 return $this->redirect(array('action' => 'login'));
                         } else {
                                 $this->Session->setFlash(__('Pas trouvé :-/'), 'default', array('class' => 'alert alert-danger'));
@@ -337,26 +337,24 @@ class UsersController extends AppController {
 
         public function admin_export() {
                 //$this->User->recursive = 2;
-                
+
                 $users = $this->User->find('all', array(
-                    
                     'contain' => array(
                         'Choice' => array(
                             //'conditions' => array("IN" => array("Choice.id" => $choices)),
                             'Question'
-                            )
                         )
                     )
-                        
+                        )
                 );
 
                 $result = array();
-                
-                $i=0;
-                foreach($users as $user){
-                        foreach($user['Choice'] as $choice){
+
+                $i = 0;
+                foreach ($users as $user) {
+                        foreach ($user['Choice'] as $choice) {
                                 $result[$i]['User']['reponse_date'] = $choice['UsersChoice']['created'];
-                                $result[$i]['User']['question'] = $choice['Question']['question'];                    
+                                $result[$i]['User']['question'] = $choice['Question']['question'];
                                 $result[$i]['User']['response'] = $choice['response'];
                                 $result[$i]['User']['username'] = $user['User']['username'];
                                 $result[$i]['User']['user_sex'] = $user['User']['sex'];
@@ -364,9 +362,9 @@ class UsersController extends AppController {
                                 $i++;
                         }
                 }
-                
+
                 CakePlugin::load('CsvView');
-             
+
                 $_serialize = 'result';
                 $_header = array('Date de réponce', 'Question', 'Réponse', 'Username', 'Sexe', 'Birthday');
                 $_extract = array('User.reponse_date', 'User.question', 'User.response', 'User.username', 'User.user_sex', 'User.user_birthday');
@@ -374,7 +372,34 @@ class UsersController extends AppController {
                 $this->response->download('export_result_qme.csv');
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
+        }
 
+        public function admin_export_profile() {
+                $users = $this->User->find('all');
+
+
+                $result = array();
+
+                $i = 0;
+                foreach ($users as $user) {
+                        foreach ($user['Profile'] as $profile) {
+                                $result[$i]['User']['question'] = $profile['key'];
+                                $result[$i]['User']['response'] = $profile['value'];
+                                $result[$i]['User']['username'] = $user['User']['username'];
+                                $result[$i]['User']['user_sex'] = $user['User']['sex'];
+                                $result[$i]['User']['user_birthday'] = $user['User']['birthday'];
+                                $i++;
+                        }
+                }
+                CakePlugin::load('CsvView');
+
+                $_serialize = 'result';
+                $_header = array('Question', 'Réponse', 'Username', 'Sexe', 'Birthday');
+                $_extract = array('User.question', 'User.response', 'User.username', 'User.user_sex', 'User.user_birthday');
+                $_delimiter = ";"; //tab
+                $this->response->download('export_profiles_qme.csv');
+                $this->viewClass = 'CsvView.Csv';
+                $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
         }
 
 }

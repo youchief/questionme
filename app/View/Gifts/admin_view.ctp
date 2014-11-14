@@ -22,7 +22,16 @@
                                         <?php echo h($gift['Gift']['description']); ?>
                                         &nbsp;
                                 </dd>
-                              
+                                <dt><?php echo __('Validity'); ?></dt>
+                                <dd>
+                                        <?php echo h($gift['Gift']['validity']); ?>
+                                        &nbsp;
+                                </dd>
+                                <dt><?php echo __('Conditions'); ?></dt>
+                                <dd>
+                                        <?php echo h($gift['Gift']['conditions']); ?>
+                                        &nbsp;
+                                </dd>
                                 <dt><?php echo __('Used'); ?></dt>
                                 <dd>
                                         <?php echo h($gift['Gift']['used']); ?>
@@ -35,7 +44,7 @@
                                 </dd>
                                 <dt><?php echo __('Winner Id'); ?></dt>
                                 <dd>
-                                        <?php echo $this->Html->link($winner['User']['username'], array('controller'=>'users', 'action'=>'view', $winner['User']['id'])); ?>
+                                        <?php echo $this->Html->link($winner['User']['username'], array('controller' => 'users', 'action' => 'view', $winner['User']['id'])); ?>
                                         &nbsp;
                                 </dd>
                                 <dt><?php echo __('Qday'); ?></dt>

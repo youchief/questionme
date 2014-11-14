@@ -12,6 +12,12 @@
                 <p>
                         <?php echo h($bigGift['BigGift']['description']); ?>
                 </p>
+                <h4><?php echo __('Validité'); ?></h4>
+                <p><?php echo $this->Time->format('d/m/Y',$bigGift['BigGift']['validity']); ?></p>
+                <h4><?php echo __('Conditions'); ?></h4>
+                <p>
+                        <?php echo h($bigGift['BigGift']['conditions']); ?>
+                </p>
         </div>
 </div>
 
