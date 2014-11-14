@@ -1,6 +1,6 @@
 /app/Plugin
 /app/Config/database.php
-app/webroot/img/banners
+/app/webroot/img/banners
 # User specific & automatically generated files #
 #################################################
 /app/Config/database.php
