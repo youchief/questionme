@@ -28,10 +28,10 @@ class ContactsController extends AppController {
                                 $Email->to('hello@questionme.ch');
                                 $Email->subject('Contact depuis le site questionme.ch');
                                 $Email->send($this->request->data['Contact']['message']);
-                                $this->Session->setFlash(__('Merci et à très vite!'), 'default', array('class' => 'alert alert-success'));
+                                $this->Session->setFlash(__('Merci et à très vite!'), 'message_success');
                                 
                         } else {
-                                $this->Session->setFlash(__('Petit problème :-/, merci de vérifier votre formulaire.'), 'default', array('class' => 'alert alert-danger'));
+                                $this->Session->setFlash(__('Petit problème :-/, merci de vérifier votre formulaire.'), 'message_danger');
                                
                                 
                         }
