@@ -26,7 +26,7 @@
             <?php echo $this->Html->image('right.svg', array('width' => '29px')); ?>
         </div>
         <div class="go-play-m hidden-sm hidden-md  hidden-lg">        
-            <?php echo $this->Html->image('down.svg', array('height' => '29px')); ?>
+            <?php echo $this->Html->image('down.svg', array('height' => '40px')); ?>
         </div>
         
     </div>

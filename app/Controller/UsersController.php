@@ -30,7 +30,7 @@ class UsersController extends AppController {
                         $this->request->data['User']['token'] = sha1($this->data['User']['username'] . rand(0, 100));
 
                         if ($this->User->save($this->request->data)) {
-                                $this->Session->setFlash(__('C\'est Top ! On vient de t\'envoyer un e-mail pour activer ton compte !'), 'message_success');
+                                $this->Session->setFlash(__('C\'est Top ! On vient de t\'envoyer un email pour activer ton compte !'), 'message_success');
 
                                 $Email = new CakeEmail();
                                 $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));

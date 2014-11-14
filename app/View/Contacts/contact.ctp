@@ -15,8 +15,8 @@
                         <?php echo $this->Form->end(); ?>
                 </div>
                 <div class="col-sm-6 bloquote">
-
-                        <p class='lead'>
+                        <br/><br/><br/>
+                        <p class='lead margin-contact'>
                                 Tu as une idée, une recommandation, une plainte ?
                         <br><br>
                                 Tu veux nous écrire des mots doux ou peut-être travailler avec nous ? 

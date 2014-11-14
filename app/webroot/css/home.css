@@ -88,9 +88,7 @@ footer{position:absolute;z-index:5;width:100%;bottom:0px;left:0px;background:tra
 .marketing{margin-top:10px;}
 
 
-.carousel-control.left, .carousel-control.right {
-background-image:none;
-}
+
 
 .carousel-indicators-2 {
     height: 20px;
