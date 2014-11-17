@@ -145,7 +145,7 @@ class UsersController extends AppController {
                         if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
                                 $this->User->id = $this->Auth->user('id');
                                 $this->User->saveField('password', $this->request->data['User']['new_password']);
-                                $this->Session->setFlash(__('Ton mot de passe et changé!'), 'message_success');
+                                $this->Session->setFlash(__('Ton mot de passe a été changé !'), 'message_success');
                                 return $this->redirect(array('action' => 'my_profile'));
                         } else {
                                 $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'message_danger');
@@ -345,7 +345,8 @@ class UsersController extends AppController {
                             'Question' => array(
                                 'QuestionType'
                             )
-                        )
+                        ),
+                       
                     )
                         )
                 );
@@ -357,11 +358,16 @@ class UsersController extends AppController {
                         foreach ($user['Choice'] as $choice) {
                                 $result[$i]['User']['reponse_date'] = $choice['UsersChoice']['created'];
                                 $result[$i]['User']['question'] = $choice['Question']['question'];
+                                $result[$i]['User']['question_id'] = $choice['Question']['id'];
+                                $result[$i]['User']['order_id'] = $choice['Question']['order_id'];
                                 $result[$i]['User']['question_type'] = $choice['Question']['QuestionType']['name'];
                                 $result[$i]['User']['response'] = $choice['response'];
+                                $result[$i]['User']['response_id'] = $choice['id'];
+                                $result[$i]['User']['id'] = $user['User']['id'];
                                 $result[$i]['User']['username'] = $user['User']['username'];
                                 $result[$i]['User']['user_sex'] = $user['User']['sex'];
                                 $result[$i]['User']['user_birthday'] = $user['User']['birthday'];
+                                $result[$i]['User']['region_id'] = $user['User']['region_id'];
                                 $i++;
                         }
                 }
@@ -369,8 +375,8 @@ class UsersController extends AppController {
                 CakePlugin::load('CsvView');
 
                 $_serialize = 'result';
-                $_header = array('Date de réponce', 'Question', 'Type de question' , 'Réponse', 'Username', 'Sexe', 'Birthday');
-                $_extract = array('User.reponse_date', 'User.question', 'User.question_type', 'User.response', 'User.username', 'User.user_sex', 'User.user_birthday');
+                $_header = array('Date de réponce', 'Question', 'Question ID', 'Order ID', 'Type de question' , 'Réponse', 'Reponse ID', 'User ID', 'Username', 'Sexe', 'Birthday', 'Region ID');
+                $_extract = array('User.reponse_date', 'User.question', 'User.question_id', 'User.order_id','User.question_type', 'User.response', 'User.response_id', 'User.id', 'User.username', 'User.user_sex', 'User.user_birthday', 'User.region_id');
                 $_delimiter = ";"; //tab
                 $this->response->download('export_result_qme.csv');
                 $this->viewClass = 'CsvView.Csv';

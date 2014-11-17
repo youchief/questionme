@@ -427,7 +427,8 @@ class QuestionsController extends AppController {
                             'voucher_id' => $day_voucher['Voucher']['id']
                         ));
                         $this->UserVoucher->save();
-                        $this->Session->setFlash('Nickel ! Tu as gagné ' . $day_voucher['Voucher']['name'] . ". RDV Demain 8h pour savoir si tu as gagné le cadeau d'aujourd'hui !", 'message_success');
+                        $this->Session->setFlash('Nickel ! Tu as gagné ' . $day_voucher['Voucher']['name']." disponible dans “MES BONS”.
+							Demain matin, un tirage au sort déterminera les gagnants pour les cadeaux du jour. Pour voir si tu as gagné, rends-toi dans “MES BONS” !", 'message_success');
                         $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                 }
         }

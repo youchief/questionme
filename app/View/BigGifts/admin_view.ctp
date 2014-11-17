@@ -1,14 +1,18 @@
 <div class="row">
-        <div class="col-sm-8">
-                <div class="thumbnail">
+        <div class='col-sm-6'>
+                <div class='thumbnail gift'>
+                        <i class="fa fa-birthday-cake"> Cadeau</i>  
                         <?php echo $this->Html->image($bigGift['BigGift']['media'], array('class' => 'img-responsive')) ?>
-                        <h3><?php echo h($bigGift['BigGift']['name']); ?></h3>
+                        <h3><?php echo $bigGift['BigGift']['name'] ?></h3>
                         <p>
-                                <?php echo h($bigGift['BigGift']['description']); ?>
+                                <?php
+                                echo $this->Text->truncate($bigGift['BigGift']['description'], 150, array('ellipsis' => '...', 'exact' => false));
+                                ?>
                         </p>
+
                 </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-6">
                 <dl>
                         <dt><?php echo __('Id'); ?></dt>
                         <dd>

@@ -10,13 +10,13 @@
                 <h1><?php echo h($voucher['Voucher']['name']); ?></h1>
                 <h2><?php echo h($voucher['Customer']['name']); ?></h2>
                 <p>
-                        <?php echo h($voucher['Voucher']['description']); ?>
+                        <?php echo $voucher['Voucher']['description']; ?>
                 </p>
                 <h4><?php echo __('Validité'); ?></h4>
                 <p><?php echo $this->Time->format('d/m/Y',$voucher['Voucher']['validity']); ?></p>
                 <h4><?php echo __('Conditions'); ?></h4>
                 <p>
-                        <?php echo h($voucher['Voucher']['conditions']); ?>
+                        <?php echo $voucher['Voucher']['conditions']; ?>
                 </p>
         </div>
 </div>

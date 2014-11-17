@@ -7,6 +7,11 @@
 
                 <div class="users view">
                         <dl>
+                                <dt><?php echo __('Id'); ?></dt>
+                                <dd>
+                                        <?php echo h($user['User']['id']); ?>
+                                        &nbsp;
+                                </dd>
                                 <dt><?php echo __('Created'); ?></dt>
                                 <dd>
                                         <?php echo h($user['User']['created']); ?>

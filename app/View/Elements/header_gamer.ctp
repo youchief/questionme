@@ -25,7 +25,8 @@
                         <div class="navbar-collapse collapse">
                             
                                 <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>"><i class='fa fa-play-circle'></i> PLAY</a></li>
+										<li><a href="<?php echo $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', "#"=>'home-play')) ?>"><i class='fa fa-home'> </i> Home</a></li>
+                                        <li><a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>"><i class='fa fa-play-circle'></i> JOUER</a></li>
                                         <li><a href="<?php echo $this->Html->url(array('controller' => 'vouchers', 'action' => 'my_vouchers', 'admin' => false)) ?>"><i class='fa fa-trophy'></i> Mes Bons</a></li>
                                         <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'my_profile', 'admin' => false)) ?>"><i class='fa fa-user'></i> Mon profil</a></li>
                                         <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'logout', 'admin' => false)) ?>"><i class='fa fa-unlock'></i> Déconnexion</a></li>

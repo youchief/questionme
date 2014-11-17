@@ -46,6 +46,7 @@ class User extends AppModel {
             'password' => array(
                 'notEmpty' => array(
                     'rule' => array('notEmpty'),
+					'message'=>'Mets un mot de passe !'
                 ),
                 'between' => array(
                     'rule' => array('between', 5, 15),
@@ -59,8 +60,8 @@ class User extends AppModel {
             ),
             'gender' => array(
                 'notEmpty' => array(
-                    'rule' => array('Tu dois choisir quelque chose !'),
-                //'message' => 'Your custom message here',
+                    'rule' => array('notEmpty'),
+                        'message' => 'Tu dois choisir quelque chose !',
                 //'allowEmpty' => false,
                 //'required' => false,
                 //'last' => false, // Stop validation after this rule
@@ -99,7 +100,7 @@ class User extends AppModel {
             
             'birthday' => array(
                 'rule' => 'date',
-                'message' => 'Entrez une date valide',
+                'message' => 'Entre une date valide',
             )
         );
 

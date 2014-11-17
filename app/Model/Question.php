@@ -15,6 +15,7 @@ CakePlugin::load('Uploader');
 class Question extends AppModel {
 
         public $uses = array('Question', 'UserChoice');
+        public $order = array('Question.id ASC');
 
         /**
          * Display field
@@ -118,7 +119,7 @@ class Question extends AppModel {
                 'foreignKey' => 'order_id',
                 'conditions' => '',
                 'fields' => '',
-                'order' => 'Order.deadline DESC'
+             //   'order' => 'Order.deadline ASC'
             )
         );
 

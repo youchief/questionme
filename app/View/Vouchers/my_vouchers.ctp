@@ -15,7 +15,7 @@
                         <?php if ($bgift['used'] == null): ?>
                                 <div class='col-sm-4'>
                                         <div class='thumbnail bigGift'>
-                                            <i class="fa fa-birthday-cake"></i> <h5 class="title-vouch">Gros cadeau</h5>
+                                                <i class="fa fa-birthday-cake"></i> <h5 class="title-vouch">Gros cadeau</h5>
                                                 <?php echo $this->Html->image($bgift['media'], array('class' => 'img-responsive')) ?>
                                                 <h3><?php echo $bgift['name'] ?></h3>
                                                 <p>
@@ -47,7 +47,7 @@
                         <?php if ($gift['used'] == null): ?>
                                 <div class='col-sm-4'>
                                         <div class='thumbnail gift'>
-                                            <i class="fa fa-gift"></i>  <h5 class="title-vouch">Cadeau</h5>
+                                                <i class="fa fa-gift"></i>  <h5 class="title-vouch">Cadeau</h5>
                                                 <?php echo $this->Html->image($gift['media'], array('class' => 'img-responsive')) ?>
                                                 <h3><?php echo $gift['name'] ?></h3>
                                                 <p>
@@ -80,7 +80,7 @@
                         <?php if ($voucher['UserVoucher']['used'] == null): ?>
                                 <div class='col-sm-4'>
                                         <div class='thumbnail voucher'>
-                                            <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
+                                                <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
                                                 <?php echo $this->Html->image($voucher['image'], array('class' => 'img-responsive')) ?>
                                                 <h3><?php echo $voucher['name'] ?></h3>
                                                 <p>
@@ -105,9 +105,38 @@
                 <?php endforeach; ?>
         </div>
         <div class="row">
-            <div class="col-sm-6 align-center col-sm-offset-3">
-                 <?php echo $this->Html->link(__('Comment ça marche ?'), '/#home-info', array('class' => 'btn btn-success btn-lg')) ?>
-            </div>
+                <div class="col-sm-6 align-center col-sm-offset-3">
+                        <?php echo $this->Html->link(__('Comment ça marche ?'), '#', array('class' => 'btn btn-success btn-lg', 'data-toggle' => "modal", 'data-target' => "#myModal")) ?>
+                </div>
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                        <div class="modal-content">
+
+                                <div class="modal-body">
+                                        <h3>FONCTIONNEMENT DU BON DE REDUCTION & DU CADEAU </h3>
+                                        <ol>
+                                                <li>
+                                                           Regarde les conditions d’utilisation dans DETAIL.
+                                                </li>
+                                                <li>
+                                                        Rends-toi chez le partenaire et dis-lui que tu as un bon QuestionMe.
+                                                </li>
+                                                <li>
+                                                         Quand tu es chez le partenaire avec ton téléphone, appuie sur UTILISER (MES BONS)
+                                                </li>
+                                                <li>
+                                                        Le partenaire met le code sur ton téléphone, et c’est tout bon !
+                                                </li>
+           
+                                        </ol>
+                                </div>
+                                <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                </div>
+                        </div>
+                </div>
         </div>
 </div>
 

@@ -1,10 +1,19 @@
 <div class="gifts view">
         <div class="row">
-                <div class="col-sm-6">
-                        <?php echo $this->Html->image($gift['Gift']['media'], array('class' => 'img-responsive')); ?>
+                <div class='col-sm-6'>
+                        <div class='thumbnail gift'>
+                                <i class="fa fa-gift"> Cadeau</i>  
+                                <?php echo $this->Html->image($gift['Gift']['media'], array('class' => 'img-responsive')) ?>
+                                <h3><?php echo $gift['Gift']['name'] ?></h3>
+                                <p>
+                                        <?php
+                                        echo $this->Text->truncate($gift['Gift']['description'], 150, array('ellipsis' => '...', 'exact' => false));
+                                        ?>
+                                </p>
+
+                        </div>
                 </div>
                 <div class="col-sm-6">
-                        <h2><?php echo h($gift['Gift']['name']); ?></h2>
                         <dl>
                                 <dt><?php echo __('Id'); ?></dt>
                                 <dd>
@@ -17,11 +26,7 @@
                                         &nbsp;
                                 </dd>
 
-                                <dt><?php echo __('Description'); ?></dt>
-                                <dd>
-                                        <?php echo h($gift['Gift']['description']); ?>
-                                        &nbsp;
-                                </dd>
+
                                 <dt><?php echo __('Validity'); ?></dt>
                                 <dd>
                                         <?php echo h($gift['Gift']['validity']); ?>

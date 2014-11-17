@@ -462,3 +462,17 @@ border-color: transparent;
 .people{
         margin-bottom: 2em;
 }
+
+
+.modal{
+        color:#44494f;
+        font-size: 1.3em;
+}
+
+.modal h3{
+        color:#44494f;
+}
+
+.modal-content{
+        border-radius: 0px;
+}

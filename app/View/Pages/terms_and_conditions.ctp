@@ -4,8 +4,8 @@
                         <h1>Conditions générales</h1>
                         <h2>1. Objet</h2><br/>
                         <p>
-                                Les présentes Conditions générales de QuestionMe Sàrl régissent les conditions d’utilisation de questionme.ch ainsi que les prestations et services offerts par questionme.ch et ses partenaires. L’utilisation de services offerts par des tiers ou des sites Internet tiers mis en lien sur questionme.ch peut-être soumise aux conditions générales de leurs exploitants. En utilisant questionme.ch et les sites Internet partenaires, l’utilisatrice ou l’utilisateur (ci-après « l’utilisateur », cette appellation englobant les femmes et les hommes) accepte expressément les présentes conditions générales.
-                                La validation de l'inscription en cochant la case "J'accepte les conditions générales d’utilisation" vaut accord de l’utilisateur. 
+								Les présentes Conditions générales de QuestionMe Sàrl régissent les conditions d’utilisation de questionme.ch ainsi que les prestations et services offerts par questionme.ch et ses partenaires. L’utilisation de services offerts par des tiers ou des sites Internet tiers mis en lien sur questionme.ch peut-être soumise aux conditions générales de leurs exploitants. En utilisant questionme.ch et les sites Internet partenaires, l’utilisatrice ou l’utilisateur (ci-après « l’utilisateur », cette appellation englobant les femmes et les hommes) accepte expressément les présentes conditions générales et reconnaît être lié par ces conditions générales, qu’il/elle soit un(e) utilisatrice/utilisateur enregistré ou non.
+                                
 
                         </p><br/><br/>
 
@@ -13,8 +13,9 @@
 
                         <h3>2.1 Généralités</h3><br/>
 
-                        <p>QuestionMe Sàrl invite ses utilisateurs à répondre à des questions tous les jours. En répondant aux questions, l’utilisateur participe au tirage au sort. Chaque question répondue permet à l’utilisateur d’augmenter ses chances de gagner. Il y a un tirage au sort par jour, 5 jours par semaine. En répondant aux questions l’utilisateur accède à des bons de réduction.
-                                Les contenus et formes de prestations et services offerts peuvent être modifiés, élargis ou supprimés en tout temps. QuestionMe Sàrl peut faire appel à tout moment à des tiers pour la fourniture de services et de prestations. 
+                        <p>
+							QuestionMe Sàrl invite ses utilisateurs à répondre à des questions tous les jours. En répondant aux questions, l’utilisateur participe au tirage au sort. Chaque question répondue permet à l’utilisateur d’augmenter ses chances de gagner. Il y a un tirage au sort par jour, 6 jours par semaine. En répondant aux questions l’utilisateur accède à des bons de réduction.
+							Les contenus et formes de prestations et services offerts peuvent être modifiés, élargis ou supprimés en tout temps. QuestionMe Sàrl peut faire appel à tout moment à des tiers pour la fourniture de services et de prestations.
                         </p><br/>
 
                         <h3>2.2 Participation</h3><br/>
@@ -81,7 +82,9 @@
                         </p><br/><br/>
                         <h2>9. Langue des Conditions</h2><br/>
 
-                        <p>Toutes traductions de la version française des Conditions générales vous sont fournies par QuestionMe Sàrl, à des fins de commodité uniquement. Seules les versions des Conditions générales en langue française régiront vos rapports avec questionme.ch sa. En cas de contradiction entre les stipulations de la version française et ceux de la traduction, les stipulations de la version en langue française prévaudront.
+                        <p>
+							Toutes traductions de la version française des Conditions générales vous sont fournies par QuestionMe Sàrl, à des fins de commodité uniquement. Seules les versions des Conditions générales en langue française régiront vos rapports avec questionme.ch Sàrl. En cas de contradiction entre les stipulations de la version française et ceux de la traduction, les stipulations de la version en langue française prévaudront.
+							
                         </p><br/><br/>
                         <h2>10. Dispositions finales</h2><br/>
 

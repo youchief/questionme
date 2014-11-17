@@ -2872,18 +2872,18 @@ class FormHelper extends AppHelper {
 				break;
 			case 'month':
 				if ($options['monthNames'] === true) {
-					$data['01'] = __d('cake', 'January');
-					$data['02'] = __d('cake', 'February');
-					$data['03'] = __d('cake', 'March');
-					$data['04'] = __d('cake', 'April');
-					$data['05'] = __d('cake', 'May');
-					$data['06'] = __d('cake', 'June');
-					$data['07'] = __d('cake', 'July');
-					$data['08'] = __d('cake', 'August');
-					$data['09'] = __d('cake', 'September');
-					$data['10'] = __d('cake', 'October');
-					$data['11'] = __d('cake', 'November');
-					$data['12'] = __d('cake', 'December');
+					$data['01'] = __d('cake', 'Janvier');
+					$data['02'] = __d('cake', 'Février');
+					$data['03'] = __d('cake', 'Mars');
+					$data['04'] = __d('cake', 'Avril');
+					$data['05'] = __d('cake', 'Mai');
+					$data['06'] = __d('cake', 'Juin');
+					$data['07'] = __d('cake', 'Juillet');
+					$data['08'] = __d('cake', 'Août');
+					$data['09'] = __d('cake', 'Septembre');
+					$data['10'] = __d('cake', 'Octoberfest');
+					$data['11'] = __d('cake', 'Novembre');
+					$data['12'] = __d('cake', 'Noël');
 				} elseif (is_array($options['monthNames'])) {
 					$data = $options['monthNames'];
 				} else {
