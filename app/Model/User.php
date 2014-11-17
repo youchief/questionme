@@ -58,7 +58,7 @@ class User extends AppModel {
             //'last' => false, // Stop validation after this rule
             //'on' => 'create', // Limit validation to 'create' or 'update' operations
             ),
-            'gender' => array(
+            'sex' => array(
                 'notEmpty' => array(
                     'rule' => array('notEmpty'),
                         'message' => 'Tu dois choisir quelque chose !',
