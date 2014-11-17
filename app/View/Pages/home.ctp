@@ -12,10 +12,9 @@
                     <div class="row">
                         <div class="col-md-2 col-sm-4 col-xs-4 col-md-offset-5 col-sm-offset-4 col-xs-offset-4 align-center">
                             <p><?php echo $this->Html->link($this->Html->image('home-gift.svg', array('height' => '60px', 'class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?></p>
-                            
                         </div>
-                        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 align-center">
-                            <p class="light green">Réponds aux questions<br/>et gagne des cadeaux</p>
+                        <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 align-center">
+                            <p class="light green" style="font-weight:200;">Réponds aux questions<br/>et gagne des cadeaux</p>
                         </div>
                     </div>
                 </div>

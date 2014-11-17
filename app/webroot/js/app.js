@@ -315,10 +315,15 @@ $(window).ready(function () {
             infoH.hide();
         });
     });
-
-    $("#home-prince").swipe({swipe: function (event, direction, distance, duration, fingerCount) {
-            goPlayM();
+    if($(window).width() < 767){
+        $("#home-prince").swipe({swipe: function (event, direction, distance, duration, fingerCount) {
+                goPlayM();
+            }, threshold: 0});
+    } else {
+        $("#home-prince").swipe({swipe: function (event, direction, distance, duration, fingerCount) {
+            goPlayD();
         }, threshold: 0});
+    }
     $("#home-play").swipe({swipeUp: function (event, direction, distance, duration, fingerCount) {
             goInfos();
         }, threshold: 0});

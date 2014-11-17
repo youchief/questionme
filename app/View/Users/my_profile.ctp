@@ -15,7 +15,7 @@
 
                         <?php echo $this->Html->link(__('Mes bons'), array('controller' => 'vouchers', 'action' => 'my_vouchers'), array('class' => 'btn btn-success btn-lg')) ?><br/><br/>
                         <?php echo $this->Html->link(__('Editer mon compte'), array('controller' => 'users', 'action' => 'edit_my_profile'), array('class' => 'btn btn-success btn-lg')) ?><br/><br/>
-                        <?php echo $this->Html->link(__('Changer mon mot de passe'), array('controller' => 'users', 'action' => 'change_password'), array('class' => 'btn btn-success btn-lg')) ?>
+                        <?php echo $this->Html->link(__('Changer mot de passe'), array('controller' => 'users', 'action' => 'change_password'), array('class' => 'btn btn-success btn-lg')) ?>
                         <br/><br/>
 
 
