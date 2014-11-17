@@ -269,7 +269,7 @@ $(window).ready(function () {
         goInfos();
     });
 
-    if ($(window).width() > 768) {
+    if ($(window).width() > 767) {
         $('.home-prince-block').click(function () {
             goPlayD();
         });
