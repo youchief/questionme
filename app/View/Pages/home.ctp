@@ -14,7 +14,7 @@
                             <p><?php echo $this->Html->link($this->Html->image('home-gift.svg', array('height' => '60px', 'class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?></p>
                         </div>
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 align-center">
-                            <p class="light green" style="font-weight:200;">Réponds aux questions<br/>et gagne des cadeaux</p>
+                            <p class="light green" style="font-weight:200;">Réponds aux questions<br/>Gagne des cadeaux</p>
                         </div>
                     </div>
                 </div>

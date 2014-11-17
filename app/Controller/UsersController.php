@@ -142,13 +142,17 @@ class UsersController extends AppController {
 
         public function change_password() {
                 if ($this->request->is('post')) {
-                        if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
-                                $this->User->id = $this->Auth->user('id');
-                                $this->User->saveField('password', $this->request->data['User']['new_password']);
-                                $this->Session->setFlash(__('Ton mot de passe a été changé !'), 'message_success');
-                                return $this->redirect(array('action' => 'my_profile'));
-                        } else {
-                                $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'message_danger');
+                        if($this->request->data['User']['new_password'] != null && $this->request->data['User']['new_password'] != ''){
+                            if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
+                                    $this->User->id = $this->Auth->user('id');
+                                    $this->User->saveField('password', $this->request->data['User']['new_password']);
+                                    $this->Session->setFlash(__('Ton mot de passe a été changé !'), 'message_success');
+                                    return $this->redirect(array('action' => 'my_profile'));
+                            } else {
+                                    $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'message_danger');
+                            }
+                        }else{
+                            $this->Session->setFlash(__('Tu dois rentrer un nouveau mot de passe'), 'message_danger');
                         }
                 }
         }

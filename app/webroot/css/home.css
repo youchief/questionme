@@ -12,7 +12,7 @@ footer{position:absolute;z-index:5;width:100%;bottom:0px;left:0px;background:tra
 .home-layer{position: absolute; top:0; left:0;width:100%;height:100%;overflow:hidden;}
 .home-prince{display: table;position:absolute;z-index:2;top:0px;width:100%;height:100%;}
 
-footer{position:absolute;z-index:5;width:100%;bottom:0px;left:0px;background:transparent;}
+footer{position:absolute;z-index:10;width:100%;bottom:0px;left:0px;background:transparent;}
 
 .home-prince-block{ display:table-cell;vertical-align:middle;}
 .home-prince-block-title{margin:0 auto;width:400px;}
@@ -55,7 +55,7 @@ footer{position:absolute;z-index:5;width:100%;bottom:0px;left:0px;background:tra
 .navbar-default .navbar-nav>li>a i {text-transform: uppercase;font-weight: 500;color:#44494f ;}
 
 .navbar-brand {float: none;position: absolute;padding: 15px 15px;font-size: 18px;line-height: 20px;margin: 0 auto;width: 100%;}
-.navbar-brand img {float: none;margin: 0 auto;display: table;margin-top: -30px;}
+.navbar-brand img {float: none;margin: 0 auto;display: table;margin-top: 0px;}
 .navbar{position:relative;background-color:transparent;}
 
 @media (max-width: 767px) { 
@@ -147,7 +147,7 @@ footer{position:absolute;z-index:5;width:100%;bottom:0px;left:0px;background:tra
     .home-play-aside-cont{margin-top: 0px;text-align: center;}
     .home-play-aside-cont h1{font-size:14px;}
     .home-play-gallery{position:relative;float:none; width:100%;height:50%}
-    .navbar-brand img {margin-top:0px;}
+    .navbar-brand a {margin-top:0px;}
     
     #info-1, #info-2, #info-3, #info-4{position:absolute;display:table;width:100%; height:100%;background: #44494f;}
     #info-1{z-index:5;left:0;}

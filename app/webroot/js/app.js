@@ -145,17 +145,21 @@ function goInfos() {
         $('.navbar-brand').show();
         $('.home-info')
                 .show()
+                
                 .animate({top: 0}, 500, function () {
                     $('.home-info').css('left', '0');
+                    $('.footer').show();
                 });
     });
 
 
-
+    
     $('#info-1').show();
     $('#info-2').hide();
     $('#info-3').hide();
     $('#info-4').hide();
+    
+    
     
 }
 
@@ -235,6 +239,8 @@ function rePlay() {
         $(this).parent().css({'background': 'url(' + imgSrc + ') center center no-repeat', '-webkit-background-size': '100% ', '-moz-background-size': '100%', '-o-background-size': '100%', 'background-size': '100%', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'});
         $(this).remove();
     });
+    
+    $('.footer').hide();
 
 }
 
@@ -250,17 +256,32 @@ $(window).ready(function () {
     $('#info-2').hide();
     $('#info-3').hide();
     $('#info-4').hide();
+    
+    $(document).click(function (event) {
+        var clickover = $(event.target);
+        var _opened = $(".navbar-collapse").hasClass("navbar-collapse in");
+        if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+            $("button.navbar-toggle").click();
+        }
+    });
 
     var home = $('.home-layer').width();
 
     if (home > 0) {
         $('.navbar-brand').hide();
         $('.content-wrap').css('padding', '0px');
-        $('.footer').remove();
+        $('.footer').hide();
         
         
         
         $('.navbar-brand').click(function(){
+            var playV = $('.home-play').is(":visible");
+            if(playV === false){
+                rePlay();
+            }
+        });
+        
+        $('.menu-home').click(function(){
             var playV = $('.home-play').is(":visible");
             if(playV === false){
                 rePlay();
@@ -494,14 +515,6 @@ $(window).ready(function () {
         $('#info-4').hide();
     }
     
-    //console.log(window.location.hash);    
-    
-    
-    
-
-
-
-
 });
 
 $(window).resize(function () {

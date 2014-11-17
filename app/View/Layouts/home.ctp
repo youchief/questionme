@@ -43,7 +43,7 @@
                         echo $this->fetch('content');
                         ?>
                 </div>
-                <?php //echo $this->element('footer'); ?>
+                <?php echo $this->element('footer'); ?>
                 <?php
                 echo $this->Html->script(array(
                     'vendor/jquery/jquery.min',

@@ -19,13 +19,13 @@
                                 </button>
                             <h5 class="align-right menu-txt hidden-xs hidden-sm" >MENU</h5>
 
-                                <?php echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive', 'id' => 'logo')), '/#home-play', array('class' => 'navbar-brand ', 'escape' => false)); ?>
+                            <div class="navbar-brand"><?php echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive', 'id' => 'logo')), '/#home-play', array( 'escape' => false)); ?></div>
                         </div>
 
                         <div class="navbar-collapse collapse">
                             
                                 <ul class="nav navbar-nav navbar-right">
-										<li><a href="<?php echo $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', "#"=>'home-play')) ?>"><i class='fa fa-home'> </i> Home</a></li>
+                                        <li class="menu-home"><a href="<?php echo $this->Html->url(array('controller' => 'pages', 'action' => 'display', 'home', "#"=>'home-play')) ?>"><i class='fa fa-home'> </i> Home</a></li>
                                         <li><a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>"><i class='fa fa-play-circle'></i> JOUER</a></li>
                                         <li><a href="<?php echo $this->Html->url(array('controller' => 'vouchers', 'action' => 'my_vouchers', 'admin' => false)) ?>"><i class='fa fa-trophy'></i> Mes Bons</a></li>
                                         <li><a href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'my_profile', 'admin' => false)) ?>"><i class='fa fa-user'></i> Mon profil</a></li>

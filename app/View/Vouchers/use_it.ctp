@@ -16,7 +16,7 @@
                 </div>
         </div>
         <div class='col-sm-6 col-sm-offset-3 align-center'>
-            <?php echo $this->Html->link(__('Revenir à mes bons'), array('controller' => 'vouchers', 'action' => 'my_vouchers'), array('class' => 'btn btn-success btn-lg')) ?><br/><br/>
+            <?php echo $this->Html->link(__('Revenir à mes bons'), array('controller' => 'vouchers', 'action' => 'my_vouchers'), array('class' => 'btn btn-default btn-lg')) ?><br/><br/>
         </div>
     
 </div>
