@@ -40,7 +40,7 @@
                                 <div class='row row-centered'>
                                     
                                         <?php foreach ($question['Choice'] as $choice): ?>
-                                                <div class='col-sm-3 col-min col-centered '>
+                                                <div class='col-sm-3 col-centered '>
 
                                                         <div class="radio <?php if (!empty($choice['media'])): ?>limg<?php endif; ?>">
 
@@ -67,7 +67,7 @@
                                 <div class='row row-centered'>
                                         <?php foreach ($question['Choice'] as $choice): ?>
 
-                                                <div class='col-sm-3 col-min col-centered'>
+                                                <div class='col-sm-3 col-centered'>
                                                         <?php if (!empty($choice['media'])): ?>
                                                                 <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive')); ?>
                                                         <?php endif; ?>

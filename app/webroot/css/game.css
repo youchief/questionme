@@ -26,6 +26,7 @@ and open the template in the editor.
         position: relative;    
         font-size: 14px;  
         color:#44494f;
+        margin-bottom:25px;
 }  
 
 
@@ -78,6 +79,13 @@ input[type=checkbox]:checked + label {
 .progress{
        border-radius:0px;
 }
+
+@media (min-width: 767px) and (max-width: 992px) {
+    .radio label , .checkbox label{  
+        font-size:12px;
+    }
+}
+
 @media (max-width:767px){
     img.question_media{width:100%;}
 }
