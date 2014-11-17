@@ -1,5 +1,5 @@
 <div class="orders view">
-        <h2><?php echo __('Order'); ?></h2>
+        <h2><?php echo h($order['Order']['name']); ?></h2>
         <dl>
                 <dt><?php echo __('Id'); ?></dt>
                 <dd>
@@ -9,11 +9,6 @@
                 <dt><?php echo __('Created'); ?></dt>
                 <dd>
                         <?php echo h($order['Order']['created']); ?>
-                        &nbsp;
-                </dd>
-                <dt><?php echo __('Name'); ?></dt>
-                <dd>
-                        <?php echo h($order['Order']['name']); ?>
                         &nbsp;
                 </dd>
                 <dt><?php echo __('Active'); ?></dt>

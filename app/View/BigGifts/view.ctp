@@ -10,13 +10,13 @@
                 <h1><?php echo h($bigGift['BigGift']['name']); ?></h1>
                 <h2><?php echo h($bigGift['Customer']['name']); ?></h2>
                 <p>
-                        <?php echo h($bigGift['BigGift']['description']); ?>
+                        <?php echo $bigGift['BigGift']['description']; ?>
                 </p>
                 <h4><?php echo __('Validité'); ?></h4>
                 <p><?php echo $this->Time->format('d/m/Y',$bigGift['BigGift']['validity']); ?></p>
                 <h4><?php echo __('Conditions'); ?></h4>
                 <p>
-                        <?php echo h($bigGift['BigGift']['conditions']); ?>
+                        <?php echo $bigGift['BigGift']['conditions']; ?>
                 </p>
         </div>
 </div>

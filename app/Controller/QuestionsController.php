@@ -427,7 +427,7 @@ class QuestionsController extends AppController {
                             'voucher_id' => $day_voucher['Voucher']['id']
                         ));
                         $this->UserVoucher->save();
-                        $this->Session->setFlash('Nickel ! Tu as gagné ' . $day_voucher['Voucher']['name']." disponible dans “MES BONS”.
+                        $this->Session->setFlash('Nickel ! Tu as gagné ' . $day_voucher['Voucher']['name'] . " disponible dans “MES BONS”.
 							Demain matin, un tirage au sort déterminera les gagnants pour les cadeaux du jour. Pour voir si tu as gagné, rends-toi dans “MES BONS” !", 'message_success');
                         $this->redirect(array('controller' => 'vouchers', 'action' => 'my_vouchers'));
                 }
@@ -501,17 +501,52 @@ class QuestionsController extends AppController {
                         throw new NotFoundException(__('Invalid question'));
                 }
                 $options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
-                
+
                 $this->set('question', $this->Question->find('first', $options));
         }
-        
-        
-        public function admin_export($id = null){
 
+        public function admin_export() {
+                $questions = $this->Question->find('all', array(
+                    'contain' => array(
+                        'Choice' => array(
+                            'fields' => array('id', 'response'),
+                        )
+                    )
+                        )
+                );
+
+                $result = array();
+
+                $i = 0;
+                foreach ($questions as $question) {
+
+                       
+                        foreach ($question['Choice'] as $choice) {
+
+
+                                $result[$i]['Question']['question_id'] = $question['Question']['id'];
+                                $result[$i]['Question']['question_type_id'] = $question['Question']['question_type_id'];
+                                $result[$i]['Question']['date'] = $question['Question']['date'];
+                                $result[$i]['Question']['question'] = $question['Question']['question'];
+                                $result[$i]['Question']['order_id'] = $question['Question']['order_id'];
+                                $result[$i]['Question']['response_type'] = $question['Question']['response_type'];
+                                $result[$i]['Question']['choice_id'] = $choice['id'];
+                                $result[$i]['Question']['choice'] = $choice['response'];
+                                $i++;
+                        }
+                }
+
+
+                CakePlugin::load('CsvView');
+
+                $_serialize = 'result';
+                $_header = array('Question ID', 'Question Type ID', 'Date', 'Question', 'Order ID', 'Response Type', 'Choice ID', 'Choice');
+                $_extract = array('Question.question_id', 'Question.question_type_id', 'Question.date', 'Question.question', 'Question.order_id', 'Question.response_type', 'Question.choice_id', 'Question.choice');
+                $_delimiter = ";"; //tab
+                $this->response->download('export_questions_qme.csv');
+                $this->viewClass = 'CsvView.Csv';
+                $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
         }
-        
-        
-        
 
         public function admin_preview($id = null) {
                 if (!$this->Question->exists($id)) {

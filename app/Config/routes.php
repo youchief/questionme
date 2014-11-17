@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Routes configuration
  *
@@ -24,21 +25,34 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
-        Router::connect('/admin', array('controller' => 'users', 'action' => 'login', 'admin'=>true));
+Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+Router::connect('/admin', array('controller' => 'users', 'action' => 'login', 'admin' => true));
+Router::connect('/jeux', array('controller' => 'questions', 'action' => 'play'));
+Router::connect('/connexion', array('controller' => 'users', 'action' => 'login'));
+Router::connect('/s-inscrire', array('controller' => 'users', 'action' => 'register'));
+Router::connect('/mes-bons', array('controller' => 'vouchers', 'action' => 'my_vouchers'));
+Router::connect('/mon-profil', array('controller' => 'users', 'action' => 'my_profile'));
+Router::connect('/editer-mon-profil', array('controller' => 'users', 'action' => 'edit_my_profile'));
+
+
+
+Router::connect('/mes-bons', array('controller' => 'vouchers', 'action' => 'my_vouchers'));
+
+
+
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on
  * how to customize the loading of plugin routes.
  */
-	CakePlugin::routes();
+CakePlugin::routes();
 
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
  * the built-in default routes.
  */
-	require CAKE . 'Config' . DS . 'routes.php';
+require CAKE . 'Config' . DS . 'routes.php';

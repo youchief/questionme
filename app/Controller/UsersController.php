@@ -278,7 +278,7 @@ class UsersController extends AppController {
                                 $this->User->id = $user['User']['id'];
                                 $this->User->saveField('password', $new_password);
                                 $Email = new CakeEmail();
-                                $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
+                                $Email->from(array('no-repy@questionme.ch' => 'Question Me'));
                                 $Email->to($user['User']['email']);
                                 $Email->subject('Changement de mot de passe QuestionMe');
                                 $Email->viewVars(array('user' => $user['User']['username'], 'password' => $new_password));
@@ -338,31 +338,29 @@ class UsersController extends AppController {
         public function admin_export() {
                 //$this->User->recursive = 2;
 
+                //set_time_limit('120');
+
                 $users = $this->User->find('all', array(
                     'contain' => array(
                         'Choice' => array(
-                            //'conditions' => array("IN" => array("Choice.id" => $choices)),
-                            'Question' => array(
-                                'QuestionType'
-                            )
-                        ),
-                       
+                            'fields' => array('id', 'response'),
+                        )
                     )
                         )
                 );
-                                
+
                 $result = array();
 
                 $i = 0;
                 foreach ($users as $user) {
                         foreach ($user['Choice'] as $choice) {
                                 $result[$i]['User']['reponse_date'] = $choice['UsersChoice']['created'];
-                                $result[$i]['User']['question'] = $choice['Question']['question'];
-                                $result[$i]['User']['question_id'] = $choice['Question']['id'];
-                                $result[$i]['User']['order_id'] = $choice['Question']['order_id'];
-                                $result[$i]['User']['question_type'] = $choice['Question']['QuestionType']['name'];
-                                $result[$i]['User']['response'] = $choice['response'];
-                                $result[$i]['User']['response_id'] = $choice['id'];
+                               // $result[$i]['User']['question'] = $choice['Question']['question'];
+                                $result[$i]['User']['question_id'] = $choice['UsersChoice']['question_id'];
+                                //$result[$i]['User']['order_id'] = $choice['Question']['order_id'];
+                                $result[$i]['User']['question_type'] = $choice['UsersChoice']['question_type_id'];
+                                $result[$i]['User']['free'] =$choice['UsersChoice']['free'];
+                                $result[$i]['User']['response_id'] =$choice['UsersChoice']['choice_id'];
                                 $result[$i]['User']['id'] = $user['User']['id'];
                                 $result[$i]['User']['username'] = $user['User']['username'];
                                 $result[$i]['User']['user_sex'] = $user['User']['sex'];
@@ -371,12 +369,13 @@ class UsersController extends AppController {
                                 $i++;
                         }
                 }
-
+   
+                
                 CakePlugin::load('CsvView');
 
                 $_serialize = 'result';
-                $_header = array('Date de réponce', 'Question', 'Question ID', 'Order ID', 'Type de question' , 'Réponse', 'Reponse ID', 'User ID', 'Username', 'Sexe', 'Birthday', 'Region ID');
-                $_extract = array('User.reponse_date', 'User.question', 'User.question_id', 'User.order_id','User.question_type', 'User.response', 'User.response_id', 'User.id', 'User.username', 'User.user_sex', 'User.user_birthday', 'User.region_id');
+                $_header = array('Date de réponce',  'Question ID' ,'Type de question ID', 'Réponse FREE', 'Reponse ID', 'User ID', 'Username', 'Sexe', 'Birthday', 'Region ID');
+                $_extract = array('User.reponse_date', 'User.question_id', 'User.question_type','User.free' ,'User.response_id', 'User.id', 'User.username', 'User.user_sex', 'User.user_birthday', 'User.region_id');
                 $_delimiter = ";"; //tab
                 $this->response->download('export_result_qme.csv');
                 $this->viewClass = 'CsvView.Csv';

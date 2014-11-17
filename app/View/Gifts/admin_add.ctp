@@ -1,3 +1,5 @@
+<?php echo $this->element('editor')?>
+
 <div class="gifts form">
 <?php echo $this->Form->create('Gift', array('type'=>'file')); ?>
 	<fieldset>

@@ -8,10 +8,13 @@
                 <title>QuestionMe - GAGNE des CADEAUX et des BONS DE REDUCTION tous les jours !</title>
                 <meta name="author" content="3xW - web and mobile solutions">
                 <link href='http://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
-                <?php echo $this->Html->css(array('vendor/twitter/bootstrap.min', 'vendor/3xw/fonts-path-fix', 'vendor/fontawesome/font-awesome', 'vendor/3xw/cake', 'vendor/jquery.carousel.fullscreen',  'menu', 'default')) ?>
+                <?php echo $this->Html->css(array('vendor/twitter/bootstrap.min', 'vendor/3xw/fonts-path-fix', 'vendor/fontawesome/font-awesome', 'vendor/3xw/cake', 'vendor/jquery.carousel.fullscreen', 'menu', 'default')) ?>
                 <!-- Favicon -->
                 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
                 <link rel="icon" href="favicon.ico" type="image/x-icon">
+                <meta property="og:title" content="QuestionMe" />
+                <meta property="og:description" content="1.Connecte-toi 2.Réponds aux 10 questions du jour 3.Gagne des cadeaux et des bons de réduction !" />
+                <meta property="og:image" content="http://questionme.ch/img/QME_facebook2000.png" />
 
                 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
                 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,10 +27,10 @@
 
         <body>
                 <!-- NAVBAR -->
-                
+
                 <div class="content-wrap">
-                     <?php echo $this->element($header) ?>
-                        
+                        <?php echo $this->element($header) ?>
+
                         <div class="container">
                                 <?php
                                 echo $this->Session->flash();
@@ -37,24 +40,24 @@
                         <?php
                         echo $this->fetch('content');
                         ?>
-                    <div class="push"></div>
-                     
+                        <div class="push"></div>
+
                 </div>
-                <?php if($this->params['action'] != 'play'): ?>
-                    <?php echo $this->element('footer'); ?>
+                <?php if ($this->params['action'] != 'play'): ?>
+                        <?php echo $this->element('footer'); ?>
                 <?php endif; ?>
-                
+
                 <?php
                 echo $this->Html->script(array(
                     'vendor/jquery/jquery.min',
                     'vendor/twitter/bootstrap.min',
                     'vendor/jquery/jquery.carousel.fullscreen',
                     'vendor/jquery/jquery.touchSwipe.min',
-                    'classie',                  
+                    'classie',
                     'app'
                 ));
                 ?>
-                
+
                 <script>
                         (function (i, s, o, g, r, a, m) {
                                 i['GoogleAnalyticsObject'] = r;
@@ -84,5 +87,5 @@
                 <![endif]-->
                 <?php echo $this->fetch('script'); ?>
         </body>
-        
+
 </html>

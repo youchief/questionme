@@ -1,3 +1,4 @@
+<?php echo $this->element('editor')?>
 <div class="vouchers form">
 <?php echo $this->Form->create('Voucher', array('type'=>'file')); ?>
 	<fieldset>

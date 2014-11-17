@@ -2,8 +2,15 @@
         <div class="row">
                 <div class='col-sm-6 col-xs-8'>
                         <h3><?php echo h($user['User']['username']); ?></h3>
-                        <p class="light">                                
-                                <?php echo date_diff(date_create($user['User']['birthday']), date_create('today'))->y." ans";?>
+                        <p class="light">            
+                                <?php 
+                                $sex = "";
+                                if($user['User']['sex']=='male'){
+                                        $sex = 'Homme';
+                                }else{
+                                        $sex = 'Femme';
+                                }?>
+                                <?php echo $sex." de ".date_diff(date_create($user['User']['birthday']), date_create('today'))->y." ans";?>
                         </p>
                         <p class="light">
                                 <?php echo h($user['User']['email']); ?>

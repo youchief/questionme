@@ -43,6 +43,7 @@
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'questions', 'action' => 'add', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'questions', 'action' => 'index', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('Export Results', array('controller' => 'users', 'action' => 'export', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('Export Questions', array('controller' => 'questions', 'action' => 'export', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">Question Types</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'questionTypes', 'action' => 'add', 'admin' => true)); ?></li>

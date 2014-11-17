@@ -18,7 +18,7 @@
 		</dd>
 		<dt><?php echo __('Description'); ?></dt>
 		<dd>
-			<?php echo h($voucher['Voucher']['description']); ?>
+			<?php echo $voucher['Voucher']['description']; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Validity'); ?></dt>
@@ -28,7 +28,7 @@
 		</dd>
 		<dt><?php echo __('Conditions'); ?></dt>
 		<dd>
-			<?php echo h($voucher['Voucher']['conditions']); ?>
+			<?php echo $voucher['Voucher']['conditions']; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Customer'); ?></dt>

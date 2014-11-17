@@ -1,3 +1,5 @@
+<?php echo $this->element('editor')?>
+
 <div class="bigGifts form">
 <?php echo $this->Form->create('BigGift', array('type'=>'file')); ?>
 	<fieldset>
