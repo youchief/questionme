@@ -414,5 +414,19 @@ class UsersController extends AppController {
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
         }
+        
+        
+        public function admin_export_users(){  
+                $this->User->recursive = -1;
+                $users = $this->User->find('all');
+                CakePlugin::load('CsvView');
+                $_serialize = 'users';
+                $_header = array("id", "username", "created","sexe", "birthday", "email", "region_id");
+                $_extract = array('User.id', 'User.username', 'User.created', 'User.sex', 'User.birthday', 'User.email', 'User.region_id');
+                $_delimiter = ";"; //tab
+                $this->response->download('export_users_qme.csv');
+                $this->viewClass = 'CsvView.Csv';
+                $this->set(compact('users', '_serialize', '_header', '_extract', '_delimiter'));
+        }
 
 }

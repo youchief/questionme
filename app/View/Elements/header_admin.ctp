@@ -6,7 +6,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'welcome')); ?>">QME <small>v.1.0 beta</small></a>
+                        <a class="navbar-brand" href="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'welcome')); ?>">QME <small>v.1.0</small></a>
                 </div>
                 <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -113,7 +113,7 @@
                                                 <li class="dropdown-header">Users</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'users', 'action' => 'add', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'users', 'action' => 'index', 'admin' => true)); ?></li>
-
+                                                <li><?php echo $this->Html->link('Export', array('controller' => 'users', 'action' => 'export_users', 'admin' => true)); ?></li>
                                                 <li class="divider"></li>
                                                 <li class="dropdown-header">User Groups</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'groups', 'action' => 'add', 'admin' => true)); ?></li>

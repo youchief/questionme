@@ -15,6 +15,7 @@
                 <meta property="og:title" content="QuestionMe" />
                 <meta property="og:description" content="1.Connecte-toi 2.Réponds aux 10 questions du jour 3.Gagne des cadeaux et des bons de réduction !" />
                 <meta property="og:image" content="http://questionme.ch/img/QME_facebook2000.png" />
+                <meta name="google-site-verification" content="1g6RBauYGbvTagRT4kN3fRgrqMqYBaUf6bPy-TWcpBc" />
 
                 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
                 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
