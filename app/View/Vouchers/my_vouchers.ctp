@@ -16,6 +16,7 @@
                                 <div class='col-sm-4'>
                                         <div class='thumbnail bigGift'>
                                                 <i class="fa fa-birthday-cake"></i> <h5 class="title-vouch">Gros cadeau</h5>
+                                                <div class="clear"></div>
                                                 <?php echo $this->Html->image($bgift['media'], array('class' => 'img-responsive')) ?>
                                                 <h3><?php echo $bgift['name'] ?></h3>
                                                 <p>
@@ -48,6 +49,7 @@
                                 <div class='col-sm-4'>
                                         <div class='thumbnail gift'>
                                                 <i class="fa fa-gift"></i>  <h5 class="title-vouch">Cadeau</h5>
+                                                <div class="clear"></div>
                                                 <?php echo $this->Html->image($gift['media'], array('class' => 'img-responsive')) ?>
                                                 <h3><?php echo $gift['name'] ?></h3>
                                                 <p>
@@ -81,6 +83,7 @@
                                 <div class='col-sm-4'>
                                         <div class='thumbnail voucher'>
                                                 <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
+                                                <div class="clear"></div>
                                                 <?php echo $this->Html->image($voucher['image'], array('class' => 'img-responsive')) ?>
                                                 <h3><?php echo $voucher['name'] ?></h3>
                                                 <p>
