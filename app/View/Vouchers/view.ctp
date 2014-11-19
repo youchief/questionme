@@ -8,7 +8,7 @@
         </div>      
         <div class='col-sm-6'>
                 <h1><?php echo h($voucher['Voucher']['name']); ?></h1>
-                <h2><?php echo h($voucher['Customer']['name']); ?></h2>
+                <h2><?php //echo h($voucher['Customer']['name']); ?></h2>
                 <p>
                         <?php echo $voucher['Voucher']['description']; ?>
                 </p>

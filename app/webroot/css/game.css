@@ -27,7 +27,17 @@ and open the template in the editor.
         font-size: 14px;  
         color:#44494f;
         margin-bottom:25px;
+        
 }  
+
+/*.radio, .checkbox{
+    overflow:hidden;
+}
+
+.radio input, .checkbox input{
+        position: absolute;
+        top:-2000px;
+}*/
 
 
 .center-text{
@@ -55,7 +65,7 @@ and open the template in the editor.
 
 
 input[type=radio], input[type=checkbox] {  
-        display: none;  
+      display:none;  
 }
 
 label:before {  

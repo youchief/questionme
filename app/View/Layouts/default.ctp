@@ -23,6 +23,7 @@
                         <script src="js/html5shiv.js"></script>
                         <script src="js/respond.min.js"></script>
                 <![endif]-->
+                <?php echo $this->element('iOS'); ?>
         </head>
 
 
@@ -85,6 +86,7 @@
                 <![endif]-->
                 <!--[if lt IE 8]>
                 <?php echo $this->Html->script('vendor/3xw/ie-lt-8'); ?>
+                <?php //echo $this->Html->script('vendor/jquery/selectivizr.min'); ?>
                 <![endif]-->
                 <?php echo $this->fetch('script'); ?>
         </body>
