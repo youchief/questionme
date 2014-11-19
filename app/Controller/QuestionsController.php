@@ -40,6 +40,8 @@ class QuestionsController extends AppController {
                 }
 
 
+
+
                 //question list whith conditons
                 $questions = $this->Question->find('all', array('conditions' => array(
                         "NOT" => array("Question.id" => $questions_id),
@@ -55,18 +57,28 @@ class QuestionsController extends AppController {
                 $questions = $this->_unset_fixe_not_today($questions);
 
 
+
+
                 $questions = $this->_unset_because_user($questions, $user);
+
+
 
 
                 //remove question not good for this user
                 $questions = $this->_unset_questions_because_queries($questions, $user);
 
 
+
+
+
                 //remove question not good because voucher
                 $questions = $this->_unset_because_voucher($questions, $user);
 
+
+
                 //get user today responce 
                 $rest_questions = $this->_get_nb_user_questions($qday);
+
 
 
                 //question final user
@@ -77,18 +89,19 @@ class QuestionsController extends AppController {
                  * adjust mobile and fixe question 
                  */
 
-
                 $nb_q_mobile = 0;
                 foreach ($questions as $question) {
                         if ($question['Question']['question_type_id'] == 3) {
                                 $nb_q_mobile++;
                         }
                 }
+
+
                 $diff = $qday['Qday']['nb_qmobile'] - $nb_q_mobile;
                 $rest_questions['fixe'] + $diff;
                 $rest_questions['mobile'] - $diff;
-                $total_rest = $qday_total - ($rest_questions['fixe'] + $rest_questions['mobile']);
 
+                $total_rest = $qday_total - ($rest_questions['fixe'] + $rest_questions['mobile']);
 
                 /*
                  * create the final question array
@@ -99,13 +112,16 @@ class QuestionsController extends AppController {
                 foreach ($questions as $question) {
 
                         if (($question['Question']['question_type_id']) == 2 && ($i < $rest_questions['fixe'])) {
+
                                 $user_questions[] = $question;
                                 $i++;
                         } else if (($question['Question']['question_type_id'] == 3) && ($y < $rest_questions['mobile'])) {
+                               
                                 $user_questions[] = $question;
                                 $y++;
                         }
                 }
+
 
                 /*
                  * if no more question today -> redirect to home 
@@ -436,9 +452,11 @@ class QuestionsController extends AppController {
         public function _increment_order($order_id) {
                 $order = $this->Question->Order->findById($order_id);
 
-                $nb_rep = $order['Order']['repondants'] ++;
+                $nb_rep = $order['Order']['repondants'] + 1;
 
-                if ($nb_rep >= $order['Order']['repondants']) {
+
+
+                if ($nb_rep >= $order['Order']['order_rep']) {
                         $this->Question->Order->id = $order_id;
                         $this->Question->Order->set(array(
                             'repondants' => $nb_rep,
@@ -520,7 +538,7 @@ class QuestionsController extends AppController {
                 $i = 0;
                 foreach ($questions as $question) {
 
-                       
+
                         foreach ($question['Choice'] as $choice) {
 
 

@@ -6,7 +6,13 @@
                         <?php echo h($user['User']['id']); ?>
                         &nbsp;
                 </dd>
-
+                
+                <dt><?php echo __('Active'); ?></dt>
+                <dd>
+                        <?php echo h($user['User']['active']); ?>
+                        &nbsp;
+                </dd>
+                
                 <dt><?php echo __('Password'); ?></dt>
                 <dd>
                         <?php echo h($user['User']['password']); ?>

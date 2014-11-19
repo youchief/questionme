@@ -7,6 +7,7 @@
 		echo $this->Form->input('active', array('class'=>'checkbox'));
                 echo $this->Form->input('name', array('class'=>'form-control'));
 		echo $this->Form->input('repondants', array('class'=>'form-control'));
+                echo $this->Form->input('order_rep', array('class'=>'form-control'));
 		echo $this->Form->input('nb_questions', array('class'=>'form-control'));
                 echo $this->Form->input('deadline', array('class'=>'form-control'));
 		echo $this->Form->input('customer_id', array('class'=>'form-control'));

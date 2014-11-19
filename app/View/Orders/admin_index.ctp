@@ -20,7 +20,7 @@
                                 <td><?php echo h($order['Order']['active']); ?>&nbsp;</td>
                                 <td><?php echo h($order['Order']['deadline']); ?>&nbsp;</td>
 
-                                <td><?php echo h($order['Order']['repondants']); ?>&nbsp;</td>
+                                <td><?php echo $order['Order']['repondants']."/".$order['Order']['order_rep']; ?>&nbsp;</td>
                                 <td><?php echo h($order['Order']['nb_questions']); ?>&nbsp;</td>
                                 <td>
                                         <?php echo $this->Html->link($order['Customer']['name'], array('controller' => 'customers', 'action' => 'view', $order['Customer']['id'])); ?>

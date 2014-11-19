@@ -7,7 +7,7 @@
                         <?php echo $this->Form->create('Voucher'); ?>
                         <?php echo $this->Session->flash();?>
                         <?php
-                        echo $this->Form->input('code', array('class' => 'form-control password', 'type'=>'password', 'pattern'=>"[0-9]*", 'maxlength'=>"4", 'after'=>'Pour utiliser le bon, présente ton téléphone au partenaire.'));
+                        echo $this->Form->input('code', array('class' => 'form-control password', 'type'=>'number', 'pattern'=>"[0-9]*", 'maxlength'=>"4", 'after'=>'Pour utiliser le bon, présente ton téléphone au partenaire.'));
                         ?>                      
                         <hr>
                         <p style="font-weight: 300;">Présente ton téléphone au partenaire pour qu'il valide ton bon !</p>

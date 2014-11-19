@@ -6,7 +6,7 @@
 	<?php
                 echo $this->Form->input('id', array('class'=>'form-control'));
 		echo $this->Form->input('date', array('class'=>'form-control'));
-                echo $this->Form->input('image', array('class'=>'form-control', 'type'=>'file'));
+                echo $this->Form->input('image', array('class' => 'form-control', 'type' => 'file', 'after'=>$this->Html->image($this->request->data['Voucher']['image'], array('width'=>'200px', 'class'=>'img-rounded'))));
 		echo $this->Form->input('name', array('class'=>'form-control'));
 		echo $this->Form->input('description', array('class'=>'form-control'));
 		echo $this->Form->input('validity', array('class'=>'form-control'));

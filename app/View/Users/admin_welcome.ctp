@@ -5,7 +5,7 @@
                 <div class="jumbotron">
                         <h1>Hello !</h1>
                         <p>
-                                QuestionMe v.0.1
+                                QuestionMe v.1.0
                         </p>
                         <div class="btn-group">
                                 <?php echo $this->Html->link('Add Qday', array('controller' => 'qdays', 'action' => 'add', 'admin' => true), array('class' => 'btn btn-default')); ?>
@@ -34,10 +34,7 @@
                         Nombre de q_mobile répondues aujourd'hui: <strong><?php echo $result['qmobile']; ?></strong>
                 </div>
 
-                <div class="alert alert-warning fade in" role="alert">
-                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                        Nombre de q_profile répondues aujourd'hui: <strong><?php echo $result['qprofile']; ?></strong>
-                </div>
+             
         </div>
 
 </div>

@@ -81,7 +81,7 @@ class GiftsController extends AppController {
          * @return void
          */
         public function admin_index() {
-                $this->Gift->recursive = 0;
+                $this->Gift->recursive = 1;
                 $this->set('gifts', $this->Paginator->paginate());
         }
 

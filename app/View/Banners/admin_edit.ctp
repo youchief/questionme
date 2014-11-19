@@ -6,7 +6,7 @@
                 echo $this->Form->input('id', array('class' => 'form-control'));
                 echo $this->Form->input('start', array('class' => 'form-control', 'dateFormat' => 'DMY', 'timeFormat' => '24'));
                 echo $this->Form->input('end', array('class' => 'form-control', 'dateFormat' => 'DMY', 'timeFormat' => '24'));
-                echo $this->Form->input('background', array('class' => 'form-control', 'type' => 'file'));
+                echo $this->Form->input('background', array('class' => 'form-control', 'type' => 'file', 'after'=>$this->Html->image($this->request->data['Banner']['background'], array('width'=>'200px', 'class'=>'img-rounded'))));
                 echo $this->Form->input('title', array('class' => 'form-control'));
                 echo $this->Form->input('subtitle', array('class' => 'form-control'));
                 echo $this->Form->input('region_id', array('class' => 'form-control'));

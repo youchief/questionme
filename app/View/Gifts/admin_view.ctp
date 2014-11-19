@@ -34,7 +34,7 @@
                                 </dd>
                                 <dt><?php echo __('Conditions'); ?></dt>
                                 <dd>
-                                        <?php echo h($gift['Gift']['conditions']); ?>
+                                        <?php echo $gift['Gift']['conditions']; ?>
                                         &nbsp;
                                 </dd>
                                 <dt><?php echo __('Used'); ?></dt>
