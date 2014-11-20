@@ -51,6 +51,7 @@
                     'vendor/twitter/bootstrap.min',
                     'vendor/jquery/jquery.carousel.fullscreen',
                     'vendor/jquery/jquery.touchSwipe.min',
+                    'vendor/jquery/svgeezy.min',
                     'classie',
                     'app'
                 ));

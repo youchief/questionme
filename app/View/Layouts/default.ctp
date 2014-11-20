@@ -55,6 +55,7 @@
                     'vendor/twitter/bootstrap.min',
                     'vendor/jquery/jquery.carousel.fullscreen',
                     'vendor/jquery/jquery.touchSwipe.min',
+                    'vendor/jquery/svgeezy.min',
                     'classie',
                     'app'
                 ));
@@ -86,7 +87,7 @@
                 <![endif]-->
                 <!--[if lt IE 8]>
                 <?php echo $this->Html->script('vendor/3xw/ie-lt-8'); ?>
-                <?php //echo $this->Html->script('vendor/jquery/selectivizr.min'); ?>
+                
                 <![endif]-->
                 <?php echo $this->fetch('script'); ?>
         </body>

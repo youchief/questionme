@@ -134,6 +134,13 @@ footer{position:absolute;z-index:10;width:100%;bottom:0px;left:0px;background:tr
         z-index:20;
         
 }
+.carousel-control.left {
+    background-image:none;
+}
+
+.carousel-control.right {
+    background-image:none;
+}
 
 
 

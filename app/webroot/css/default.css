@@ -105,6 +105,27 @@ form .error {background-color: #f2dede;-moz-border-radius: 4px;-webkit-border-ra
 
 .alert-custom {font-weight: bold;z-index: 1000;position:absolute;}
 
+.next{
+    background-color: #888;
+    border: 0px;
+}
+
+.next:hover{
+    background-color: #fdfdfd;
+}
+
+.next .ov{
+    display:none;
+}
+
+.next:hover .ov{
+    display:block;
+}
+
+.next:hover .no{
+    display:none;
+}
+
 @media (max-width: 768px){
         img#logo{width:100px;}
 
@@ -325,6 +346,10 @@ border-color: transparent;
     .navbar-default .navbar-toggle {
     }
     h3{font-size:16px;}
+    .icon img{
+        width:80%;
+        z-index:12;
+    }
 }
 
 @media (max-width: 767px) { 

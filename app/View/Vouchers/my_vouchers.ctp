@@ -106,6 +106,16 @@
                                 <?php endif; ?>
                         <?php endif; ?>
                 <?php endforeach; ?>
+<!--                <div class='col-sm-4'>
+                        <div class='thumbnail voucher next'>
+                                <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
+                                <div class="clear"></div>
+                                <?php //echo $this->Html->image('concept/bon-test-s1.png', array('class' => 'img-responsive no')) ?>
+                                <?php //echo $this->Html->image('concept/bon-test.png', array('class' => 'img-responsive ov')) ?>
+                                <h3>REVIENS DEMAIN POUR UN NOUVEAU BON DE Réduction</h3>
+                                
+                        </div>
+                </div>-->
         </div>
         <div class="row">
                 <div class="col-sm-6 align-center col-sm-offset-3">
