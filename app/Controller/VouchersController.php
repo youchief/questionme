@@ -17,7 +17,7 @@ class VouchersController extends AppController {
          * @var array
          */
         public $components = array('Paginator', 'Session');
-        public $uses = array('Voucher', 'User', 'UserVoucher', 'Gift', 'BigGift');
+        public $uses = array('Voucher', 'User', 'UserVoucher', 'Gift', 'BigGift', 'UsersChoice');
 
         public function my_vouchers() {
 
@@ -43,25 +43,19 @@ class VouchersController extends AppController {
 
                 $this->set('user', $user[0]);
         }
-        
-        
+
         public function _delete_double() {
-                
-                $uvs = $this->UserVoucher->find('all', array('conditions'=>array('UserVoucher.user_id'=>$this->Auth->user('id'))));
+
+                $uvs = $this->UserVoucher->find('all', array('conditions' => array('UserVoucher.user_id' => $this->Auth->user('id'))));
                 $id_voucher = 0;
-                foreach($uvs as $uv){          
-                        if($id_voucher == $uv['UserVoucher']['voucher_id']){
+                foreach ($uvs as $uv) {
+                        if ($id_voucher == $uv['UserVoucher']['voucher_id']) {
                                 $this->UserVoucher->delete($uv['UserVoucher']['id']);
                                 $this->redirect('my_vouchers');
                         }
                         $id_voucher = $uv['UserVoucher']['voucher_id'];
                 }
-                
-        }       
-        
-        
-        
-        
+        }
 
         public function use_it($id = null) {
                 if (!$this->Voucher->exists($id)) {
@@ -209,6 +203,36 @@ class VouchersController extends AppController {
                 }
                 $this->Session->setFlash(__('Voucher was not deleted'), 'default', array('class' => 'alert alert-error'));
                 return $this->redirect(array('action' => 'index'));
+        }
+
+        public function admin_generate_vouchers_for_gamers() {
+                if ($this->request->is('post')) {
+                        $from = $this->request->data['Voucher']['from']['year'] . "-" . $this->request->data['Voucher']['from']['month'] . "-" . $this->request->data['Voucher']['from']['day'];
+                        $to = $this->request->data['Voucher']['to']['year'] . "-" . $this->request->data['Voucher']['to']['month'] . "-" . $this->request->data['Voucher']['to']['day'];
+
+                        $user_played = $this->UsersChoice->find('all', array(
+                            'conditions' => array(
+                                'UsersChoice.created >' => $from,
+                                'UsersChoice.created <' => $to,
+                            ),
+                            'fields' => array('DISTINCT UsersChoice.user_id'),
+                                )
+                        );
+                        $result = array();
+                        $i = 0;
+                        foreach ($user_played as $user) {
+                                $result[$i]['user_id'] = $user['UsersChoice']['user_id'];
+                                $result[$i]['voucher_id'] = $this->request->data['Voucher']['voucher_id'];
+                                $i++;
+                        }
+                        if($this->UserVoucher->saveAll($result)){
+                                $this->Session->setFlash(__('Yeah tas généré un max de bons, ptit con!'), 'default', array('class' => 'alert alert-success'));
+                        }else{
+                                $this->Session->setFlash(__('Tes dans la merde'), 'default', array('class' => 'alert alert-danger'));
+                        }
+                }
+                $vouchers = $this->Voucher->find('list');
+                $this->set(compact('vouchers'));
         }
 
 }

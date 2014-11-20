@@ -427,5 +427,6 @@ class UsersController extends AppController {
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('users', '_serialize', '_header', '_extract', '_delimiter'));
         }
+       
 
 }

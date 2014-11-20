@@ -103,6 +103,7 @@
                                                 <li class="dropdown-header">Vouchers</li>
                                                 <li><?php echo $this->Html->link('Add', array('controller' => 'vouchers', 'action' => 'add', 'admin' => true)); ?></li>
                                                 <li><?php echo $this->Html->link('List', array('controller' => 'vouchers', 'action' => 'index', 'admin' => true)); ?></li>
+                                                <li><?php echo $this->Html->link('Generate', array('controller' => 'vouchers', 'action' => 'generate_vouchers_for_gamers', 'admin' => true)); ?></li>
 
                                         </ul>
                                 </li>
