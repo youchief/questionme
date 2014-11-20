@@ -1,5 +1,8 @@
 <div class="users index">
         <h2><?php echo __('Users'); ?> <?php echo $this->Html->link(\__('+'), array('action' => 'add'), array('class'=>'btn btn-success btn-sm')); ?></h2>
+        <?php echo $this->Form->create('User') ?>
+        <?php echo $this->Form->input('search', array('class' => 'form-control', 'label' => false, 'placeholder' => 'search...')); ?>
+        <?php echo $this->Form->end(); ?>
         <table cellpadding="0" cellspacing="0" class="table">
                 <tr>
                                                         <th><?php echo $this->Paginator->sort('id'); ?></th>

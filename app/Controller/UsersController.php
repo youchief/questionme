@@ -18,6 +18,7 @@ class UsersController extends AppController {
          * @var array
          */
         public $components = array('Paginator', 'Session');
+        public $uses = array('User', 'UsersChoice');
 
         //public $helpers = array('Facebook.Facebook');
 
@@ -30,7 +31,7 @@ class UsersController extends AppController {
                         $this->request->data['User']['token'] = sha1($this->data['User']['username'] . rand(0, 100));
 
                         if ($this->User->save($this->request->data)) {
-                                $this->Session->setFlash(__('C\'est Top ! On vient de t\'envoyer un email à "'.$this->request->data['User']['email'].'" pour activer ton compte !'), 'message_success');
+                                $this->Session->setFlash(__('C\'est Top ! On vient de t\'envoyer un email à "' . $this->request->data['User']['email'] . '" pour activer ton compte !'), 'message_success');
                                 $Email = new CakeEmail();
                                 $Email->from(array('no-repy@questionme.ch' => 'Question Me'));
                                 $Email->to($this->request->data['User']['email']);
@@ -141,17 +142,17 @@ class UsersController extends AppController {
 
         public function change_password() {
                 if ($this->request->is('post')) {
-                        if($this->request->data['User']['new_password'] != null && $this->request->data['User']['new_password'] != ''){
-                            if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
-                                    $this->User->id = $this->Auth->user('id');
-                                    $this->User->saveField('password', $this->request->data['User']['new_password']);
-                                    $this->Session->setFlash(__('Ton mot de passe a été changé !'), 'message_success');
-                                    return $this->redirect(array('action' => 'my_profile'));
-                            } else {
-                                    $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'message_danger');
-                            }
-                        }else{
-                            $this->Session->setFlash(__('Tu dois rentrer un nouveau mot de passe'), 'message_danger');
+                        if ($this->request->data['User']['new_password'] != null && $this->request->data['User']['new_password'] != '') {
+                                if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
+                                        $this->User->id = $this->Auth->user('id');
+                                        $this->User->saveField('password', $this->request->data['User']['new_password']);
+                                        $this->Session->setFlash(__('Ton mot de passe a été changé !'), 'message_success');
+                                        return $this->redirect(array('action' => 'my_profile'));
+                                } else {
+                                        $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'message_danger');
+                                }
+                        } else {
+                                $this->Session->setFlash(__('Tu dois rentrer un nouveau mot de passe'), 'message_danger');
                         }
                 }
         }
@@ -180,7 +181,11 @@ class UsersController extends AppController {
          */
         public function admin_index() {
                 $this->User->recursive = 0;
-                $this->set('users', $this->Paginator->paginate());
+                if (!empty($this->request->data['User']['search'])) {
+                        $this->set('users', $this->Paginator->paginate(array('User.username LIKE' => "%" . $this->request->data['User']['search'] . "%")));
+                } else {
+                        $this->set('users', $this->Paginator->paginate());
+                }
         }
 
         /**
@@ -298,29 +303,29 @@ class UsersController extends AppController {
 
         public function _generatePassword($length = 8) {
 
-                // start with a blank password
+// start with a blank password
                 $password = "";
 
                 $possible = "2346789bcdfghjkmnpqrtvwxyzBCDFGHJKLMNPQRTVWXYZ";
 
-                // we refer to the length of $possible a few times, so let's grab it now
+// we refer to the length of $possible a few times, so let's grab it now
                 $maxlength = strlen($possible);
 
-                // check for length overflow and truncate if necessary
+// check for length overflow and truncate if necessary
                 if ($length > $maxlength) {
                         $length = $maxlength;
                 }
 
-                // set up a counter for how many characters are in the password so far
+// set up a counter for how many characters are in the password so far
                 $i = 0;
 
-                // add random characters to $password until $length is reached
+// add random characters to $password until $length is reached
                 while ($i < $length) {
 
-                        // pick a random character from the possible ones
+// pick a random character from the possible ones
                         $char = substr($possible, mt_rand(0, $maxlength - 1), 1);
 
-                        // have we already used this character in $password?
+// have we already used this character in $password?
                         if (!strstr($password, $char)) {
                                 // no, so it's OK to add it onto the end of whatever we've already got...
                                 $password .= $char;
@@ -329,7 +334,7 @@ class UsersController extends AppController {
                         }
                 }
 
-                // done!
+// done!
                 return $password;
         }
 
@@ -339,51 +344,40 @@ class UsersController extends AppController {
         }
 
         public function admin_export() {
-                //$this->User->recursive = 2;
+//$this->User->recursive = 2;
 
-                //set_time_limit('120');
+                set_time_limit('120');
+                $this->UsersChoice->recursive = -1;
+                $ucs = $this->UsersChoice->find('all');
 
-                $users = $this->User->find('all', array(
-                    'contain' => array(
-                        'Choice' => array(
-                            'fields' => array('id', 'response'),
-                        )
-                    )
-                        )
-                );
 
                 $result = array();
 
                 $i = 0;
-                foreach ($users as $user) {
-                        foreach ($user['Choice'] as $choice) {
-                                $result[$i]['User']['reponse_date'] = $choice['UsersChoice']['created'];
-                               // $result[$i]['User']['question'] = $choice['Question']['question'];
-                                $result[$i]['User']['question_id'] = $choice['UsersChoice']['question_id'];
-                                //$result[$i]['User']['order_id'] = $choice['Question']['order_id'];
-                                $result[$i]['User']['question_type'] = $choice['UsersChoice']['question_type_id'];
-                                $result[$i]['User']['free'] =$choice['UsersChoice']['free'];
-                                $result[$i]['User']['response_id'] =$choice['UsersChoice']['choice_id'];
-                                $result[$i]['User']['id'] = $user['User']['id'];
-                                $result[$i]['User']['username'] = $user['User']['username'];
-                                $result[$i]['User']['user_sex'] = $user['User']['sex'];
-                                $result[$i]['User']['user_birthday'] = $user['User']['birthday'];
-                                $result[$i]['User']['region_id'] = $user['User']['region_id'];
-                                $i++;
-                        }
+                foreach ($ucs as $uc) {
+                        $result[$i]['User']['reponse_date'] = $uc['UsersChoice']['created'];
+// $result[$i]['User']['question'] = $choice['Question']['question'];
+                        $result[$i]['User']['question_id'] = $uc['UsersChoice']['question_id'];
+//$result[$i]['User']['order_id'] = $choice['Question']['order_id'];
+                        $result[$i]['User']['question_type'] = $uc['UsersChoice']['question_type_id'];
+                        $result[$i]['User']['free'] = $uc['UsersChoice']['free'];
+                        $result[$i]['User']['response_id'] = $uc['UsersChoice']['choice_id'];
+                        $result[$i]['User']['id'] = $uc['UsersChoice']['user_id'];
+
+                        $i++;
                 }
-   
-                
+
+
+
                 CakePlugin::load('CsvView');
 
                 $_serialize = 'result';
-                $_header = array('Date de réponce',  'Question ID' ,'Type de question ID', 'Réponse FREE', 'Reponse ID', 'User ID', 'Username', 'Sexe', 'Birthday', 'Region ID');
-                $_extract = array('User.reponse_date', 'User.question_id', 'User.question_type','User.free' ,'User.response_id', 'User.id', 'User.username', 'User.user_sex', 'User.user_birthday', 'User.region_id');
+                $_header = array('Date de réponce', 'Question ID', 'Type de question ID', 'Réponse FREE', 'Reponse ID', 'User ID');
+                $_extract = array('User.reponse_date', 'User.question_id', 'User.question_type', 'User.free', 'User.response_id', 'User.id');
                 $_delimiter = ";"; //tab
                 $this->response->download('export_result_qme.csv');
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
-
         }
 
         public function admin_export_profile() {
@@ -413,20 +407,18 @@ class UsersController extends AppController {
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
         }
-        
-        
-        public function admin_export_users(){  
+
+        public function admin_export_users() {
                 $this->User->recursive = -1;
                 $users = $this->User->find('all');
                 CakePlugin::load('CsvView');
                 $_serialize = 'users';
-                $_header = array("id", "username", "created","sexe", "birthday", "email", "region_id");
+                $_header = array("id", "username", "created", "sexe", "birthday", "email", "region_id");
                 $_extract = array('User.id', 'User.username', 'User.created', 'User.sex', 'User.birthday', 'User.email', 'User.region_id');
                 $_delimiter = ";"; //tab
                 $this->response->download('export_users_qme.csv');
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('users', '_serialize', '_header', '_extract', '_delimiter'));
         }
-       
 
 }

@@ -231,6 +231,7 @@ class VouchersController extends AppController {
                                 $this->Session->setFlash(__('Tes dans la merde'), 'default', array('class' => 'alert alert-danger'));
                         }
                 }
+                
                 $vouchers = $this->Voucher->find('list');
                 $this->set(compact('vouchers'));
         }
