@@ -3,7 +3,7 @@
         <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
-                <meta name="description" content="1.Connecte-toi 2.Réponds aux 10 questions du jour 3.Gagne des cadeaux et des bons de réduction !">
+                <meta name="description" content="1.Connecte-toi 2.Réponds aux questions du jour 3.Gagne des cadeaux et des bons de réduction !">
                 <meta name="author" content="3xW - web and mobile solutions">
                 <title>QuestionMe - GAGNE des CADEAUX et des BONS DE REDUCTION tous les jours !</title>
                 <meta name="author" content="3xW - web and mobile solutions">
@@ -13,7 +13,7 @@
                 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
                 <link rel="icon" href="favicon.ico" type="image/x-icon">
                 <meta property="og:title" content="QuestionMe" />
-                <meta property="og:description" content="1.Connecte-toi 2.Réponds aux 10 questions du jour 3.Gagne des cadeaux et des bons de réduction !" />
+                <meta property="og:description" content="1.Connecte-toi 2.Réponds aux questions du jour 3.Gagne des cadeaux et des bons de réduction !" />
                 <meta property="og:image" content="http://questionme.ch/img/QME_facebook2000.png" />
                 <meta name="google-site-verification" content="1g6RBauYGbvTagRT4kN3fRgrqMqYBaUf6bPy-TWcpBc" />
 

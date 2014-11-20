@@ -46,6 +46,7 @@ function elementsResize() {
     $('#info-2').css('top', '0px');
     $('#info-3').css('top', '0px');
     $('#info-4').css('top', '0px');
+    $('#info-5').css('top', '0px');
 }
 
 function goPlayM() {
@@ -158,6 +159,7 @@ function goInfos() {
     $('#info-2').hide();
     $('#info-3').hide();
     $('#info-4').hide();
+    $('#info-5').hide();
     
     
     
@@ -205,6 +207,21 @@ function goInfo4() {
     $('#info-4').css('right', -$(window).width()).show();
     $('#info-4').animate({right: 0}, 500, function () {
         $('#info-3').hide();
+    });
+}
+
+function goInfo4R() {
+    $('#info-4').show();
+    $('#info-5').animate({right: -$(window).width()}, 500, function () {
+        $('#info-5').hide();
+    });
+}
+
+function goInfo5() {
+
+    $('#info-5').css('right', -$(window).width()).show();
+    $('#info-5').animate({right: 0}, 500, function () {
+        $('#info-4').hide();
     });
 }
 
@@ -256,6 +273,12 @@ $(window).ready(function () {
     $('#info-2').hide();
     $('#info-3').hide();
     $('#info-4').hide();
+    $('#info-5').hide();
+    $('#info-1').css('top', '0px');
+    $('#info-2').css('top', '0px');
+    $('#info-3').css('top', '0px');
+    $('#info-4').css('top', '0px');
+    $('#info-5').css('top', '0px');
     
     $(document).click(function (event) {
         var clickover = $(event.target);
@@ -345,6 +368,15 @@ $(window).ready(function () {
             infoH.hide();
         });
     });
+    $('.info-5').click(function () {
+        var infoH = $(this).closest(".info-i");
+        infoH.css('z-index', '1');
+        $('#info-5').css('right', -$(window).width()).css('z-index', '2').show();
+        $('#info-5').animate({right: 0}, 500, function () {
+            infoH.hide();
+        });
+    });
+    
     if($(window).width() < 767){
         $("#home-prince").swipe({swipe: function (event, direction, distance, duration, fingerCount) {
                 goPlayM();
@@ -382,8 +414,17 @@ $(window).ready(function () {
         },
         threshold: 0
     });
-    $("#info-4").swipe({swipeRight: function (event, direction, distance, duration, fingerCount) {
+    $("#info-4").swipe({
+        swipeLeft: function (event, direction, distance, duration, fingerCount) {
+            goInfo5();
+        },
+        swipeRight: function (event, direction, distance, duration, fingerCount) {
             goInfo3R();
+        },
+        threshold: 0
+    });
+    $("#info-5").swipe({swipeRight: function (event, direction, distance, duration, fingerCount) {
+            goInfo4R();
         }, threshold: 0});
 
 
@@ -513,6 +554,12 @@ $(window).ready(function () {
         $('#info-2').hide();
         $('#info-3').hide();
         $('#info-4').hide();
+        $('#info-5').hide();
+        $('#info-1').css('top', '0px');
+        $('#info-2').css('top', '0px');
+        $('#info-3').css('top', '0px');
+        $('#info-4').css('top', '0px');
+        $('#info-5').css('top', '0px');
     }
     
 });

@@ -70,52 +70,62 @@
         <div class="info-desktop hidden-xs">
             <div class="container  hidden-xs">
                 <div class="row">
-                    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-4 col-xs-offset-4 bottom-30">
-                        <?php //echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?>
-                    </div>
-                        <div class="col-sm-2 col-sm-offset-3 feature-box-container text-center">
-                            
-                                <div class="feature-box wow fadeInDown">
-                                    <h2 class="align-left yellow">1</h2>
-                                        <div class="icon">
-                                                <i class="fa fa-lock fa-5x"></i>
-                                        </div><br/>
-                                        <div class="description">
-                                                <p class="light">Connecte-toi sur <br> www.questionme.ch</p>
-
-                                        </div>
-                                </div>
+                   
+                        <div class="col-sm-3 feature-box-container text-center">
+                            <div class="feature-box wow fadeInDown">
+                                    <div class="icon">
+                                            <?php echo $this->Html->image('concept/concept-1.png' , array('style' => 'margin:0 auto;')); ?>
+                                    </div><br/>
+                                    <div class="description align-left">
+                                        <h3 class="green">JOUE...</h3>
+                                        <p>Réponds aux questions du jour. Elles sont de tous types : humour, opinion, culture générale, actu… </p>
+                                        <p class="green"><i>1 question répondue, c’est 1 chance de plus de gagner ! </i></p>
+                                    </div>
+                            </div>
                         </div>
-                        <div class="col-sm-2 feature-box-container text-center">
+                        <div class="col-sm-3 feature-box-container text-center">
                                 <div class="feature-box wow fadeInDown" data-wow-delay="0.2s">
-                                    <h2 class="align-left yellow">2</h2>
-                                        <div class="icon">
-                                                <?php echo $this->Html->image('qlog.svg', array('width' => '65px')); ?>
-                                        </div><br/>
-                                        <div class="description">
-                                                <p class="light">Réponds aux 10 questions du jour</p>
-
-                                        </div>
+                                    <div class="icon">
+                                            <?php echo $this->Html->image('concept/concept-2.png', array('style' => 'margin:0 auto;')); ?>
+                                    </div><br/>
+                                    <div class="description align-left">
+                                          <h3 class="green">ET GAGNE!</h3>
+                                          <h5>BON DE REDUCTION</h5>
+                                          <p>Dès que tu as répondu aux questions du jour, tu gagnes automatiquement un bon de réduction !</p>
+                                    </div>
                                 </div>
                         </div>
-                        <div class="col-sm-2 feature-box-container text-center">
-                                <div class="feature-box wow fadeInDown" data-wow-delay="0.4s">
-                                    <h2 class="align-left yellow">3</h2>
-                                        <div class="icon">
-                                                <?php echo $this->Html->image('clog.svg', array('width' => '60px')); ?>
-                                        </div><br/>
-                                        <div class="description">
-                                            <p class="light">Gagne des cadeaux et des bons de réduction !</p>
-
-                                        </div>
+                        <div class="col-sm-3 feature-box-container text-center">
+                                <div class="feature-box wow fadeInDown" data-wow-delay="0.4s">                                
+                                    <div class="icon">
+                                            <?php echo $this->Html->image('concept/concept-3.png', array('style' => 'margin:0 auto;')); ?>
+                                    </div><br/>
+                                    <div class="description align-left">
+                                        <h3 class="green">GAGNE!!</h3>
+                                        <h5>CADEAUX PAR TIRAGE AU SORT</h5>
+                                        <p>A la fin de la journée, un tirage au sort détermine les gagnants pour le cadeau du jour.</p>
+                                    </div>
                                 </div>
                         </div>
+                        <div class="col-sm-3 feature-box-container text-center">
+                                <div class="feature-box wow fadeInDown" data-wow-delay="0.4s"> 
+                                    <div class="icon">
+                                            <?php echo $this->Html->image('concept/concept-4.png', array('style' => 'margin:0 auto;')); ?>
+                                    </div><br/>
+                                    <div class="description align-left">
+                                        <h3 class="green">GAGNE!!!</h3>
+                                        <h5>ET C’EST PAS FINI ! </h5>
+                                        <p>A la fin de la semaine, un tirage au sort détermine les gagnants pour <i class="green"> le cadeau de la semaine. </i></p>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="clear"></div>
                         <div class="col-sm-6 col-sm-offset-3 description">
                                 <br/><br/>
-                                <h2 class="light align-center yellow">J'ai compris... Maintenant je veux</h2>
-                                <p class="">
-                                    <a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>"><h3 class="play-buttonG align-center">Jouer</h3></a>
-                                </p>
+                                <p class="light align-center">J'ai compris... Maintenant je veux</p>
+                                <div class="align-center">
+                                    <?php echo $this->Html->link('JOUER',array('controller' => 'questions', 'action' => 'play', 'admin' => false), array('class' => 'btn btn-success btn-lg')) ?>
+                                </div>
                         </div>
                 </div>
             </div>
@@ -126,19 +136,24 @@
             <div id="info-1" class="info-i">
                 <div class="feature-box wow fadeInDown">
                     <div class="box-cont">
-                        <h3 class="align-left yellow">1</h3>
-                            <div class="icon">
-                                    <i class="fa fa-lock fa-5x "></i>
-                            </div><br/>
-                            <div class="description">
-                                    <p class="light ">Connecte-toi sur <br> www.questionme.ch</p>
-
+                            
+                            <div class="row">
+                                <div class="icon col-xs-8 col-xs-offset-2">
+                                        <?php echo $this->Html->image('concept/concept-1.png' , array('class' => 'img-responsive', 'style' => 'margin:0 auto;')); ?>
+                                </div>
+                            </div>    
+                            <br/>
+                            <div class="description align-left">
+                                <h3 class="green">JOUE...</h3>
+                                <p>Réponds aux questions du jour. Elles sont de tous types : humour, opinion, culture générale, actu… </p>
+                                <p class="green"><i>1 question répondue, c’est 1 chance de plus de gagner ! </i></p>
                             </div>
                             <ol class="carousel-indicators-2">
                                 <li class="active"></li>
                                 <li class="info-2"></li>
                                 <li class="info-3"></li>
                                 <li class="info-4"></li>
+                                <li class="info-5"></li>
                             </ol>
                     </div>
                 </div>
@@ -147,19 +162,24 @@
             <div id="info-2" class="info-i">
                 <div class="feature-box wow fadeInDown">
                     <div class="box-cont">
-                        <h3 class="align-left yellow">2</h3>
-                            <div class="icon">
-                                    <?php echo $this->Html->image('qlog.svg', array('width' => '65px')); ?>
-                            </div><br/>
-                            <div class="description">
-                                <p class="light ">Réponds aux <br/>10 questions du jour</p>
-
+                        
+                            <div class="row">
+                                <div class="icon col-xs-8 col-xs-offset-2">
+                                        <?php echo $this->Html->image('concept/concept-2.png' , array('class' => 'img-responsive', 'style' => 'margin:0 auto;')); ?>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="description align-left">
+                                  <h3 class="green">ET GAGNE!</h3>
+                                  <h5>BON DE REDUCTION</h5>
+                                  <p>Dès que tu as répondu aux questions du jour, tu gagnes automatiquement un bon de réduction !</p>
                             </div>
                             <ol class="carousel-indicators-2">
                                 <li class="info-1"></li>
                                 <li class="active"></li>
                                 <li class="info-3"></li>
                                 <li class="info-4"></li>
+                                <li class="info-5"></li>
                             </ol>
                     </div>
                 </div>
@@ -167,37 +187,69 @@
             <div id="info-3" class="info-i">
                 <div class="feature-box wow fadeInDown">
                     <div class="box-cont">
-                        <h3 class="align-left yellow">3</h3>
-                            <div class="icon">
-                                    <?php echo $this->Html->image('clog.svg', array('width' => '60px')); ?>
-                            </div><br/>
-                            <div class="description">
-                                    <p class="light ">Gagne des cadeaux et des bons de réduction !</p>
-
+                        
+                            <div class="row">
+                                <div class="icon col-xs-8 col-xs-offset-2">
+                                        <?php echo $this->Html->image('concept/concept-3.png' , array('class' => 'img-responsive', 'style' => 'margin:0 auto;')); ?>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="description align-left">
+                                <h3 class="green">GAGNE!!</h3>
+                                <h5>CADEAUX PAR TIRAGE AU SORT</h5>
+                                <p>A la fin de la journée, un tirage au sort détermine les gagnants pour le cadeau du jour.</p>
                             </div>
                             <ol class="carousel-indicators-2">
                                 <li class="info-1"></li>
                                 <li class="info-2"></li>
                                 <li class="active"></li>
                                 <li class="info-4"></li>
+                                <li class="info-5"></li>
                             </ol>
                     </div>
                 </div>
             </div>
-            <div id="info-4"  class="info-i">
+            <div id="info-4" class="info-i">
+                <div class="feature-box wow fadeInDown">
+                    <div class="box-cont">
+                        
+                            <div class="row">
+                                <div class="icon col-xs-8 col-xs-offset-2">
+                                        <?php echo $this->Html->image('concept/concept-4.png' , array('class' => 'img-responsive', 'style' => 'margin:0 auto;')); ?>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="description align-left">
+                                <h3 class="green">GAGNE!!!</h3>
+                                <h5>ET C’EST PAS FINI ! </h5>
+                                <p>A la fin de la semaine, un tirage au sort détermine les gagnants pour <i class="green"> le cadeau de la semaine. </i></p>
+                            </div>
+                            <ol class="carousel-indicators-2">
+                                <li class="info-1"></li>
+                                <li class="info-2"></li>
+                                <li class="info-3"></li>
+                                <li class="active"></li>
+                                <li class="info-5"></li>
+                            </ol>
+                    </div>
+                </div>
+            </div>
+            <div id="info-5"  class="info-i">
                 <div class="feature-box wow fadeInDown">
                     <div class="box-cont">
 
                         <div class="description">
-                            <p class="light ">J'ai compris...<br> maintenant je veux</p></div>
-                                <p class="">
-                                    <a href="<?php echo $this->Html->url(array('controller' => 'questions', 'action' => 'play', 'admin' => false)) ?>"><h3 class="play-button align-center">Jouer</h3></a>
-                                </p>
+                        <br/><br/>
+                        <p class="light align-center">J'ai compris... Maintenant je veux</p>
+                        <div class="align-center">
+                            <?php echo $this->Html->link('JOUER',array('controller' => 'questions', 'action' => 'play', 'admin' => false), array('class' => 'btn btn-success btn-lg')) ?>
                         </div>
+                        </div><br/>
                         <ol class="carousel-indicators-2">
                             <li class="info-1"></li>
                             <li class="info-2"></li>
                             <li class="info-3"></li>
+                            <li class="info-4"></li>
                             <li class="active"></li>
                         </ol>
                     </div>
