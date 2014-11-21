@@ -33,7 +33,7 @@ Router::connect('/s-inscrire', array('controller' => 'users', 'action' => 'regis
 Router::connect('/mes-bons', array('controller' => 'vouchers', 'action' => 'my_vouchers'));
 Router::connect('/mon-profil', array('controller' => 'users', 'action' => 'my_profile'));
 Router::connect('/editer-mon-profil', array('controller' => 'users', 'action' => 'edit_my_profile'));
-
+Router::connect('/a-propos', array('controller' => 'pages', 'action' => 'display', 'about'));
 
 
 Router::connect('/mes-bons', array('controller' => 'vouchers', 'action' => 'my_vouchers'));
