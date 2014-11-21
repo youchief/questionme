@@ -30,14 +30,14 @@ and open the template in the editor.
         
 }  
 
-/*.radio, .checkbox{
+.radio, .checkbox{
     overflow:hidden;
 }
 
 .radio input, .checkbox input{
         position: absolute;
         top:-2000px;
-}*/
+}
 
 
 .center-text{
@@ -60,13 +60,11 @@ and open the template in the editor.
     min-height:0px;
     line-height:0px;
     padding:5px;
-    background:transparent;
+    background:#fdfdfd;
 }
 
 
-input[type=radio], input[type=checkbox] {  
-      display:none;  
-}
+
 
 label:before {  
        

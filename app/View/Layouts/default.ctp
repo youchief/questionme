@@ -87,7 +87,7 @@
                 <![endif]-->
                 <!--[if lt IE 8]>
                 <?php echo $this->Html->script('vendor/3xw/ie-lt-8'); ?>
-                
+                 <?php echo $this->Html->script( 'selectivizr-min'); ?>
                 <![endif]-->
                 <?php echo $this->fetch('script'); ?>
         </body>
