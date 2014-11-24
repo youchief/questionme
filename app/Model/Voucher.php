@@ -98,4 +98,22 @@ class Voucher extends AppModel {
 			'order' => ''
 		)
 	);
+        
+        
+        public $hasAndBelongsToMany = array(
+            
+            'User' => array(
+                'className' => 'User',
+                'joinTable' => 'user_vouchers',
+                'foreignKey' => 'voucher_id',
+                'associationForeignKey' => 'user_id',
+                'unique' => 'keepExisting',
+                'conditions' => '',
+                'fields' => '',
+                'order' => 'UserVoucher.id DESC',
+                'limit' => '',
+                'offset' => '',
+                'finderQuery' => '',
+            )
+        );
 }

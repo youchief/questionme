@@ -420,5 +420,9 @@ class UsersController extends AppController {
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('users', '_serialize', '_header', '_extract', '_delimiter'));
         }
+        
+        public function admin_del_day_user_choice(){
+                //$this->UsersChoice->deleteAll(array('UsersChoice.user_id' => $this->request->data['User']['id'], 'UsersChoice.created >'=> $this->request->data['User']['date'], ), false);
+        }
 
 }

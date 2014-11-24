@@ -27,13 +27,13 @@ class VouchersController extends AppController {
                     'conditions' => array('User.id' => $this->Auth->user('id')),
                     'contain' => array(
                         'Gift' => array(
-                            'conditions' => array('Gift.used' => null)
+                            'conditions' => array('Gift.used' => null, 'Gift.validity >' => date('Y-m-d', time()))
                         ),
                         'Voucher' => array(
-                            'conditions' => array('UserVoucher.used' => null)
+                            'conditions' => array('UserVoucher.used' => null, 'Voucher.validity >' => date('Y-m-d', time()))
                         ),
                         'BigGift' => array(
-                            'conditions' => array('BigGift.used' => null)
+                            'conditions' => array('BigGift.used' => null, 'BigGift.validity >' => date('Y-m-d', time()))
                         )
                     )
                         )
@@ -225,13 +225,13 @@ class VouchersController extends AppController {
                                 $result[$i]['voucher_id'] = $this->request->data['Voucher']['voucher_id'];
                                 $i++;
                         }
-                        if($this->UserVoucher->saveAll($result)){
+                        if ($this->UserVoucher->saveAll($result)) {
                                 $this->Session->setFlash(__('Yeah tas généré un max de bons, ptit con!'), 'default', array('class' => 'alert alert-success'));
-                        }else{
+                        } else {
                                 $this->Session->setFlash(__('Tes dans la merde'), 'default', array('class' => 'alert alert-danger'));
                         }
                 }
-                
+
                 $vouchers = $this->Voucher->find('list');
                 $this->set(compact('vouchers'));
         }
