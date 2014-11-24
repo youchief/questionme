@@ -4,14 +4,14 @@
     <div id="home-prince" class="home-prince ">
         <div  class="home-prince-block">
             <div class="home-prince-block-title">
-                <?php echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?>
+                <?php echo $this->Html->link($this->Html->image('questionme_logo_final.png', array('class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?>
             </div>
             <div class="home-prince-block-infos">
                 <div class="container marketing">
                     <!-- Three columns of text below the carousel -->
                     <div class="row">
                         <div class="col-md-2 col-sm-4 col-xs-4 col-md-offset-5 col-sm-offset-4 col-xs-offset-4 align-center">
-                            <p><?php echo $this->Html->link($this->Html->image('home-gift.svg', array('height' => '60px', 'class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?></p>
+                            <p><?php echo $this->Html->link($this->Html->image('home-gift.png', array('height' => '60px', 'class' => 'img-responsive')), '#home-infos', array( 'escape' => false)); ?></p>
                         </div>
                         <div class="col-md-4 col-sm-6 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 align-center">
                             <p class="light green" style="font-weight:200;">Réponds aux questions<br/>Gagne des cadeaux</p>
@@ -22,10 +22,10 @@
             
         </div>
         <div class="hidden-xs go-play-d">        
-            <?php echo $this->Html->image('right.svg', array('width' => '29px')); ?>
+            <?php echo $this->Html->image('right.png', array('width' => '29px')); ?>
         </div>
         <div class="go-play-m hidden-sm hidden-md  hidden-lg">        
-            <?php echo $this->Html->image('down.svg', array('height' => '40px')); ?>
+            <?php echo $this->Html->image('down.png', array('height' => '40px')); ?>
         </div>
         
     </div>
@@ -34,7 +34,7 @@
            
         <div class="home-play-aside  hidden-xs">
             <div class="pad-box">
-                <?php echo $this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive')); ?>
+                <?php echo $this->Html->image('questionme_logo_final.png', array('class' => 'img-responsive')); ?>
                 <div class="home-play-aside-cont bottom-30">
              
                 </div>

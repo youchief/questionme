@@ -19,7 +19,7 @@
                                 </button>
                             <h5 class="align-right menu-txt hidden-xs hidden-sm" >MENU</h5>
 
-                            <div class="navbar-brand"><?php echo $this->Html->link($this->Html->image('questionme_logo_final.svg', array('class' => 'img-responsive', 'id' => 'logo')), '/#home-play', array( 'escape' => false)); ?></div>
+                            <div class="navbar-brand"><?php echo $this->Html->link($this->Html->image('questionme_logo_final.png', array('class' => 'img-responsive', 'id' => 'logo')), '/#home-play', array( 'escape' => false)); ?></div>
                         </div>
 
                         <div class="navbar-collapse collapse">
