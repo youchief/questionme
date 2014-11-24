@@ -7,14 +7,14 @@
                 <meta name="author" content="3xW - web and mobile solutions">
                 <title>QuestionMe - GAGNE des CADEAUX et des BONS DE REDUCTION tous les jours !</title>
                 <meta name="author" content="3xW - web and mobile solutions">
-                <link href='http://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
+                <link href='https://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
                 <?php echo $this->Html->css(array('vendor/twitter/bootstrap.min', 'vendor/3xw/fonts-path-fix', 'vendor/fontawesome/font-awesome', 'vendor/3xw/cake', 'vendor/jquery.carousel.fullscreen', 'menu', 'default')) ?>
                 <!-- Favicon -->
                 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
                 <link rel="icon" href="favicon.ico" type="image/x-icon">
                 <meta property="og:title" content="QuestionMe" />
                 <meta property="og:description" content="1.Connecte-toi 2.Réponds aux questions du jour 3.Gagne des cadeaux et des bons de réduction !" />
-                <meta property="og:image" content="http://questionme.ch/img/QME_facebook2000.png" />
+                <meta property="og:image" content="https://questionme.ch/img/QME_facebook2000.png" />
 
                 <meta name="google-site-verification" content="1g6RBauYGbvTagRT4kN3fRgrqMqYBaUf6bPy-TWcpBc" />
 

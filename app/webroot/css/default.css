@@ -415,6 +415,7 @@ border-color: transparent;
 .custom_message_text p{
     font-size: 1.5em;
     font-style: italic;
+    font-weight: bold;
 }
 
 .glyphicon-chevron-left, .glyphicon-chevron-right{
@@ -436,6 +437,7 @@ border-color: transparent;
     .custom_message_text p{
         font-size: 1em;
         font-style: italic;
+        font-weight: bold;
     }
     .glyphicon-chevron-left, .glyphicon-chevron-right{
         font-size:1em;
