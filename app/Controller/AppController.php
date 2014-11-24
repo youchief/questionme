@@ -8,6 +8,7 @@ class AppController extends Controller {
         var $helpers = array('Markdown');
         public $components = array(
             'RequestHandler',
+           // 'Security',
             'DebugKit.Toolbar',
             'Session',
             'Auth' => array(
@@ -15,24 +16,22 @@ class AppController extends Controller {
                 'logoutRedirect' => array('controller' => 'pages', 'action' => 'display', 'home', 'admin' => false),
                 'authError' => 'Avant de gagner des cadeaux, connecte-toi ici !',
                 'loginError' => 'Mot de passe ou pseudo incorrect !',
-              
                 'authenticate' => array(
                     'Form' => array(
                         'passwordHasher' => 'Blowfish',
-                       
                     )
                 ),
                 'authorize' => array('Controller'),
-               // 'Facebook.Connect' => array('model' => 'User')
+            // 'Facebook.Connect' => array('model' => 'User')
             ),
         );
 
         public function beforeFilter() {
-                
-                
+
                 $this->Auth->allow('login', 'display', 'sendmail', 'register', 'gethome', 'recover', 'contact', 'verify');
 
                 if (isset($this->request->params['admin']) && $this->request->params['admin'] == true) {
+                       // $this->Security->requireSecure();
                         $this->layout = 'backoffice';
                         if ($this->Auth->user('group_id') == 1) {
 
@@ -49,7 +48,6 @@ class AppController extends Controller {
                                 $this->set('header', 'header_anonymous');
                         }
                 }
-                
         }
 
 //        function afterFacebookLogin() {
