@@ -35,8 +35,8 @@ and open the template in the editor.
 }
 
 .radio input, .checkbox input{
-        position: absolute;
-        top:-2000px;
+        position:absolute;
+        left:-3000px;
 }
 
 
