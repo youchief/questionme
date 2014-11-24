@@ -209,11 +209,7 @@ right: 25px;color:#14e985;
 
 
 .cmn-t-pulse {
-        -webkit-animation: pulse 1s ease infinite;
-        -moz-animation: pulse 1s ease infinite;
-        -ms-animation: pulse 1s ease infinite;
-        -o-animation: pulse 1s ease infinite;
-        animation: pulse 1s ease infinite;
+
 }
 
 @keyframes pulse {
