@@ -31,11 +31,13 @@ and open the template in the editor.
 }  
 
 .radio label img, .checkbox label img{
-    pointer-events: none;
+        display: block; 
+        pointer-events: none;
+        position:relative;
 }
 
-.radio, .checkbox{
-    overflow:hidden;
+.radio label, .checkbox label{
+        overflow:hidden;
 }
 
 .radio input, .checkbox input{

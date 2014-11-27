@@ -47,7 +47,7 @@
                                                                 <input type="radio" name="data[Question][response]" id="<?php echo "QuestionResponse" . $choice['id'] ?>" class="" required="required" value="<?php echo $choice['id'] ?>">
                                                                 <label for="<?php echo "QuestionResponse" . $choice['id'] ?>">
                                                                         <?php if (!empty($choice['media'])): ?>
-                                                                                <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive', 'for' => "QuestionResponse" . $choice['id'])); ?><br/>
+                                                                            <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive', 'for' => "QuestionResponse" . $choice['id'])); ?><br/>
                                                                         <?php endif; ?>
                                                                         <span class="center-text"><?php echo $choice['response'] ?></span>
                                                                 </label>
@@ -68,12 +68,15 @@
                                         <?php foreach ($question['Choice'] as $choice): ?>
 
                                                 <div class='col-sm-3 col-centered'>
-                                                        <?php if (!empty($choice['media'])): ?>
-                                                                <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive')); ?>
-                                                        <?php endif; ?>
+                                                        
                                                         <div class="checkbox">
                                                                 <input type="checkbox" name="data[Question][response][]" value="<?php echo $choice['id'] ?>" id="<?php echo "QuestionResponse" . $choice['id'] ?>">
-                                                                <label for="<?php echo "QuestionResponse" . $choice['id'] ?>"><span class="center-text"><?php echo $choice['response'] ?></span></label>
+                                                                <label for="<?php echo "QuestionResponse" . $choice['id'] ?>">
+                                                                    <?php if (!empty($choice['media'])): ?>
+                                                                        <?php echo $this->Html->image($choice['media'], array('class' => 'img-responsive')); ?>
+                                                                    <?php endif; ?>
+                                                                    <span class="center-text"><?php echo $choice['response'] ?></span>
+                                                                </label>
                                                         </div>
                                                 </div>
 
