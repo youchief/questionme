@@ -41,19 +41,19 @@ class EmailConfig {
 
 	public $default = array(
 		'transport' => 'Mail',
-		'from' => 'you@localhost',
+		'from' => 'hello@questionme.ch',
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
 
 	public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost' => 'My Site'),
-		'host' => 'localhost',
-		'port' => 25,
+		'from' => array('hello@questionme.ch' => 'QuestionMe'),
+		'host' => 'smtp.mandrillapp.com',
+		'port' => 587,
 		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
+		'username' => 'hello@questionme.ch',
+		'password' => '1uUnrb7spMiY-kfeRSk1sg',
 		'client' => null,
 		'log' => false,
 		//'charset' => 'utf-8',

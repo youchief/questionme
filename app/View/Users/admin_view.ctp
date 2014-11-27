@@ -48,6 +48,7 @@
 <div class="actions">
 
         <div class="btn-group">
+                <?php echo $this->Html->link(__('Change Password'), array('action' => 'change_password', $user['User']['id']), array('class' => 'btn btn-sm btn-default')); ?>
                 <?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-sm btn-default')); ?>
                 <?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-sm btn-danger'), __('Are you sure you want to delete # %s?', $user['User']['id'])); ?> 
         </div>

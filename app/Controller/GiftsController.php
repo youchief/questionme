@@ -224,8 +224,8 @@ class GiftsController extends AppController {
                 $this->Gift->saveField('winner_id', $user_id);
                 $this->Session->setFlash(__('The gift has been given'), 'default', array('class' => 'alert alert-success'));
 
-                $Email = new CakeEmail();
-                $Email->from(array('no-repy@questoionme.ch' => 'Question Me'));
+                $Email = new CakeEmail('smtp');
+                $Email->from(array('hello@questoionme.ch' => 'Question Me'));
                 $Email->to($user['User']['email']);
                 $Email->subject('T\'es un winner !');
                 $Email->viewVars(array('user' => $user['User']['username'], 'gift' => $gift['Gift']['name'], 'link' => 'http://www.questionme.ch/vouchers/my_vouchers'));

@@ -28,13 +28,12 @@
                         </dd>
                         <dt><?php echo __('Nb User Vouchers Used'); ?></dt>
                         <dd>
-                                <?php 
-                                $i=0;
-                                foreach($voucher['User'] as $user){
-                                        if($user['UserVoucher']['used']<>null){
+                                <?php
+                                $i = 0;
+                                foreach ($voucher['User'] as $user) {
+                                        if ($user['UserVoucher']['used'] <> null) {
                                                 $i++;
                                         }
-                                        
                                 }
                                 echo $i;
                                 ?>
@@ -79,6 +78,35 @@
                 </div>
         </div>
 </div>
+<div class="related">
+        <h3><?php echo __('Related User Vouchers'); ?></h3>
 
 
-<?php debug($voucher)?>
+        <table cellpadding = "0" cellspacing = "0" class='table'>
+                <tr>
+                        <th><?php echo __('Username'); ?></th>
+                        <th><?php echo __('Email'); ?></th>
+                        <th><?php echo __('Used'); ?></th>
+                        <th class="actions"><?php echo __('Actions'); ?></th>
+                </tr>
+                <?php
+                $i = 0;
+                foreach ($voucher['User'] as $user):
+                        ?>
+                        <?php if ($user['UserVoucher']['used'] <> null): ?>
+                                <tr>
+                                        <td><?php echo $user['username']; ?></td>
+                                        <td><?php echo $user['email']; ?></td>
+                                        <td><?php echo $user['UserVoucher']['used']; ?></td>
+
+
+                                        <td class="actions">
+                                                <?php echo $this->Html->link(__('View'), array('controller' => 'users', 'action' => 'view', $user['id'])); ?>
+
+                                        </td>
+                                </tr>
+                        <?php endif; ?>
+                <?php endforeach; ?>
+        </table>
+
+</div>

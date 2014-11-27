@@ -32,8 +32,8 @@ class UsersController extends AppController {
 
                         if ($this->User->save($this->request->data)) {
                                 $this->Session->setFlash(__('C\'est Top ! On vient de t\'envoyer un email à "' . $this->request->data['User']['email'] . '" pour activer ton compte !'), 'message_success');
-                                $Email = new CakeEmail();
-                                $Email->from(array('no-repy@questionme.ch' => 'Question Me'));
+                                $Email = new CakeEmail('smtp');
+                                $Email->from(array('hello@questionme.ch' => 'Question Me'));
                                 $Email->to($this->request->data['User']['email']);
                                 $Email->subject('Merci d’avoir rejoint la communauté QuestionMe !');
                                 $Email->viewVars(array(
@@ -285,7 +285,7 @@ class UsersController extends AppController {
 
                                 $this->User->id = $user['User']['id'];
                                 $this->User->saveField('password', $new_password);
-                                $Email = new CakeEmail();
+                                $Email = new CakeEmail('smtp');
                                 $Email->from(array('no-repy@questionme.ch' => 'Question Me'));
                                 $Email->to($user['User']['email']);
                                 $Email->subject('Changement de mot de passe QuestionMe');
@@ -423,6 +423,24 @@ class UsersController extends AppController {
         
         public function admin_del_day_user_choice(){
                 //$this->UsersChoice->deleteAll(array('UsersChoice.user_id' => $this->request->data['User']['id'], 'UsersChoice.created >'=> $this->request->data['User']['date'], ), false);
+        }
+        
+        
+        public function admin_change_password($user_id) {
+                if ($this->request->is('post')) {
+                        if ($this->request->data['User']['new_password'] != null && $this->request->data['User']['new_password'] != '') {
+                                if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
+                                        $this->User->id =$user_id;
+                                        $this->User->saveField('password', $this->request->data['User']['new_password']);
+                                        $this->Session->setFlash(__('Ton mot de passe a été changé !'), 'message_success');
+                                        return $this->redirect(array('action' => 'view', $user_id));
+                                } else {
+                                        $this->Session->setFlash(__('Les deux champs ne sont pas identiques :-('), 'message_danger');
+                                }
+                        } else {
+                                $this->Session->setFlash(__('Tu dois rentrer un nouveau mot de passe'), 'message_danger');
+                        }
+                }
         }
 
 }

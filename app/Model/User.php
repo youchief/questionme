@@ -139,7 +139,7 @@ class User extends AppModel {
             'Profile' => array(
                 'className' => 'Profile',
                 'foreignKey' => 'user_id',
-                'dependent' => false,
+                'dependent' => true,
                 'conditions' => '',
                 'fields' => '',
                 'order' => '',
@@ -152,7 +152,7 @@ class User extends AppModel {
             'Gift' => array(
                 'className' => 'Gift',
                 'foreignKey' => 'winner_id',
-                'dependent' => false,
+                'dependent' => true,
                 'conditions' => '',
                 'fields' => '',
                 'order' => '',
@@ -165,7 +165,7 @@ class User extends AppModel {
             'BigGift' => array(
                 'className' => 'BigGift',
                 'foreignKey' => 'winner_id',
-                'dependent' => false,
+                'dependent' => true,
                 'conditions' => '',
                 'fields' => '',
                 'order' => '',

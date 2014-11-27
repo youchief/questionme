@@ -19,6 +19,7 @@
                                                 <div class="clear"></div>
                                                 <?php echo $this->Html->image($bgift['media'], array('class' => 'img-responsive')) ?>
                                                 <h3><?php echo $bgift['name'] ?></h3>
+                                                <p><b>Valable jusqu'au: </b><?php echo $this->Time->format('d/m/Y', $bgift['validity']); ?></p>
                                                 <p>
                                                         <?php
                                                         echo $this->Text->truncate($bgift['description'], 150, array('ellipsis' => '...', 'exact' => false));
@@ -52,6 +53,8 @@
                                                 <div class="clear"></div>
                                                 <?php echo $this->Html->image($gift['media'], array('class' => 'img-responsive')) ?>
                                                 <h3><?php echo $gift['name'] ?></h3>
+                                                <p><b>Valable jusqu'au: </b><?php echo $this->Time->format('d/m/Y', $gift['validity']); ?></p>
+
                                                 <p>
                                                         <?php
                                                         echo $this->Text->truncate($gift['description'], 150, array('ellipsis' => '...', 'exact' => false));
@@ -77,100 +80,111 @@
         <div class='row'>
                 <?php
                 $vouchers = array();
-                foreach ($user['Voucher'] as $voucher):   
-                        if ($voucher['UserVoucher']['used'] == null): 
-                            array_push($vouchers, $voucher);
-                        endif; 
-                endforeach; 
-                
-                
+                foreach ($user['Voucher'] as $voucher):
+                        if ($voucher['UserVoucher']['used'] == null):
+                                array_push($vouchers, $voucher);
+                        endif;
+                endforeach;
                 ?>    
-                    
-                        <div class='col-sm-4'>
-                                <?php for($i = 0; $i < count($vouchers); $i++):$voucher = $vouchers[$i];if($i%3 == 0): ?>
-                                    <div class='thumbnail voucher'>
-                                            <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
-                                            <div class="clear"></div>
-                                            <?php echo $this->Html->image($voucher['image'], array('class' => 'img-responsive')) ?>
-                                            <h3><?php echo $voucher['name'] ?></h3>
-                                            <p>
-                                                    <?php
-                                                    echo $this->Text->truncate($voucher['description'], 150, array('ellipsis' => '...', 'exact' => false));
-                                                    ?>
-                                            </p>
-                                            <?php if ($voucher['UserVoucher']['used'] == null): ?>
-                                                    <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
-                                                    <?php echo $this->Html->link(__('Détail'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
-                                                    <?php echo $this->Form->postLink(__('Effacer'), array('controller' => 'vouchers', 'action' => 'delete', $voucher['UserVoucher']['id']), array('class' => 'btn btn-danger'), __('Es-tu sûr ?')); ?>
 
-                                            <?php else: ?>
-                                                    <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
-                                            <?php endif; ?>    
-                                    </div>
-                                <?php endif;endfor; ?>
-                        </div>
-                        <div class='col-sm-4'>
-                                <?php for($i = 0; $i < count($vouchers); $i++):$voucher = $vouchers[$i];if($i%3 == 1): ?>
-                                    <div class='thumbnail voucher'>
-                                            <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
-                                            <div class="clear"></div>
-                                            <?php echo $this->Html->image($voucher['image'], array('class' => 'img-responsive')) ?>
-                                            <h3><?php echo $voucher['name'] ?></h3>
-                                            <p>
-                                                    <?php
-                                                    echo $this->Text->truncate($voucher['description'], 150, array('ellipsis' => '...', 'exact' => false));
-                                                    ?>
-                                            </p>
-                                            <?php if ($voucher['UserVoucher']['used'] == null): ?>
-                                                    <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
-                                                    <?php echo $this->Html->link(__('Détail'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
-                                                    <?php echo $this->Form->postLink(__('Effacer'), array('controller' => 'vouchers', 'action' => 'delete', $voucher['UserVoucher']['id']), array('class' => 'btn btn-danger'), __('Es-tu sûr ?')); ?>
+                <div class='col-sm-4'>
+                        <?php
+                        for ($i = 0; $i < count($vouchers); $i++):$voucher = $vouchers[$i];
+                                if ($i % 3 == 0):
+                                        ?>
+                                        <div class='thumbnail voucher'>
+                                                <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
+                                                <div class="clear"></div>
+                                                <?php echo $this->Html->image($voucher['image'], array('class' => 'img-responsive')) ?>
+                                                <h3><?php echo $voucher['name'] ?></h3>
+                                                <p><b>Valable jusqu'au: </b><?php echo $this->Time->format('d/m/Y', $voucher['validity']); ?></p>
 
-                                            <?php else: ?>
-                                                    <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
-                                            <?php endif; ?>    
-                                    </div>
-                                <?php endif;endfor; ?>
-                        </div>
-                        <div class='col-sm-4'>
-                                <?php for($i = 0; $i < count($vouchers); $i++):$voucher = $vouchers[$i];if($i%3 == 2): ?>
-                                    <div class='thumbnail voucher'>
-                                            <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
-                                            <div class="clear"></div>
-                                            <?php echo $this->Html->image($voucher['image'], array('class' => 'img-responsive')) ?>
-                                            <h3><?php echo $voucher['name'] ?></h3>
-                                            <p>
-                                                    <?php
-                                                    echo $this->Text->truncate($voucher['description'], 150, array('ellipsis' => '...', 'exact' => false));
-                                                    ?>
-                                            </p>
-                                            <?php if ($voucher['UserVoucher']['used'] == null): ?>
-                                                    <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
-                                                    <?php echo $this->Html->link(__('Détail'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
-                                                    <?php echo $this->Form->postLink(__('Effacer'), array('controller' => 'vouchers', 'action' => 'delete', $voucher['UserVoucher']['id']), array('class' => 'btn btn-danger'), __('Es-tu sûr ?')); ?>
+                                                <p>
+                                                        <?php
+                                                        echo $this->Text->truncate($voucher['description'], 150, array('ellipsis' => '...', 'exact' => false));
+                                                        ?>
+                                                </p>
+                                                <?php if ($voucher['UserVoucher']['used'] == null): ?>
+                                                        <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
+                                                        <?php echo $this->Html->link(__('Détail'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
+                                                        <?php echo $this->Form->postLink(__('Effacer'), array('controller' => 'vouchers', 'action' => 'delete', $voucher['UserVoucher']['id']), array('class' => 'btn btn-danger'), __('Es-tu sûr ?')); ?>
 
-                                            <?php else: ?>
-                                                    <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
-                                            <?php endif; ?>    
-                                    </div>
+                                                <?php else: ?>
+                                                        <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
+                                        <?php endif; ?>    
+                                        </div>
+        <?php endif;endfor; ?>
+                </div>
+                <div class='col-sm-4'>
+                        <?php
+                        for ($i = 0; $i < count($vouchers); $i++):$voucher = $vouchers[$i];
+                                if ($i % 3 == 1):
+                                        ?>
+                                        <div class='thumbnail voucher'>
+                                                <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
+                                                <div class="clear"></div>
+                                                        <?php echo $this->Html->image($voucher['image'], array('class' => 'img-responsive')) ?>
+                                                <h3><?php echo $voucher['name'] ?></h3>
+                                                <p><b>Valable jusqu'au: </b><?php echo $this->Time->format('d/m/Y', $voucher['validity']); ?></p>
+                                                <p>
+                                                        <?php
+                                                        echo $this->Text->truncate($voucher['description'], 150, array('ellipsis' => '...', 'exact' => false));
+                                                        ?>
+                                                </p>
+                                                <?php if ($voucher['UserVoucher']['used'] == null): ?>
+                                                        <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
+                                                        <?php echo $this->Html->link(__('Détail'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
+                                                        <?php echo $this->Form->postLink(__('Effacer'), array('controller' => 'vouchers', 'action' => 'delete', $voucher['UserVoucher']['id']), array('class' => 'btn btn-danger'), __('Es-tu sûr ?')); ?>
+
+                                                <?php else: ?>
+                                                        <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
+                                        <?php endif; ?>    
+                                        </div>
                                 <?php endif;endfor; ?>
-                        </div>
-                                
-                        
-<!--                <div class='col-sm-4'>
-                        <div class='thumbnail voucher next'>
-                                <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
-                                <div class="clear"></div>
-                                <?php //echo $this->Html->image('concept/bon-test-s1.png', array('class' => 'img-responsive no')) ?>
-                                <?php //echo $this->Html->image('concept/bon-test.png', array('class' => 'img-responsive ov')) ?>
-                                <h3>REVIENS DEMAIN POUR UN NOUVEAU BON DE Réduction</h3>
-                                
-                        </div>
-                </div>-->
+                </div>
+                <div class='col-sm-4'>
+                        <?php
+                        for ($i = 0; $i < count($vouchers); $i++):$voucher = $vouchers[$i];
+                                if ($i % 3 == 2):
+                                        ?>
+                                        <div class='thumbnail voucher'>
+                                                <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
+                                                <div class="clear"></div>
+                                                        <?php echo $this->Html->image($voucher['image'], array('class' => 'img-responsive')) ?>
+                                                <h3><?php echo $voucher['name'] ?></h3>
+                                                <p><b>Valable jusqu'au: </b><?php echo $this->Time->format('d/m/Y', $voucher['validity']); ?></p>
+                                                <p>
+                                                <?php
+                                                echo $this->Text->truncate($voucher['description'], 150, array('ellipsis' => '...', 'exact' => false));
+                                                ?>
+                                                </p>
+                                                <?php if ($voucher['UserVoucher']['used'] == null): ?>
+                                                        <?php echo $this->Html->link(__('Utiliser'), array('controller' => 'vouchers', 'action' => 'use_it', $voucher['id']), array('class' => 'btn btn-success')) ?>
+                                                        <?php echo $this->Html->link(__('Détail'), array('controller' => 'vouchers', 'action' => 'view', $voucher['id']), array('class' => 'btn btn-default')) ?>
+                                                        <?php echo $this->Form->postLink(__('Effacer'), array('controller' => 'vouchers', 'action' => 'delete', $voucher['UserVoucher']['id']), array('class' => 'btn btn-danger'), __('Es-tu sûr ?')); ?>
+
+                                        <?php else: ?>
+                                                        <h3><span class="label label-danger"><?php echo $this->Time->format('d/m/Y H:i:s', $voucher['UserVoucher']['used']) ?></span></h3>
+                <?php endif; ?>    
+                                        </div>
+        <?php endif;endfor; ?>
+                </div>
+
+
+                <!--                <div class='col-sm-4'>
+                                        <div class='thumbnail voucher next'>
+                                                <i class="fa fa-barcode"></i> <h5 class="title-vouch">Bon de réduction</h5>
+                                                <div class="clear"></div>
+<?php //echo $this->Html->image('concept/bon-test-s1.png', array('class' => 'img-responsive no'))   ?>
+<?php //echo $this->Html->image('concept/bon-test.png', array('class' => 'img-responsive ov'))    ?>
+                                                <h3>REVIENS DEMAIN POUR UN NOUVEAU BON DE Réduction</h3>
+                                                
+                                        </div>
+                                </div>-->
         </div>
         <div class="row">
                 <div class="col-sm-6 align-center col-sm-offset-3">
-                        <?php echo $this->Html->link(__('Comment ça marche ?'), '#', array('class' => 'btn btn-success btn-lg', 'data-toggle' => "modal", 'data-target' => "#myModal")) ?>
+<?php echo $this->Html->link(__('Comment ça marche ?'), '#', array('class' => 'btn btn-success btn-lg', 'data-toggle' => "modal", 'data-target' => "#myModal")) ?>
                 </div>
         </div>
 
@@ -182,18 +196,18 @@
                                         <h3>FONCTIONNEMENT DU BON DE REDUCTION & DU CADEAU </h3>
                                         <ol>
                                                 <li>
-                                                           Regarde les conditions d’utilisation dans DETAIL.
+                                                        Regarde les conditions d’utilisation dans DETAIL.
                                                 </li>
                                                 <li>
                                                         Rends-toi chez le partenaire et dis-lui que tu as un bon QuestionMe.
                                                 </li>
                                                 <li>
-                                                         Quand tu es chez le partenaire avec ton téléphone, appuie sur UTILISER (MES BONS)
+                                                        Quand tu es chez le partenaire avec ton téléphone, appuie sur UTILISER (MES BONS)
                                                 </li>
                                                 <li>
                                                         Le partenaire met le code sur ton téléphone, et c’est tout bon !
                                                 </li>
-           
+
                                         </ol>
                                 </div>
                                 <div class="modal-footer">
