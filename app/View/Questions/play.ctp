@@ -6,7 +6,7 @@
                         <?php if (!empty($question['Question']['media'])): ?>
 
                                 <div class="row text-center">
-                                        <div class="col-sm-8 col-sm-offset-2">
+                                        <div class="col-sm-12">
                                                 <?php echo $this->Html->image($question['Question']['media'], array('class' => 'question_media')) ?>
 
                                         </div>

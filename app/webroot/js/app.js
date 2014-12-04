@@ -49,8 +49,6 @@ function elementsResize() {
     if (play === true) {
         if ($(window).width() < 767) {
             $('.navbar-brand').show();
-            
-            
 
         } else {
             $('.navbar-brand').hide();
@@ -62,6 +60,17 @@ function elementsResize() {
     $('#info-3').css('top', '0px');
     $('#info-4').css('top', '0px');
     $('#info-5').css('top', '0px');
+    
+    
+    var qImgWidth = document.querySelector('img.question_media').naturalWidth;
+
+    if( qImgWidth > $('img.question_media').parent().width()){
+        $('img.question_media').css('width', '100%');
+    }else{
+        $('img.question_media').css('width', 'auto');
+    }
+    
+    
 }
 
 function goPlayM() {
@@ -310,6 +319,24 @@ $(window).ready(function () {
     $('#info-3').css('top', '0px');
     $('#info-4').css('top', '0px');
     $('#info-5').css('top', '0px');
+    
+    var img = $("img.question_media")[0]; // Get my img elem
+    var pic_real_width;
+    $("<img/>") // Make in memory copy of image to avoid css issues
+        .attr("src", $(img).attr("src"))
+        .load(function() {
+            pic_real_width = this.width;   // Note: $(this).width() will not
+        });
+        
+    setTimeout(function(){
+        var qImgWidth = document.querySelector('img.question_media').naturalWidth;
+   
+        if(qImgWidth > $('img.question_media').parent().width()){
+            $('img.question_media').css('width', '100%');
+        }else{
+            $('img.question_media').css('width', '');
+        }
+    }, 10);
     
     $(document).click(function (event) {
         var clickover = $(event.target);
@@ -594,7 +621,7 @@ $(window).ready(function () {
         $('#info-5').css('top', '0px');
     }
     
-    svgeezy.init(false, 'png');
+    //svgeezy.init(false, 'png');
     
 });
 
