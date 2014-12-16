@@ -306,9 +306,10 @@ window.onload = init();
 $(window).ready(function () {
 
     //HOME//
-
-    $('.home-play').hide();
-    $('.home-info').hide();
+ 
+    
+    
+    
 
     $('#info-2').hide();
     $('#info-3').hide();
@@ -538,7 +539,13 @@ $(window).ready(function () {
             
             if( $('.home-prince').is(":visible")){
                 if( evt.wheelDelta < 0 ){
-                     goPlayD();
+                     
+                    if($(window).width() > 767){
+                        goPlayD();
+                    }else{
+                        goPlayM();
+                    }
+                    
 
                 }else{
 
@@ -566,6 +573,17 @@ $(window).ready(function () {
             }
         }        
     }        
+    
+     if($('.navbar-text').hasClass('connected')){
+        $('.home-prince').hide();
+        $('.home-info').hide();
+        if ($(window).width() < 767) {
+            $('.navbar-brand').show();
+        }
+    }else{
+        $('.home-play').hide();
+        $('.home-info').hide();
+    }
             
     if (window.location.hash === '#home-play'){
         $('.nav-brand').hide();
@@ -622,6 +640,8 @@ $(window).ready(function () {
     }
     
     //svgeezy.init(false, 'png');
+    
+   
     
 });
 
