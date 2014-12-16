@@ -344,40 +344,41 @@ class UsersController extends AppController {
         }
 
         public function admin_export() {
-//$this->User->recursive = 2;
-
-                set_time_limit('120');
-                $this->UsersChoice->recursive = -1;
-                $ucs = $this->UsersChoice->find('all');
 
 
-                $result = array();
+                if ($this->request->is('post')) {
+                        $start = $this->request->data['User']['start']['year']."-".$this->request->data['User']['start']['month']."-".$this->request->data['User']['start']['day'];
+                        $end = $this->request->data['User']['end']['year']."-".$this->request->data['User']['end']['month']."-".$this->request->data['User']['end']['day'];        
+                        $this->UsersChoice->recursive = -1;
+                        $ucs = $this->UsersChoice->find('all', array('conditions'=>array('UsersChoice.created >' => $start, 'UsersChoice.created <' => $end)));
 
-                $i = 0;
-                foreach ($ucs as $uc) {
-                        $result[$i]['User']['reponse_date'] = $uc['UsersChoice']['created'];
-// $result[$i]['User']['question'] = $choice['Question']['question'];
-                        $result[$i]['User']['question_id'] = $uc['UsersChoice']['question_id'];
-//$result[$i]['User']['order_id'] = $choice['Question']['order_id'];
-                        $result[$i]['User']['question_type'] = $uc['UsersChoice']['question_type_id'];
-                        $result[$i]['User']['free'] = $uc['UsersChoice']['free'];
-                        $result[$i]['User']['response_id'] = $uc['UsersChoice']['choice_id'];
-                        $result[$i]['User']['id'] = $uc['UsersChoice']['user_id'];
 
-                        $i++;
+                        $result = array();
+
+                        $i = 0;
+                        foreach ($ucs as $uc) {
+                                $result[$i]['User']['reponse_date'] = $uc['UsersChoice']['created'];
+                                $result[$i]['User']['question_id'] = $uc['UsersChoice']['question_id'];
+                                $result[$i]['User']['question_type'] = $uc['UsersChoice']['question_type_id'];
+                                $result[$i]['User']['free'] = $uc['UsersChoice']['free'];
+                                $result[$i]['User']['response_id'] = $uc['UsersChoice']['choice_id'];
+                                $result[$i]['User']['id'] = $uc['UsersChoice']['user_id'];
+
+                                $i++;
+                        }
+
+                        //debug($result);
+
+                        CakePlugin::load('CsvView');
+
+                        $_serialize = 'result';
+                        $_header = array('Date de réponce', 'Question ID', 'Type de question ID', 'Réponse FREE', 'Reponse ID', 'User ID');
+                        $_extract = array('User.reponse_date', 'User.question_id', 'User.question_type', 'User.free', 'User.response_id', 'User.id');
+                        $_delimiter = ";"; //tab
+                        $this->response->download('export_result_qme.csv');
+                        $this->viewClass = 'CsvView.Csv';
+                        $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
                 }
-
-
-
-                CakePlugin::load('CsvView');
-
-                $_serialize = 'result';
-                $_header = array('Date de réponce', 'Question ID', 'Type de question ID', 'Réponse FREE', 'Reponse ID', 'User ID');
-                $_extract = array('User.reponse_date', 'User.question_id', 'User.question_type', 'User.free', 'User.response_id', 'User.id');
-                $_delimiter = ";"; //tab
-                $this->response->download('export_result_qme.csv');
-                $this->viewClass = 'CsvView.Csv';
-                $this->set(compact('result', '_serialize', '_header', '_extract', '_delimiter'));
         }
 
         public function admin_export_profile() {
@@ -413,24 +414,23 @@ class UsersController extends AppController {
                 $users = $this->User->find('all');
                 CakePlugin::load('CsvView');
                 $_serialize = 'users';
-                $_header = array("id", "username", "created", "sexe", "birthday", "email", "region_id");
-                $_extract = array('User.id', 'User.username', 'User.created', 'User.sex', 'User.birthday', 'User.email', 'User.region_id');
+                $_header = array("id", "username", "created", "sexe", "birthday", "email", "region_id", 'newsletter');
+                $_extract = array('User.id', 'User.username', 'User.created', 'User.sex', 'User.birthday', 'User.email', 'User.region_id', 'User.newsletter');
                 $_delimiter = ";"; //tab
                 $this->response->download('export_users_qme.csv');
                 $this->viewClass = 'CsvView.Csv';
                 $this->set(compact('users', '_serialize', '_header', '_extract', '_delimiter'));
         }
-        
-        public function admin_del_day_user_choice(){
+
+        public function admin_del_day_user_choice() {
                 //$this->UsersChoice->deleteAll(array('UsersChoice.user_id' => $this->request->data['User']['id'], 'UsersChoice.created >'=> $this->request->data['User']['date'], ), false);
         }
-        
-        
+
         public function admin_change_password($user_id) {
                 if ($this->request->is('post')) {
                         if ($this->request->data['User']['new_password'] != null && $this->request->data['User']['new_password'] != '') {
                                 if ($this->request->data['User']['new_password'] == $this->request->data['User']['retype_password']) {
-                                        $this->User->id =$user_id;
+                                        $this->User->id = $user_id;
                                         $this->User->saveField('password', $this->request->data['User']['new_password']);
                                         $this->Session->setFlash(__('Ton mot de passe a été changé !'), 'message_success');
                                         return $this->redirect(array('action' => 'view', $user_id));
@@ -441,6 +441,12 @@ class UsersController extends AppController {
                                 $this->Session->setFlash(__('Tu dois rentrer un nouveau mot de passe'), 'message_danger');
                         }
                 }
+        }
+        
+        
+        public function admin_delete_user_choice($user_id){
+                debug($this->UsersChoice->deleteAll(array('UsersChoice.user_id' => $user_id), false));
+                //$this->redirect($this->referer());
         }
 
 }

@@ -1,7 +1,7 @@
 <footer class="footer">
        
                         <div class="footer-left">
-                                <p>powered by <?php echo $this->Html->link('3xW','http://www.3xw.ch', array('target'=>'_blank'))?></p>
+                                <p>powered by <?php echo $this->Html->link('3xW','http://www.3xw.ch', array('target'=>'_blank'))?> - design <?php echo $this->Html->link('WGR','http://www.wgrcommunication.ch', array('target'=>'_blank'))?></p>
                         </div>
                         <div class="footer-center text-center hidden-xs">
                                 <?php echo $this->Html->link('A propos', array('controller'=>'pages', 'action'=>'display', 'about'))?>  

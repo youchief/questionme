@@ -31,7 +31,7 @@
                         </dd>
                         <dt><?php echo __('Conditions'); ?></dt>
                         <dd>
-                                <?php echo h($bigGift['BigGift']['conditions']); ?>
+                                <?php echo $bigGift['BigGift']['conditions']; ?>
                                 &nbsp;
                         </dd>
                         <dt><?php echo __('Winner'); ?></dt>

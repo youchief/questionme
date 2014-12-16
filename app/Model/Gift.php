@@ -17,6 +17,7 @@ class Gift extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
+        public $order = 'Gift.id DESC';
         
          public $actsAs = array(
             'Uploader.Attachment' => array(

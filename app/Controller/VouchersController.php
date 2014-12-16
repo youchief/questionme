@@ -40,6 +40,8 @@ class VouchersController extends AppController {
                 );
 
                 $this->_delete_double();
+                
+                debug($user[0]);
 
                 $this->set('user', $user[0]);
         }

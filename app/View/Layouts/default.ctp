@@ -23,7 +23,7 @@
                         <script src="js/html5shiv.js"></script>
                         <script src="js/respond.min.js"></script>
                 <![endif]-->
-<?php echo $this->element('iOS'); ?>
+                <?php echo $this->element('iOS'); ?>
         </head>
 
 
@@ -31,21 +31,21 @@
                 <!-- NAVBAR -->
 
                 <div class="content-wrap">
-<?php echo $this->element($header) ?>
+                        <?php echo $this->element($header) ?>
 
                         <div class="container">
-<?php
-echo $this->Session->flash();
-echo $this->Session->flash('default', 'auth', array());
-?>
-                        </div>
                                 <?php
-                                echo $this->fetch('content');
+                                echo $this->Session->flash();
+                                echo $this->Session->flash('default', 'auth', array());
                                 ?>
+                        </div>
+                        <?php
+                        echo $this->fetch('content');
+                        ?>
                         <div class="push"></div>
 
                 </div>
-<?php if ($this->params['action'] != 'play'): ?>
+                <?php if ($this->params['action'] != 'play'): ?>
                         <?php echo $this->element('footer'); ?>
                 <?php endif; ?>
 
@@ -61,32 +61,15 @@ echo $this->Session->flash('default', 'auth', array());
                 ));
                 ?>
 
-                <script>
-                        (function (i, s, o, g, r, a, m) {
-                                i['GoogleAnalyticsObject'] = r;
-                                i[r] = i[r] || function () {
-                                        (i[r].q = i[r].q || []).push(arguments)
-                                }, i[r].l = 1 * new Date();
-                                a = s.createElement(o),
-                                        m = s.getElementsByTagName(o)[0];
-                                a.async = 1;
-                                a.src = g;
-                                m.parentNode.insertBefore(a, m)
-                        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-                        ga('create', 'UA-44952673-20', 'auto');
-                        ga('send', 'pageview');
-
-                </script>
-
+                <?php echo $this->element('google_analytic') ?>
                 <!--[if lt IE 10]>
-<?php echo $this->Html->script('vendor/3xw/ie-lt-10'); ?>
+                <?php echo $this->Html->script('vendor/3xw/ie-lt-10'); ?>
                 <![endif]-->
                 <!--[if lt IE 9]>
-<?php echo $this->Html->script('vendor/boilerplate/html5-3.6-respond-1.1.0.min'); ?>
+                <?php echo $this->Html->script('vendor/boilerplate/html5-3.6-respond-1.1.0.min'); ?>
                 <![endif]-->
                 <!--[if lt IE 8]>
-<?php echo $this->Html->script('vendor/3xw/ie-lt-8'); ?>
+                <?php echo $this->Html->script('vendor/3xw/ie-lt-8'); ?>
                 <?php echo $this->Html->script('selectivizr-min'); ?>
                 <![endif]-->
                 <?php echo $this->fetch('script'); ?>

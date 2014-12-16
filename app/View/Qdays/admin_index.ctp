@@ -13,8 +13,8 @@
                 <?php foreach ($qdays as $qday): ?>
                         <tr>
                                 <td><?php echo h($qday['Qday']['id']); ?>&nbsp;</td>
-                                <td><?php echo h($qday['Qday']['start']); ?>&nbsp;</td>
-                                <td><?php echo h($qday['Qday']['end']); ?>&nbsp;</td>
+                                <td><?php echo $this->Time->format('d-m-Y H:i',$qday['Qday']['start']); ?>&nbsp;</td>
+                                <td><?php echo $this->Time->format('d-m-Y H:i',$qday['Qday']['end']); ?>&nbsp;</td>
                                 <td><?php echo h($qday['Qday']['nb_qmobile']); ?>&nbsp;</td>
                                 <td><?php echo h($qday['Qday']['nb_qfixe']); ?>&nbsp;</td>
                                 <td>
