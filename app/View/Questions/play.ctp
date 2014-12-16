@@ -1,4 +1,5 @@
 <?php echo $this->Html->css('game') ?>
+<?php $this->Html->script('game',array('inline' => FALSE)); ?>
 <div class="container">
         <div class="row">
                 <div class="col-sm-12 text-center">

@@ -1,4 +1,5 @@
 <?php echo $this->Html->css('game') ?>
+<?php $this->Html->script('game',array('inline' => FALSE)); ?>
 <?php $this->layout = 'preview'; ?>
 
 <div class="container">
