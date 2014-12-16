@@ -370,6 +370,10 @@ border-color: transparent;
         color:black;
 }
 
+.gift, .bigGift {
+        background: #14e985;
+}
+
 .center-block{display:table;margin:0 auto;}
 
 .alert-container{position:relative;}
