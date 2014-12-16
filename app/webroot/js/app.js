@@ -573,6 +573,29 @@ $(window).ready(function () {
             }
         }        
     }        
+    
+     if($('.navbar-text').hasClass('connected')){
+        $('.home-prince').hide();
+        $('.home-info').hide();
+        if ($(window).width() < 767) {
+            $('.navbar-brand').show();
+        }
+        if ($(window).width() < 767) {
+            $('.home-play-aside').height($(window).height() / 2);
+            $('.home-play-aside').css('top', '50%').css('margin-top', '53px');
+            $('.home-play-gallery').height(($(window).height() / 2) - 53);
+            $('.home-play-gallery').css('top', '53px');
+            $('.navbar-brand').show();
+        } else {
+            $('.home-play-aside').height($(window).height()).css('margin-top', '0px');
+            $('.home-play-gallery').height($(window).height()).css('top', '0');
+            $('.navbar-brand').hide();
+        }
+        
+    }else{
+        $('.home-play').hide();
+        $('.home-info').hide();
+    }
             
     if (window.location.hash === '#home-play' || $('.navbar-text').hasClass('connected')){
         $('.nav-brand').hide();
@@ -588,15 +611,6 @@ $(window).ready(function () {
             $('.home-play-gallery').height(($(window).height() / 2) - 53);
             $('.home-play-gallery').css('top', '53px');
             $('.navbar-brand').show();
-            
-            $('.carousel').css({'margin': 0, 'width': '100%', 'height': '100%'});
-            $('.carousel .item').css({'width': '100%', 'height': '100%'});
-            $('.carousel-inner div.item img').each(function () {
-                var imgSrc = $(this).attr('src');
-                $(this).parent().css({'background': 'url(' + imgSrc + ') center center no-repeat', '-webkit-background-size': '100% ', '-moz-background-size': '100%', '-o-background-size': '100%', 'background-size': '100%', '-webkit-background-size': 'cover', '-moz-background-size': 'cover', '-o-background-size': 'cover', 'background-size': 'cover'});
-                $(this).remove();
-            });
-            
         } else {
             $('.home-play-aside').height($(window).height()).css('margin-top', '0px');
             $('.home-play-gallery').height($(window).height()).css('top', '0');
