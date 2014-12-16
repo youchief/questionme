@@ -240,6 +240,18 @@ class GiftsController extends AppController {
         $this->Gift->id = $gift_id;
         $this->Gift->saveField('winner_id', $user_id);
         $this->Session->setFlash(__('Oui... vous avez fait le bon choix !'), 'default', array('class' => 'alert alert-success'));
+        if($user_id == 41){
+                $xw = 'cycy.png';
+        }else{
+                 $xw = 'dada.png';
+        }
+        
+        $this->redirect(array('action'=>'merci', $xw));
+    }
+    
+    
+    public function admin_merci($xw){
+            $this->set('xw', $xw);
     }
 
 }
