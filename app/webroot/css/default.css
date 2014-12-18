@@ -358,7 +358,7 @@ border-color: transparent;
         .navbar-default .navbar-toggle {border:0px;margin-top: 10px;}
         .nav>li{border-left:0px ;}
         
-        .nav>li{background-color:#14e985 ;border-bottom:1px solid #fdfdfd ;border-left:0px solid #fdfdfd ;}
+        .nav>li{background-color:#14e985 ;border-left:0px solid #fdfdfd ;}
         
         .navbar-default .navbar-collapse, .navbar-default .navbar-form {
         border:0px solid #e7e7e7;
