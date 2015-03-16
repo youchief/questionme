@@ -28,7 +28,7 @@ class AppController extends Controller {
 
         public function beforeFilter() {
 
-                $this->Auth->allow('login', 'display', 'sendmail', 'register', 'gethome', 'recover', 'contact', 'verify');
+                $this->Auth->allow('login', 'display', 'sendmail', 'register', 'gethome', 'recover', 'contact', 'verify', 'getvoucher');
 
                 if (isset($this->request->params['admin']) && $this->request->params['admin'] == true) {
                        // $this->Security->requireSecure();

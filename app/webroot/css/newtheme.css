@@ -1,0 +1,113 @@
+/** BASE **/
+body{font-family: 'Ubuntu', sans-serif;color:#42484E;background-color:#42484E; }
+
+/** FIX **/
+textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus,button:focus,button:active,button:hover,a:focus,.navbar-nav>li>a,.btn-select:focus,.form-control:focus{outline: -webkit-focus-ring-color auto 0px;}
+
+/** TEXT **/
+h1,h2,h3,h4{font-family: 'Ubuntu', sans-serif;font-weight:700;text-transform: uppercase;}
+h1{font-size: 26px;}
+h2{font-size: 22px;}
+h3{font-size: 16px;}
+h4{font-size: 14px;}
+p{font-weight:400;}
+.text-small{font-weight:300;}
+.text-italic{font-style: italic;}
+
+/** HEADER **/
+.navbar{z-index:3;margin-bottom:0px;padding-left:60px;padding-right:60px;border-radius:0px;background-color: white;}
+.navbar-brand {padding-top: 12px; padding-bottom:12px;}
+.navbar-nav{font-weight:700;}
+.navbar-nav li a{color:#42484E;text-transform: uppercase;}
+.navbar-nav li a.header-login{color:#F36B7A;}
+.navbar-toggle .icon-bar {background-color: #42484E;}
+
+
+@media (max-width: 991px) {
+    .navbar-header {float: none;}
+    .navbar-toggle {display: block;}
+    .navbar-collapse {border-top: 1px solid transparent;box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);}
+    .navbar-collapse.collapse {display: none!important;}
+    .navbar-nav {float: none!important;margin: 7.5px -15px;}
+    .navbar-nav>li {float: none;}
+    .navbar-nav>li>a {padding-top: 10px;padding-bottom: 10px;}
+    .navbar-collapse.collapse.in {display: block!important; }
+}  
+
+/** HOME **/
+.home__sidebar{z-index:2;padding-top: 50px;padding-bottom: 50px;background-image:url(../img/theme2/home_fond.jpg);background-size: cover;-moz-box-shadow: 10px 0px 150px 0px #000;
+-webkit-box-shadow: 10px 0px 150px 0px #000;
+-o-box-shadow: 10px 0px 150px 0px #000;
+box-shadow: 10px 0px 150px 0px #000;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#000, Direction=90, Strength=150);}
+.home__sidebar h2{margin-bottom: 40px;margin-top: 40px;}
+.home__sidebar-block{padding-left:60px;padding-right:60px;}
+.home__sidebar-list{list-style-type: none;padding-left: 10px;}
+.home__sidebar-list li{overflow: auto;}
+.home__sidebar-list li img{width:20px;float:left;margin-right: 10px;}
+.home__sidebar-list li div{float:left;}
+.home__sidebar-list li h3{margin-top: 0px;}
+.home__sidebar-list li p{margin-bottom: 0px;}
+
+.home__sidebar-play-btn{text-align: center;}
+.home__sidebar-play-btn div{display:table;margin:0 auto}
+.home__sidebar-play-btn h1{margin: 0 auto;margin-top: 50px;margin-bottom: 30px;padding:15px;background-color:white; }
+
+.home__offer{position:relative;padding-right: 0px;background-image: url(../img/theme2/swar.png);background-position: center center;background-size: cover;-moz-box-shadow: 10px 0px 150px 0px #000;
+-webkit-box-shadow: 10px 0px 150px 0px #000;
+-o-box-shadow: 10px 0px 150px 0px #000;
+box-shadow: 10px 0px 150px 0px #000;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#000, Direction=90, Strength=150);}
+.home__offer-day{position:absolute;right:0;top:100px;}
+.home__offer-day div{padding:20px;height:100px;max-width:200px;}
+.home__offer-day div h4{margin-top:0px;margin-bottom: 0px;}
+.home__offer-day-voucher{background-color:white;}
+.home__offer-day-gift{background-color:#81D692;}
+
+.home__offer-week{position: absolute; right:0; bottom:0; width:270px;height:240px;text-align:center;}
+.home__offer-week h4{ padding-top: 10px;padding-bottom: 10px; margin-top: 0px; margin-bottom: 0px; background-color: #B2BCA9;}
+.home__offer-week-img{position:relative;height:calc(100% - 35px);width:100%;background-image: url(http://www.trinkpost.de/images/product_images/original_images/1756_0.jpg); background-position: center center;background-size: cover;}
+.home__offer-week-title{position: absolute; bottom:0; left:0; background-color: white;padding:10px;}
+.home__offer-week-title p{margin-bottom: 0px;}
+
+.home__concept{padding-top: 150px;padding-bottom: 75px;color:white;}
+.home__concept h3{color:#81D692;}
+
+
+/** RESPONSIVE **/
+@media (min-width: 1200px) and (max-width: 1650px){
+    
+    /** HEADER **/
+    .navbar{padding-left:20px;padding-right:20px;}
+    
+    /** HOME **/
+    .home__sidebar-block{padding-left: 20px; padding-right: 20px;}
+}
+
+@media (min-width: 991px) and (max-width: 1199px) {
+    
+    /** HEADER **/
+    .navbar{padding-left:20px;padding-right:20px;}
+    
+    /** HOME **/
+    .home__sidebar-block{padding-left: 20px; padding-right: 20px;}
+}
+@media (min-width: 768px) and (max-width: 991px) { 
+    
+    /** HEADER **/
+    .navbar{padding-left:20px;padding-right:20px;}
+    
+    /** HOME **/
+    .home__sidebar-block{padding-left: 20px; padding-right: 20px;}
+    
+}
+@media (max-width: 767px) { 
+    
+    /** HEADER **/
+    .navbar{padding-left:20px;padding-right:20px;}
+    
+    /** HOME **/
+    .home__sidebar{padding-top: 20px;}
+    .home__sidebar-block{padding-left: 20px; padding-right: 20px;}
+
+}

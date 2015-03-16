@@ -18,6 +18,18 @@ class VouchersController extends AppController {
          */
         public $components = array('Paginator', 'Session');
         public $uses = array('Voucher', 'User', 'UserVoucher', 'Gift', 'BigGift', 'UsersChoice');
+        
+        public function getvoucher(){
+            $date = date('Y-m-d');
+            $voucher = $this->Voucher->find('first', array(
+                'conditions' => array(
+                    'Voucher.date' => $date
+                ),
+                'recursive' => '-1',
+            ));
+            
+            return $voucher;
+        }
 
         public function my_vouchers() {
 
